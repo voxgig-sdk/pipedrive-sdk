@@ -1,0 +1,67 @@
+// Typed models for the Pipedrive SDK.
+//
+// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+// params (op.<name>.points[].args.params[]). Field/param types come from the
+// canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+// @voxgig/apidef VALID_CANON). Do not edit by hand.
+
+export interface Deal {
+  add_time?: string
+  currency?: string
+  id?: number
+  org_id?: number
+  person_id?: number
+  stage_id?: number
+  status?: string
+  title?: string
+  update_time?: string
+  value?: number
+}
+
+export interface DealLoadMatch {
+  id: number
+}
+
+export interface DealListMatch {
+  add_time?: string
+  currency?: string
+  id?: number
+  org_id?: number
+  person_id?: number
+  stage_id?: number
+  status?: string
+  title?: string
+  update_time?: string
+  value?: number
+}
+
+export interface DealCreateData {
+  add_time?: string
+  currency?: string
+  id?: number
+  org_id?: number
+  person_id?: number
+  stage_id?: number
+  status?: string
+  title?: string
+  update_time?: string
+  value?: number
+}
+
+export interface DealUpdateData {
+  id: number
+  add_time?: string
+  currency?: string
+  org_id?: number
+  person_id?: number
+  stage_id?: number
+  status?: string
+  title?: string
+  update_time?: string
+  value?: number
+}
+
+export interface DealRemoveMatch {
+  id: number
+}
+

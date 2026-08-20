@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "deal": {
+      "DEAL00": {
+        "add_time": "s64",
+        "currency": "s65",
+        "id": "DEAL00",
+        "org_id": "ORG01",
+        "person_id": "PERSON01",
+        "stage_id": "STAGE01",
+        "status": "s6a",
+        "title": "s6b",
+        "update_time": "s6c",
+        "value": 109
+      },
+      "DEAL01": {
+        "add_time": "sc8",
+        "currency": "sc9",
+        "id": "DEAL01",
+        "org_id": "ORG01",
+        "person_id": "PERSON01",
+        "stage_id": "STAGE01",
+        "status": "sce",
+        "title": "scf",
+        "update_time": "sd0",
+        "value": 209
+      },
+      "DEAL02": {
+        "add_time": "s12c",
+        "currency": "s12d",
+        "id": "DEAL02",
+        "org_id": "ORG01",
+        "person_id": "PERSON01",
+        "stage_id": "STAGE01",
+        "status": "s132",
+        "title": "s133",
+        "update_time": "s134",
+        "value": 309
+      }
+    }
+  },
+  "new": {
+    "deal": {
+      "deal_ref01": {
+        "add_time": "s190",
+        "currency": "s191",
+        "org_id": "ORG01",
+        "person_id": "PERSON01",
+        "stage_id": "STAGE01",
+        "status": "s196",
+        "title": "s197",
+        "update_time": "s198",
+        "value": 409
+      }
+    }
+  }
+}

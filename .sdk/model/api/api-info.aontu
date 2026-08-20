@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Create, read, update, and delete Pipedrive deals."
+      security: {
+        in: "query"
+        name: "api_token"
+        prefix: ""
+        scheme: "apiKeyAuth"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          url: "https://api.pipedrive.com/v1"
+        }
+      ]
+      summary: "Create, read, update, and delete Pipedrive deals."
+      title: "Pipedrive Deals API"
+      version: "1.0.0"
+      website: "https://pipedrive.com"
+    }
+  }
+}
+
