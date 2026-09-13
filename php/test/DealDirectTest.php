@@ -123,15 +123,17 @@ function deal_direct_setup($mockres)
     $env = Runner::env_override([
         "PIPEDRIVE_TEST_DEAL_ENTID" => [],
         "PIPEDRIVE_TEST_LIVE" => "FALSE",
-        "PIPEDRIVE_APIKEY" => "NONE",
+        "PIPEDRIVE_APIKEY" => "",
     ]);
 
     $live = $env["PIPEDRIVE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["PIPEDRIVE_APIKEY"],
-        ];
+        ]);
         $client = new PipedriveSDK($merged_opts);
         return [
             "client" => $client,

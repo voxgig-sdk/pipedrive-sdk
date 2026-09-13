@@ -85,6 +85,10 @@ local function make_config()
             ["type"] = "`$NUMBER`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "deal",
         ["op"] = {
           ["create"] = {
@@ -96,13 +100,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/deals",
-                ["parts"] = {
-                  "deals",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deals",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "deals",
                 },
               },
             },
@@ -137,8 +146,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/deals",
-                ["parts"] = {
-                  "deals",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deals",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -150,6 +161,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "deals",
                 },
               },
             },
@@ -173,9 +187,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/deals/{id}",
-                ["parts"] = {
-                  "deals",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deals",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -185,6 +203,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "deals",
+                  "{id}",
                 },
               },
             },
@@ -208,9 +230,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/deals/{id}",
-                ["parts"] = {
-                  "deals",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deals",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -220,6 +246,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "deals",
+                  "{id}",
                 },
               },
             },
@@ -243,9 +273,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/deals/{id}",
-                ["parts"] = {
-                  "deals",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deals",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -255,6 +289,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "deals",
+                  "{id}",
                 },
               },
             },

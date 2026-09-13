@@ -34,16 +34,9 @@ class DealLoadMatch(TypedDict):
 
 
 class DealListMatch(TypedDict, total=False):
-    add_time: str
-    currency: str
-    id: int
-    org_id: int
-    person_id: int
-    stage_id: int
+    limit: int
+    start: int
     status: str
-    title: str
-    update_time: str
-    value: float
 
 
 class DealCreateData(TypedDict, total=False):

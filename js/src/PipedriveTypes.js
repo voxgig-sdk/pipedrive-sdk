@@ -27,16 +27,9 @@
 
 /**
  * @typedef {Object} DealListMatch
- * @property {string} [add_time]
- * @property {string} [currency]
- * @property {number} [id]
- * @property {number} [org_id]
- * @property {number} [person_id]
- * @property {number} [stage_id]
+ * @property {number} [limit]
+ * @property {number} [start]
  * @property {string} [status]
- * @property {string} [title]
- * @property {string} [update_time]
- * @property {number} [value]
  */
 
 /**

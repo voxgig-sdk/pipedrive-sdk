@@ -101,7 +101,7 @@ func TestDealEntity(t *testing.T) {
 		// CREATE
 		dealRef01Ent := client.Deal(nil)
 		dealRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "deal"}, setup.data), "deal_ref01"))
+			vs.GetPath(setup.data, []any{"new", "deal"}), "deal_ref01"))
 
 		dealRef01DataResult, err := dealRef01Ent.Create(dealRef01Data, nil)
 		if err != nil {
@@ -225,7 +225,7 @@ func dealBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"deal01", "deal02", "deal03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -245,7 +245,7 @@ func dealBasicSetup(extra map[string]any) *entityTestSetup {
 		"PIPEDRIVE_TEST_DEAL_ENTID": idmap,
 		"PIPEDRIVE_TEST_LIVE":      "FALSE",
 		"PIPEDRIVE_TEST_EXPLAIN":   "FALSE",
-		"PIPEDRIVE_APIKEY":         "NONE",
+		"PIPEDRIVE_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["PIPEDRIVE_TEST_DEAL_ENTID"])
@@ -254,11 +254,23 @@ func dealBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["PIPEDRIVE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["PIPEDRIVE_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewPipedriveSDK(core.ToMapAny(mergedOpts))
 	}

@@ -14,16 +14,9 @@ export interface DealLoadMatch {
     id: number;
 }
 export interface DealListMatch {
-    add_time?: string;
-    currency?: string;
-    id?: number;
-    org_id?: number;
-    person_id?: number;
-    stage_id?: number;
+    limit?: number;
+    start?: number;
     status?: string;
-    title?: string;
-    update_time?: string;
-    value?: number;
 }
 export interface DealCreateData {
     add_time?: string;

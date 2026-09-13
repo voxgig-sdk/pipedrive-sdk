@@ -36,16 +36,9 @@ class DealLoadMatch
 /** Request payload for Deal#list. */
 class DealListMatch
 {
-    public ?string $add_time = null;
-    public ?string $currency = null;
-    public ?int $id = null;
-    public ?int $org_id = null;
-    public ?int $person_id = null;
-    public ?int $stage_id = null;
+    public ?int $limit = null;
+    public ?int $start = null;
     public ?string $status = null;
-    public ?string $title = null;
-    public ?string $update_time = null;
-    public ?float $value = null;
 }
 
 /** Request payload for Deal#create. */

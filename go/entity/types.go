@@ -33,16 +33,9 @@ type DealLoadMatch struct {
 
 // DealListMatch is the typed request payload for Deal.ListTyped.
 type DealListMatch struct {
-	AddTime *string `json:"add_time,omitempty"`
-	Currency *string `json:"currency,omitempty"`
-	Id *int `json:"id,omitempty"`
-	OrgId *int `json:"org_id,omitempty"`
-	PersonId *int `json:"person_id,omitempty"`
-	StageId *int `json:"stage_id,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Start *int `json:"start,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UpdateTime *string `json:"update_time,omitempty"`
-	Value *float64 `json:"value,omitempty"`
 }
 
 // DealCreateData is the typed request payload for Deal.CreateTyped.

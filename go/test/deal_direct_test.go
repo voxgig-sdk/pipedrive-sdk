@@ -196,14 +196,22 @@ func dealDirectSetup(mockres any) *dealDirectSetupResult {
 	env := envOverride(map[string]any{
 		"PIPEDRIVE_TEST_DEAL_ENTID": map[string]any{},
 		"PIPEDRIVE_TEST_LIVE":    "FALSE",
-		"PIPEDRIVE_APIKEY":       "NONE",
+		"PIPEDRIVE_APIKEY":       "",
 	})
 
 	live := env["PIPEDRIVE_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["PIPEDRIVE_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewPipedriveSDK(mergedOpts)
 

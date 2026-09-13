@@ -80,8 +80,10 @@ main: kit: entity: deal: {
         {
           method: "POST"
           orig: "/deals"
-          parts: [
-            "deals"
+          segments: [
+            {
+              lit: "deals"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -121,8 +123,10 @@ main: kit: entity: deal: {
           }
           method: "GET"
           orig: "/deals"
-          parts: [
-            "deals"
+          segments: [
+            {
+              lit: "deals"
+            }
           ]
           select: {
             exist: [
@@ -155,9 +159,13 @@ main: kit: entity: deal: {
           }
           method: "GET"
           orig: "/deals/{id}"
-          parts: [
-            "deals"
-            "{id}"
+          segments: [
+            {
+              lit: "deals"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -188,9 +196,13 @@ main: kit: entity: deal: {
           }
           method: "DELETE"
           orig: "/deals/{id}"
-          parts: [
-            "deals"
-            "{id}"
+          segments: [
+            {
+              lit: "deals"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -221,9 +233,13 @@ main: kit: entity: deal: {
           }
           method: "PUT"
           orig: "/deals/{id}"
-          parts: [
-            "deals"
-            "{id}"
+          segments: [
+            {
+              lit: "deals"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

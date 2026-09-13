@@ -22,16 +22,9 @@
 ---@field id number
 
 ---@class DealListMatch
----@field add_time? string
----@field currency? string
----@field id? number
----@field org_id? number
----@field person_id? number
----@field stage_id? number
+---@field limit? number
+---@field start? number
 ---@field status? string
----@field title? string
----@field update_time? string
----@field value? number
 
 ---@class DealCreateData
 ---@field add_time? string

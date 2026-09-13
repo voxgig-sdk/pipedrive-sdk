@@ -107,15 +107,18 @@ def _deal_direct_setup(mockres):
     env = runner.env_override({
         "PIPEDRIVE_TEST_DEAL_ENTID": {},
         "PIPEDRIVE_TEST_LIVE": "FALSE",
-        "PIPEDRIVE_APIKEY": "NONE",
+        "PIPEDRIVE_APIKEY": "",
     })
 
     live = env.get("PIPEDRIVE_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("PIPEDRIVE_APIKEY"),
-        }
+        })
         client = PipedriveSDK(merged_opts)
         return {
             "client": client,

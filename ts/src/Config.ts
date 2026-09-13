@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -121,6 +132,10 @@ class Config {
           "type": "`$NUMBER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "deal",
       "op": {
         "create": {
@@ -132,14 +147,19 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/deals",
-              "parts": [
-                "deals"
+              "segments": [
+                {
+                  "lit": "deals"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "deals"
+              ]
             }
           ]
         },
@@ -173,8 +193,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/deals",
-              "parts": [
-                "deals"
+              "segments": [
+                {
+                  "lit": "deals"
+                }
               ],
               "select": {
                 "exist": [
@@ -186,7 +208,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "deals"
+              ]
             }
           ]
         },
@@ -209,9 +234,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/deals/{id}",
-              "parts": [
-                "deals",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "deals"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -221,7 +250,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "deals",
+                "{id}"
+              ]
             }
           ]
         },
@@ -244,9 +277,13 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/deals/{id}",
-              "parts": [
-                "deals",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "deals"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -256,7 +293,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "deals",
+                "{id}"
+              ]
             }
           ]
         },
@@ -279,9 +320,13 @@ class Config {
               "kind": "http",
               "method": "PUT",
               "orig": "/deals/{id}",
-              "parts": [
-                "deals",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "deals"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -291,7 +336,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "deals",
+                "{id}"
+              ]
             }
           ]
         }
@@ -307,6 +356,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 
