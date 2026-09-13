@@ -1,6 +1,15 @@
 {
+  "NAME": "PIPEDRIVE",
+  "Name": "Pipedrive",
   "def": "pipedrive-deals-only.json",
   "main": {
+    "api": {
+      "entity": {},
+      "guide": {}
+    },
+    "custom": {
+      "plurals": {}
+    },
     "def": {
       "desc": ""
     },
@@ -1146,5 +1155,8 @@
     }
   },
   "name": "pipedrive",
+  "name-": "pipedrive",
+  "name_": "pipedrive",
+  "name__orig": "pipedrive",
   "origin": "voxgig-sdk"
 }
