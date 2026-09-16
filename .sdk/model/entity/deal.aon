@@ -78,6 +78,12 @@ main: kit: entity: deal: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /deals"
+            json: "{\"operationId\":\"createDeal\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currency\":{\"type\":\"string\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"required\":[\"title\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"The created deal\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/deals"
           segments: [
@@ -121,6 +127,12 @@ main: kit: entity: deal: {
               }
             ]
           }
+          contract: {
+            id: "GET /deals"
+            json: "{\"operationId\":\"listDeals\",\"parameters\":[{\"in\":\"query\",\"name\":\"status\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"A page of deals\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/deals"
           segments: [
@@ -156,6 +168,12 @@ main: kit: entity: deal: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /deals/{id}"
+            json: "{\"operationId\":\"getDeal\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"The requested deal\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/deals/{id}"
@@ -194,6 +212,12 @@ main: kit: entity: deal: {
               }
             ]
           }
+          contract: {
+            id: "DELETE /deals/{id}"
+            json: "{\"operationId\":\"deleteDeal\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Deleted\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "DELETE"
           orig: "/deals/{id}"
           segments: [
@@ -230,6 +254,12 @@ main: kit: entity: deal: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "PUT /deals/{id}"
+            json: "{\"operationId\":\"updateDeal\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currency\":{\"type\":\"string\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"required\":[\"title\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"The updated deal\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "PUT"
           orig: "/deals/{id}"

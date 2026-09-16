@@ -1,12 +1,26 @@
 # Pipedrive SDK feature factory
 
 from pipedrive_sdk.feature.base_feature import PipedriveBaseFeature
+from pipedrive_sdk.feature.debug_feature import PipedriveDebugFeature
+from pipedrive_sdk.feature.idempotency_feature import PipedriveIdempotencyFeature
+from pipedrive_sdk.feature.metrics_feature import PipedriveMetricsFeature
+from pipedrive_sdk.feature.paging_feature import PipedrivePagingFeature
+from pipedrive_sdk.feature.ratelimit_feature import PipedriveRatelimitFeature
+from pipedrive_sdk.feature.retry_feature import PipedriveRetryFeature
 from pipedrive_sdk.feature.test_feature import PipedriveTestFeature
+from pipedrive_sdk.feature.timeout_feature import PipedriveTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PipedriveBaseFeature(),
+    "debug": lambda: PipedriveDebugFeature(),
+    "idempotency": lambda: PipedriveIdempotencyFeature(),
+    "metrics": lambda: PipedriveMetricsFeature(),
+    "paging": lambda: PipedrivePagingFeature(),
+    "ratelimit": lambda: PipedriveRatelimitFeature(),
+    "retry": lambda: PipedriveRetryFeature(),
     "test": lambda: PipedriveTestFeature(),
+    "timeout": lambda: PipedriveTimeoutFeature(),
 }
 
 

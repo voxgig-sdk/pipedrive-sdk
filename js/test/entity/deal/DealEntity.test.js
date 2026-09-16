@@ -1,12 +1,14 @@
 
 const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
+require('../../utility').loadEnvLocal(envlocal)
 
 const Path = require('node:path')
 const Fs = require('node:fs')
 
 const { test, describe, afterEach } = require('node:test')
 const assert = require('node:assert')
+const { createLiveTransport } = require('../../live-runner')
+const { runLiveEntity } = require('../../live-entity')
 
 
 const { PipedriveSDK, BaseFeature, stdutil, config } = require('../../..')
@@ -36,9 +38,13 @@ describe('DealEntity', async () => {
   })
 
 
-  test('basic', async () => {
+  test('basic', async (t) => {
 
+    
     const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"add_time","req":false,"type":"`$STRING`","index$":0},{"active":true,"name":"currency","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"id","req":false,"type":"`$INTEGER`","index$":2},{"active":true,"name":"org_id","req":false,"type":"`$INTEGER`","index$":3},{"active":true,"name":"person_id","req":false,"type":"`$INTEGER`","index$":4},{"active":true,"name":"stage_id","req":false,"type":"`$INTEGER`","index$":5},{"active":true,"name":"status","req":false,"type":"`$STRING`","index$":6},{"active":true,"name":"title","op":{"create":{"req":true,"type":"`$STRING`"},"update":{"req":true,"type":"`$STRING`"}},"req":false,"type":"`$STRING`","index$":7},{"active":true,"name":"update_time","req":false,"type":"`$STRING`","index$":8},{"active":true,"name":"value","req":false,"type":"`$NUMBER`","index$":9}],"id":{"field":"id","name":"id"},"name":"deal","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{},"contract":{"id":"POST /deals","json":"{\"operationId\":\"createDeal\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currency\":{\"type\":\"string\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"required\":[\"title\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"The created deal\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/deals","segments":[{"lit":"deals"}],"select":{},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"limit","orig":"limit","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"kind":"query","name":"start","orig":"start","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"kind":"query","name":"status","orig":"status","reqd":false,"type":"`$STRING`","index$":2}]},"contract":{"id":"GET /deals","json":"{\"operationId\":\"listDeals\",\"parameters\":[{\"in\":\"query\",\"name\":\"status\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"items\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"A page of deals\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/deals","segments":[{"lit":"deals"}],"select":{"exist":["limit","start","status"]},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /deals/{id}","json":"{\"operationId\":\"getDeal\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"The requested deal\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/deals/{id}","segments":[{"lit":"deals"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"DELETE /deals/{id}","json":"{\"operationId\":\"deleteDeal\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Deleted\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"DELETE","orig":"/deals/{id}","segments":[{"lit":"deals"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"PUT /deals/{id}","json":"{\"operationId\":\"updateDeal\",\"parameters\":[{\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currency\":{\"type\":\"string\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"required\":[\"title\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"type\":\"string\"},\"currency\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"org_id\":{\"type\":\"integer\"},\"person_id\":{\"type\":\"integer\"},\"stage_id\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"update_time\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"success\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"The updated deal\"}},\"security\":[{\"apiKeyAuth\":[]}],\"securitySchemes\":{\"apiKeyAuth\":{\"in\":\"query\",\"name\":\"api_token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"PUT","orig":"/deals/{id}","segments":[{"lit":"deals"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"deal","name__orig":"deal","Name":"Deal","name_":"deal","name-":"deal","NAME":"DEAL","index$":0}, {"active":true,"entity":"deal","key$":"BasicDealFlow","kind":"basic","name":"BasicDealFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"deal_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0},{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"deal_ref01"}}],"index$":1},{"active":true,"data":{},"input":{"ref":"deal_ref01","srcdatavar":"deal_ref01_data","suffix":"_up0","textfield":"add_time"},"match":{},"op":"update","spec":[{"apply":"TextFieldMark","def":{"mark":"Mark01-deal_ref01"}}],"valid":[],"index$":2},{"active":true,"data":{},"input":{"ref":"deal_ref01","srcdatavar":"deal_ref01_data","suffix":"_dt0"},"match":{"id":"deal01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-deal_ref01"}}],"index$":3},{"active":true,"data":{},"input":{"ref":"deal_ref01","suffix":"_rm0"},"match":{"id":"deal01"},"op":"remove","spec":[],"valid":[],"index$":4},{"active":true,"data":{},"input":{"suffix":"_rt0"},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemNotExists","def":{"ref":"deal_ref01"}}],"index$":5}]}, 'Deal')
+    }
     const client = setup.client
     const struct = setup.struct
 
@@ -141,7 +147,14 @@ function basicSetup(extra) {
 
   idmap = env['PIPEDRIVE_TEST_DEAL_ENTID']
 
-  if ('TRUE' === env.PIPEDRIVE_TEST_LIVE) {
+  const live = 'TRUE' === env.PIPEDRIVE_TEST_LIVE
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['PIPEDRIVE_TEST_DEAL_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new PipedriveSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -153,7 +166,8 @@ function basicSetup(extra) {
       // the last entry is undefined, and basicSetup is normally called with no
       // argument at all - so a bare 'extra' silently discarded the apikey and
       // server values above and handed the SDK undefined.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -165,6 +179,8 @@ function basicSetup(extra) {
     struct,
     data: entityData,
     explain: 'TRUE' === env.PIPEDRIVE_TEST_EXPLAIN,
+    live,
+    transport,
     now: Date.now(),
   }
 
