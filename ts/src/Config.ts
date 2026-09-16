@@ -201,6 +201,8 @@ class Config {
 
     auth: {
       prefix: '',
+      in: 'query',
+      name: 'api_token',
     },
 
     headers: {
@@ -209,9 +211,9 @@ class Config {
 
     entity: {
       
-      deal: {
-      },
-
+        deal: {
+        },
+  
     }
   }
 

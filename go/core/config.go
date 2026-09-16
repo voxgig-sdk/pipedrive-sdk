@@ -151,6 +151,8 @@ func MakeConfig() map[string]any {
 			"base": "https://api.pipedrive.com/v1",
 			"auth": map[string]any{
 				"prefix": "",
+				"in": "query",
+				"name": "api_token",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",

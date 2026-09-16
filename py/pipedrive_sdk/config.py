@@ -176,6 +176,8 @@ def make_config():
             "base": "https://api.pipedrive.com/v1",
             "auth": {
                 "prefix": "",
+                "in": "query",
+                "name": "api_token",
             },
             "headers": {
         "content-type": "application/json",
