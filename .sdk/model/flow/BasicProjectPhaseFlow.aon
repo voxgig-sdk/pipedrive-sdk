@@ -1,0 +1,44 @@
+# BasicProjectPhaseFlow
+
+main: kit: flow: BasicProjectPhaseFlow:
+{
+  entity: "project_phase",
+  kind: "basic",
+  name: "BasicProjectPhaseFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_phase_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "project_phase_ref01",
+        srcdatavar: "project_phase_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "project_phase01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_phase_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectPhaseFlow"
+}

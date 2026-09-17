@@ -98,7 +98,7 @@ class TestDealEntity:
             "id": deal_ref01_data["id"],
         }
 
-        deal_ref01_markdef_up0_name = "add_time"
+        deal_ref01_markdef_up0_name = "period_end"
         deal_ref01_markdef_up0_value = "Mark01-deal_ref01_" + str(setup["now"])
         deal_ref01_data_up0_up[deal_ref01_markdef_up0_name] = deal_ref01_markdef_up0_value
 
@@ -151,7 +151,7 @@ def _deal_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["deal01", "deal02", "deal03"],
+        ["deal01", "deal02", "deal03", "follower01", "follower02", "follower03", "participant01", "participant02", "participant03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

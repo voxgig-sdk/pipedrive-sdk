@@ -1,0 +1,67 @@
+# BasicMailboxFlow
+
+main: kit: flow: BasicMailboxFlow:
+{
+  entity: "mailbox",
+  kind: "basic",
+  name: "BasicMailboxFlow",
+  step: [
+    {
+      match: {
+        mail_thread_id: "mail_thread01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "mailbox_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "mailbox_ref01",
+        srcdatavar: "mailbox_ref01_data",
+        suffix: "_up0",
+        textfield: "service"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-mailbox_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "mailbox_ref01",
+        srcdatavar: "mailbox_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "mailbox01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-mailbox_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMailboxFlow"
+}

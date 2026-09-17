@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Recent | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a aria-current="page" href="../api/recent.html">Recent</a><div class="nav-sections"><a class="nav-section" href="#get-recents">GET /recents</a></div>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="recent">Recent</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-recents"><code>/recents</code></a></td>
+<td><code>list</code></td>
+<td>List of items changed since &quot;since_timestamp&quot;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-recents" class="operation" data-method="get"><code>GET</code> /recents</h3>
+<p>Operation ID: <code>getRecents</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>since_timestamp</code> | <code>query</code> | <code>string</code> | Yes | The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS. |
+| <code>items</code> | <code>query</code> | <code>enum: activity, activityType, deal, file, filter, note, ...</code> | No | Multiple selection of item types to include in the query (optional) |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-list-of-items-changed-since-quotsince_timestampquot" class="status" data-status="2xx">200: List of items changed since &quot;since_timestamp&quot;</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.last_timestamp_on_page</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>additional_data.since_timestamp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The timestamp in UTC. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object or object or object or object or object or object or object or object or object or object or object or object</code></td>
+<td>No</td>
+<td>RecentsData</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;last_timestamp_on_page&quot;: &quot;2020-10-15 18:18:41&quot;,
+    &quot;pagination\&quot;&quot;: {
+      &quot;limit&quot;: &quot;100,&quot;,
+      &quot;more_items_in_collection&quot;: false,
+      &quot;start&quot;: &quot;0,&quot;
+    },
+    &quot;since_timestamp&quot;: &quot;2020-10-10 00:00:00&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;data&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;add_time&quot;: &quot;2020-06-08 12:37:56&quot;,
+        &quot;assigned_to_user_id&quot;: 1235,
+        &quot;attendees&quot;: [
+          {
+            &quot;email_address&quot;: &quot;attendee@pipedrivemail.com&quot;,
+            &quot;is_organizer&quot;: 0,
+            &quot;name&quot;: &quot;Attendee&quot;,
+            &quot;person_id&quot;: 25312,
+            &quot;status&quot;: &quot;noreply&quot;,
+            &quot;user_id&quot;: null
+          }
+        ],
+        &quot;busy_flag&quot;: true,
+        &quot;calendar_sync_include_context&quot;: &quot;&quot;,
+        &quot;company_id&quot;: 22122,
+        &quot;conference_meeting_client&quot;: &quot;871b8bc88d3a1202&quot;,
+        &quot;conference_meeting_id&quot;: &quot;17058746701&quot;,
+        &quot;conference_meeting_url&quot;: &quot;https://pipedrive.zoom.us/link&quot;,
+        &quot;created_by_user_id&quot;: 1234,
+        &quot;deal_dropbox_bcc&quot;: &quot;company+deal300@pipedrivemail.com&quot;,
+        &quot;deal_id&quot;: 300,
+        &quot;deal_title&quot;: &quot;Deal&quot;,
+        &quot;done&quot;: false,
+        &quot;due_date&quot;: &quot;2020-06-09&quot;,
+        &quot;due_time&quot;: &quot;10:00&quot;,
+        &quot;duration&quot;: &quot;01:00&quot;,
+        &quot;file&quot;: {
+          &quot;clean_name&quot;: &quot;Audio 10:55:07.m4a&quot;,
+          &quot;id&quot;: &quot;376892,&quot;,
+          &quot;url&quot;: &quot;https://pipedrive-files.s3-eu-west-1.amazonaws.com/Audio-recording.m4a&quot;
+        },
+        &quot;gcal_event_id&quot;: &quot;&quot;,
+        &quot;google_calendar_etag&quot;: &quot;&quot;,
+        &quot;google_calendar_id&quot;: &quot;&quot;,
+        &quot;id&quot;: 8,
+        &quot;last_notification_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+        &quot;last_notification_user_id&quot;: 7655,
+        &quot;lead_id&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;,
+        &quot;location&quot;: &quot;Mustamäe tee 3, Tallinn, Estonia&quot;,
+        &quot;location_admin_area_level_1&quot;: &quot;Harju maakond&quot;,
+        &quot;location_admin_area_level_2&quot;: &quot;&quot;,
+        &quot;location_country&quot;: &quot;Estonia&quot;,
+        &quot;location_formatted_address&quot;: &quot;Mustamäe tee 3, 10616 Tallinn, Estonia&quot;,
+        &quot;location_locality&quot;: &quot;Tallinn&quot;,
+        &quot;location_postal_code&quot;: &quot;10616&quot;,
+        &quot;location_route&quot;: &quot;Mustamäe tee&quot;,
+        &quot;location_street_number&quot;: &quot;3&quot;,
+        &quot;location_sublocality&quot;: &quot;Kristiine&quot;,
+        &quot;location_subpremise&quot;: &quot;&quot;,
+        &quot;marked_as_done_time&quot;: &quot;2020-08-08 08:08:38&quot;,
+        &quot;note&quot;: &quot;A note for the activity&quot;,
+        &quot;notification_language_id&quot;: 1,
+        &quot;org_id&quot;: 5,
+        &quot;org_name&quot;: &quot;Organization&quot;,
+        &quot;outcome&quot;: 101,
+        &quot;owner_name&quot;: &quot;Creator&quot;,
+        &quot;participants&quot;: [
+          {
+            &quot;person_id&quot;: 17985,
+            &quot;primary_flag&quot;: false
+          },
+          {
+            &quot;person_id&quot;: 1101,
+            &quot;primary_flag&quot;: true
+          }
+        ],
+        &quot;person_dropbox_bcc&quot;: &quot;company@pipedrivemail.com&quot;,
+        &quot;person_id&quot;: 1101,
+        &quot;person_name&quot;: &quot;Person&quot;,
+        &quot;project_id&quot;: null,
+        &quot;public_description&quot;: &quot;This is a description&quot;,
+        &quot;rec_master_activity_id&quot;: 1,
+        &quot;rec_rule&quot;: &quot;RRULE:FREQ=WEEKLY;BYDAY=WE&quot;,
+        &quot;rec_rule_extension&quot;: &quot;&quot;,
+        &quot;reference_id&quot;: 7,
+        &quot;reference_type&quot;: &quot;scheduler-service&quot;,
+        &quot;series&quot;: [],
+        &quot;source_timezone&quot;: &quot;&quot;,
+        &quot;subject&quot;: &quot;Deadline&quot;,
+        &quot;type&quot;: &quot;deadline&quot;,
+        &quot;update_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+        &quot;update_user_id&quot;: 5596,
+        &quot;user_id&quot;: 1234
+      },
+      &quot;id&quot;: 8,
+      &quot;item&quot;: &quot;activity&quot;
+    },
+    {
+      &quot;data&quot;: {
+        &quot;active&quot;: true,
+        &quot;activities_count&quot;: 1,
+        &quot;add_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+        &quot;cc_email&quot;: &quot;company+deal1@pipedrivemail.com&quot;,
+        &quot;close_time&quot;: null,
+        &quot;creator_user_id&quot;: 8877,
+        &quot;currency&quot;: &quot;EUR&quot;,
+        &quot;deleted&quot;: false,
+        &quot;done_activities_count&quot;: 0,
+        &quot;email_messages_count&quot;: 4,
+        &quot;expected_close_date&quot;: &quot;2019-06-29&quot;,
+        &quot;files_count&quot;: 0,
+        &quot;first_won_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+        &quot;followers_count&quot;: 0,
+        &quot;formatted_value&quot;: &quot;€5,000&quot;,
+        &quot;formatted_weighted_value&quot;: &quot;€5,000&quot;,
+        &quot;id&quot;: 1,
+        &quot;label&quot;: &quot;11&quot;,
+        &quot;last_activity_date&quot;: null,
+        &quot;last_activity_id&quot;: null,
+        &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+        &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+        &quot;lost_reason&quot;: null,
+        &quot;lost_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+        &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+        &quot;next_activity_duration&quot;: &quot;00:30:00&quot;,
+        &quot;next_activity_id&quot;: 128,
+        &quot;next_activity_note&quot;: &quot;Note content&quot;,
+        &quot;next_activity_subject&quot;: &quot;Call&quot;,
+        &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+        &quot;next_activity_type&quot;: &quot;call&quot;,
+        &quot;notes_count&quot;: 2,
+        &quot;org_hidden&quot;: false,
+        &quot;org_id&quot;: 5,
+        &quot;org_name&quot;: &quot;Organization&quot;,
+        &quot;owner_name&quot;: &quot;Creator&quot;,
+        &quot;participants_count&quot;: 1,
+        &quot;person_hidden&quot;: false,
+        &quot;person_id&quot;: 1101,
+        &quot;person_name&quot;: &quot;Person&quot;,
+        &quot;pipeline_id&quot;: 1,
+        &quot;probability&quot;: null,
+        &quot;products_count&quot;: 0,
+        &quot;rotten_time&quot;: null,
+        &quot;stage_change_time&quot;: &quot;2019-11-28 15:41:22&quot;,
+        &quot;stage_id&quot;: 2,
+        &quot;stage_order_nr&quot;: 2,
+        &quot;status&quot;: &quot;open&quot;,
+        &quot;title&quot;: &quot;Deal One&quot;,
+        &quot;undone_activities_count&quot;: 1,
+        &quot;update_time&quot;: &quot;2019-11-28 16:19:50&quot;,
+        &quot;user_id&quot;: 8877,
+        &quot;value&quot;: 5000,
+        &quot;visible_to&quot;: &quot;1&quot;,
+        &quot;weighted_value&quot;: 5000,
+        &quot;weighted_value_currency&quot;: &quot;EUR&quot;,
+        &quot;won_time&quot;: &quot;2019-11-27 11:40:36&quot;
+      },
+      &quot;id&quot;: 1,
+      &quot;item&quot;: &quot;deal&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

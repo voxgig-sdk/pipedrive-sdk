@@ -1,0 +1,22 @@
+# BasicActivityFieldFlow
+
+main: kit: flow: BasicActivityFieldFlow:
+{
+  entity: "activity_field",
+  kind: "basic",
+  name: "BasicActivityFieldFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "activity_field_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicActivityFieldFlow"
+}

@@ -31,7 +31,7 @@ main: kit: flow: BasicDealFlow:
         ref: "deal_ref01",
         srcdatavar: "deal_ref01_data",
         suffix: "_up0",
-        textfield: "add_time"
+        textfield: "period_end"
       }
 
       op: "update",

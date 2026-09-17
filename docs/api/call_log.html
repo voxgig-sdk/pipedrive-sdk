@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CallLog | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a aria-current="page" href="../api/call_log.html">CallLog</a><div class="nav-sections"><a class="nav-section" href="#post-calllogsidrecordings">POST /callLogs/{id}/recordings</a>
+<a class="nav-section" href="#post-calllogs">POST /callLogs</a>
+<a class="nav-section" href="#get-calllogs">GET /callLogs</a>
+<a class="nav-section" href="#get-calllogsid">GET /callLogs/{id}</a>
+<a class="nav-section" href="#delete-calllogsid">DELETE /callLogs/{id}</a></div>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="calllog">CallLog</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-calllogsidrecordings"><code>/callLogs/{id}/recordings</code></a></td>
+<td><code>create</code></td>
+<td>The audio recording was successfully added to the log</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-calllogs"><code>/callLogs</code></a></td>
+<td><code>create</code></td>
+<td>The call log was successfully created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-calllogs"><code>/callLogs</code></a></td>
+<td><code>list</code></td>
+<td>A list of call logs</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-calllogsid"><code>/callLogs/{id}</code></a></td>
+<td><code>load</code></td>
+<td>The requested call log object</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-calllogsid"><code>/callLogs/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>The call log was successfully deleted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>If specified, this activity will be converted into a call log, with the information provided.</td>
+</tr>
+<tr>
+<td><code>company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The company ID of the owner of the call log</td>
+</tr>
+<tr>
+<td><code>deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal this call is associated with.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The duration of the call in seconds</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date and time of the end of the call in UTC.</td>
+</tr>
+<tr>
+<td><code>from_phone_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The number that made the call</td>
+</tr>
+<tr>
+<td><code>has_recording</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the call log has an audio recording attached, the value should be true</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The call log ID, generated when the call log was created</td>
+</tr>
+<tr>
+<td><code>lead_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the lead in the UUID format this call is associated with.</td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The note for the call log in HTML format</td>
+</tr>
+<tr>
+<td><code>org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization this call is associated with</td>
+</tr>
+<tr>
+<td><code>outcome</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Describes the outcome of the call</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person this call is associated with</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date and time of the start of the call in UTC.</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the activity this call is attached to</td>
+</tr>
+<tr>
+<td><code>to_phone_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The number called</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the owner of the call log.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-calllogsidrecordings" class="operation" data-method="post"><code>POST</code> /callLogs/{id}/recordings</h3>
+<p>Operation ID: <code>addCallLogAudioFile</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID received when you create the call log |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file</code></td>
+<td><code>string (binary)</code></td>
+<td>Yes</td>
+<td>Audio file supported by the HTML5 specification</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-audio-recording-was-successfully-added-to-the-log" class="status" data-status="2xx">200: The audio recording was successfully added to the log</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-a-resource-required-to-process-the-request-was-not-found" class="status" data-status="4xx">404: A resource required to process the request was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="409-recording-for-this-call-already-exists" class="status" data-status="4xx">409: Recording for this call already exists</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-there-was-an-error-processing-the-request" class="status" data-status="5xx">500: There was an error processing the request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-calllogs" class="operation" data-method="post"><code>POST</code> /callLogs</h3>
+<p>Operation ID: <code>addCallLog</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>If specified, this activity will be converted into a call log, with the information provided. When this field is used, you don't need to specify <code>deal_id</code>, <code>person_id</code> or <code>org_id</code>, as they will be ignored in favor of the values already available in the activity. The <code>activity_id</code> must refer to a <code>call</code> type activity.</td>
+</tr>
+<tr>
+<td><code>deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The duration of the call in seconds</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time of the end of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.</td>
+</tr>
+<tr>
+<td><code>from_phone_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The number that made the call</td>
+</tr>
+<tr>
+<td><code>lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead in the UUID format this call is associated with. A call log can be associated with either a deal or a lead, but not both at once.</td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The note for the call log in HTML format</td>
+</tr>
+<tr>
+<td><code>org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization this call is associated with</td>
+</tr>
+<tr>
+<td><code>outcome</code></td>
+<td><code>enum: connected, no_answer, left_message, left_voicemail, wrong_number, busy</code></td>
+<td>Yes</td>
+<td>Describes the outcome of the call</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person this call is associated with</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time of the start of the call in UTC. Format: YYYY-MM-DD HH:MM:SS.</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the activity this call is attached to</td>
+</tr>
+<tr>
+<td><code>to_phone_number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The number called</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the owner of the call log. Please note that a user without account settings access cannot create call logs for other users.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-the-call-log-was-successfully-created" class="status" data-status="2xx">200: The call log was successfully created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>responseCallLogObject</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;activity_id&quot;: 7007,
+    &quot;company_id&quot;: 66660666,
+    &quot;deal_id&quot;: 553229734,
+    &quot;duration&quot;: &quot;0&quot;,
+    &quot;end_time&quot;: &quot;2022-12-12T01:02:01.000Z&quot;,
+    &quot;from_phone_number&quot;: &quot;+37277774841&quot;,
+    &quot;has_recording&quot;: false,
+    &quot;id&quot;: &quot;CAd92b224eb4a39b5ad8fea92ff0e&quot;,
+    &quot;note&quot;: &quot;A note for the call log&quot;,
+    &quot;org_id&quot;: 123456789,
+    &quot;outcome&quot;: &quot;busy&quot;,
+    &quot;person_id&quot;: 333222111,
+    &quot;start_time&quot;: &quot;2022-12-12T01:01:01.000Z&quot;,
+    &quot;subject&quot;: &quot;Just call me maybe&quot;,
+    &quot;to_phone_number&quot;: &quot;+37249234343&quot;,
+    &quot;user_id&quot;: 777707777
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="400-the-request-contains-wrong-or-incorrectly-formatted-arguments" class="status" data-status="4xx">400: The request contains wrong or incorrectly formatted arguments</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="403-you-don39t-have-permission-to-access-the-resource" class="status" data-status="4xx">403: You don't have permission to access the resource</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-a-resource-required-to-process-the-request-was-not-found-1" class="status" data-status="4xx">404: A resource required to process the request was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-there-was-an-error-processing-the-request-1" class="status" data-status="5xx">500: There was an error processing the request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-calllogs" class="operation" data-method="get"><code>GET</code> /callLogs</h3>
+<p>Operation ID: <code>getUserCallLogs</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | For pagination, the limit of entries to be returned. The upper limit is 50. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-a-list-of-call-logs" class="status" data-status="2xx">200: A list of call logs</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.pagination</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 50,
+      &quot;more_items_in_collection&quot;: false,
+      &quot;next_start&quot;: 1,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;activity_id&quot;: 7007,
+      &quot;company_id&quot;: 66660666,
+      &quot;deal_id&quot;: 553229734,
+      &quot;duration&quot;: &quot;0&quot;,
+      &quot;end_time&quot;: &quot;2022-12-12T01:01:01.000Z&quot;,
+      &quot;from_phone_number&quot;: &quot;+37277774841&quot;,
+      &quot;has_recording&quot;: false,
+      &quot;id&quot;: &quot;CAd92b224eb4a39b5ad8fea92ff0e&quot;,
+      &quot;note&quot;: &quot;A note for the call log&quot;,
+      &quot;org_id&quot;: 123456789,
+      &quot;outcome&quot;: &quot;busy&quot;,
+      &quot;person_id&quot;: 333222111,
+      &quot;start_time&quot;: &quot;2022-12-12T01:01:01.000Z&quot;,
+      &quot;subject&quot;: &quot;Just call me maybe&quot;,
+      &quot;to_phone_number&quot;: &quot;+37249234343&quot;,
+      &quot;user_id&quot;: 777707777
+    },
+    {
+      &quot;activity_id&quot;: 1,
+      &quot;company_id&quot;: 66666666,
+      &quot;duration&quot;: &quot;0&quot;,
+      &quot;end_time&quot;: &quot;2022-12-12T01:01:01.000Z&quot;,
+      &quot;has_recording&quot;: true,
+      &quot;id&quot;: &quot;CAd92b224eb4a39b11a8fea92ff0e&quot;,
+      &quot;note&quot;: &quot;A note for the call log&quot;,
+      &quot;outcome&quot;: &quot;no_answer&quot;,
+      &quot;person_id&quot;: 1,
+      &quot;start_time&quot;: &quot;2022-12-12T01:01:01.000Z&quot;,
+      &quot;to_phone_number&quot;: &quot;+3728439832&quot;,
+      &quot;user_id&quot;: 777777777
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-calllogsid" class="operation" data-method="get"><code>GET</code> /callLogs/{id}</h3>
+<p>Operation ID: <code>getCallLog</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID received when you create the call log |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-the-requested-call-log-object" class="status" data-status="2xx">200: The requested call log object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>responseCallLogObject</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;activity_id&quot;: 7007,
+    &quot;company_id&quot;: 66660666,
+    &quot;deal_id&quot;: 553229734,
+    &quot;duration&quot;: &quot;0&quot;,
+    &quot;end_time&quot;: &quot;2022-12-12T01:02:01.000Z&quot;,
+    &quot;from_phone_number&quot;: &quot;+37277774841&quot;,
+    &quot;has_recording&quot;: false,
+    &quot;id&quot;: &quot;CAd92b224eb4a39b5ad8fea92ff0e&quot;,
+    &quot;note&quot;: &quot;A note for the call log&quot;,
+    &quot;org_id&quot;: 123456789,
+    &quot;outcome&quot;: &quot;busy&quot;,
+    &quot;person_id&quot;: 333222111,
+    &quot;start_time&quot;: &quot;2022-12-12T01:01:01.000Z&quot;,
+    &quot;subject&quot;: &quot;Just call me maybe&quot;,
+    &quot;to_phone_number&quot;: &quot;+37249234343&quot;,
+    &quot;user_id&quot;: 777707777
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-a-resource-required-to-process-the-request-was-not-found-2" class="status" data-status="4xx">404: A resource required to process the request was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-calllogsid" class="operation" data-method="delete"><code>DELETE</code> /callLogs/{id}</h3>
+<p>Operation ID: <code>deleteCallLog</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID received when you create the call log |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-the-call-log-was-successfully-deleted" class="status" data-status="2xx">200: The call log was successfully deleted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="403-you-don39t-have-permission-to-access-the-resource-1" class="status" data-status="4xx">403: You don't have permission to access the resource</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-a-resource-required-to-process-the-request-was-not-found-3" class="status" data-status="4xx">404: A resource required to process the request was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="410-the-calllog-you-are-trying-to-access-is-no-longer-available" class="status" data-status="4xx">410: The callLog you are trying to access is no longer available</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="500-there-was-an-error-processing-the-request-2" class="status" data-status="5xx">500: There was an error processing the request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

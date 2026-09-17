@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ActivityType | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a aria-current="page" href="../api/activity_type.html">ActivityType</a><div class="nav-sections"><a class="nav-section" href="#post-activitytypes">POST /activityTypes</a>
+<a class="nav-section" href="#get-activitytypes">GET /activityTypes</a>
+<a class="nav-section" href="#delete-activitytypesid">DELETE /activityTypes/{id}</a>
+<a class="nav-section" href="#put-activitytypesid">PUT /activityTypes/{id}</a></div>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="activitytype">ActivityType</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-activitytypes"><code>/activityTypes</code></a></td>
+<td><code>create</code></td>
+<td>The activity type was successfully created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-activitytypes"><code>/activityTypes</code></a></td>
+<td><code>list</code></td>
+<td>A list of activity types</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-activitytypesid"><code>/activityTypes/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>The activity type was successfully deleted</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-activitytypesid"><code>/activityTypes/{id}</code></a></td>
+<td><code>update</code></td>
+<td>The activity type was successfully updated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A designated color for the activity type in 6-character HEX format (for example</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The array of activity types</td>
+</tr>
+<tr>
+<td><code>icon_key</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Icon graphic to use for representing this activity type</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the activity type</td>
+</tr>
+<tr>
+<td><code>order_nr</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>An order number for this activity type.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-activitytypes" class="operation" data-method="post"><code>POST</code> /activityTypes</h3>
+<p>Operation ID: <code>addActivityType</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A designated color for the activity type in 6-character HEX format (for example <code>FFFFFF</code> for white, <code>000000</code> for black)</td>
+</tr>
+<tr>
+<td><code>icon_key</code></td>
+<td><code>enum: task, email, meeting, deadline, call, lunch, ...</code></td>
+<td>Yes</td>
+<td>Icon graphic to use for representing this activity type</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the activity type</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-activity-type-was-successfully-created" class="status" data-status="2xx">200: The activity type was successfully created</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2020-09-01 10:16:23&quot;,
+    &quot;color&quot;: &quot;aeb31b&quot;,
+    &quot;icon_key&quot;: &quot;camera&quot;,
+    &quot;id&quot;: 12,
+    &quot;is_custom_flag&quot;: true,
+    &quot;key_string&quot;: &quot;video_call&quot;,
+    &quot;name&quot;: &quot;Video call&quot;,
+    &quot;order_nr&quot;: 1,
+    &quot;update_time&quot;: &quot;2020-09-01 10:16:23&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-activitytypes" class="operation" data-method="get"><code>GET</code> /activityTypes</h3>
+<p>Operation ID: <code>getActivityTypes</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-a-list-of-activity-types" class="status" data-status="2xx">200: A list of activity types</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2019-10-04 16:24:55&quot;,
+      &quot;color&quot;: &quot;FFFFFF&quot;,
+      &quot;icon_key&quot;: &quot;deadline&quot;,
+      &quot;id&quot;: 4,
+      &quot;is_custom_flag&quot;: false,
+      &quot;key_string&quot;: &quot;deadline&quot;,
+      &quot;name&quot;: &quot;Deadline&quot;,
+      &quot;order_nr&quot;: 1,
+      &quot;update_time&quot;: &quot;2020-03-11 13:53:01&quot;
+    },
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2019-12-21 19:44:01&quot;,
+      &quot;color&quot;: &quot;FFFFFF&quot;,
+      &quot;icon_key&quot;: &quot;call&quot;,
+      &quot;id&quot;: 5,
+      &quot;is_custom_flag&quot;: false,
+      &quot;key_string&quot;: &quot;call&quot;,
+      &quot;name&quot;: &quot;Call&quot;,
+      &quot;order_nr&quot;: 2,
+      &quot;update_time&quot;: &quot;2019-12-21 19:44:01&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-activitytypesid" class="operation" data-method="delete"><code>DELETE</code> /activityTypes/{id}</h3>
+<p>Operation ID: <code>deleteActivityType</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the activity type |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-the-activity-type-was-successfully-deleted" class="status" data-status="2xx">200: The activity type was successfully deleted</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: false,
+    &quot;add_time&quot;: &quot;2020-09-01 10:16:23&quot;,
+    &quot;color&quot;: &quot;aeb31b&quot;,
+    &quot;icon_key&quot;: &quot;camera&quot;,
+    &quot;id&quot;: 12,
+    &quot;is_custom_flag&quot;: true,
+    &quot;key_string&quot;: &quot;video_call&quot;,
+    &quot;name&quot;: &quot;Video call&quot;,
+    &quot;order_nr&quot;: 1,
+    &quot;update_time&quot;: &quot;2020-09-01 19:59:59&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-activitytypesid" class="operation" data-method="put"><code>PUT</code> /activityTypes/{id}</h3>
+<p>Operation ID: <code>updateActivityType</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the activity type |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A designated color for the activity type in 6-character HEX format (for example <code>FFFFFF</code> for white, <code>000000</code> for black)</td>
+</tr>
+<tr>
+<td><code>icon_key</code></td>
+<td><code>enum: task, email, meeting, deadline, call, lunch, ...</code></td>
+<td>No</td>
+<td>Icon graphic to use for representing this activity type</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the activity type</td>
+</tr>
+<tr>
+<td><code>order_nr</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>An order number for this activity type. Order numbers should be used to order the types in the activity type selections.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-the-activity-type-was-successfully-updated" class="status" data-status="2xx">200: The activity type was successfully updated</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2020-09-01 10:16:23&quot;,
+    &quot;color&quot;: &quot;aeb31b&quot;,
+    &quot;icon_key&quot;: &quot;camera&quot;,
+    &quot;id&quot;: 12,
+    &quot;is_custom_flag&quot;: true,
+    &quot;key_string&quot;: &quot;video_call&quot;,
+    &quot;name&quot;: &quot;Video call&quot;,
+    &quot;order_nr&quot;: 1,
+    &quot;update_time&quot;: &quot;2020-09-01 14:12:09&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

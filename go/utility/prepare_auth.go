@@ -1,13 +1,16 @@
 package utility
 
 import (
+	"encoding/base64"
+
 	vs "github.com/voxgig-sdk/pipedrive-sdk/go/utility/struct"
 
 	"github.com/voxgig-sdk/pipedrive-sdk/go/core"
 )
 
-const credName = "api_token"
+const credName = "authorization"
 const optionApikey = "apikey"
+const optionSecret = "secret"
 const notFound = "__NOTFOUND__"
 
 func prepareAuthUtil(ctx *core.Context) (*core.Spec, error) {
@@ -17,12 +20,12 @@ func prepareAuthUtil(ctx *core.Context) (*core.Spec, error) {
 			"Expected context spec property to be defined.")
 	}
 
-	query := spec.Query
+	headers := spec.Headers
 	options := ctx.Client.OptionsMap()
 
 	// Public APIs that need no auth omit the options.auth block entirely.
 	if options["auth"] == nil {
-		delete(query, credName)
+		delete(headers, credName)
 		return spec, nil
 	}
 
@@ -36,14 +39,59 @@ func prepareAuthUtil(ctx *core.Context) (*core.Spec, error) {
 		skip = true
 	}
 
+	// True HTTP Basic Auth needs TWO credentials, base64-joined - a single
+	// token in the header (the branch below) can never authenticate against
+	// an API that actually checks `Authorization: Basic base64(user:pass)`.
+	if basicAuth, _ := vs.GetPath(options, []any{"auth", "basic"}).(bool); basicAuth {
+		secret := vs.GetProp(options, optionSecret, notFound)
+
+		noSecret := false
+		if secret == nil {
+			noSecret = true
+		} else if secretStr, ok := secret.(string); ok &&
+			(secretStr == notFound || secretStr == "") {
+			noSecret = true
+		}
+
+		if skip || noSecret {
+			delete(headers, credName)
+		} else {
+			apikeyVal, _ := apikey.(string)
+			secretVal, _ := secret.(string)
+			b64 := base64.StdEncoding.EncodeToString([]byte(apikeyVal + ":" + secretVal))
+
+			basicPrefix := ""
+			if ap := vs.GetPath(options, []any{"auth", "prefix"}); ap != nil {
+				basicPrefix, _ = ap.(string)
+			}
+			// Empty prefix (raw apiKey credential) must not add a leading space.
+			if basicPrefix == "" {
+				headers[credName] = b64
+			} else {
+				headers[credName] = basicPrefix + " " + b64
+			}
+		}
+
+		return spec, nil
+	}
+
 	if skip {
-		delete(query, credName)
+		delete(headers, credName)
 	} else {
+		authPrefix := ""
+		if ap := vs.GetPath(options, []any{"auth", "prefix"}); ap != nil {
+			authPrefix, _ = ap.(string)
+		}
 		apikeyVal := ""
 		if av, ok := apikey.(string); ok {
 			apikeyVal = av
 		}
-		query[credName] = apikeyVal
+		// Empty prefix (raw apiKey credential) must not add a leading space.
+		if authPrefix == "" {
+			headers[credName] = apikeyVal
+		} else {
+			headers[credName] = authPrefix + " " + apikeyVal
+		}
 	}
 
 	return spec, nil

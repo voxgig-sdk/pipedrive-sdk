@@ -1,0 +1,44 @@
+# BasicProjectTemplateFlow
+
+main: kit: flow: BasicProjectTemplateFlow:
+{
+  entity: "project_template",
+  kind: "basic",
+  name: "BasicProjectTemplateFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_template_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "project_template_ref01",
+        srcdatavar: "project_template_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "project_template01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_template_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectTemplateFlow"
+}

@@ -1,0 +1,31 @@
+# BasicMeetingFlow
+
+main: kit: flow: BasicMeetingFlow:
+{
+  entity: "meeting",
+  kind: "basic",
+  name: "BasicMeetingFlow",
+  step: [
+    {
+      input: {
+        ref: "meeting_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "meeting_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "meeting01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicMeetingFlow"
+}

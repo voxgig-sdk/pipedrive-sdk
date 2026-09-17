@@ -19,17 +19,15 @@ make build
 export PIPEDRIVE_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./pipedrive-cli list deal
-./pipedrive-cli load 1 deal            # {id:1} shorthand
-./pipedrive-cli load '{id:1}' deal       # explicit match map
-./pipedrive-cli update '{name:"x"}' deal
+./pipedrive-cli list activity_field
+./pipedrive-cli list activity_type
 
 # 5. Override the API base URL for a single call
-PIPEDRIVE_BASE=https://api.example.com ./pipedrive-cli list deal
+PIPEDRIVE_BASE=https://api.example.com ./pipedrive-cli list activity_field
 
 # 6. No arguments -> interactive REPL
 ./pipedrive-cli
-pipedrive> list deal
+pipedrive> list activity_field
 pipedrive> /quit
 ```
 
@@ -55,7 +53,7 @@ pipedrive> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/pipedrive-cli list deal
+   ./dist/*/pipedrive-cli list activity_field
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -68,30 +66,11 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 ### List the records of an entity
 
 ```sh
-./pipedrive-cli list deal
+./pipedrive-cli list activity_field
 ```
 
 `list <entity>` returns the first page of records. `<entity>` is a bareword —
 it is auto-quoted as an boru atom, so no quotes are needed.
-
-### Load a single record
-
-```sh
-./pipedrive-cli load 1 deal          # scalar shorthand for {id:1}
-./pipedrive-cli load '{id:1}' deal     # explicit match map
-```
-
-The query is either a **scalar** (`1`, treated as `{id:1}`) or a **match map**
-(`{id:1}`, `{slug:"acme"}`). Quote the map so your shell passes it through intact.
-
-### Update a record
-
-```sh
-./pipedrive-cli update '{id:1,name:"new"}' deal
-```
-
-The match map carries both the selector and the new field values; the updated
-record is printed back.
 
 ### Authenticate and choose an environment
 
@@ -100,7 +79,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export PIPEDRIVE_APIKEY=sk_live_xxx            # API key
 export PIPEDRIVE_BASE=https://api.example.com  # optional: override the API base URL
-./pipedrive-cli list deal
+./pipedrive-cli list activity_field
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -112,7 +91,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./pipedrive-cli
-pipedrive> list deal
+pipedrive> list activity_field
 pipedrive> /help
 pipedrive> /quit
 ```
@@ -127,7 +106,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 1 entity.
+below — this SDK exposes 42 entities.
 
 ## Reference
 
@@ -141,7 +120,7 @@ The CLI registers these boru words, each bound to the SDK:
 | `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 | `update` | `update <query> <entity>`                     | Update a record, return it     |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `deal`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `activity_field`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -182,9 +161,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 1 entity this SDK exposes (any is valid as `<entity>`):
+The 42 entities this SDK exposes (any is valid as `<entity>`):
 
-deal
+activity_field activity_type billing call_log channel currency deal deal_field file filter goal lead lead_field lead_label lead_source legacy_team mailbox meeting note note_field oauth organization organization_field organization_relationship permission_set person person_field pipeline product product_field project project_board project_phase project_template recent role stage task user user_connection user_setting webhook
 
 ## Explanation
 

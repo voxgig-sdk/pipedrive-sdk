@@ -1,0 +1,823 @@
+# Entity: note
+
+main: kit: entity: note: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "active_flag"
+      req: false
+      short: "Whether the note is active or deleted"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "add_time"
+      req: false
+      short: "The creation date and time of the note"
+      type: "`$STRING`"
+    }
+    {
+      name: "company_id"
+      req: false
+      short: "The ID of the company"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "content"
+      op: {
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      short: "The content of the note in HTML format."
+      type: "`$STRING`"
+    }
+    {
+      name: "deal"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "deal_id"
+      req: false
+      short: "The ID of the deal the note is attached to"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "The ID of the note"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "last_update_user_id"
+      req: false
+      short: "The ID of the user who last updated the note"
+      type: "`$INTEGER`"
+    }
+    {
+      format: "uuid"
+      name: "lead_id"
+      req: false
+      short: "The ID of the lead the note is attached to"
+      type: "`$STRING`"
+    }
+    {
+      name: "object_id"
+      req: false
+      short: "The ID of the object that the comment is attached to, will be the id of the note"
+      type: "`$STRING`"
+    }
+    {
+      name: "object_type"
+      req: false
+      short: "The type of object that the comment is attached to, will be \"note\""
+      type: "`$STRING`"
+    }
+    {
+      name: "org_id"
+      req: false
+      short: "The ID of the organization the note is attached to"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "organization"
+      req: false
+      short: "The organization the note is attached to"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "person"
+      req: false
+      short: "The person the note is attached to"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "person_id"
+      req: false
+      short: "The ID of the person the note is attached to"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "pinned_to_deal_flag"
+      req: false
+      short: "If true, the results are filtered by note to deal pinning state"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "pinned_to_organization_flag"
+      req: false
+      short: "If true, the results are filtered by note to organization pinning state"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "pinned_to_person_flag"
+      req: false
+      short: "If true, the results are filtered by note to person pinning state"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "pinned_to_project_flag"
+      req: false
+      short: "If true, the results are filtered by note to project pinning state"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "pinned_to_task_flag"
+      req: false
+      short: "If true, the results are filtered by note to task pinning state"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "project"
+      req: false
+      short: "The project the note is attached to"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "project_id"
+      req: false
+      short: "The ID of the project the note is attached to"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "task"
+      req: false
+      short: "The task the note is attached to"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "task_id"
+      req: false
+      short: "The ID of the task the note is attached to"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "update_time"
+      req: false
+      short: "The creation date and time of the note"
+      type: "`$STRING`"
+    }
+    {
+      name: "updater_id"
+      req: false
+      short: "The ID of the user who last updated the comment"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "user"
+      req: false
+      short: "The user who created the note"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "user_id"
+      req: false
+      short: "The ID of the user who created the comment"
+      type: "`$INTEGER`"
+    }
+    {
+      format: "uuid"
+      name: "uuid"
+      req: false
+      short: "The ID of the note"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "note"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "POST /notes/{id}/comments"
+            json: "{\"operationId\":\"addNoteComment\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"content\":{\"description\":\"The content of the comment in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"}},\"required\":[\"content\"],\"title\":\"CommentPostPutObject\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2021-06-22T07:18:16.750Z\",\"company_id\":77,\"content\":\"This is a comment\",\"object_id\":\"725\",\"object_type\":\"note\",\"update_time\":\"2021-06-22T07:18:25.648Z\",\"updater_id\":8877,\"user_id\":8877,\"uuid\":\"46c3b0e1-db35-59ca-1828-4817378dff71\"},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"company_id\":{\"description\":\"The ID of the company\",\"type\":\"integer\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"object_id\":{\"description\":\"The ID of the object that the comment is attached to, will be the id of the note\",\"type\":\"string\"},\"object_type\":{\"description\":\"The type of object that the comment is attached to, will be \\\"note\\\"\",\"type\":\"string\"},\"update_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"updater_id\":{\"description\":\"The ID of the user who last updated the comment\",\"type\":\"integer\"},\"user_id\":{\"description\":\"The ID of the user who created the comment\",\"type\":\"integer\"},\"uuid\":{\"description\":\"The ID of the note\",\"format\":\"uuid\",\"type\":\"string\"}},\"title\":\"Comment\",\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpsertCommentResponse\",\"type\":\"object\"}}},\"description\":\"Add, update or get a comment\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/notes/{id}/comments"
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          select: {
+            "$action": "comment"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          contract: {
+            id: "POST /notes"
+            json: "{\"operationId\":\"addNote\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"additionalProperties\":true,\"properties\":{\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal the note will be attached to. This property is required unless one of (`lead_id/person_id/org_id/project_id/task_id`) is specified.\",\"type\":\"integer\"},\"lead_id\":{\"description\":\"The ID of the lead the note will be attached to. This property is required unless one of (`deal_id/person_id/org_id/project_id/task_id`) is specified.\",\"format\":\"uuid\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization this note will be attached to. This property is required unless one of (`deal_id/lead_id/person_id/project_id/task_id`) is specified.\",\"type\":\"integer\"},\"person_id\":{\"description\":\"The ID of the person this note will be attached to. This property is required unless one of (`deal_id/lead_id/org_id/project_id/task_id`) is specified.\",\"type\":\"integer\"},\"project_id\":{\"description\":\"The ID of the project the note will be attached to. This property is required unless one of (`deal_id/lead_id/person_id/org_id/task_id`) is specified.\",\"type\":\"integer\"},\"task_id\":{\"description\":\"The ID of the task the note will be attached to. This property is required unless one of (`deal_id/lead_id/person_id/org_id/project_id`) is specified.\",\"type\":\"integer\"}},\"required\":[\"content\"],\"type\":\"object\"},{\"properties\":{\"add_time\":{\"description\":\"The optional creation date & time of the note in UTC. Can be set in the past or in the future. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"pinned_to_deal_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to deal pinning state (`deal_id` is also required)\"},\"pinned_to_lead_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to lead pinning state (`lead_id` is also required)\"},\"pinned_to_organization_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to organization pinning state (`org_id` is also required)\"},\"pinned_to_person_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to person pinning state (`person_id` is also required)\"},\"pinned_to_project_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to project pinning state (`project_id` is also required)\"},\"pinned_to_task_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to task pinning state (`task_id` is also required)\"},\"user_id\":{\"description\":\"The ID of the user who will be marked as the author of the note. Only an admin can change the author.\",\"type\":\"integer\"}},\"type\":\"object\"}]}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2019-12-09 13:59:21\",\"content\":\"abc\",\"deal\":{\"title\":\"Deal title\"},\"deal_id\":1,\"id\":1,\"last_update_user_id\":1,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"org_id\":1,\"organization\":{\"name\":\"Organization name\"},\"person\":{\"name\":\"Person name\"},\"person_id\":1,\"pinned_to_deal_flag\":true,\"pinned_to_lead_flag\":false,\"pinned_to_organization_flag\":false,\"pinned_to_person_flag\":false,\"pinned_to_project_flag\":false,\"project\":{\"title\":\"Project name\"},\"project_id\":1,\"update_time\":\"2019-12-09 14:26:11\",\"user\":{\"email\":\"user@email.com\",\"icon_url\":\"https://iconurl.net/profile_120x120_123.jpg\",\"is_you\":true,\"name\":\"User Name\"},\"user_id\":1},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"deal\":{\"allOf\":[{\"description\":\"The deal this note is attached to\",\"properties\":{\"title\":{\"description\":\"The title of the deal this note is attached to\",\"type\":\"string\"}},\"type\":\"object\"}],\"nullable\":true,\"type\":\"object\"},\"deal_id\":{\"description\":\"The ID of the deal the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the note\",\"type\":\"integer\"},\"last_update_user_id\":{\"description\":\"The ID of the user who last updated the note\",\"nullable\":true,\"type\":\"integer\"},\"lead_id\":{\"description\":\"The ID of the lead the note is attached to\",\"format\":\"uuid\",\"nullable\":true,\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"organization\":{\"description\":\"The organization the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the organization the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person\":{\"description\":\"The person the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the person the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person_id\":{\"description\":\"The ID of the person the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"pinned_to_deal_flag\":{\"description\":\"If true, the results are filtered by note to deal pinning state\",\"type\":\"boolean\"},\"pinned_to_organization_flag\":{\"description\":\"If true, the results are filtered by note to organization pinning state\",\"type\":\"boolean\"},\"pinned_to_person_flag\":{\"description\":\"If true, the results are filtered by note to person pinning state\",\"type\":\"boolean\"},\"pinned_to_project_flag\":{\"description\":\"If true, the results are filtered by note to project pinning state\",\"type\":\"boolean\"},\"pinned_to_task_flag\":{\"description\":\"If true, the results are filtered by note to task pinning state\",\"type\":\"boolean\"},\"project\":{\"description\":\"The project the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the project the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"project_id\":{\"description\":\"The ID of the project the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"task\":{\"description\":\"The task the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the task the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"task_id\":{\"description\":\"The ID of the task the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"update_time\":{\"description\":\"The last updated date and time of the note\",\"type\":\"string\"},\"user\":{\"description\":\"The user who created the note\",\"properties\":{\"email\":{\"description\":\"The email of the note creator\",\"type\":\"string\"},\"icon_url\":{\"description\":\"The URL of the note creator avatar picture\",\"nullable\":true,\"type\":\"string\"},\"is_you\":{\"description\":\"Whether the note is created by you or not\",\"type\":\"boolean\"},\"name\":{\"description\":\"The name of the note creator\",\"type\":\"string\"}},\"type\":\"object\"},\"user_id\":{\"description\":\"The ID of the note creator\",\"type\":\"integer\"}},\"title\":\"Note\",\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpsertNoteResponse\",\"type\":\"object\"}}},\"description\":\"Add, update or get a note\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/notes"
+          segments: [
+            {
+              lit: "notes"
+            }
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "deal_id"
+                orig: "deal_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "end_date"
+                orig: "end_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "lead_id"
+                orig: "lead_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "org_id"
+                orig: "org_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "person_id"
+                orig: "person_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "pinned_to_deal_flag"
+                orig: "pinned_to_deal_flag"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "pinned_to_lead_flag"
+                orig: "pinned_to_lead_flag"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "pinned_to_organization_flag"
+                orig: "pinned_to_organization_flag"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "pinned_to_person_flag"
+                orig: "pinned_to_person_flag"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "pinned_to_project_flag"
+                orig: "pinned_to_project_flag"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "pinned_to_task_flag"
+                orig: "pinned_to_task_flag"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "project_id"
+                orig: "project_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "start_date"
+                orig: "start_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "task_id"
+                orig: "task_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "2025-01-01T10:20:00Z"
+                kind: "query"
+                name: "updated_since"
+                orig: "updated_since"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "user_id"
+                orig: "user_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /notes"
+            json: "{\"operationId\":\"getNotes\",\"parameters\":[{\"description\":\"The ID of the user whose notes to fetch. If omitted, notes by all users will be returned.\",\"in\":\"query\",\"name\":\"user_id\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the lead which notes to fetch. If omitted, notes about all leads will be returned.\",\"in\":\"query\",\"name\":\"lead_id\",\"schema\":{\"format\":\"uuid\",\"type\":\"string\"}},{\"description\":\"The ID of the deal which notes to fetch. If omitted, notes about all deals will be returned.\",\"in\":\"query\",\"name\":\"deal_id\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the person whose notes to fetch. If omitted, notes about all persons will be returned.\",\"in\":\"query\",\"name\":\"person_id\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the organization which notes to fetch. If omitted, notes about all organizations will be returned.\",\"in\":\"query\",\"name\":\"org_id\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the project which notes to fetch. If omitted, notes about all projects will be returned.\",\"in\":\"query\",\"name\":\"project_id\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the task which notes to fetch. If omitted, notes about all tasks will be returned.\",\"in\":\"query\",\"name\":\"task_id\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"Pagination start\",\"in\":\"query\",\"name\":\"start\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Items shown per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"The field names and sorting mode separated by a comma (`field_name_1 ASC`, `field_name_2 DESC`). Only first-level field keys are supported (no nested keys). Supported fields: `id`, `user_id`, `deal_id`, `person_id`, `org_id`, `content`, `add_time`, `update_time`.\",\"in\":\"query\",\"name\":\"sort\",\"schema\":{\"type\":\"string\"}},{\"description\":\"The date in format of YYYY-MM-DD from which notes to fetch\",\"in\":\"query\",\"name\":\"start_date\",\"schema\":{\"format\":\"date\",\"type\":\"string\"}},{\"description\":\"The date in format of YYYY-MM-DD until which notes to fetch to\",\"in\":\"query\",\"name\":\"end_date\",\"schema\":{\"format\":\"date\",\"type\":\"string\"}},{\"description\":\"If set, only notes with an `update_time` later than or equal to this time are returned. In RFC3339 format, e.g. 2025-01-01T10:20:00Z.\",\"in\":\"query\",\"name\":\"updated_since\",\"schema\":{\"example\":\"2025-01-01T10:20:00Z\",\"format\":\"date-time\",\"type\":\"string\"}},{\"description\":\"If set, the results are filtered by note to lead pinning state\",\"in\":\"query\",\"name\":\"pinned_to_lead_flag\",\"schema\":{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}},{\"description\":\"If set, the results are filtered by note to deal pinning state\",\"in\":\"query\",\"name\":\"pinned_to_deal_flag\",\"schema\":{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}},{\"description\":\"If set, the results are filtered by note to organization pinning state\",\"in\":\"query\",\"name\":\"pinned_to_organization_flag\",\"schema\":{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}},{\"description\":\"If set, the results are filtered by note to person pinning state\",\"in\":\"query\",\"name\":\"pinned_to_person_flag\",\"schema\":{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}},{\"description\":\"If set, the results are filtered by note to project pinning state\",\"in\":\"query\",\"name\":\"pinned_to_project_flag\",\"schema\":{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}},{\"description\":\"If set, the results are filtered by note to task pinning state\",\"in\":\"query\",\"name\":\"pinned_to_task_flag\",\"schema\":{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"additional_data\":{\"pagination\":{\"limit\":100,\"more_items_in_collection\":true,\"next_start\":100,\"start\":0}},\"data\":[{\"active_flag\":true,\"add_time\":\"2019-12-09 13:59:21\",\"content\":\"abc\",\"deal\":{\"title\":\"Deal title\"},\"deal_id\":1,\"id\":1,\"last_update_user_id\":1,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"org_id\":1,\"organization\":{\"name\":\"Organization name\"},\"person\":{\"name\":\"Person name\"},\"person_id\":1,\"pinned_to_deal_flag\":true,\"pinned_to_lead_flag\":false,\"pinned_to_organization_flag\":false,\"pinned_to_person_flag\":false,\"pinned_to_project_flag\":false,\"project\":{\"title\":\"Project name\"},\"project_id\":1,\"update_time\":\"2019-12-09 14:26:11\",\"user\":{\"email\":\"user@email.com\",\"icon_url\":\"https://iconurl.net/profile_120x120_123.jpg\",\"is_you\":true,\"name\":\"User Name\"},\"user_id\":1}],\"success\":true},\"schema\":{\"properties\":{\"additional_data\":{\"properties\":{\"pagination\":{\"description\":\"The pagination details of the list\",\"properties\":{\"limit\":{\"description\":\"Items shown per page\",\"type\":\"integer\"},\"more_items_in_collection\":{\"description\":\"If there are more list items in the collection than displayed or not\",\"type\":\"boolean\"},\"next_start\":{\"description\":\"Next pagination start\",\"type\":\"integer\"},\"start\":{\"description\":\"Pagination start\",\"type\":\"integer\"}},\"title\":\"AdditionalData\",\"type\":\"object\"}},\"type\":\"object\"},\"data\":{\"description\":\"The array of notes\",\"items\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"deal\":{\"allOf\":[{\"description\":\"The deal this note is attached to\",\"properties\":{\"title\":{\"description\":\"The title of the deal this note is attached to\",\"type\":\"string\"}},\"type\":\"object\"}],\"nullable\":true,\"type\":\"object\"},\"deal_id\":{\"description\":\"The ID of the deal the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the note\",\"type\":\"integer\"},\"last_update_user_id\":{\"description\":\"The ID of the user who last updated the note\",\"nullable\":true,\"type\":\"integer\"},\"lead_id\":{\"description\":\"The ID of the lead the note is attached to\",\"format\":\"uuid\",\"nullable\":true,\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"organization\":{\"description\":\"The organization the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the organization the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person\":{\"description\":\"The person the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the person the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person_id\":{\"description\":\"The ID of the person the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"pinned_to_deal_flag\":{\"description\":\"If true, the results are filtered by note to deal pinning state\",\"type\":\"boolean\"},\"pinned_to_organization_flag\":{\"description\":\"If true, the results are filtered by note to organization pinning state\",\"type\":\"boolean\"},\"pinned_to_person_flag\":{\"description\":\"If true, the results are filtered by note to person pinning state\",\"type\":\"boolean\"},\"pinned_to_project_flag\":{\"description\":\"If true, the results are filtered by note to project pinning state\",\"type\":\"boolean\"},\"pinned_to_task_flag\":{\"description\":\"If true, the results are filtered by note to task pinning state\",\"type\":\"boolean\"},\"project\":{\"description\":\"The project the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the project the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"project_id\":{\"description\":\"The ID of the project the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"task\":{\"description\":\"The task the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the task the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"task_id\":{\"description\":\"The ID of the task the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"update_time\":{\"description\":\"The last updated date and time of the note\",\"type\":\"string\"},\"user\":{\"description\":\"The user who created the note\",\"properties\":{\"email\":{\"description\":\"The email of the note creator\",\"type\":\"string\"},\"icon_url\":{\"description\":\"The URL of the note creator avatar picture\",\"nullable\":true,\"type\":\"string\"},\"is_you\":{\"description\":\"Whether the note is created by you or not\",\"type\":\"boolean\"},\"name\":{\"description\":\"The name of the note creator\",\"type\":\"string\"}},\"type\":\"object\"},\"user_id\":{\"description\":\"The ID of the note creator\",\"type\":\"integer\"}},\"title\":\"Note\",\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"GetNotesResponse\",\"type\":\"object\"}}},\"description\":\"Get all notes\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/notes"
+          segments: [
+            {
+              lit: "notes"
+            }
+          ]
+          select: {
+            exist: [
+              "deal_id"
+              "end_date"
+              "lead_id"
+              "limit"
+              "org_id"
+              "person_id"
+              "pinned_to_deal_flag"
+              "pinned_to_lead_flag"
+              "pinned_to_organization_flag"
+              "pinned_to_person_flag"
+              "pinned_to_project_flag"
+              "pinned_to_task_flag"
+              "project_id"
+              "sort"
+              "start"
+              "start_date"
+              "task_id"
+              "updated_since"
+              "user_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /notes/{id}/comments"
+            json: "{\"operationId\":\"getNoteComments\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Pagination start\",\"in\":\"query\",\"name\":\"start\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Items shown per page\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"additional_data\":{\"pagination\":{\"limit\":100,\"more_items_in_collection\":true,\"next_start\":100,\"start\":0}},\"data\":[{\"active_flag\":true,\"add_time\":\"2021-06-22T07:18:16.750Z\",\"company_id\":77,\"content\":\"This is a comment\",\"object_id\":\"725\",\"object_type\":\"note\",\"update_time\":\"2021-06-22T07:18:25.648Z\",\"updater_id\":8877,\"user_id\":8877,\"uuid\":\"46c3b0e1-db35-59ca-1828-4817378dff71\"}],\"success\":true},\"schema\":{\"properties\":{\"additional_data\":{\"properties\":{\"pagination\":{\"description\":\"The pagination details of the list\",\"properties\":{\"limit\":{\"description\":\"Items shown per page\",\"type\":\"integer\"},\"more_items_in_collection\":{\"description\":\"If there are more list items in the collection than displayed or not\",\"type\":\"boolean\"},\"next_start\":{\"description\":\"Next pagination start\",\"type\":\"integer\"},\"start\":{\"description\":\"Pagination start\",\"type\":\"integer\"}},\"title\":\"AdditionalData\",\"type\":\"object\"}},\"type\":\"object\"},\"data\":{\"description\":\"The array of comments\",\"items\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"company_id\":{\"description\":\"The ID of the company\",\"type\":\"integer\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"object_id\":{\"description\":\"The ID of the object that the comment is attached to, will be the id of the note\",\"type\":\"string\"},\"object_type\":{\"description\":\"The type of object that the comment is attached to, will be \\\"note\\\"\",\"type\":\"string\"},\"update_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"updater_id\":{\"description\":\"The ID of the user who last updated the comment\",\"type\":\"integer\"},\"user_id\":{\"description\":\"The ID of the user who created the comment\",\"type\":\"integer\"},\"uuid\":{\"description\":\"The ID of the note\",\"format\":\"uuid\",\"type\":\"string\"}},\"title\":\"Comment\",\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"GetCommentsResponse\",\"type\":\"object\"}}},\"description\":\"Get all comments\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/notes/{id}/comments"
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          select: {
+            "$action": "comment"
+            exist: [
+              "id"
+              "limit"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "comment_id"
+                orig: "comment_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /notes/{id}/comments/{commentId}"
+            json: "{\"operationId\":\"getComment\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the comment\",\"in\":\"path\",\"name\":\"commentId\",\"required\":true,\"schema\":{\"format\":\"uuid\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2021-06-22T07:18:16.750Z\",\"company_id\":77,\"content\":\"This is a comment\",\"object_id\":\"725\",\"object_type\":\"note\",\"update_time\":\"2021-06-22T07:18:25.648Z\",\"updater_id\":8877,\"user_id\":8877,\"uuid\":\"46c3b0e1-db35-59ca-1828-4817378dff71\"},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"company_id\":{\"description\":\"The ID of the company\",\"type\":\"integer\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"object_id\":{\"description\":\"The ID of the object that the comment is attached to, will be the id of the note\",\"type\":\"string\"},\"object_type\":{\"description\":\"The type of object that the comment is attached to, will be \\\"note\\\"\",\"type\":\"string\"},\"update_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"updater_id\":{\"description\":\"The ID of the user who last updated the comment\",\"type\":\"integer\"},\"user_id\":{\"description\":\"The ID of the user who created the comment\",\"type\":\"integer\"},\"uuid\":{\"description\":\"The ID of the note\",\"format\":\"uuid\",\"type\":\"string\"}},\"title\":\"Comment\",\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpsertCommentResponse\",\"type\":\"object\"}}},\"description\":\"Add, update or get a comment\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/notes/{id}/comments/{commentId}"
+          rename: {
+            param: {
+              commentId: "comment_id"
+            }
+          }
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "comment_id"
+            }
+          ]
+          select: {
+            exist: [
+              "comment_id"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /notes/{id}"
+            json: "{\"operationId\":\"getNote\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2019-12-09 13:59:21\",\"content\":\"abc\",\"deal\":{\"title\":\"Deal title\"},\"deal_id\":1,\"id\":1,\"last_update_user_id\":1,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"org_id\":1,\"organization\":{\"name\":\"Organization name\"},\"person\":{\"name\":\"Person name\"},\"person_id\":1,\"pinned_to_deal_flag\":true,\"pinned_to_lead_flag\":false,\"pinned_to_organization_flag\":false,\"pinned_to_person_flag\":false,\"pinned_to_project_flag\":false,\"project\":{\"title\":\"Project name\"},\"project_id\":1,\"update_time\":\"2019-12-09 14:26:11\",\"user\":{\"email\":\"user@email.com\",\"icon_url\":\"https://iconurl.net/profile_120x120_123.jpg\",\"is_you\":true,\"name\":\"User Name\"},\"user_id\":1},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"deal\":{\"allOf\":[{\"description\":\"The deal this note is attached to\",\"properties\":{\"title\":{\"description\":\"The title of the deal this note is attached to\",\"type\":\"string\"}},\"type\":\"object\"}],\"nullable\":true,\"type\":\"object\"},\"deal_id\":{\"description\":\"The ID of the deal the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the note\",\"type\":\"integer\"},\"last_update_user_id\":{\"description\":\"The ID of the user who last updated the note\",\"nullable\":true,\"type\":\"integer\"},\"lead_id\":{\"description\":\"The ID of the lead the note is attached to\",\"format\":\"uuid\",\"nullable\":true,\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"organization\":{\"description\":\"The organization the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the organization the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person\":{\"description\":\"The person the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the person the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person_id\":{\"description\":\"The ID of the person the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"pinned_to_deal_flag\":{\"description\":\"If true, the results are filtered by note to deal pinning state\",\"type\":\"boolean\"},\"pinned_to_organization_flag\":{\"description\":\"If true, the results are filtered by note to organization pinning state\",\"type\":\"boolean\"},\"pinned_to_person_flag\":{\"description\":\"If true, the results are filtered by note to person pinning state\",\"type\":\"boolean\"},\"pinned_to_project_flag\":{\"description\":\"If true, the results are filtered by note to project pinning state\",\"type\":\"boolean\"},\"pinned_to_task_flag\":{\"description\":\"If true, the results are filtered by note to task pinning state\",\"type\":\"boolean\"},\"project\":{\"description\":\"The project the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the project the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"project_id\":{\"description\":\"The ID of the project the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"task\":{\"description\":\"The task the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the task the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"task_id\":{\"description\":\"The ID of the task the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"update_time\":{\"description\":\"The last updated date and time of the note\",\"type\":\"string\"},\"user\":{\"description\":\"The user who created the note\",\"properties\":{\"email\":{\"description\":\"The email of the note creator\",\"type\":\"string\"},\"icon_url\":{\"description\":\"The URL of the note creator avatar picture\",\"nullable\":true,\"type\":\"string\"},\"is_you\":{\"description\":\"Whether the note is created by you or not\",\"type\":\"boolean\"},\"name\":{\"description\":\"The name of the note creator\",\"type\":\"string\"}},\"type\":\"object\"},\"user_id\":{\"description\":\"The ID of the note creator\",\"type\":\"integer\"}},\"title\":\"Note\",\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpsertNoteResponse\",\"type\":\"object\"}}},\"description\":\"Add, update or get a note\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/notes/{id}"
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "comment_id"
+                orig: "comment_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "DELETE /notes/{id}/comments/{commentId}"
+            json: "{\"operationId\":\"deleteComment\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the comment\",\"in\":\"path\",\"name\":\"commentId\",\"required\":true,\"schema\":{\"format\":\"uuid\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":true,\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"DeleteCommentResponse\",\"type\":\"object\"}}},\"description\":\"Delete a comment\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "DELETE"
+          orig: "/notes/{id}/comments/{commentId}"
+          rename: {
+            param: {
+              commentId: "comment_id"
+            }
+          }
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "comment_id"
+            }
+          ]
+          select: {
+            exist: [
+              "comment_id"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "DELETE /notes/{id}"
+            json: "{\"operationId\":\"deleteNote\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":true,\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"DeleteNoteResponse\",\"type\":\"object\"}}},\"description\":\"Delete a note\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "DELETE"
+          orig: "/notes/{id}"
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "comment_id"
+                orig: "comment_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "PUT /notes/{id}/comments/{commentId}"
+            json: "{\"operationId\":\"updateCommentForNote\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"The ID of the comment\",\"in\":\"path\",\"name\":\"commentId\",\"required\":true,\"schema\":{\"format\":\"uuid\",\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"content\":{\"description\":\"The content of the comment in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"}},\"required\":[\"content\"],\"title\":\"CommentPostPutObject\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2021-06-22T07:18:16.750Z\",\"company_id\":77,\"content\":\"This is a comment\",\"object_id\":\"725\",\"object_type\":\"note\",\"update_time\":\"2021-06-22T07:18:25.648Z\",\"updater_id\":8877,\"user_id\":8877,\"uuid\":\"46c3b0e1-db35-59ca-1828-4817378dff71\"},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"company_id\":{\"description\":\"The ID of the company\",\"type\":\"integer\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"object_id\":{\"description\":\"The ID of the object that the comment is attached to, will be the id of the note\",\"type\":\"string\"},\"object_type\":{\"description\":\"The type of object that the comment is attached to, will be \\\"note\\\"\",\"type\":\"string\"},\"update_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"updater_id\":{\"description\":\"The ID of the user who last updated the comment\",\"type\":\"integer\"},\"user_id\":{\"description\":\"The ID of the user who created the comment\",\"type\":\"integer\"},\"uuid\":{\"description\":\"The ID of the note\",\"format\":\"uuid\",\"type\":\"string\"}},\"title\":\"Comment\",\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpsertCommentResponse\",\"type\":\"object\"}}},\"description\":\"Add, update or get a comment\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PUT"
+          orig: "/notes/{id}/comments/{commentId}"
+          rename: {
+            param: {
+              commentId: "comment_id"
+            }
+          }
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "comment_id"
+            }
+          ]
+          select: {
+            exist: [
+              "comment_id"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "PUT /notes/{id}"
+            json: "{\"operationId\":\"updateNote\",\"parameters\":[{\"description\":\"The ID of the note\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"deal_id\":{\"description\":\"The ID of the deal the note will be attached to\",\"type\":\"integer\"},\"lead_id\":{\"description\":\"The ID of the lead the note will be attached to\",\"format\":\"uuid\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization the note will be attached to\",\"type\":\"integer\"},\"person_id\":{\"description\":\"The ID of the person the note will be attached to\",\"type\":\"integer\"},\"project_id\":{\"description\":\"The ID of the project the note will be attached to\",\"type\":\"integer\"},\"task_id\":{\"description\":\"The ID of the task the note will be attached to\",\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"add_time\":{\"description\":\"The optional creation date & time of the note in UTC. Can be set in the past or in the future. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"pinned_to_deal_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to deal pinning state (`deal_id` is also required)\"},\"pinned_to_lead_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to lead pinning state (`lead_id` is also required)\"},\"pinned_to_organization_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to organization pinning state (`org_id` is also required)\"},\"pinned_to_person_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to person pinning state (`person_id` is also required)\"},\"pinned_to_project_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to project pinning state (`project_id` is also required)\"},\"pinned_to_task_flag\":{\"allOf\":[{\"enum\":[0,1],\"title\":\"numberBoolean\",\"type\":\"number\"}],\"description\":\"If set, the results are filtered by note to task pinning state (`task_id` is also required)\"},\"user_id\":{\"description\":\"The ID of the user who will be marked as the author of the note. Only an admin can change the author.\",\"type\":\"integer\"}},\"type\":\"object\"}],\"title\":\"noteRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2019-12-09 13:59:21\",\"content\":\"abc\",\"deal\":{\"title\":\"Deal title\"},\"deal_id\":1,\"id\":1,\"last_update_user_id\":1,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"org_id\":1,\"organization\":{\"name\":\"Organization name\"},\"person\":{\"name\":\"Person name\"},\"person_id\":1,\"pinned_to_deal_flag\":true,\"pinned_to_lead_flag\":false,\"pinned_to_organization_flag\":false,\"pinned_to_person_flag\":false,\"pinned_to_project_flag\":false,\"project\":{\"title\":\"Project name\"},\"project_id\":1,\"update_time\":\"2019-12-09 14:26:11\",\"user\":{\"email\":\"user@email.com\",\"icon_url\":\"https://iconurl.net/profile_120x120_123.jpg\",\"is_you\":true,\"name\":\"User Name\"},\"user_id\":1},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"Whether the note is active or deleted\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The creation date and time of the note\",\"type\":\"string\"},\"content\":{\"description\":\"The content of the note in HTML format. Subject to sanitization on the back-end.\",\"type\":\"string\"},\"deal\":{\"allOf\":[{\"description\":\"The deal this note is attached to\",\"properties\":{\"title\":{\"description\":\"The title of the deal this note is attached to\",\"type\":\"string\"}},\"type\":\"object\"}],\"nullable\":true,\"type\":\"object\"},\"deal_id\":{\"description\":\"The ID of the deal the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the note\",\"type\":\"integer\"},\"last_update_user_id\":{\"description\":\"The ID of the user who last updated the note\",\"nullable\":true,\"type\":\"integer\"},\"lead_id\":{\"description\":\"The ID of the lead the note is attached to\",\"format\":\"uuid\",\"nullable\":true,\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"organization\":{\"description\":\"The organization the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the organization the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person\":{\"description\":\"The person the note is attached to\",\"nullable\":true,\"properties\":{\"name\":{\"description\":\"The name of the person the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"person_id\":{\"description\":\"The ID of the person the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"pinned_to_deal_flag\":{\"description\":\"If true, the results are filtered by note to deal pinning state\",\"type\":\"boolean\"},\"pinned_to_organization_flag\":{\"description\":\"If true, the results are filtered by note to organization pinning state\",\"type\":\"boolean\"},\"pinned_to_person_flag\":{\"description\":\"If true, the results are filtered by note to person pinning state\",\"type\":\"boolean\"},\"pinned_to_project_flag\":{\"description\":\"If true, the results are filtered by note to project pinning state\",\"type\":\"boolean\"},\"pinned_to_task_flag\":{\"description\":\"If true, the results are filtered by note to task pinning state\",\"type\":\"boolean\"},\"project\":{\"description\":\"The project the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the project the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"project_id\":{\"description\":\"The ID of the project the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"task\":{\"description\":\"The task the note is attached to\",\"nullable\":true,\"properties\":{\"title\":{\"description\":\"The title of the task the note is attached to\",\"type\":\"string\"}},\"type\":\"object\"},\"task_id\":{\"description\":\"The ID of the task the note is attached to\",\"nullable\":true,\"type\":\"integer\"},\"update_time\":{\"description\":\"The last updated date and time of the note\",\"type\":\"string\"},\"user\":{\"description\":\"The user who created the note\",\"properties\":{\"email\":{\"description\":\"The email of the note creator\",\"type\":\"string\"},\"icon_url\":{\"description\":\"The URL of the note creator avatar picture\",\"nullable\":true,\"type\":\"string\"},\"is_you\":{\"description\":\"Whether the note is created by you or not\",\"type\":\"boolean\"},\"name\":{\"description\":\"The name of the note creator\",\"type\":\"string\"}},\"type\":\"object\"},\"user_id\":{\"description\":\"The ID of the note creator\",\"type\":\"integer\"}},\"title\":\"Note\",\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpsertNoteResponse\",\"type\":\"object\"}}},\"description\":\"Add, update or get a note\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PUT"
+          orig: "/notes/{id}"
+          segments: [
+            {
+              lit: "notes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "comment"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+# BasicPermissionSetFlow
+
+main: kit: flow: BasicPermissionSetFlow:
+{
+  entity: "permission_set",
+  kind: "basic",
+  name: "BasicPermissionSetFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "permission_set_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "permission_set_ref01",
+        srcdatavar: "permission_set_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "permission_set01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-permission_set_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPermissionSetFlow"
+}

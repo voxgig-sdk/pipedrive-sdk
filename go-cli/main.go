@@ -20,7 +20,7 @@ import (
 const prompt = "pipedrive"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "deal"
+const entitiesHelp = "activity_field activity_type billing call_log channel currency deal deal_field file filter goal lead lead_field lead_label lead_source legacy_team mailbox meeting note note_field oauth organization organization_field organization_relationship permission_set person person_field pipeline product product_field project project_board project_phase project_template recent role stage task user user_connection user_setting webhook"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

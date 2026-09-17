@@ -1,0 +1,1198 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Project | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a aria-current="page" href="../api/project.html">Project</a><div class="nav-sections"><a class="nav-section" href="#post-projectsidarchive">POST /projects/{id}/archive</a>
+<a class="nav-section" href="#post-projects">POST /projects</a>
+<a class="nav-section" href="#get-projects">GET /projects</a>
+<a class="nav-section" href="#get-projectsidactivities">GET /projects/{id}/activities</a>
+<a class="nav-section" href="#get-projectsidgroups">GET /projects/{id}/groups</a>
+<a class="nav-section" href="#get-projectsidplan">GET /projects/{id}/plan</a>
+<a class="nav-section" href="#get-projectsidtasks">GET /projects/{id}/tasks</a>
+<a class="nav-section" href="#get-projectsid">GET /projects/{id}</a>
+<a class="nav-section" href="#delete-projectsid">DELETE /projects/{id}</a>
+<a class="nav-section" href="#put-projectsidplanactivitiesactivityid">PUT /projects/{id}/plan/activities/{activityId}</a>
+<a class="nav-section" href="#put-projectsidplantaskstaskid">PUT /projects/{id}/plan/tasks/{taskId}</a>
+<a class="nav-section" href="#put-projectsid">PUT /projects/{id}</a></div>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="project">Project</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projectsidarchive"><code>/projects/{id}/archive</code></a></td>
+<td><code>create</code></td>
+<td>Updated project</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-projects"><code>/projects</code></a></td>
+<td><code>create</code></td>
+<td>Created project</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projects"><code>/projects</code></a></td>
+<td><code>list</code></td>
+<td>A list of projects</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsidactivities"><code>/projects/{id}/activities</code></a></td>
+<td><code>list</code></td>
+<td>A collection of activities</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsidgroups"><code>/projects/{id}/groups</code></a></td>
+<td><code>list</code></td>
+<td>Get a project groups</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsidplan"><code>/projects/{id}/plan</code></a></td>
+<td><code>list</code></td>
+<td>Get a project plan</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsidtasks"><code>/projects/{id}/tasks</code></a></td>
+<td><code>list</code></td>
+<td>A list of tasks</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsid"><code>/projects/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Get a project</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-projectsid"><code>/projects/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Delete a project</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-projectsidplanactivitiesactivityid"><code>/projects/{id}/plan/activities/{activityId}</code></a></td>
+<td><code>update</code></td>
+<td>Updated activity in plan</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-projectsidplantaskstaskid"><code>/projects/{id}/plan/tasks/{taskId}</code></a></td>
+<td><code>update</code></td>
+<td>Updated task in plan</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-projectsid"><code>/projects/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Updated project</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>group_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of a group on a project board</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project, generated when the task was created</td>
+</tr>
+<tr>
+<td><code>phase_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of a phase on a project board</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-projectsidarchive" class="operation" data-method="post"><code>POST</code> /projects/{id}/archive</h3>
+<p>Operation ID: <code>archiveProject</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-updated-project" class="status" data-status="2xx">200: Updated project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object and object and object</code></td>
+<td>No</td>
+<td>projectResponseObject</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;archive_time&quot;: &quot;2023-09-15 11:12:18.110&quot;,
+    &quot;board_id&quot;: 1,
+    &quot;deal_ids&quot;: [
+      1,
+      2
+    ],
+    &quot;description&quot;: &quot;Project Description&quot;,
+    &quot;end_date&quot;: &quot;2024-03-04&quot;,
+    &quot;health_status&quot;: 10,
+    &quot;id&quot;: 8,
+    &quot;labels&quot;: [
+      13,
+      14
+    ],
+    &quot;org_id&quot;: 3,
+    &quot;owner_id&quot;: 19,
+    &quot;person_id&quot;: 2,
+    &quot;phase_id&quot;: 1,
+    &quot;start_date&quot;: &quot;2023-09-18&quot;,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;status_change_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;title&quot;: &quot;Project&quot;,
+    &quot;update_time&quot;: &quot;2023-09-14 05:45:40.084&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-projects" class="operation" data-method="post"><code>POST</code> /projects</h3>
+<p>Operation ID: <code>addProject</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object and object and object</code>.</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-created-project" class="status" data-status="2xx">201: Created project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object and object and object</code></td>
+<td>No</td>
+<td>projectResponseObject</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;archive_time&quot;: &quot;2023-09-15 11:12:18.110&quot;,
+    &quot;board_id&quot;: 1,
+    &quot;deal_ids&quot;: [
+      1,
+      2
+    ],
+    &quot;description&quot;: &quot;Project Description&quot;,
+    &quot;end_date&quot;: &quot;2024-03-04&quot;,
+    &quot;health_status&quot;: 10,
+    &quot;id&quot;: 8,
+    &quot;labels&quot;: [
+      13,
+      14
+    ],
+    &quot;org_id&quot;: 3,
+    &quot;owner_id&quot;: 19,
+    &quot;person_id&quot;: 2,
+    &quot;phase_id&quot;: 1,
+    &quot;start_date&quot;: &quot;2023-09-18&quot;,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;status_change_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;title&quot;: &quot;Project&quot;,
+    &quot;update_time&quot;: &quot;2023-09-14 05:45:40.084&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-projects" class="operation" data-method="get"><code>GET</code> /projects</h3>
+<p>Operation ID: <code>getProjects</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | For pagination, the marker (an opaque string value) representing the first item on the next page |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the filter to use |
+| <code>status</code> | <code>query</code> | <code>string</code> | No | If supplied, includes only projects with the specified statuses. Possible values are <code>open</code>, <code>completed</code>, <code>canceled</code> and <code>deleted</code>. By default <code>deleted</code> projects are not returned. |
+| <code>phase_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only projects in specified phase are returned |
+| <code>include_archived</code> | <code>query</code> | <code>boolean</code> | No | If supplied with <code>true</code> then archived projects are also included in the response. By default only not archived projects are returned. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-a-list-of-projects" class="status" data-status="2xx">200: A list of projects</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.next_cursor</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The first item on the next page. The value of the <code>next_cursor</code> field will be <code>null</code> if you have reached the end of the dataset and there’s no more pages to be returned.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object and object and object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;next_cursor&quot;: &quot;eyJhY3Rpdml0aWVzIjoyN30&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+      &quot;archive_time&quot;: &quot;2023-09-15 11:12:18.110&quot;,
+      &quot;board_id&quot;: 1,
+      &quot;deal_ids&quot;: [
+        1,
+        2
+      ],
+      &quot;description&quot;: &quot;Project Description&quot;,
+      &quot;end_date&quot;: &quot;2024-03-04&quot;,
+      &quot;health_status&quot;: 10,
+      &quot;id&quot;: 8,
+      &quot;labels&quot;: [
+        13,
+        14
+      ],
+      &quot;org_id&quot;: 3,
+      &quot;owner_id&quot;: 19,
+      &quot;person_id&quot;: 2,
+      &quot;phase_id&quot;: 1,
+      &quot;start_date&quot;: &quot;2023-09-18&quot;,
+      &quot;status&quot;: &quot;open&quot;,
+      &quot;status_change_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+      &quot;title&quot;: &quot;Project&quot;,
+      &quot;update_time&quot;: &quot;2023-09-14 05:45:40.084&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-projectsidactivities" class="operation" data-method="get"><code>GET</code> /projects/{id}/activities</h3>
+<p>Operation ID: <code>getProjectActivities</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-a-collection-of-activities" class="status" data-status="2xx">200: A collection of activities</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.next_cursor</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The first item on the next page. The value of the <code>next_cursor</code> field will be <code>null</code> if you have reached the end of the dataset and there’s no more pages to be returned.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;next_cursor&quot;: &quot;eyJhY3Rpdml0aWVzIjoyN30&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2020-06-08 12:37:56&quot;,
+      &quot;busy_flag&quot;: true,
+      &quot;company_id&quot;: 22122,
+      &quot;conference_meeting_client&quot;: &quot;871b8bc88d3a1202&quot;,
+      &quot;conference_meeting_id&quot;: &quot;17058746701&quot;,
+      &quot;conference_meeting_url&quot;: &quot;https://pipedrive.zoom.us/link&quot;,
+      &quot;deal_id&quot;: 300,
+      &quot;done&quot;: false,
+      &quot;due_date&quot;: &quot;2022-06-09&quot;,
+      &quot;due_time&quot;: &quot;10:00&quot;,
+      &quot;duration&quot;: &quot;01:00&quot;,
+      &quot;id&quot;: 8,
+      &quot;lead_id&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;,
+      &quot;location&quot;: &quot;Mustamäe tee 3, Tallinn, Estonia&quot;,
+      &quot;location_admin_area_level_1&quot;: &quot;Harju maakond&quot;,
+      &quot;location_admin_area_level_2&quot;: &quot;&quot;,
+      &quot;location_country&quot;: &quot;Estonia&quot;,
+      &quot;location_formatted_address&quot;: &quot;Mustamäe tee 3, 10616 Tallinn, Estonia&quot;,
+      &quot;location_locality&quot;: &quot;Tallinn&quot;,
+      &quot;location_postal_code&quot;: &quot;10616&quot;,
+      &quot;location_route&quot;: &quot;Mustamäe tee&quot;,
+      &quot;location_street_number&quot;: &quot;3&quot;,
+      &quot;location_sublocality&quot;: &quot;Kristiine&quot;,
+      &quot;location_subpremise&quot;: &quot;&quot;,
+      &quot;marked_as_done_time&quot;: &quot;2020-08-08 08:08:38&quot;,
+      &quot;org_id&quot;: 5,
+      &quot;outcome&quot;: 101,
+      &quot;person_id&quot;: 1101,
+      &quot;project_id&quot;: null,
+      &quot;public_description&quot;: &quot;This is a description&quot;,
+      &quot;source_timezone&quot;: &quot;&quot;,
+      &quot;subject&quot;: &quot;Deadline&quot;,
+      &quot;type&quot;: &quot;deadline&quot;,
+      &quot;update_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+      &quot;update_user_id&quot;: 5596,
+      &quot;user_id&quot;: 1234
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-projectsidgroups" class="operation" data-method="get"><code>GET</code> /projects/{id}/groups</h3>
+<p>Operation ID: <code>getProjectGroups</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-get-a-project-groups" class="status" data-status="2xx">200: Get a project groups</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>ID of the group</td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the group</td>
+</tr>
+<tr>
+<td><code>data[].order_nr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Order number of the group</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;name&quot;: &quot;Group one&quot;,
+      &quot;order_nr&quot;: 1
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-projectsidplan" class="operation" data-method="get"><code>GET</code> /projects/{id}/plan</h3>
+<p>Operation ID: <code>getProjectPlan</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-get-a-project-plan" class="status" data-status="2xx">200: Get a project plan</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].group_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the board this project is associated with. If null then plan item is not in any group.</td>
+</tr>
+<tr>
+<td><code>data[].item_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>ID of plan item (either activity or task ID)</td>
+</tr>
+<tr>
+<td><code>data[].item_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of a plan item (task / activity)</td>
+</tr>
+<tr>
+<td><code>data[].phase_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the board this project is associated with. If null then plan item is not in any phase.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;group_id&quot;: 3,
+      &quot;item_id&quot;: 1,
+      &quot;item_type&quot;: &quot;task&quot;,
+      &quot;phase_id&quot;: 2
+    },
+    {
+      &quot;group_id&quot;: 3,
+      &quot;item_id&quot;: 1,
+      &quot;item_type&quot;: &quot;activity&quot;,
+      &quot;phase_id&quot;: 2
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-projectsidtasks" class="operation" data-method="get"><code>GET</code> /projects/{id}/tasks</h3>
+<p>Operation ID: <code>getProjectTasks</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-a-list-of-tasks" class="status" data-status="2xx">200: A list of tasks</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.next_cursor</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The first item on the next page. The value of the <code>next_cursor</code> field will be <code>null</code> if you have reached the end of the dataset and there’s no more pages to be returned.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object and object and object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;next_cursor&quot;: &quot;eyJhY3Rpdml0aWVzIjoyN30&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2023-09-14 08:14:40.288&quot;,
+      &quot;assignee_id&quot;: 2,
+      &quot;assignee_ids&quot;: [
+        2,
+        3,
+        4
+      ],
+      &quot;creator_id&quot;: 2,
+      &quot;description&quot;: &quot;Task description&quot;,
+      &quot;done&quot;: 0,
+      &quot;due_date&quot;: &quot;2023-10-11&quot;,
+      &quot;id&quot;: 1,
+      &quot;marked_as_done_time&quot;: &quot;2023-09-22 08:14:40.288&quot;,
+      &quot;parent_task_id&quot;: 2,
+      &quot;project_id&quot;: 1,
+      &quot;title&quot;: &quot;Task 1&quot;,
+      &quot;update_time&quot;: &quot;2023-09-14 08:14:40.288&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-projectsid" class="operation" data-method="get"><code>GET</code> /projects/{id}</h3>
+<p>Operation ID: <code>getProject</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-get-a-project" class="status" data-status="2xx">200: Get a project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object and object and object</code></td>
+<td>No</td>
+<td>projectResponseObject</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;archive_time&quot;: &quot;2023-09-15 11:12:18.110&quot;,
+    &quot;board_id&quot;: 1,
+    &quot;deal_ids&quot;: [
+      1,
+      2
+    ],
+    &quot;description&quot;: &quot;Project Description&quot;,
+    &quot;end_date&quot;: &quot;2024-03-04&quot;,
+    &quot;health_status&quot;: 10,
+    &quot;id&quot;: 8,
+    &quot;labels&quot;: [
+      13,
+      14
+    ],
+    &quot;org_id&quot;: 3,
+    &quot;owner_id&quot;: 19,
+    &quot;person_id&quot;: 2,
+    &quot;phase_id&quot;: 1,
+    &quot;start_date&quot;: &quot;2023-09-18&quot;,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;status_change_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;title&quot;: &quot;Project&quot;,
+    &quot;update_time&quot;: &quot;2023-09-14 05:45:40.084&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-projectsid" class="operation" data-method="delete"><code>DELETE</code> /projects/{id}</h3>
+<p>Operation ID: <code>deleteProject</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-delete-a-project" class="status" data-status="2xx">200: Delete a project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>deleteProject</td>
+</tr>
+<tr>
+<td><code>data.data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project that was deleted</td>
+</tr>
+<tr>
+<td><code>data.success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;id&quot;: 8
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-projectsidplanactivitiesactivityid" class="operation" data-method="put"><code>PUT</code> /projects/{id}/plan/activities/{activityId}</h3>
+<p>Operation ID: <code>putProjectPlanActivity</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |
+| <code>activityId</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the activity |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>group_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of a group on a project board</td>
+</tr>
+<tr>
+<td><code>phase_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of a phase on a project board</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-updated-activity-in-plan" class="status" data-status="2xx">200: Updated activity in plan</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.group_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the board this project is associated with. If null then plan item is not in any group.</td>
+</tr>
+<tr>
+<td><code>data.item_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>ID of plan item (either activity or task ID)</td>
+</tr>
+<tr>
+<td><code>data.item_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of a plan item (task / activity)</td>
+</tr>
+<tr>
+<td><code>data.phase_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the board this project is associated with. If null then plan item is not in any phase.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;group_id&quot;: 3,
+    &quot;item_id&quot;: 1,
+    &quot;item_type&quot;: &quot;activity&quot;,
+    &quot;phase_id&quot;: 2
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="put-projectsidplantaskstaskid" class="operation" data-method="put"><code>PUT</code> /projects/{id}/plan/tasks/{taskId}</h3>
+<p>Operation ID: <code>putProjectPlanTask</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |
+| <code>taskId</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the task |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>group_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of a group on a project board</td>
+</tr>
+<tr>
+<td><code>phase_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of a phase on a project board</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-updated-task-in-plan" class="status" data-status="2xx">200: Updated task in plan</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.group_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the board this project is associated with. If null then plan item is not in any group.</td>
+</tr>
+<tr>
+<td><code>data.item_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>ID of plan item (either activity or task ID)</td>
+</tr>
+<tr>
+<td><code>data.item_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of a plan item (task / activity)</td>
+</tr>
+<tr>
+<td><code>data.phase_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the board this project is associated with. If null then plan item is not in any phase.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;group_id&quot;: 3,
+    &quot;item_id&quot;: 1,
+    &quot;item_type&quot;: &quot;task&quot;,
+    &quot;phase_id&quot;: 2
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="put-projectsid" class="operation" data-method="put"><code>PUT</code> /projects/{id}</h3>
+<p>Operation ID: <code>updateProject</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object and object</code>.</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-updated-project-1" class="status" data-status="2xx">200: Updated project</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object and object and object</code></td>
+<td>No</td>
+<td>projectResponseObject</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;archive_time&quot;: &quot;2023-09-15 11:12:18.110&quot;,
+    &quot;board_id&quot;: 1,
+    &quot;deal_ids&quot;: [
+      1,
+      2
+    ],
+    &quot;description&quot;: &quot;Project Description&quot;,
+    &quot;end_date&quot;: &quot;2024-03-04&quot;,
+    &quot;health_status&quot;: 10,
+    &quot;id&quot;: 8,
+    &quot;labels&quot;: [
+      13,
+      14
+    ],
+    &quot;org_id&quot;: 3,
+    &quot;owner_id&quot;: 19,
+    &quot;person_id&quot;: 2,
+    &quot;phase_id&quot;: 1,
+    &quot;start_date&quot;: &quot;2023-09-18&quot;,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;status_change_time&quot;: &quot;2023-09-12 11:12:18.110&quot;,
+    &quot;title&quot;: &quot;Project&quot;,
+    &quot;update_time&quot;: &quot;2023-09-14 05:45:40.084&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

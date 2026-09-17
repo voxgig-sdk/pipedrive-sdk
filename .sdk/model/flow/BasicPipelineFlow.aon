@@ -1,0 +1,44 @@
+# BasicPipelineFlow
+
+main: kit: flow: BasicPipelineFlow:
+{
+  entity: "pipeline",
+  kind: "basic",
+  name: "BasicPipelineFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pipeline_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "pipeline_ref01",
+        srcdatavar: "pipeline_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "pipeline01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelineFlow"
+}

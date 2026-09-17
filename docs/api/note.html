@@ -1,0 +1,2100 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Note | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a aria-current="page" href="../api/note.html">Note</a><div class="nav-sections"><a class="nav-section" href="#post-notesidcomments">POST /notes/{id}/comments</a>
+<a class="nav-section" href="#post-notes">POST /notes</a>
+<a class="nav-section" href="#get-notes">GET /notes</a>
+<a class="nav-section" href="#get-notesidcomments">GET /notes/{id}/comments</a>
+<a class="nav-section" href="#get-notesidcommentscommentid">GET /notes/{id}/comments/{commentId}</a>
+<a class="nav-section" href="#get-notesid">GET /notes/{id}</a>
+<a class="nav-section" href="#delete-notesidcommentscommentid">DELETE /notes/{id}/comments/{commentId}</a>
+<a class="nav-section" href="#delete-notesid">DELETE /notes/{id}</a>
+<a class="nav-section" href="#put-notesidcommentscommentid">PUT /notes/{id}/comments/{commentId}</a>
+<a class="nav-section" href="#put-notesid">PUT /notes/{id}</a></div>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="note">Note</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-notesidcomments"><code>/notes/{id}/comments</code></a></td>
+<td><code>create</code></td>
+<td>Add, update or get a comment</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-notes"><code>/notes</code></a></td>
+<td><code>create</code></td>
+<td>Add, update or get a note</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-notes"><code>/notes</code></a></td>
+<td><code>list</code></td>
+<td>Get all notes</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-notesidcomments"><code>/notes/{id}/comments</code></a></td>
+<td><code>list</code></td>
+<td>Get all comments</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-notesidcommentscommentid"><code>/notes/{id}/comments/{commentId}</code></a></td>
+<td><code>load</code></td>
+<td>Add, update or get a comment</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-notesid"><code>/notes/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Add, update or get a note</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-notesidcommentscommentid"><code>/notes/{id}/comments/{commentId}</code></a></td>
+<td><code>remove</code></td>
+<td>Delete a comment</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-notesid"><code>/notes/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Delete a note</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-notesidcommentscommentid"><code>/notes/{id}/comments/{commentId}</code></a></td>
+<td><code>update</code></td>
+<td>Add, update or get a comment</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-notesid"><code>/notes/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Add, update or get a note</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format.</td>
+</tr>
+<tr>
+<td><code>deal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal the note is attached to</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>last_update_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the note</td>
+</tr>
+<tr>
+<td><code>lead_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the lead the note is attached to</td>
+</tr>
+<tr>
+<td><code>object_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the object that the comment is attached to, will be the id of the note</td>
+</tr>
+<tr>
+<td><code>object_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of object that the comment is attached to, will be &quot;note&quot;</td>
+</tr>
+<tr>
+<td><code>org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person the note is attached to</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>pinned_to_deal_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to deal pinning state</td>
+</tr>
+<tr>
+<td><code>pinned_to_organization_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to organization pinning state</td>
+</tr>
+<tr>
+<td><code>pinned_to_person_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to person pinning state</td>
+</tr>
+<tr>
+<td><code>pinned_to_project_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to project pinning state</td>
+</tr>
+<tr>
+<td><code>pinned_to_task_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to task pinning state</td>
+</tr>
+<tr>
+<td><code>project</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The project the note is attached to</td>
+</tr>
+<tr>
+<td><code>project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>task</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The task the note is attached to</td>
+</tr>
+<tr>
+<td><code>task_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>updater_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the comment</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The user who created the note</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the comment</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-notesidcomments" class="operation" data-method="post"><code>POST</code> /notes/{id}/comments</h3>
+<p>Operation ID: <code>addNoteComment</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The content of the comment in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-add-update-or-get-a-comment" class="status" data-status="2xx">200: Add, update or get a comment</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Comment</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company</td>
+</tr>
+<tr>
+<td><code>data.content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data.object_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the object that the comment is attached to, will be the id of the note</td>
+</tr>
+<tr>
+<td><code>data.object_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of object that the comment is attached to, will be &quot;note&quot;</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.updater_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the comment</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the comment</td>
+</tr>
+<tr>
+<td><code>data.uuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2021-06-22T07:18:16.750Z&quot;,
+    &quot;company_id&quot;: 77,
+    &quot;content&quot;: &quot;This is a comment&quot;,
+    &quot;object_id&quot;: &quot;725&quot;,
+    &quot;object_type&quot;: &quot;note&quot;,
+    &quot;update_time&quot;: &quot;2021-06-22T07:18:25.648Z&quot;,
+    &quot;updater_id&quot;: 8877,
+    &quot;user_id&quot;: 8877,
+    &quot;uuid&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-notes" class="operation" data-method="post"><code>POST</code> /notes</h3>
+<p>Operation ID: <code>addNote</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object and object</code>.</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-add-update-or-get-a-note" class="status" data-status="2xx">200: Add, update or get a note</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Note</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data.deal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>data.last_update_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the note</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.organization.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_deal_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to deal pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_organization_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to organization pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_person_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to person pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_project_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to project pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_task_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to task pinning state</td>
+</tr>
+<tr>
+<td><code>data.project</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.project.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The user who created the note</td>
+</tr>
+<tr>
+<td><code>data.user.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email of the note creator</td>
+</tr>
+<tr>
+<td><code>data.user.icon_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the note creator avatar picture</td>
+</tr>
+<tr>
+<td><code>data.user.is_you</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is created by you or not</td>
+</tr>
+<tr>
+<td><code>data.user.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the note creator</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note creator</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-12-09 13:59:21&quot;,
+    &quot;content&quot;: &quot;abc&quot;,
+    &quot;deal&quot;: {
+      &quot;title&quot;: &quot;Deal title&quot;
+    },
+    &quot;deal_id&quot;: 1,
+    &quot;id&quot;: 1,
+    &quot;last_update_user_id&quot;: 1,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;organization&quot;: {
+      &quot;name&quot;: &quot;Organization name&quot;
+    },
+    &quot;person&quot;: {
+      &quot;name&quot;: &quot;Person name&quot;
+    },
+    &quot;person_id&quot;: 1,
+    &quot;pinned_to_deal_flag&quot;: true,
+    &quot;pinned_to_lead_flag&quot;: false,
+    &quot;pinned_to_organization_flag&quot;: false,
+    &quot;pinned_to_person_flag&quot;: false,
+    &quot;pinned_to_project_flag&quot;: false,
+    &quot;project&quot;: {
+      &quot;title&quot;: &quot;Project name&quot;
+    },
+    &quot;project_id&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-12-09 14:26:11&quot;,
+    &quot;user&quot;: {
+      &quot;email&quot;: &quot;user@email.com&quot;,
+      &quot;icon_url&quot;: &quot;https://iconurl.net/profile_120x120_123.jpg&quot;,
+      &quot;is_you&quot;: true,
+      &quot;name&quot;: &quot;User Name&quot;
+    },
+    &quot;user_id&quot;: 1
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-notes" class="operation" data-method="get"><code>GET</code> /notes</h3>
+<p>Operation ID: <code>getNotes</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>user_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the user whose notes to fetch. If omitted, notes by all users will be returned. |
+| <code>lead_id</code> | <code>query</code> | <code>string (uuid)</code> | No | The ID of the lead which notes to fetch. If omitted, notes about all leads will be returned. |
+| <code>deal_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the deal which notes to fetch. If omitted, notes about all deals will be returned. |
+| <code>person_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the person whose notes to fetch. If omitted, notes about all persons will be returned. |
+| <code>org_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the organization which notes to fetch. If omitted, notes about all organizations will be returned. |
+| <code>project_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the project which notes to fetch. If omitted, notes about all projects will be returned. |
+| <code>task_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the task which notes to fetch. If omitted, notes about all tasks will be returned. |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>sort</code> | <code>query</code> | <code>string</code> | No | The field names and sorting mode separated by a comma (<code>field_name_1 ASC</code>, <code>field_name_2 DESC</code>). Only first-level field keys are supported (no nested keys). Supported fields: <code>id</code>, <code>user_id</code>, <code>deal_id</code>, <code>person_id</code>, <code>org_id</code>, <code>content</code>, <code>add_time</code>, <code>update_time</code>. |
+| <code>start_date</code> | <code>query</code> | <code>string (date)</code> | No | The date in format of YYYY-MM-DD from which notes to fetch |
+| <code>end_date</code> | <code>query</code> | <code>string (date)</code> | No | The date in format of YYYY-MM-DD until which notes to fetch to |
+| <code>updated_since</code> | <code>query</code> | <code>string (date-time)</code> | No | If set, only notes with an <code>update_time</code> later than or equal to this time are returned. In RFC3339 format, for example 2025-01-01T10:20:00Z. |
+| <code>pinned_to_lead_flag</code> | <code>query</code> | <code>enum: 0, 1</code> | No | If set, the results are filtered by note to lead pinning state |
+| <code>pinned_to_deal_flag</code> | <code>query</code> | <code>enum: 0, 1</code> | No | If set, the results are filtered by note to deal pinning state |
+| <code>pinned_to_organization_flag</code> | <code>query</code> | <code>enum: 0, 1</code> | No | If set, the results are filtered by note to organization pinning state |
+| <code>pinned_to_person_flag</code> | <code>query</code> | <code>enum: 0, 1</code> | No | If set, the results are filtered by note to person pinning state |
+| <code>pinned_to_project_flag</code> | <code>query</code> | <code>enum: 0, 1</code> | No | If set, the results are filtered by note to project pinning state |
+| <code>pinned_to_task_flag</code> | <code>query</code> | <code>enum: 0, 1</code> | No | If set, the results are filtered by note to task pinning state |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-get-all-notes" class="status" data-status="2xx">200: Get all notes</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.pagination</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The pagination details of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.next_start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Next pagination start</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The array of notes</td>
+</tr>
+<tr>
+<td><code>data[].active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data[].content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data[].deal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>data[].last_update_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the note</td>
+</tr>
+<tr>
+<td><code>data[].lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].organization.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].person.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].pinned_to_deal_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to deal pinning state</td>
+</tr>
+<tr>
+<td><code>data[].pinned_to_organization_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to organization pinning state</td>
+</tr>
+<tr>
+<td><code>data[].pinned_to_person_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to person pinning state</td>
+</tr>
+<tr>
+<td><code>data[].pinned_to_project_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to project pinning state</td>
+</tr>
+<tr>
+<td><code>data[].pinned_to_task_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to task pinning state</td>
+</tr>
+<tr>
+<td><code>data[].project</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].project.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].task</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].task.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].task_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data[].update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the note</td>
+</tr>
+<tr>
+<td><code>data[].user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The user who created the note</td>
+</tr>
+<tr>
+<td><code>data[].user.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email of the note creator</td>
+</tr>
+<tr>
+<td><code>data[].user.icon_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the note creator avatar picture</td>
+</tr>
+<tr>
+<td><code>data[].user.is_you</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is created by you or not</td>
+</tr>
+<tr>
+<td><code>data[].user.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the note creator</td>
+</tr>
+<tr>
+<td><code>data[].user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note creator</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;next_start&quot;: 100,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2019-12-09 13:59:21&quot;,
+      &quot;content&quot;: &quot;abc&quot;,
+      &quot;deal&quot;: {
+        &quot;title&quot;: &quot;Deal title&quot;
+      },
+      &quot;deal_id&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;last_update_user_id&quot;: 1,
+      &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;org_id&quot;: 1,
+      &quot;organization&quot;: {
+        &quot;name&quot;: &quot;Organization name&quot;
+      },
+      &quot;person&quot;: {
+        &quot;name&quot;: &quot;Person name&quot;
+      },
+      &quot;person_id&quot;: 1,
+      &quot;pinned_to_deal_flag&quot;: true,
+      &quot;pinned_to_lead_flag&quot;: false,
+      &quot;pinned_to_organization_flag&quot;: false,
+      &quot;pinned_to_person_flag&quot;: false,
+      &quot;pinned_to_project_flag&quot;: false,
+      &quot;project&quot;: {
+        &quot;title&quot;: &quot;Project name&quot;
+      },
+      &quot;project_id&quot;: 1,
+      &quot;update_time&quot;: &quot;2019-12-09 14:26:11&quot;,
+      &quot;user&quot;: {
+        &quot;email&quot;: &quot;user@email.com&quot;,
+        &quot;icon_url&quot;: &quot;https://iconurl.net/profile_120x120_123.jpg&quot;,
+        &quot;is_you&quot;: true,
+        &quot;name&quot;: &quot;User Name&quot;
+      },
+      &quot;user_id&quot;: 1
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-notesidcomments" class="operation" data-method="get"><code>GET</code> /notes/{id}/comments</h3>
+<p>Operation ID: <code>getNoteComments</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-get-all-comments" class="status" data-status="2xx">200: Get all comments</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.pagination</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The pagination details of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.next_start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Next pagination start</td>
+</tr>
+<tr>
+<td><code>additional_data.pagination.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The array of comments</td>
+</tr>
+<tr>
+<td><code>data[].active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data[].company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company</td>
+</tr>
+<tr>
+<td><code>data[].content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data[].object_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the object that the comment is attached to, will be the id of the note</td>
+</tr>
+<tr>
+<td><code>data[].object_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of object that the comment is attached to, will be &quot;note&quot;</td>
+</tr>
+<tr>
+<td><code>data[].update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data[].updater_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the comment</td>
+</tr>
+<tr>
+<td><code>data[].user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the comment</td>
+</tr>
+<tr>
+<td><code>data[].uuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;next_start&quot;: 100,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2021-06-22T07:18:16.750Z&quot;,
+      &quot;company_id&quot;: 77,
+      &quot;content&quot;: &quot;This is a comment&quot;,
+      &quot;object_id&quot;: &quot;725&quot;,
+      &quot;object_type&quot;: &quot;note&quot;,
+      &quot;update_time&quot;: &quot;2021-06-22T07:18:25.648Z&quot;,
+      &quot;updater_id&quot;: 8877,
+      &quot;user_id&quot;: 8877,
+      &quot;uuid&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-notesidcommentscommentid" class="operation" data-method="get"><code>GET</code> /notes/{id}/comments/{commentId}</h3>
+<p>Operation ID: <code>getComment</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |
+| <code>commentId</code> | <code>path</code> | <code>string (uuid)</code> | Yes | The ID of the comment |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-add-update-or-get-a-comment-1" class="status" data-status="2xx">200: Add, update or get a comment</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Comment</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company</td>
+</tr>
+<tr>
+<td><code>data.content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data.object_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the object that the comment is attached to, will be the id of the note</td>
+</tr>
+<tr>
+<td><code>data.object_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of object that the comment is attached to, will be &quot;note&quot;</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.updater_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the comment</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the comment</td>
+</tr>
+<tr>
+<td><code>data.uuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2021-06-22T07:18:16.750Z&quot;,
+    &quot;company_id&quot;: 77,
+    &quot;content&quot;: &quot;This is a comment&quot;,
+    &quot;object_id&quot;: &quot;725&quot;,
+    &quot;object_type&quot;: &quot;note&quot;,
+    &quot;update_time&quot;: &quot;2021-06-22T07:18:25.648Z&quot;,
+    &quot;updater_id&quot;: 8877,
+    &quot;user_id&quot;: 8877,
+    &quot;uuid&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-notesid" class="operation" data-method="get"><code>GET</code> /notes/{id}</h3>
+<p>Operation ID: <code>getNote</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-add-update-or-get-a-note-1" class="status" data-status="2xx">200: Add, update or get a note</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Note</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data.deal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>data.last_update_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the note</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.organization.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_deal_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to deal pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_organization_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to organization pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_person_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to person pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_project_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to project pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_task_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to task pinning state</td>
+</tr>
+<tr>
+<td><code>data.project</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.project.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The user who created the note</td>
+</tr>
+<tr>
+<td><code>data.user.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email of the note creator</td>
+</tr>
+<tr>
+<td><code>data.user.icon_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the note creator avatar picture</td>
+</tr>
+<tr>
+<td><code>data.user.is_you</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is created by you or not</td>
+</tr>
+<tr>
+<td><code>data.user.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the note creator</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note creator</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-12-09 13:59:21&quot;,
+    &quot;content&quot;: &quot;abc&quot;,
+    &quot;deal&quot;: {
+      &quot;title&quot;: &quot;Deal title&quot;
+    },
+    &quot;deal_id&quot;: 1,
+    &quot;id&quot;: 1,
+    &quot;last_update_user_id&quot;: 1,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;organization&quot;: {
+      &quot;name&quot;: &quot;Organization name&quot;
+    },
+    &quot;person&quot;: {
+      &quot;name&quot;: &quot;Person name&quot;
+    },
+    &quot;person_id&quot;: 1,
+    &quot;pinned_to_deal_flag&quot;: true,
+    &quot;pinned_to_lead_flag&quot;: false,
+    &quot;pinned_to_organization_flag&quot;: false,
+    &quot;pinned_to_person_flag&quot;: false,
+    &quot;pinned_to_project_flag&quot;: false,
+    &quot;project&quot;: {
+      &quot;title&quot;: &quot;Project name&quot;
+    },
+    &quot;project_id&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-12-09 14:26:11&quot;,
+    &quot;user&quot;: {
+      &quot;email&quot;: &quot;user@email.com&quot;,
+      &quot;icon_url&quot;: &quot;https://iconurl.net/profile_120x120_123.jpg&quot;,
+      &quot;is_you&quot;: true,
+      &quot;name&quot;: &quot;User Name&quot;
+    },
+    &quot;user_id&quot;: 1
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-notesidcommentscommentid" class="operation" data-method="delete"><code>DELETE</code> /notes/{id}/comments/{commentId}</h3>
+<p>Operation ID: <code>deleteComment</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |
+| <code>commentId</code> | <code>path</code> | <code>string (uuid)</code> | Yes | The ID of the comment |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-delete-a-comment" class="status" data-status="2xx">200: Delete a comment</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: true,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="delete-notesid" class="operation" data-method="delete"><code>DELETE</code> /notes/{id}</h3>
+<p>Operation ID: <code>deleteNote</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-delete-a-note" class="status" data-status="2xx">200: Delete a note</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: true,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-notesidcommentscommentid" class="operation" data-method="put"><code>PUT</code> /notes/{id}/comments/{commentId}</h3>
+<p>Operation ID: <code>updateCommentForNote</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |
+| <code>commentId</code> | <code>path</code> | <code>string (uuid)</code> | Yes | The ID of the comment |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The content of the comment in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-add-update-or-get-a-comment-2" class="status" data-status="2xx">200: Add, update or get a comment</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Comment</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company</td>
+</tr>
+<tr>
+<td><code>data.content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data.object_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the object that the comment is attached to, will be the id of the note</td>
+</tr>
+<tr>
+<td><code>data.object_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of object that the comment is attached to, will be &quot;note&quot;</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.updater_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the comment</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the comment</td>
+</tr>
+<tr>
+<td><code>data.uuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2021-06-22T07:18:16.750Z&quot;,
+    &quot;company_id&quot;: 77,
+    &quot;content&quot;: &quot;This is a comment&quot;,
+    &quot;object_id&quot;: &quot;725&quot;,
+    &quot;object_type&quot;: &quot;note&quot;,
+    &quot;update_time&quot;: &quot;2021-06-22T07:18:25.648Z&quot;,
+    &quot;updater_id&quot;: 8877,
+    &quot;user_id&quot;: 8877,
+    &quot;uuid&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="put-notesid" class="operation" data-method="put"><code>PUT</code> /notes/{id}</h3>
+<p>Operation ID: <code>updateNote</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the note |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object and object and object</code>.</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-add-update-or-get-a-note-2" class="status" data-status="2xx">200: Add, update or get a note</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Note</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is active or deleted</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.content</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The content of the note in HTML format. Subject to sanitization on the back-end.</td>
+</tr>
+<tr>
+<td><code>data.deal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note</td>
+</tr>
+<tr>
+<td><code>data.last_update_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who last updated the note</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.organization.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_deal_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to deal pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_organization_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to organization pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_person_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to person pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_project_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to project pinning state</td>
+</tr>
+<tr>
+<td><code>data.pinned_to_task_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, the results are filtered by note to task pinning state</td>
+</tr>
+<tr>
+<td><code>data.project</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.project.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.task_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the task the note is attached to</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the note</td>
+</tr>
+<tr>
+<td><code>data.user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The user who created the note</td>
+</tr>
+<tr>
+<td><code>data.user.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email of the note creator</td>
+</tr>
+<tr>
+<td><code>data.user.icon_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the note creator avatar picture</td>
+</tr>
+<tr>
+<td><code>data.user.is_you</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the note is created by you or not</td>
+</tr>
+<tr>
+<td><code>data.user.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the note creator</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the note creator</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-12-09 13:59:21&quot;,
+    &quot;content&quot;: &quot;abc&quot;,
+    &quot;deal&quot;: {
+      &quot;title&quot;: &quot;Deal title&quot;
+    },
+    &quot;deal_id&quot;: 1,
+    &quot;id&quot;: 1,
+    &quot;last_update_user_id&quot;: 1,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;organization&quot;: {
+      &quot;name&quot;: &quot;Organization name&quot;
+    },
+    &quot;person&quot;: {
+      &quot;name&quot;: &quot;Person name&quot;
+    },
+    &quot;person_id&quot;: 1,
+    &quot;pinned_to_deal_flag&quot;: true,
+    &quot;pinned_to_lead_flag&quot;: false,
+    &quot;pinned_to_organization_flag&quot;: false,
+    &quot;pinned_to_person_flag&quot;: false,
+    &quot;pinned_to_project_flag&quot;: false,
+    &quot;project&quot;: {
+      &quot;title&quot;: &quot;Project name&quot;
+    },
+    &quot;project_id&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-12-09 14:26:11&quot;,
+    &quot;user&quot;: {
+      &quot;email&quot;: &quot;user@email.com&quot;,
+      &quot;icon_url&quot;: &quot;https://iconurl.net/profile_120x120_123.jpg&quot;,
+      &quot;is_you&quot;: true,
+      &quot;name&quot;: &quot;User Name&quot;
+    },
+    &quot;user_id&quot;: 1
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

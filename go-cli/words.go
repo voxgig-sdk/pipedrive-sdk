@@ -89,8 +89,90 @@ func runOp(client *sdk.PipedriveSDK, op string, query *eng.Value, entityAtom eng
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.PipedriveSDK, name string) (sdk.PipedriveEntity, error) {
 	switch strings.ToLower(name) {
+	case "activity_field":
+		return client.ActivityField(nil), nil
+	case "activity_type":
+		return client.ActivityType(nil), nil
+	case "billing":
+		return client.Billing(nil), nil
+	case "call_log":
+		return client.CallLog(nil), nil
+	case "channel":
+		return client.Channel(nil), nil
+	case "currency":
+		return client.Currency(nil), nil
 	case "deal":
 		return client.Deal(nil), nil
+	case "deal_field":
+		return client.DealField(nil), nil
+	case "file":
+		return client.File(nil), nil
+	case "filter":
+		return client.Filter(nil), nil
+	case "goal":
+		return client.Goal(nil), nil
+	case "lead":
+		return client.Lead(nil), nil
+	case "lead_field":
+		return client.LeadField(nil), nil
+	case "lead_label":
+		return client.LeadLabel(nil), nil
+	case "lead_source":
+		return client.LeadSource(nil), nil
+	case "legacy_team":
+		return client.LegacyTeam(nil), nil
+	case "mailbox":
+		return client.Mailbox(nil), nil
+	case "meeting":
+		return client.Meeting(nil), nil
+	case "note":
+		return client.Note(nil), nil
+	case "note_field":
+		return client.NoteField(nil), nil
+	case "oauth":
+		return client.Oauth(nil), nil
+	case "organization":
+		return client.Organization(nil), nil
+	case "organization_field":
+		return client.OrganizationField(nil), nil
+	case "organization_relationship":
+		return client.OrganizationRelationship(nil), nil
+	case "permission_set":
+		return client.PermissionSet(nil), nil
+	case "person":
+		return client.Person(nil), nil
+	case "person_field":
+		return client.PersonField(nil), nil
+	case "pipeline":
+		return client.Pipeline(nil), nil
+	case "product":
+		return client.Product(nil), nil
+	case "product_field":
+		return client.ProductField(nil), nil
+	case "project":
+		return client.Project(nil), nil
+	case "project_board":
+		return client.ProjectBoard(nil), nil
+	case "project_phase":
+		return client.ProjectPhase(nil), nil
+	case "project_template":
+		return client.ProjectTemplate(nil), nil
+	case "recent":
+		return client.Recent(nil), nil
+	case "role":
+		return client.Role(nil), nil
+	case "stage":
+		return client.Stage(nil), nil
+	case "task":
+		return client.Task(nil), nil
+	case "user":
+		return client.User(nil), nil
+	case "user_connection":
+		return client.UserConnection(nil), nil
+	case "user_setting":
+		return client.UserSetting(nil), nil
+	case "webhook":
+		return client.Webhook(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

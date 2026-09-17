@@ -1,0 +1,504 @@
+# Entity: file
+
+main: kit: entity: file: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "active_flag"
+      req: false
+      short: "Whether the user is active or not."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "activity_id"
+      req: false
+      short: "The ID of the activity to associate the file with"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "add_time"
+      req: false
+      short: "The date and time when the file was added/created."
+      type: "`$STRING`"
+    }
+    {
+      name: "cid"
+      req: false
+      short: "The ID of the inline attachment"
+      type: "`$STRING`"
+    }
+    {
+      name: "deal_id"
+      req: false
+      short: "The ID of the deal to associate the file with"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "deal_name"
+      req: false
+      short: "The name of the deal associated with the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "The description of the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "file_name"
+      req: false
+      short: "The original name of the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "file_size"
+      req: false
+      short: "The size of the file"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "The ID of the file"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "inline_flag"
+      req: false
+      short: "Whether the file was uploaded as inline or not"
+      type: "`$BOOLEAN`"
+    }
+    {
+      format: "uuid"
+      name: "lead_id"
+      req: false
+      short: "The ID of the lead to associate the file with"
+      type: "`$STRING`"
+    }
+    {
+      name: "lead_name"
+      req: false
+      short: "The name of the lead associated with the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "mail_message_id"
+      req: false
+      short: "The ID of the mail message to associate the file with"
+      type: "`$STRING`"
+    }
+    {
+      name: "mail_template_id"
+      req: false
+      short: "The ID of the mail template to associate the file with"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "The visible name of the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "org_id"
+      req: false
+      short: "The ID of the organization to associate the file with"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "org_name"
+      req: false
+      short: "The name of the organization associated with the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "person_id"
+      req: false
+      short: "The ID of the person to associate the file with"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "person_name"
+      req: false
+      short: "The name of the person associated with the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "product_id"
+      req: false
+      short: "The ID of the product to associate the file with"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "product_name"
+      req: false
+      short: "The name of the product associated with the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "project_id"
+      req: false
+      short: "The ID of the project to associate the file with"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "project_name"
+      req: false
+      short: "The name of the project associated with the file"
+      type: "`$STRING`"
+    }
+    {
+      name: "remote_id"
+      req: false
+      short: "The ID of the remote item"
+      type: "`$STRING`"
+    }
+    {
+      name: "remote_location"
+      req: false
+      short: "The location type to send the file to."
+      type: "`$STRING`"
+    }
+    {
+      name: "s3_bucket"
+      req: false
+      short: "The location of the cloud storage"
+      type: "`$STRING`"
+    }
+    {
+      name: "update_time"
+      req: false
+      short: "The last updated date and time of the file."
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "The URL of the download file"
+      type: "`$STRING`"
+    }
+    {
+      name: "user_id"
+      req: false
+      short: "The ID of the user to associate the file with"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "file"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          contract: {
+            id: "POST /files"
+            json: "{\"operationId\":\"addFile\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"multipart/form-data\":{\"schema\":{\"properties\":{\"activity_id\":{\"description\":\"The ID of the activity to associate file(s) with\",\"type\":\"integer\"},\"deal_id\":{\"description\":\"The ID of the deal to associate file(s) with\",\"type\":\"integer\"},\"file\":{\"description\":\"A single file, supplied in the multipart/form-data encoding and contained within the given boundaries\",\"format\":\"binary\",\"type\":\"string\"},\"lead_id\":{\"description\":\"The ID of the lead to associate file(s) with\",\"format\":\"uuid\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate file(s) with\",\"type\":\"integer\"},\"person_id\":{\"description\":\"The ID of the person to associate file(s) with\",\"type\":\"integer\"},\"product_id\":{\"description\":\"The ID of the product to associate file(s) with\",\"type\":\"integer\"},\"project_id\":{\"description\":\"The ID of the project to associate file(s) with\",\"type\":\"integer\"}},\"required\":[\"file\"],\"title\":\"addFileRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-20 14:36:35\",\"cid\":\"\",\"deal_id\":1,\"deal_name\":\"\",\"description\":\"\",\"file_name\":\"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\"file_size\":7801780,\"file_type\":\"img\",\"id\":123,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"IMG_8189.jpg\",\"org_id\":1,\"org_name\":\"\",\"person_id\":789,\"person_name\":\"Person\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-20 14:36:31\",\"url\":\"https://2a7f.pipedrive.com/v1/files/123/download\",\"user_id\":456},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"The file data\",\"properties\":{\"active_flag\":{\"description\":\"Whether the user is active or not. false = Not activated, true = Activated\",\"type\":\"boolean\"},\"activity_id\":{\"description\":\"The ID of the activity to associate the file with\",\"type\":\"integer\"},\"add_time\":{\"description\":\"The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"cid\":{\"description\":\"The ID of the inline attachment\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal to associate the file with\",\"type\":\"integer\"},\"deal_name\":{\"description\":\"The name of the deal associated with the file\",\"type\":\"string\"},\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"file_name\":{\"description\":\"The original name of the file\",\"type\":\"string\"},\"file_size\":{\"description\":\"The size of the file\",\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"},\"inline_flag\":{\"description\":\"Whether the file was uploaded as inline or not\",\"type\":\"boolean\"},\"lead_id\":{\"description\":\"The ID of the lead to associate the file with\",\"format\":\"uuid\",\"type\":\"string\"},\"lead_name\":{\"description\":\"The name of the lead associated with the file\",\"type\":\"string\"},\"mail_message_id\":{\"description\":\"The ID of the mail message to associate the file with\",\"type\":\"string\"},\"mail_template_id\":{\"description\":\"The ID of the mail template to associate the file with\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate the file with\",\"type\":\"integer\"},\"org_name\":{\"description\":\"The name of the organization associated with the file\",\"type\":\"string\"},\"person_id\":{\"description\":\"The ID of the person to associate the file with\",\"type\":\"integer\"},\"person_name\":{\"description\":\"The name of the person associated with the file\",\"type\":\"string\"},\"product_id\":{\"description\":\"The ID of the product to associate the file with\",\"type\":\"integer\"},\"product_name\":{\"description\":\"The name of the product associated with the file\",\"type\":\"string\"},\"project_id\":{\"description\":\"The ID of the project to associate the file with\",\"type\":\"integer\"},\"project_name\":{\"description\":\"The name of the project associated with the file\",\"type\":\"string\"},\"remote_id\":{\"description\":\"The ID of the remote item\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only googledrive is supported at the moment.\",\"type\":\"string\"},\"s3_bucket\":{\"description\":\"The location of the cloud storage\",\"type\":\"string\"},\"update_time\":{\"description\":\"The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"url\":{\"description\":\"The URL of the download file\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user to associate the file with\",\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"AddFileResponse\",\"type\":\"object\"}}},\"description\":\"Add a file from computer or Google Drive and associate it with deal, person, organization, activity or product\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/files"
+          segments: [
+            {
+              lit: "files"
+            }
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          contract: {
+            id: "POST /files/remote"
+            json: "{\"operationId\":\"addFileAndLinkIt\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/x-www-form-urlencoded\":{\"schema\":{\"properties\":{\"file_type\":{\"description\":\"The file type\",\"enum\":[\"gdoc\",\"gslides\",\"gsheet\",\"gform\",\"gdraw\"],\"type\":\"string\"},\"item_id\":{\"description\":\"The ID of the item to associate the file with\",\"type\":\"integer\"},\"item_type\":{\"description\":\"The item type\",\"enum\":[\"deal\",\"organization\",\"person\"],\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only `googledrive` is supported at the moment.\",\"enum\":[\"googledrive\"],\"type\":\"string\"},\"title\":{\"description\":\"The title of the file\",\"type\":\"string\"}},\"required\":[\"file_type\",\"title\",\"item_type\",\"item_id\",\"remote_location\"],\"title\":\"addFileAndLinkItRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-21 11:52:28\",\"cid\":\"\",\"deal_id\":36,\"deal_name\":\"test deal\",\"description\":\"\",\"file_name\":\"\",\"file_size\":0,\"file_type\":\"gdoc\",\"id\":7195,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name 1\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"Test title for remote file\",\"org_id\":15,\"org_name\":\"test org\",\"person_id\":1,\"person_name\":\"\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1gzyh6ExBxIb4RBZbAZxsrrBp45yuXhZWq3Zash5b75c\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-21 11:52:24\",\"url\":\"https://app.pipedrive.com/api/v1/files/7195/download\",\"user_id\":456},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"The file data\",\"properties\":{\"active_flag\":{\"description\":\"Whether the user is active or not. false = Not activated, true = Activated\",\"type\":\"boolean\"},\"activity_id\":{\"description\":\"The ID of the activity to associate the file with\",\"type\":\"integer\"},\"add_time\":{\"description\":\"The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"cid\":{\"description\":\"The ID of the inline attachment\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal to associate the file with\",\"type\":\"integer\"},\"deal_name\":{\"description\":\"The name of the deal associated with the file\",\"type\":\"string\"},\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"file_name\":{\"description\":\"The original name of the file\",\"type\":\"string\"},\"file_size\":{\"description\":\"The size of the file\",\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"},\"inline_flag\":{\"description\":\"Whether the file was uploaded as inline or not\",\"type\":\"boolean\"},\"lead_id\":{\"description\":\"The ID of the lead to associate the file with\",\"format\":\"uuid\",\"type\":\"string\"},\"lead_name\":{\"description\":\"The name of the lead associated with the file\",\"type\":\"string\"},\"mail_message_id\":{\"description\":\"The ID of the mail message to associate the file with\",\"type\":\"string\"},\"mail_template_id\":{\"description\":\"The ID of the mail template to associate the file with\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate the file with\",\"type\":\"integer\"},\"org_name\":{\"description\":\"The name of the organization associated with the file\",\"type\":\"string\"},\"person_id\":{\"description\":\"The ID of the person to associate the file with\",\"type\":\"integer\"},\"person_name\":{\"description\":\"The name of the person associated with the file\",\"type\":\"string\"},\"product_id\":{\"description\":\"The ID of the product to associate the file with\",\"type\":\"integer\"},\"product_name\":{\"description\":\"The name of the product associated with the file\",\"type\":\"string\"},\"project_id\":{\"description\":\"The ID of the project to associate the file with\",\"type\":\"integer\"},\"project_name\":{\"description\":\"The name of the project associated with the file\",\"type\":\"string\"},\"remote_id\":{\"description\":\"The ID of the remote item\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only googledrive is supported at the moment.\",\"type\":\"string\"},\"s3_bucket\":{\"description\":\"The location of the cloud storage\",\"type\":\"string\"},\"update_time\":{\"description\":\"The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"url\":{\"description\":\"The URL of the download file\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user to associate the file with\",\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"AddRemoteFileAndLinkItToItemResponse\",\"type\":\"object\"}}},\"description\":\"Creates a new empty file in the remote location (googledrive) that will be linked to the item you supply - deal, person or organization\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/files/remote"
+          segments: [
+            {
+              lit: "files"
+            }
+            {
+              lit: "remote"
+            }
+          ]
+          select: {
+            "$action": "remote"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          contract: {
+            id: "POST /files/remoteLink"
+            json: "{\"operationId\":\"linkFileToItem\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/x-www-form-urlencoded\":{\"schema\":{\"properties\":{\"item_id\":{\"description\":\"The ID of the item to associate the file with\",\"type\":\"integer\"},\"item_type\":{\"description\":\"The item type\",\"enum\":[\"deal\",\"organization\",\"person\"],\"type\":\"string\"},\"remote_id\":{\"description\":\"The remote item ID\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only `googledrive` is supported at the moment.\",\"enum\":[\"googledrive\"],\"type\":\"string\"}},\"required\":[\"item_type\",\"item_id\",\"remote_id\",\"remote_location\"],\"title\":\"linkFileToItemRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-21 12:02:37\",\"cid\":\"\",\"deal_id\":35,\"deal_name\":\"Test deal name\",\"description\":\"\",\"file_name\":\"Test title to remote file\",\"file_size\":0,\"file_type\":\"gdoc\",\"id\":7196,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"Test title for remote file\",\"org_id\":1,\"org_name\":\"\",\"person_id\":1,\"person_name\":\"Test person name\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1gzyh6ExBxIb4RBZbAZxsrrBp45yuXhZWq3Zash5b75c\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-21 12:02:37\",\"url\":\"https://app.pipedrive.com/api/v1/files/7196/download\",\"user_id\":456},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"The file data\",\"properties\":{\"active_flag\":{\"description\":\"Whether the user is active or not. false = Not activated, true = Activated\",\"type\":\"boolean\"},\"activity_id\":{\"description\":\"The ID of the activity to associate the file with\",\"type\":\"integer\"},\"add_time\":{\"description\":\"The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"cid\":{\"description\":\"The ID of the inline attachment\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal to associate the file with\",\"type\":\"integer\"},\"deal_name\":{\"description\":\"The name of the deal associated with the file\",\"type\":\"string\"},\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"file_name\":{\"description\":\"The original name of the file\",\"type\":\"string\"},\"file_size\":{\"description\":\"The size of the file\",\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"},\"inline_flag\":{\"description\":\"Whether the file was uploaded as inline or not\",\"type\":\"boolean\"},\"lead_id\":{\"description\":\"The ID of the lead to associate the file with\",\"format\":\"uuid\",\"type\":\"string\"},\"lead_name\":{\"description\":\"The name of the lead associated with the file\",\"type\":\"string\"},\"mail_message_id\":{\"description\":\"The ID of the mail message to associate the file with\",\"type\":\"string\"},\"mail_template_id\":{\"description\":\"The ID of the mail template to associate the file with\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate the file with\",\"type\":\"integer\"},\"org_name\":{\"description\":\"The name of the organization associated with the file\",\"type\":\"string\"},\"person_id\":{\"description\":\"The ID of the person to associate the file with\",\"type\":\"integer\"},\"person_name\":{\"description\":\"The name of the person associated with the file\",\"type\":\"string\"},\"product_id\":{\"description\":\"The ID of the product to associate the file with\",\"type\":\"integer\"},\"product_name\":{\"description\":\"The name of the product associated with the file\",\"type\":\"string\"},\"project_id\":{\"description\":\"The ID of the project to associate the file with\",\"type\":\"integer\"},\"project_name\":{\"description\":\"The name of the project associated with the file\",\"type\":\"string\"},\"remote_id\":{\"description\":\"The ID of the remote item\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only googledrive is supported at the moment.\",\"type\":\"string\"},\"s3_bucket\":{\"description\":\"The location of the cloud storage\",\"type\":\"string\"},\"update_time\":{\"description\":\"The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"url\":{\"description\":\"The URL of the download file\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user to associate the file with\",\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"GetLinkRemoteFileToItemResponse\",\"type\":\"object\"}}},\"description\":\"Links an existing remote file (googledrive) to the item you supply - deal, person, organization\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/files/remoteLink"
+          segments: [
+            {
+              lit: "files"
+            }
+            {
+              lit: "remoteLink"
+            }
+          ]
+          select: {
+            "$action": "remote_link"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /files"
+            json: "{\"operationId\":\"getFiles\",\"parameters\":[{\"description\":\"Pagination start\",\"in\":\"query\",\"name\":\"start\",\"schema\":{\"default\":0,\"type\":\"integer\"}},{\"description\":\"Items shown per page. Please note that a maximum value of 100 is allowed.\",\"in\":\"query\",\"name\":\"limit\",\"schema\":{\"maximum\":100,\"type\":\"integer\"}},{\"description\":\"Supported fields: `id`, `update_time`\",\"in\":\"query\",\"name\":\"sort\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"additional_data\":{\"pagination\":{\"limit\":100,\"more_items_in_collection\":true,\"next_start\":100,\"start\":0}},\"data\":[{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-20 14:36:35\",\"cid\":\"\",\"deal_id\":1,\"deal_name\":\"\",\"description\":\"test file description\",\"file_name\":\"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\"file_size\":7801780,\"file_type\":\"img\",\"id\":123,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"test file name\",\"org_id\":1,\"org_name\":\"\",\"person_id\":789,\"person_name\":\"Person\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-20 14:57:33\",\"url\":\"https://2a7f.pipedrive.com/v1/files/123/download\",\"user_id\":456},{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-20 14:36:35\",\"cid\":\"\",\"deal_id\":1,\"deal_name\":\"\",\"description\":\"second test file description\",\"file_name\":\"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\"file_size\":7801780,\"file_type\":\"img\",\"id\":123321,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"second test file name\",\"org_id\":1,\"org_name\":\"\",\"person_id\":789987,\"person_name\":\"Person\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-20 14:57:33\",\"url\":\"https://2a7f.pipedrive.com/v1/files/123321/download\",\"user_id\":456}],\"success\":true},\"schema\":{\"properties\":{\"additional_data\":{\"properties\":{\"pagination\":{\"allOf\":[{\"description\":\"The additional data of the list\",\"properties\":{\"limit\":{\"description\":\"Items shown per page\",\"type\":\"integer\"},\"more_items_in_collection\":{\"description\":\"If there are more list items in the collection than displayed or not\",\"type\":\"boolean\"},\"start\":{\"description\":\"Pagination start\",\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"next_start\":{\"description\":\"Next pagination start\",\"type\":\"integer\"}},\"type\":\"object\"}],\"description\":\"Pagination details of the list\",\"title\":\"paginationDetails\",\"type\":\"object\"}},\"type\":\"object\"},\"data\":{\"description\":\"The array of all uploaded files\",\"items\":{\"description\":\"The file data\",\"properties\":{\"active_flag\":{\"description\":\"Whether the user is active or not. false = Not activated, true = Activated\",\"type\":\"boolean\"},\"activity_id\":{\"description\":\"The ID of the activity to associate the file with\",\"type\":\"integer\"},\"add_time\":{\"description\":\"The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"cid\":{\"description\":\"The ID of the inline attachment\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal to associate the file with\",\"type\":\"integer\"},\"deal_name\":{\"description\":\"The name of the deal associated with the file\",\"type\":\"string\"},\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"file_name\":{\"description\":\"The original name of the file\",\"type\":\"string\"},\"file_size\":{\"description\":\"The size of the file\",\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"},\"inline_flag\":{\"description\":\"Whether the file was uploaded as inline or not\",\"type\":\"boolean\"},\"lead_id\":{\"description\":\"The ID of the lead to associate the file with\",\"format\":\"uuid\",\"type\":\"string\"},\"lead_name\":{\"description\":\"The name of the lead associated with the file\",\"type\":\"string\"},\"mail_message_id\":{\"description\":\"The ID of the mail message to associate the file with\",\"type\":\"string\"},\"mail_template_id\":{\"description\":\"The ID of the mail template to associate the file with\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate the file with\",\"type\":\"integer\"},\"org_name\":{\"description\":\"The name of the organization associated with the file\",\"type\":\"string\"},\"person_id\":{\"description\":\"The ID of the person to associate the file with\",\"type\":\"integer\"},\"person_name\":{\"description\":\"The name of the person associated with the file\",\"type\":\"string\"},\"product_id\":{\"description\":\"The ID of the product to associate the file with\",\"type\":\"integer\"},\"product_name\":{\"description\":\"The name of the product associated with the file\",\"type\":\"string\"},\"project_id\":{\"description\":\"The ID of the project to associate the file with\",\"type\":\"integer\"},\"project_name\":{\"description\":\"The name of the project associated with the file\",\"type\":\"string\"},\"remote_id\":{\"description\":\"The ID of the remote item\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only googledrive is supported at the moment.\",\"type\":\"string\"},\"s3_bucket\":{\"description\":\"The location of the cloud storage\",\"type\":\"string\"},\"update_time\":{\"description\":\"The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"url\":{\"description\":\"The URL of the download file\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user to associate the file with\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"GetFilesResponse\",\"type\":\"object\"}}},\"description\":\"Get data about all files uploaded to Pipedrive\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"activities:read\",\"activities:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/files"
+          segments: [
+            {
+              lit: "files"
+            }
+          ]
+          select: {
+            exist: [
+              "limit"
+              "sort"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /files/{id}"
+            json: "{\"operationId\":\"getFile\",\"parameters\":[{\"description\":\"The ID of the file\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-20 14:36:35\",\"cid\":\"\",\"deal_id\":1,\"deal_name\":\"\",\"description\":\"test file description\",\"file_name\":\"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\"file_size\":7801780,\"file_type\":\"img\",\"id\":123,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"test file name\",\"org_id\":1,\"org_name\":\"\",\"person_id\":789,\"person_name\":\"Person\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-20 14:57:33\",\"url\":\"https://2a7f.pipedrive.com/v1/files/123/download\",\"user_id\":456},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"The file data\",\"properties\":{\"active_flag\":{\"description\":\"Whether the user is active or not. false = Not activated, true = Activated\",\"type\":\"boolean\"},\"activity_id\":{\"description\":\"The ID of the activity to associate the file with\",\"type\":\"integer\"},\"add_time\":{\"description\":\"The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"cid\":{\"description\":\"The ID of the inline attachment\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal to associate the file with\",\"type\":\"integer\"},\"deal_name\":{\"description\":\"The name of the deal associated with the file\",\"type\":\"string\"},\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"file_name\":{\"description\":\"The original name of the file\",\"type\":\"string\"},\"file_size\":{\"description\":\"The size of the file\",\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"},\"inline_flag\":{\"description\":\"Whether the file was uploaded as inline or not\",\"type\":\"boolean\"},\"lead_id\":{\"description\":\"The ID of the lead to associate the file with\",\"format\":\"uuid\",\"type\":\"string\"},\"lead_name\":{\"description\":\"The name of the lead associated with the file\",\"type\":\"string\"},\"mail_message_id\":{\"description\":\"The ID of the mail message to associate the file with\",\"type\":\"string\"},\"mail_template_id\":{\"description\":\"The ID of the mail template to associate the file with\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate the file with\",\"type\":\"integer\"},\"org_name\":{\"description\":\"The name of the organization associated with the file\",\"type\":\"string\"},\"person_id\":{\"description\":\"The ID of the person to associate the file with\",\"type\":\"integer\"},\"person_name\":{\"description\":\"The name of the person associated with the file\",\"type\":\"string\"},\"product_id\":{\"description\":\"The ID of the product to associate the file with\",\"type\":\"integer\"},\"product_name\":{\"description\":\"The name of the product associated with the file\",\"type\":\"string\"},\"project_id\":{\"description\":\"The ID of the project to associate the file with\",\"type\":\"integer\"},\"project_name\":{\"description\":\"The name of the project associated with the file\",\"type\":\"string\"},\"remote_id\":{\"description\":\"The ID of the remote item\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only googledrive is supported at the moment.\",\"type\":\"string\"},\"s3_bucket\":{\"description\":\"The location of the cloud storage\",\"type\":\"string\"},\"update_time\":{\"description\":\"The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"url\":{\"description\":\"The URL of the download file\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user to associate the file with\",\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"GetFileResponse\",\"type\":\"object\"}}},\"description\":\"Get data about one specific file uploaded to Pipedrive\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"activities:read\",\"activities:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/files/{id}"
+          segments: [
+            {
+              lit: "files"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /files/{id}/download"
+            json: "{\"operationId\":\"downloadFile\",\"parameters\":[{\"description\":\"The ID of the file\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/octet-stream\":{\"schema\":{\"format\":\"byte\",\"title\":\"GetDownloadFileResponse\",\"type\":\"string\"}}},\"description\":\"success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"activities:read\",\"activities:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/files/{id}/download"
+          segments: [
+            {
+              lit: "files"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "download"
+            }
+          ]
+          select: {
+            "$action": "download"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "DELETE /files/{id}"
+            json: "{\"operationId\":\"deleteFile\",\"parameters\":[{\"description\":\"The ID of the file\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"id\":123},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"properties\":{\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"DeleteFileResponse\",\"type\":\"object\"}}},\"description\":\"Delete a file from Pipedrive\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "DELETE"
+          orig: "/files/{id}"
+          segments: [
+            {
+              lit: "files"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "PUT /files/{id}"
+            json: "{\"operationId\":\"updateFile\",\"parameters\":[{\"description\":\"The ID of the file\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/x-www-form-urlencoded\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"}},\"title\":\"updateFileRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"activity_id\":1,\"add_time\":\"2020-02-20 14:36:35\",\"cid\":\"\",\"deal_id\":1,\"deal_name\":\"\",\"description\":\"test file description\",\"file_name\":\"IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg\",\"file_size\":7801780,\"file_type\":\"img\",\"id\":123,\"inline_flag\":false,\"lead_id\":\"adf21080-0e10-11eb-879b-05d71fb426ec\",\"lead_name\":\"Test lead name\",\"log_id\":null,\"mail_message_id\":\"\",\"mail_template_id\":\"\",\"name\":\"test file name\",\"org_id\":1,\"org_name\":\"\",\"person_id\":789,\"person_name\":\"Person\",\"product_id\":1,\"product_name\":\"\",\"project_id\":1,\"project_name\":\"My project\",\"remote_id\":\"1mT6jshiv6537IirwOExXJuG1jdR4F0FQ\",\"remote_location\":\"googledocs\",\"s3_bucket\":\"\",\"update_time\":\"2020-02-20 14:57:33\",\"url\":\"https://2a7f.pipedrive.com/v1/files/123/download\",\"user_id\":456},\"success\":true},\"schema\":{\"properties\":{\"data\":{\"description\":\"The file data\",\"properties\":{\"active_flag\":{\"description\":\"Whether the user is active or not. false = Not activated, true = Activated\",\"type\":\"boolean\"},\"activity_id\":{\"description\":\"The ID of the activity to associate the file with\",\"type\":\"integer\"},\"add_time\":{\"description\":\"The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"cid\":{\"description\":\"The ID of the inline attachment\",\"type\":\"string\"},\"deal_id\":{\"description\":\"The ID of the deal to associate the file with\",\"type\":\"integer\"},\"deal_name\":{\"description\":\"The name of the deal associated with the file\",\"type\":\"string\"},\"description\":{\"description\":\"The description of the file\",\"type\":\"string\"},\"file_name\":{\"description\":\"The original name of the file\",\"type\":\"string\"},\"file_size\":{\"description\":\"The size of the file\",\"type\":\"integer\"},\"id\":{\"description\":\"The ID of the file\",\"type\":\"integer\"},\"inline_flag\":{\"description\":\"Whether the file was uploaded as inline or not\",\"type\":\"boolean\"},\"lead_id\":{\"description\":\"The ID of the lead to associate the file with\",\"format\":\"uuid\",\"type\":\"string\"},\"lead_name\":{\"description\":\"The name of the lead associated with the file\",\"type\":\"string\"},\"mail_message_id\":{\"description\":\"The ID of the mail message to associate the file with\",\"type\":\"string\"},\"mail_template_id\":{\"description\":\"The ID of the mail template to associate the file with\",\"type\":\"string\"},\"name\":{\"description\":\"The visible name of the file\",\"type\":\"string\"},\"org_id\":{\"description\":\"The ID of the organization to associate the file with\",\"type\":\"integer\"},\"org_name\":{\"description\":\"The name of the organization associated with the file\",\"type\":\"string\"},\"person_id\":{\"description\":\"The ID of the person to associate the file with\",\"type\":\"integer\"},\"person_name\":{\"description\":\"The name of the person associated with the file\",\"type\":\"string\"},\"product_id\":{\"description\":\"The ID of the product to associate the file with\",\"type\":\"integer\"},\"product_name\":{\"description\":\"The name of the product associated with the file\",\"type\":\"string\"},\"project_id\":{\"description\":\"The ID of the project to associate the file with\",\"type\":\"integer\"},\"project_name\":{\"description\":\"The name of the project associated with the file\",\"type\":\"string\"},\"remote_id\":{\"description\":\"The ID of the remote item\",\"type\":\"string\"},\"remote_location\":{\"description\":\"The location type to send the file to. Only googledrive is supported at the moment.\",\"type\":\"string\"},\"s3_bucket\":{\"description\":\"The location of the cloud storage\",\"type\":\"string\"},\"update_time\":{\"description\":\"The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS\",\"type\":\"string\"},\"url\":{\"description\":\"The URL of the download file\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user to associate the file with\",\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"If the request was successful or not\",\"type\":\"boolean\"}},\"title\":\"UpdateFileResponse\",\"type\":\"object\"}}},\"description\":\"Update file name and description\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PUT"
+          orig: "/files/{id}"
+          segments: [
+            {
+              lit: "files"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

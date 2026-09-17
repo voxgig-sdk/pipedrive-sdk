@@ -1,0 +1,44 @@
+# BasicProjectBoardFlow
+
+main: kit: flow: BasicProjectBoardFlow:
+{
+  entity: "project_board",
+  kind: "basic",
+  name: "BasicProjectBoardFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_board_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "project_board_ref01",
+        srcdatavar: "project_board_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "project_board01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_board_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectBoardFlow"
+}

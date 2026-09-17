@@ -1,23 +1,758 @@
 # Guide
 
 guide: {
-  metrics: count: entity: 1
-  metrics: count: path: 2
-  metrics: count: method: 5
+  metrics: count: entity: 42
+  metrics: count: path: 143
+  metrics: count: method: 213
+
+  entity: activity_field: {
+    path: "/activityFields": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: activity_type: {
+    path: "/activityTypes": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/activityTypes/{id}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: billing: {
+    path: "/billing/subscriptions/addons": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: call_log: {
+    path: "/callLogs": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/callLogs/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/callLogs/{id}/recordings": {
+      action: "recording": {}
+      op: create: method: *POST
+    }
+  }
+
+  entity: channel: {
+    path: "/channels": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/channels/messages/receive": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/channels/{channel-id}/conversations/{conversation-id}": {
+      rename: param: "channel-id": *"id"
+      rename: param: "conversation-id": *"conversation_id"
+      op: remove: method: *DELETE
+    }
+    path: "/channels/{id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: currency: {
+    path: "/currencies": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+  }
 
   entity: deal: {
-    path: "/deals": {
+    path: "/deals/archived": {
+      action: "archived": {}
+      op: list: method: *GET
+    }
+    path: "/deals/summary": {
+      action: "summary": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/summary/archived": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/timeline": {
+      action: "timeline": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/timeline/archived": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/{id}/changelog": {
+      action: "changelog": {}
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/duplicate": {
+      action: "duplicate": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/{id}/files": {
+      action: "file": {}
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/flow": {
+      action: "flow": {}
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/followers": {
+      action: "follower": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/followers/{follower_id}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/{id}/mailMessages": {
+      action: "mail_message": {}
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/merge": {
+      action: "merge": {}
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/{id}/participants": {
+      action: "participant": {}
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/participants/{deal_participant_id}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+    path: "/deals/{id}/participantsChangelog": {
+      action: "participants_changelog": {}
+      op: list: method: *GET
+    }
+    path: "/deals/{id}/permittedUsers": {
+      action: "permitted_user": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: deal_field: {
+    path: "/dealFields": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/dealFields/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: file: {
+    path: "/files": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/files/remote": {
+      action: "remote": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/files/remoteLink": {
+      action: "remote_link": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/files/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.data`")|top
+    }
+    path: "/files/{id}/download": {
+      action: "download": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: filter: {
+    path: "/filters": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/filters/helpers": {
+      action: "helper": {}
+      op: load: method: *GET
+    }
+    path: "/filters/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: goal: {
+    path: "/goals": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/goals/find": {
+      action: "find": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/goals/{id}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.data`")|top
+    }
+    path: "/goals/{id}/results": {
+      action: "result": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: lead: {
+    path: "/leads": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/leads/archived": {
+      action: "archived": {}
+      op: list: method: *GET
+    }
+    path: "/leads/search": {
+      action: "search": {}
+      op: load: method: *GET
+    }
+    path: "/leads/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+    path: "/leads/{id}/permittedUsers": {
+      action: "permitted_user": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: lead_field: {
+    path: "/leadFields": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: lead_label: {
+    path: "/leadLabels": {
       op: create: method: *POST
       op: create: transform: res: *("`body.data`")|top
       op: list: method: *GET
       op: list: transform: res: *("`body.data`")|top
     }
-    path: "/deals/{id}": {
+    path: "/leadLabels/{id}": {
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: lead_source: {
+    path: "/leadSources": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: legacy_team: {
+    path: "/legacyTeams": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/legacyTeams/user/{id}": {
+      op: load: method: *GET
+    }
+    path: "/legacyTeams/{id}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/legacyTeams/{id}/users": {
+      action: "user": {}
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: mailbox: {
+    path: "/mailbox/mailMessages/{id}": {
+      op: load: method: *GET
+    }
+    path: "/mailbox/mailThreads": {
+      action: "mail_thread": {}
+      op: list: method: *GET
+    }
+    path: "/mailbox/mailThreads/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/mailbox/mailThreads/{id}/mailMessages": {
+      rename: param: "id": *"mail_thread_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: meeting: {
+    path: "/meetings/userProviderLinks": {
+      action: "user_provider_link": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/meetings/userProviderLinks/{id}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: note: {
+    path: "/notes": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/notes/{id}": {
       op: load: method: *GET
       op: load: transform: res: *("`body.data`")|top
       op: remove: method: *DELETE
       op: update: method: *PUT
       op: update: transform: res: *("`body.data`")|top
+    }
+    path: "/notes/{id}/comments": {
+      action: "comment": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/notes/{id}/comments/{commentId}": {
+      rename: param: "commentId": *"comment_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: note_field: {
+    path: "/noteFields": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: oauth: {
+    path: "/oauth/authorize": {
+      action: "authorize": {}
+      op: load: method: *GET
+    }
+    path: "/oauth/token": {
+      action: "token": {}
+      op: create: method: *POST
+    }
+    path: "/oauth/token/": {
+      action: "token": {}
+      op: create: method: *POST
+    }
+  }
+
+  entity: organization: {
+    path: "/organizations/{id}/changelog": {
+      action: "changelog": {}
+      op: list: method: *GET
+    }
+    path: "/organizations/{id}/files": {
+      action: "file": {}
+      op: list: method: *GET
+    }
+    path: "/organizations/{id}/flow": {
+      action: "flow": {}
+      op: list: method: *GET
+    }
+    path: "/organizations/{id}/followers": {
+      action: "follower": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/organizations/{id}/followers/{follower_id}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+    path: "/organizations/{id}/mailMessages": {
+      action: "mail_message": {}
+      op: list: method: *GET
+    }
+    path: "/organizations/{id}/merge": {
+      action: "merge": {}
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.data`")|top
+    }
+    path: "/organizations/{id}/permittedUsers": {
+      action: "permitted_user": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: organization_field: {
+    path: "/organizationFields": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/organizationFields/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: organization_relationship: {
+    path: "/organizationRelationships": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/organizationRelationships/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: permission_set: {
+    path: "/permissionSets": {
+      op: list: method: *GET
+    }
+    path: "/permissionSets/{id}": {
+      op: load: method: *GET
+    }
+    path: "/permissionSets/{id}/assignments": {
+      action: "assignment": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: person: {
+    path: "/persons/{id}/changelog": {
+      action: "changelog": {}
+      op: list: method: *GET
+    }
+    path: "/persons/{id}/files": {
+      action: "file": {}
+      op: list: method: *GET
+    }
+    path: "/persons/{id}/flow": {
+      action: "flow": {}
+      op: list: method: *GET
+    }
+    path: "/persons/{id}/followers": {
+      action: "follower": {}
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/persons/{id}/followers/{follower_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/persons/{id}/mailMessages": {
+      action: "mail_message": {}
+      op: list: method: *GET
+    }
+    path: "/persons/{id}/merge": {
+      action: "merge": {}
+      op: update: method: *PUT
+    }
+    path: "/persons/{id}/permittedUsers": {
+      action: "permitted_user": {}
+      op: list: method: *GET
+    }
+    path: "/persons/{id}/picture": {
+      action: "picture": {}
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/persons/{id}/products": {
+      action: "product": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: person_field: {
+    path: "/personFields": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/personFields/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipeline: {
+    path: "/pipelines/{id}/conversion_statistics": {
+      action: "conversion_statistic": {}
+      op: load: method: *GET
+    }
+    path: "/pipelines/{id}/deals": {
+      action: "deal": {}
+      op: list: method: *GET
+    }
+    path: "/pipelines/{id}/movement_statistics": {
+      action: "movement_statistic": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: product: {
+    path: "/products/{id}/deals": {
+      action: "deal": {}
+      op: list: method: *GET
+    }
+    path: "/products/{id}/files": {
+      action: "file": {}
+      op: list: method: *GET
+    }
+    path: "/products/{id}/followers": {
+      action: "follower": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+    }
+    path: "/products/{id}/followers/{follower_id}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+    path: "/products/{id}/permittedUsers": {
+      action: "permitted_user": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: product_field: {
+    path: "/productFields": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+    }
+    path: "/productFields/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.data`")|top
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: project: {
+    path: "/projects": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/projects/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/projects/{id}/activities": {
+      action: "activity": {}
+      op: list: method: *GET
+    }
+    path: "/projects/{id}/archive": {
+      action: "archive": {}
+      op: create: method: *POST
+    }
+    path: "/projects/{id}/groups": {
+      action: "group": {}
+      op: list: method: *GET
+    }
+    path: "/projects/{id}/plan": {
+      action: "plan": {}
+      op: list: method: *GET
+    }
+    path: "/projects/{id}/plan/activities/{activityId}": {
+      rename: param: "activityId": *"activity_id"
+      op: update: method: *PUT
+    }
+    path: "/projects/{id}/plan/tasks/{taskId}": {
+      rename: param: "taskId": *"task_id"
+      op: update: method: *PUT
+    }
+    path: "/projects/{id}/tasks": {
+      action: "task": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: project_board: {
+    path: "/projects/boards": {
+      op: list: method: *GET
+    }
+    path: "/projects/boards/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: project_phase: {
+    path: "/projects/phases": {
+      op: list: method: *GET
+    }
+    path: "/projects/phases/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: project_template: {
+    path: "/projectTemplates": {
+      op: list: method: *GET
+    }
+    path: "/projectTemplates/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: recent: {
+    path: "/recents": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: role: {
+    path: "/roles": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/roles/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/roles/{id}/assignments": {
+      action: "assignment": {}
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/roles/{id}/pipelines": {
+      action: "pipeline": {}
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/roles/{id}/settings": {
+      action: "setting": {}
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: stage: {
+    path: "/stages/{id}/deals": {
+      action: "deal": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: task: {
+    path: "/tasks": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/tasks/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: user: {
+    path: "/users": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/users/find": {
+      action: "find": {}
+      op: list: method: *GET
+    }
+    path: "/users/me": {
+      action: "me": {}
+      op: load: method: *GET
+    }
+    path: "/users/{id}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/users/{id}/followers": {
+      action: "follower": {}
+      op: list: method: *GET
+    }
+    path: "/users/{id}/permissions": {
+      action: "permission": {}
+      op: load: method: *GET
+    }
+    path: "/users/{id}/roleAssignments": {
+      action: "role_assignment": {}
+      op: list: method: *GET
+    }
+    path: "/users/{id}/roleSettings": {
+      action: "role_setting": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: user_connection: {
+    path: "/userConnections": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: user_setting: {
+    path: "/userSettings": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: webhook: {
+    path: "/webhooks": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/webhooks/{id}": {
+      op: remove: method: *DELETE
     }
   }
 

@@ -1,0 +1,22 @@
+# BasicStageFlow
+
+main: kit: flow: BasicStageFlow:
+{
+  entity: "stage",
+  kind: "basic",
+  name: "BasicStageFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "stage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStageFlow"
+}

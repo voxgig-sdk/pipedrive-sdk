@@ -42,7 +42,7 @@ describe('DealDirect', async () => {
     const params = {}
     if (setup.live) {
       const listResult = await client.direct({
-        path: 'deals',
+        path: 'deals/archived',
         method: 'GET',
         params: {
 
@@ -56,11 +56,11 @@ describe('DealDirect', async () => {
       params.id = listData[0].id
 
     } else {
-      params.id = 'direct01'
+
     }
 
     const result = await client.direct({
-      path: 'deals/{id}',
+      path: 'deals/timeline',
       method: 'GET',
       params,
     })
@@ -73,7 +73,6 @@ describe('DealDirect', async () => {
       assert(result.data.id === 'direct01')
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
     }
   })
 
@@ -85,7 +84,7 @@ describe('DealDirect', async () => {
     const params = {}
 
     const result = await client.direct({
-      path: 'deals',
+      path: 'deals/archived',
       method: 'GET',
       params,
     })

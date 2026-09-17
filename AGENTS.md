@@ -31,7 +31,7 @@ Each feature is generated into every SDK target — as a directory
 `<lang>/src/feature/<name>/` (ts/js) or a flat file in the `<lang>/feature/`
 package (other languages). Each target's guide documents its features.
 
-**Entities** (1): `Deal`.
+**Entities** (42): `ActivityField`, `ActivityType`, `Billing`, `CallLog`, `Channel`, `Currency`, `Deal`, `DealField`, `File`, `Filter`, `Goal`, `Lead`, `LeadField`, `LeadLabel`, `LeadSource`, `LegacyTeam`, `Mailbox`, `Meeting`, `Note`, `NoteField`, `Oauth`, `Organization`, `OrganizationField`, `OrganizationRelationship`, `PermissionSet`, `Person`, `PersonField`, `Pipeline`, `Product`, `ProductField`, `Project`, `ProjectBoard`, `ProjectPhase`, `ProjectTemplate`, `Recent`, `Role`, `Stage`, `Task`, `User`, `UserConnection`, `UserSetting`, `Webhook`.
 
 ## Generating and updating the SDK
 

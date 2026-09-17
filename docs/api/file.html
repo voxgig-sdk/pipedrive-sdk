@@ -1,0 +1,2132 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>File | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a aria-current="page" href="../api/file.html">File</a><div class="nav-sections"><a class="nav-section" href="#post-files">POST /files</a>
+<a class="nav-section" href="#post-filesremote">POST /files/remote</a>
+<a class="nav-section" href="#post-filesremotelink">POST /files/remoteLink</a>
+<a class="nav-section" href="#get-files">GET /files</a>
+<a class="nav-section" href="#get-filesid">GET /files/{id}</a>
+<a class="nav-section" href="#get-filesiddownload">GET /files/{id}/download</a>
+<a class="nav-section" href="#delete-filesid">DELETE /files/{id}</a>
+<a class="nav-section" href="#put-filesid">PUT /files/{id}</a></div>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="file">File</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-files"><code>/files</code></a></td>
+<td><code>create</code></td>
+<td>Add a file from computer or Google Drive and associate it with deal, person, organization, activity or product</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-filesremote"><code>/files/remote</code></a></td>
+<td><code>create</code></td>
+<td>Creates a new empty file in the remote location (googledrive) that will be linked to the item you supply - deal, person or organization</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-filesremotelink"><code>/files/remoteLink</code></a></td>
+<td><code>create</code></td>
+<td>Links an existing remote file (googledrive) to the item you supply - deal, person, organization</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-files"><code>/files</code></a></td>
+<td><code>list</code></td>
+<td>Get data about all files uploaded to Pipedrive</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-filesid"><code>/files/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Get data about one specific file uploaded to Pipedrive</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-filesiddownload"><code>/files/{id}/download</code></a></td>
+<td><code>load</code></td>
+<td>success</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-filesid"><code>/files/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Delete a file from Pipedrive</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-filesid"><code>/files/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Update file name and description</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not.</td>
+</tr>
+<tr>
+<td><code>activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created.</td>
+</tr>
+<tr>
+<td><code>cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>lead_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to.</td>
+</tr>
+<tr>
+<td><code>s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-files" class="operation" data-method="post"><code>POST</code> /files</h3>
+<p>Operation ID: <code>addFile</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate file(s) with</td>
+</tr>
+<tr>
+<td><code>deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate file(s) with</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string (binary)</code></td>
+<td>Yes</td>
+<td>A single file, supplied in the multipart/form-data encoding and contained within the given boundaries</td>
+</tr>
+<tr>
+<td><code>lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate file(s) with</td>
+</tr>
+<tr>
+<td><code>org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate file(s) with</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate file(s) with</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate file(s) with</td>
+</tr>
+<tr>
+<td><code>project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate file(s) with</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-add-a-file-from-computer-or-google-drive-and-associate-it-with-deal-person-organization-activity-or-product" class="status" data-status="2xx">200: Add a file from computer or Google Drive and associate it with deal, person, organization, activity or product</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The file data</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not. false = Not activated, true = Activated</td>
+</tr>
+<tr>
+<td><code>data.activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>data.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>data.file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>data.file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>data.inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>data.mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>data.product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>data.remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>data.remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to. Only googledrive is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>data.s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;activity_id&quot;: 1,
+    &quot;add_time&quot;: &quot;2020-02-20 14:36:35&quot;,
+    &quot;cid&quot;: &quot;&quot;,
+    &quot;deal_id&quot;: 1,
+    &quot;deal_name&quot;: &quot;&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;file_name&quot;: &quot;IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg&quot;,
+    &quot;file_size&quot;: 7801780,
+    &quot;file_type&quot;: &quot;img&quot;,
+    &quot;id&quot;: 123,
+    &quot;inline_flag&quot;: false,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;lead_name&quot;: &quot;Test lead name&quot;,
+    &quot;log_id&quot;: null,
+    &quot;mail_message_id&quot;: &quot;&quot;,
+    &quot;mail_template_id&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;IMG_8189.jpg&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;org_name&quot;: &quot;&quot;,
+    &quot;person_id&quot;: 789,
+    &quot;person_name&quot;: &quot;Person&quot;,
+    &quot;product_id&quot;: 1,
+    &quot;product_name&quot;: &quot;&quot;,
+    &quot;project_id&quot;: 1,
+    &quot;project_name&quot;: &quot;My project&quot;,
+    &quot;remote_id&quot;: &quot;1mT6jshiv6537IirwOExXJuG1jdR4F0FQ&quot;,
+    &quot;remote_location&quot;: &quot;googledocs&quot;,
+    &quot;s3_bucket&quot;: &quot;&quot;,
+    &quot;update_time&quot;: &quot;2020-02-20 14:36:31&quot;,
+    &quot;url&quot;: &quot;https://2a7f.pipedrive.com/v1/files/123/download&quot;,
+    &quot;user_id&quot;: 456
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-filesremote" class="operation" data-method="post"><code>POST</code> /files/remote</h3>
+<p>Operation ID: <code>addFileAndLinkIt</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file_type</code></td>
+<td><code>enum: gdoc, gslides, gsheet, gform, gdraw</code></td>
+<td>Yes</td>
+<td>The file type</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The ID of the item to associate the file with</td>
+</tr>
+<tr>
+<td><code>item_type</code></td>
+<td><code>enum: deal, organization, person</code></td>
+<td>Yes</td>
+<td>The item type</td>
+</tr>
+<tr>
+<td><code>remote_location</code></td>
+<td><code>enum: googledrive</code></td>
+<td>Yes</td>
+<td>The location type to send the file to. Only <code>googledrive</code> is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The title of the file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-creates-a-new-empty-file-in-the-remote-location-googledrive-that-will-be-linked-to-the-item-you-supply---deal-person-or-organization" class="status" data-status="2xx">200: Creates a new empty file in the remote location (googledrive) that will be linked to the item you supply - deal, person or organization</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The file data</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not. false = Not activated, true = Activated</td>
+</tr>
+<tr>
+<td><code>data.activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>data.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>data.file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>data.file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>data.inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>data.mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>data.product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>data.remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>data.remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to. Only googledrive is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>data.s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;activity_id&quot;: 1,
+    &quot;add_time&quot;: &quot;2020-02-21 11:52:28&quot;,
+    &quot;cid&quot;: &quot;&quot;,
+    &quot;deal_id&quot;: 36,
+    &quot;deal_name&quot;: &quot;test deal&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;file_name&quot;: &quot;&quot;,
+    &quot;file_size&quot;: 0,
+    &quot;file_type&quot;: &quot;gdoc&quot;,
+    &quot;id&quot;: 7195,
+    &quot;inline_flag&quot;: false,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;lead_name&quot;: &quot;Test lead name 1&quot;,
+    &quot;log_id&quot;: null,
+    &quot;mail_message_id&quot;: &quot;&quot;,
+    &quot;mail_template_id&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;Test title for remote file&quot;,
+    &quot;org_id&quot;: 15,
+    &quot;org_name&quot;: &quot;test org&quot;,
+    &quot;person_id&quot;: 1,
+    &quot;person_name&quot;: &quot;&quot;,
+    &quot;product_id&quot;: 1,
+    &quot;product_name&quot;: &quot;&quot;,
+    &quot;project_id&quot;: 1,
+    &quot;project_name&quot;: &quot;My project&quot;,
+    &quot;remote_id&quot;: &quot;1gzyh6ExBxIb4RBZbAZxsrrBp45yuXhZWq3Zash5b75c&quot;,
+    &quot;remote_location&quot;: &quot;googledocs&quot;,
+    &quot;s3_bucket&quot;: &quot;&quot;,
+    &quot;update_time&quot;: &quot;2020-02-21 11:52:24&quot;,
+    &quot;url&quot;: &quot;https://app.pipedrive.com/api/v1/files/7195/download&quot;,
+    &quot;user_id&quot;: 456
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-filesremotelink" class="operation" data-method="post"><code>POST</code> /files/remoteLink</h3>
+<p>Operation ID: <code>linkFileToItem</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item_id</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The ID of the item to associate the file with</td>
+</tr>
+<tr>
+<td><code>item_type</code></td>
+<td><code>enum: deal, organization, person</code></td>
+<td>Yes</td>
+<td>The item type</td>
+</tr>
+<tr>
+<td><code>remote_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The remote item ID</td>
+</tr>
+<tr>
+<td><code>remote_location</code></td>
+<td><code>enum: googledrive</code></td>
+<td>Yes</td>
+<td>The location type to send the file to. Only <code>googledrive</code> is supported at the moment.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-links-an-existing-remote-file-googledrive-to-the-item-you-supply---deal-person-organization" class="status" data-status="2xx">200: Links an existing remote file (googledrive) to the item you supply - deal, person, organization</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The file data</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not. false = Not activated, true = Activated</td>
+</tr>
+<tr>
+<td><code>data.activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>data.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>data.file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>data.file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>data.inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>data.mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>data.product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>data.remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>data.remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to. Only googledrive is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>data.s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;activity_id&quot;: 1,
+    &quot;add_time&quot;: &quot;2020-02-21 12:02:37&quot;,
+    &quot;cid&quot;: &quot;&quot;,
+    &quot;deal_id&quot;: 35,
+    &quot;deal_name&quot;: &quot;Test deal name&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;file_name&quot;: &quot;Test title to remote file&quot;,
+    &quot;file_size&quot;: 0,
+    &quot;file_type&quot;: &quot;gdoc&quot;,
+    &quot;id&quot;: 7196,
+    &quot;inline_flag&quot;: false,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;lead_name&quot;: &quot;Test lead name&quot;,
+    &quot;log_id&quot;: null,
+    &quot;mail_message_id&quot;: &quot;&quot;,
+    &quot;mail_template_id&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;Test title for remote file&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;org_name&quot;: &quot;&quot;,
+    &quot;person_id&quot;: 1,
+    &quot;person_name&quot;: &quot;Test person name&quot;,
+    &quot;product_id&quot;: 1,
+    &quot;product_name&quot;: &quot;&quot;,
+    &quot;project_id&quot;: 1,
+    &quot;project_name&quot;: &quot;My project&quot;,
+    &quot;remote_id&quot;: &quot;1gzyh6ExBxIb4RBZbAZxsrrBp45yuXhZWq3Zash5b75c&quot;,
+    &quot;remote_location&quot;: &quot;googledocs&quot;,
+    &quot;s3_bucket&quot;: &quot;&quot;,
+    &quot;update_time&quot;: &quot;2020-02-21 12:02:37&quot;,
+    &quot;url&quot;: &quot;https://app.pipedrive.com/api/v1/files/7196/download&quot;,
+    &quot;user_id&quot;: 456
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-files" class="operation" data-method="get"><code>GET</code> /files</h3>
+<p>Operation ID: <code>getFiles</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page. Please note that a maximum value of 100 is allowed. |
+| <code>sort</code> | <code>query</code> | <code>string</code> | No | Supported fields: <code>id</code>, <code>update_time</code> |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-get-data-about-all-files-uploaded-to-pipedrive" class="status" data-status="2xx">200: Get data about all files uploaded to Pipedrive</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.pagination</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>Pagination details of the list</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The array of all uploaded files</td>
+</tr>
+<tr>
+<td><code>data[].active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not. false = Not activated, true = Activated</td>
+</tr>
+<tr>
+<td><code>data[].activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data[].cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>data[].deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>data[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>data[].file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>data[].file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>data[].inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>data[].lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>data[].mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>data[].org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>data[].person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>data[].product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>data[].project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>data[].project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>data[].remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>data[].remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to. Only googledrive is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>data[].s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>data[].update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data[].url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>data[].user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;next_start&quot;: 100,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;activity_id&quot;: 1,
+      &quot;add_time&quot;: &quot;2020-02-20 14:36:35&quot;,
+      &quot;cid&quot;: &quot;&quot;,
+      &quot;deal_id&quot;: 1,
+      &quot;deal_name&quot;: &quot;&quot;,
+      &quot;description&quot;: &quot;test file description&quot;,
+      &quot;file_name&quot;: &quot;IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg&quot;,
+      &quot;file_size&quot;: 7801780,
+      &quot;file_type&quot;: &quot;img&quot;,
+      &quot;id&quot;: 123,
+      &quot;inline_flag&quot;: false,
+      &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;lead_name&quot;: &quot;Test lead name&quot;,
+      &quot;log_id&quot;: null,
+      &quot;mail_message_id&quot;: &quot;&quot;,
+      &quot;mail_template_id&quot;: &quot;&quot;,
+      &quot;name&quot;: &quot;test file name&quot;,
+      &quot;org_id&quot;: 1,
+      &quot;org_name&quot;: &quot;&quot;,
+      &quot;person_id&quot;: 789,
+      &quot;person_name&quot;: &quot;Person&quot;,
+      &quot;product_id&quot;: 1,
+      &quot;product_name&quot;: &quot;&quot;,
+      &quot;project_id&quot;: 1,
+      &quot;project_name&quot;: &quot;My project&quot;,
+      &quot;remote_id&quot;: &quot;1mT6jshiv6537IirwOExXJuG1jdR4F0FQ&quot;,
+      &quot;remote_location&quot;: &quot;googledocs&quot;,
+      &quot;s3_bucket&quot;: &quot;&quot;,
+      &quot;update_time&quot;: &quot;2020-02-20 14:57:33&quot;,
+      &quot;url&quot;: &quot;https://2a7f.pipedrive.com/v1/files/123/download&quot;,
+      &quot;user_id&quot;: 456
+    },
+    {
+      &quot;active_flag&quot;: true,
+      &quot;activity_id&quot;: 1,
+      &quot;add_time&quot;: &quot;2020-02-20 14:36:35&quot;,
+      &quot;cid&quot;: &quot;&quot;,
+      &quot;deal_id&quot;: 1,
+      &quot;deal_name&quot;: &quot;&quot;,
+      &quot;description&quot;: &quot;second test file description&quot;,
+      &quot;file_name&quot;: &quot;IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg&quot;,
+      &quot;file_size&quot;: 7801780,
+      &quot;file_type&quot;: &quot;img&quot;,
+      &quot;id&quot;: 123321,
+      &quot;inline_flag&quot;: false,
+      &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;lead_name&quot;: &quot;Test lead name&quot;,
+      &quot;log_id&quot;: null,
+      &quot;mail_message_id&quot;: &quot;&quot;,
+      &quot;mail_template_id&quot;: &quot;&quot;,
+      &quot;name&quot;: &quot;second test file name&quot;,
+      &quot;org_id&quot;: 1,
+      &quot;org_name&quot;: &quot;&quot;,
+      &quot;person_id&quot;: 789987,
+      &quot;person_name&quot;: &quot;Person&quot;,
+      &quot;product_id&quot;: 1,
+      &quot;product_name&quot;: &quot;&quot;,
+      &quot;project_id&quot;: 1,
+      &quot;project_name&quot;: &quot;My project&quot;,
+      &quot;remote_id&quot;: &quot;1mT6jshiv6537IirwOExXJuG1jdR4F0FQ&quot;,
+      &quot;remote_location&quot;: &quot;googledocs&quot;,
+      &quot;s3_bucket&quot;: &quot;&quot;,
+      &quot;update_time&quot;: &quot;2020-02-20 14:57:33&quot;,
+      &quot;url&quot;: &quot;https://2a7f.pipedrive.com/v1/files/123321/download&quot;,
+      &quot;user_id&quot;: 456
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-filesid" class="operation" data-method="get"><code>GET</code> /files/{id}</h3>
+<p>Operation ID: <code>getFile</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the file |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-get-data-about-one-specific-file-uploaded-to-pipedrive" class="status" data-status="2xx">200: Get data about one specific file uploaded to Pipedrive</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The file data</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not. false = Not activated, true = Activated</td>
+</tr>
+<tr>
+<td><code>data.activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>data.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>data.file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>data.file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>data.inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>data.mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>data.product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>data.remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>data.remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to. Only googledrive is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>data.s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;activity_id&quot;: 1,
+    &quot;add_time&quot;: &quot;2020-02-20 14:36:35&quot;,
+    &quot;cid&quot;: &quot;&quot;,
+    &quot;deal_id&quot;: 1,
+    &quot;deal_name&quot;: &quot;&quot;,
+    &quot;description&quot;: &quot;test file description&quot;,
+    &quot;file_name&quot;: &quot;IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg&quot;,
+    &quot;file_size&quot;: 7801780,
+    &quot;file_type&quot;: &quot;img&quot;,
+    &quot;id&quot;: 123,
+    &quot;inline_flag&quot;: false,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;lead_name&quot;: &quot;Test lead name&quot;,
+    &quot;log_id&quot;: null,
+    &quot;mail_message_id&quot;: &quot;&quot;,
+    &quot;mail_template_id&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;test file name&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;org_name&quot;: &quot;&quot;,
+    &quot;person_id&quot;: 789,
+    &quot;person_name&quot;: &quot;Person&quot;,
+    &quot;product_id&quot;: 1,
+    &quot;product_name&quot;: &quot;&quot;,
+    &quot;project_id&quot;: 1,
+    &quot;project_name&quot;: &quot;My project&quot;,
+    &quot;remote_id&quot;: &quot;1mT6jshiv6537IirwOExXJuG1jdR4F0FQ&quot;,
+    &quot;remote_location&quot;: &quot;googledocs&quot;,
+    &quot;s3_bucket&quot;: &quot;&quot;,
+    &quot;update_time&quot;: &quot;2020-02-20 14:57:33&quot;,
+    &quot;url&quot;: &quot;https://2a7f.pipedrive.com/v1/files/123/download&quot;,
+    &quot;user_id&quot;: 456
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-filesiddownload" class="operation" data-method="get"><code>GET</code> /files/{id}/download</h3>
+<p>Operation ID: <code>downloadFile</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the file |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: success</h5>
+<p><code>application/octet-stream</code></p>
+<p>The response is <code>string (byte)</code>.</p>
+<h2 id="remove">remove</h2>
+<h3 id="delete-filesid" class="operation" data-method="delete"><code>DELETE</code> /files/{id}</h3>
+<p>Operation ID: <code>deleteFile</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the file |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-delete-a-file-from-pipedrive" class="status" data-status="2xx">200: Delete a file from Pipedrive</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 123
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-filesid" class="operation" data-method="put"><code>PUT</code> /files/{id}</h3>
+<p>Operation ID: <code>updateFile</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the file |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-update-file-name-and-description" class="status" data-status="2xx">200: Update file name and description</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The file data</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the user is active or not. false = Not activated, true = Activated</td>
+</tr>
+<tr>
+<td><code>data.activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the activity to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the file was added/created. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.cid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the inline attachment</td>
+</tr>
+<tr>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.deal_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the deal associated with the file</td>
+</tr>
+<tr>
+<td><code>data.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the file</td>
+</tr>
+<tr>
+<td><code>data.file_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The original name of the file</td>
+</tr>
+<tr>
+<td><code>data.file_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The size of the file</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the file</td>
+</tr>
+<tr>
+<td><code>data.inline_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the file was uploaded as inline or not</td>
+</tr>
+<tr>
+<td><code>data.lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.lead_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead associated with the file</td>
+</tr>
+<tr>
+<td><code>data.mail_message_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail message to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.mail_template_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the mail template to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visible name of the file</td>
+</tr>
+<tr>
+<td><code>data.org_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the organization to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.org_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the organization associated with the file</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.person_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person associated with the file</td>
+</tr>
+<tr>
+<td><code>data.product_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the product to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.product_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the product associated with the file</td>
+</tr>
+<tr>
+<td><code>data.project_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project to associate the file with</td>
+</tr>
+<tr>
+<td><code>data.project_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the project associated with the file</td>
+</tr>
+<tr>
+<td><code>data.remote_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the remote item</td>
+</tr>
+<tr>
+<td><code>data.remote_location</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location type to send the file to. Only googledrive is supported at the moment.</td>
+</tr>
+<tr>
+<td><code>data.s3_bucket</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The location of the cloud storage</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last updated date and time of the file. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL of the download file</td>
+</tr>
+<tr>
+<td><code>data.user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user to associate the file with</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;activity_id&quot;: 1,
+    &quot;add_time&quot;: &quot;2020-02-20 14:36:35&quot;,
+    &quot;cid&quot;: &quot;&quot;,
+    &quot;deal_id&quot;: 1,
+    &quot;deal_name&quot;: &quot;&quot;,
+    &quot;description&quot;: &quot;test file description&quot;,
+    &quot;file_name&quot;: &quot;IMG_8189_52233498214699de9579e7b304a81b157b2eb2137e8062.jpg&quot;,
+    &quot;file_size&quot;: 7801780,
+    &quot;file_type&quot;: &quot;img&quot;,
+    &quot;id&quot;: 123,
+    &quot;inline_flag&quot;: false,
+    &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;lead_name&quot;: &quot;Test lead name&quot;,
+    &quot;log_id&quot;: null,
+    &quot;mail_message_id&quot;: &quot;&quot;,
+    &quot;mail_template_id&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;test file name&quot;,
+    &quot;org_id&quot;: 1,
+    &quot;org_name&quot;: &quot;&quot;,
+    &quot;person_id&quot;: 789,
+    &quot;person_name&quot;: &quot;Person&quot;,
+    &quot;product_id&quot;: 1,
+    &quot;product_name&quot;: &quot;&quot;,
+    &quot;project_id&quot;: 1,
+    &quot;project_name&quot;: &quot;My project&quot;,
+    &quot;remote_id&quot;: &quot;1mT6jshiv6537IirwOExXJuG1jdR4F0FQ&quot;,
+    &quot;remote_location&quot;: &quot;googledocs&quot;,
+    &quot;s3_bucket&quot;: &quot;&quot;,
+    &quot;update_time&quot;: &quot;2020-02-20 14:57:33&quot;,
+    &quot;url&quot;: &quot;https://2a7f.pipedrive.com/v1/files/123/download&quot;,
+    &quot;user_id&quot;: 456
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

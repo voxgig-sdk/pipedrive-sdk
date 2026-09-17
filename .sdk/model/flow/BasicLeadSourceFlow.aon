@@ -1,0 +1,22 @@
+# BasicLeadSourceFlow
+
+main: kit: flow: BasicLeadSourceFlow:
+{
+  entity: "lead_source",
+  kind: "basic",
+  name: "BasicLeadSourceFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "lead_source_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLeadSourceFlow"
+}

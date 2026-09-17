@@ -1,0 +1,100 @@
+# BasicRoleFlow
+
+main: kit: flow: BasicRoleFlow:
+{
+  entity: "role",
+  kind: "basic",
+  name: "BasicRoleFlow",
+  step: [
+    {
+      input: {
+        ref: "role_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "role_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "role_ref01",
+        srcdatavar: "role_ref01_data",
+        suffix: "_up0",
+        textfield: "name"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-role_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "role_ref01",
+        srcdatavar: "role_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "role01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-role_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "role_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "role01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "role_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRoleFlow"
+}

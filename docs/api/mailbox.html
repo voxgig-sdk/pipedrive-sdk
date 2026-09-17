@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mailbox | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a aria-current="page" href="../api/mailbox.html">Mailbox</a><div class="nav-sections"><a class="nav-section" href="#get-mailboxmailthreads">GET /mailbox/mailThreads</a>
+<a class="nav-section" href="#get-mailboxmailthreadsidmailmessages">GET /mailbox/mailThreads/{id}/mailMessages</a>
+<a class="nav-section" href="#get-mailboxmailmessagesid">GET /mailbox/mailMessages/{id}</a>
+<a class="nav-section" href="#get-mailboxmailthreadsid">GET /mailbox/mailThreads/{id}</a>
+<a class="nav-section" href="#delete-mailboxmailthreadsid">DELETE /mailbox/mailThreads/{id}</a>
+<a class="nav-section" href="#put-mailboxmailthreadsid">PUT /mailbox/mailThreads/{id}</a></div>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="mailbox">Mailbox</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-mailboxmailthreads"><code>/mailbox/mailThreads</code></a></td>
+<td><code>list</code></td>
+<td>Get mail threads</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-mailboxmailthreadsidmailmessages"><code>/mailbox/mailThreads/{id}/mailMessages</code></a></td>
+<td><code>list</code></td>
+<td>Get mail messages from thread</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-mailboxmailmessagesid"><code>/mailbox/mailMessages/{id}</code></a></td>
+<td><code>load</code></td>
+<td>The mail messages that are being synced with Pipedrive</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-mailboxmailthreadsid"><code>/mailbox/mailThreads/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Get mail threads</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-mailboxmailthreadsid"><code>/mailbox/mailThreads/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Marks mail thread as deleted</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-mailboxmailthreadsid"><code>/mailbox/mailThreads/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Updates the properties of a mail thread</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The mail thread object</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The service name of the response.</td>
+</tr>
+<tr>
+<td><code>statusCode</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The email service specific status code and it is returned through the response body.</td>
+</tr>
+<tr>
+<td><code>statusText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status text of the response.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-mailboxmailthreads" class="operation" data-method="get"><code>GET</code> /mailbox/mailThreads</h3>
+<p>Operation ID: <code>getMailThreads</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>folder</code> | <code>query</code> | <code>enum: inbox, drafts, sent, archive</code> | Yes | The type of folder to fetch |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-get-mail-threads" class="status" data-status="2xx">200: Get mail threads</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;account_id&quot;: &quot;123412jhfsaa221&quot;,
+      &quot;add_time&quot;: &quot;2019-11-20T17:40:59.000Z&quot;,
+      &quot;all_messages_sent_flag&quot;: 0,
+      &quot;archived_flag&quot;: 0,
+      &quot;deal_id&quot;: null,
+      &quot;deal_status&quot;: null,
+      &quot;deleted_flag&quot;: 0,
+      &quot;drafts_parties&quot;: [],
+      &quot;external_deleted_flag&quot;: 0,
+      &quot;first_message_timestamp&quot;: &quot;2019-11-20T17:40:46.000Z&quot;,
+      &quot;first_message_to_me_flag&quot;: 1,
+      &quot;folders&quot;: [
+        &quot;inbox&quot;
+      ],
+      &quot;has_attachments_flag&quot;: 1,
+      &quot;has_draft_flag&quot;: 0,
+      &quot;has_inline_attachments_flag&quot;: 1,
+      &quot;has_real_attachments_flag&quot;: 0,
+      &quot;has_sent_flag&quot;: 0,
+      &quot;id&quot;: 1,
+      &quot;last_message_received_timestamp&quot;: &quot;2019-11-20T20:20:46.000Z&quot;,
+      &quot;last_message_sent_timestamp&quot;: null,
+      &quot;last_message_timestamp&quot;: &quot;2019-11-20T20:20:46.000Z&quot;,
+      &quot;mail_link_tracking_enabled_flag&quot;: 0,
+      &quot;parties&quot;: {
+        &quot;from&quot;: [
+          {
+            &quot;email_address&quot;: &quot;example@test.com&quot;,
+            &quot;id&quot;: 3,
+            &quot;latest_sent&quot;: false,
+            &quot;linked_organization_id&quot;: null,
+            &quot;linked_person_id&quot;: 2,
+            &quot;linked_person_name&quot;: &quot;Tester&quot;,
+            &quot;mail_message_party_id&quot;: 5318,
+            &quot;message_time&quot;: 1574677850000,
+            &quot;name&quot;: &quot;&quot;
+          }
+        ],
+        &quot;to&quot;: [
+          {
+            &quot;email_address&quot;: &quot;example@test.com&quot;,
+            &quot;id&quot;: 2,
+            &quot;latest_sent&quot;: false,
+            &quot;linked_organization_id&quot;: null,
+            &quot;linked_person_id&quot;: 3,
+            &quot;linked_person_name&quot;: &quot;Tester&quot;,
+            &quot;mail_message_party_id&quot;: 5318,
+            &quot;message_time&quot;: 1574677850000,
+            &quot;name&quot;: &quot;&quot;
+          }
+        ]
+      },
+      &quot;shared_flag&quot;: 1,
+      &quot;smart_bcc_flag&quot;: 0,
+      &quot;snippet&quot;: &quot;Example Snippet&quot;,
+      &quot;snippet_draft&quot;: null,
+      &quot;snippet_sent&quot;: &quot;&quot;,
+      &quot;subject&quot;: &quot;Example&quot;,
+      &quot;synced_flag&quot;: 1,
+      &quot;update_time&quot;: &quot;2019-11-20T20:21:22.000Z&quot;,
+      &quot;user_id&quot;: 232,
+      &quot;version&quot;: 9
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-mailboxmailthreadsidmailmessages" class="operation" data-method="get"><code>GET</code> /mailbox/mailThreads/{id}/mailMessages</h3>
+<p>Operation ID: <code>getMailThreadMessages</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the mail thread |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-get-mail-messages-from-thread" class="status" data-status="2xx">200: Get mail messages from thread</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;account_id&quot;: &quot;iuaousdp77asdadah&quot;,
+      &quot;add_time&quot;: &quot;2019-08-07T21:34:35.000Z&quot;,
+      &quot;bcc&quot;: [],
+      &quot;body_url&quot;: &quot;http://this_would_be_the_link.cloudfront.net/&quot;,
+      &quot;cc&quot;: [],
+      &quot;deleted_flag&quot;: 0,
+      &quot;draft&quot;: null,
+      &quot;draft_flag&quot;: 0,
+      &quot;from&quot;: [
+        {
+          &quot;email_address&quot;: &quot;example@email.com&quot;,
+          &quot;id&quot;: 1,
+          &quot;linked_person_id&quot;: 4,
+          &quot;linked_person_name&quot;: &quot;&quot;,
+          &quot;mail_message_party_id&quot;: 3,
+          &quot;name&quot;: &quot;Example Message&quot;
+        }
+      ],
+      &quot;has_attachments_flag&quot;: 0,
+      &quot;has_body_flag&quot;: 1,
+      &quot;has_inline_attachments_flag&quot;: 0,
+      &quot;has_real_attachments_flag&quot;: 0,
+      &quot;id&quot;: 1,
+      &quot;mail_link_tracking_enabled_flag&quot;: 0,
+      &quot;mail_thread_id&quot;: 2,
+      &quot;mail_tracking_status&quot;: null,
+      &quot;message_time&quot;: &quot;2019-08-07T21:15:08.000Z&quot;,
+      &quot;read_flag&quot;: 1,
+      &quot;sent_flag&quot;: 0,
+      &quot;sent_from_pipedrive_flag&quot;: 0,
+      &quot;smart_bcc_flag&quot;: 0,
+      &quot;snippet&quot;: &quot;Snippet from the email&quot;,
+      &quot;subject&quot;: &quot;The Subject&quot;,
+      &quot;synced_flag&quot;: 1,
+      &quot;to&quot;: [
+        {
+          &quot;email_address&quot;: &quot;example@email.com&quot;,
+          &quot;id&quot;: 4,
+          &quot;linked_person_id&quot;: 1,
+          &quot;linked_person_name&quot;: &quot;&quot;,
+          &quot;mail_message_party_id&quot;: 3,
+          &quot;name&quot;: &quot;Example Message&quot;
+        }
+      ],
+      &quot;update_time&quot;: &quot;2019-08-07T21:34:35.000Z&quot;,
+      &quot;user_id&quot;: 777
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-mailboxmailmessagesid" class="operation" data-method="get"><code>GET</code> /mailbox/mailMessages/{id}</h3>
+<p>Operation ID: <code>getMailMessage</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the mail message to fetch |
+| <code>include_body</code> | <code>query</code> | <code>enum: 0, 1</code> | No | Whether to include the full message body or not. <code>0</code> = Don't include, <code>1</code> = Include. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-the-mail-messages-that-are-being-synced-with-pipedrive" class="status" data-status="2xx">200: The mail messages that are being synced with Pipedrive</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;account_id&quot;: &quot;test&quot;,
+    &quot;add_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+    &quot;bcc&quot;: [
+      {
+        &quot;email_address&quot;: &quot;mail@example.org&quot;,
+        &quot;id&quot;: 1,
+        &quot;linked_person_id&quot;: 1,
+        &quot;linked_person_name&quot;: &quot;&quot;,
+        &quot;mail_message_party_id&quot;: 1,
+        &quot;name&quot;: &quot;Test&quot;
+      }
+    ],
+    &quot;body_url&quot;: &quot;https://example.org&quot;,
+    &quot;cc&quot;: [
+      {
+        &quot;email_address&quot;: &quot;mail@example.org&quot;,
+        &quot;id&quot;: 1,
+        &quot;linked_person_id&quot;: 1,
+        &quot;linked_person_name&quot;: &quot;&quot;,
+        &quot;mail_message_party_id&quot;: 1,
+        &quot;name&quot;: &quot;Test&quot;
+      }
+    ],
+    &quot;deleted_flag&quot;: 0,
+    &quot;draft&quot;: &quot;&quot;,
+    &quot;draft_flag&quot;: 0,
+    &quot;from&quot;: [
+      {
+        &quot;email_address&quot;: &quot;mail@example.org&quot;,
+        &quot;id&quot;: 1,
+        &quot;linked_person_id&quot;: 1,
+        &quot;linked_person_name&quot;: &quot;&quot;,
+        &quot;mail_message_party_id&quot;: 1,
+        &quot;name&quot;: &quot;Test&quot;
+      }
+    ],
+    &quot;has_attachments_flag&quot;: 1,
+    &quot;has_body_flag&quot;: 1,
+    &quot;has_inline_attachments_flag&quot;: 0,
+    &quot;has_real_attachments_flag&quot;: 1,
+    &quot;id&quot;: 1,
+    &quot;mail_link_tracking_enabled_flag&quot;: 0,
+    &quot;mail_thread_id&quot;: 1,
+    &quot;mail_tracking_status&quot;: &quot;opened&quot;,
+    &quot;message_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+    &quot;read_flag&quot;: 1,
+    &quot;sent_flag&quot;: 0,
+    &quot;sent_from_pipedrive_flag&quot;: 0,
+    &quot;smart_bcc_flag&quot;: 0,
+    &quot;snippet&quot;: &quot;test subject&quot;,
+    &quot;subject&quot;: &quot;test subject&quot;,
+    &quot;synced_flag&quot;: 1,
+    &quot;to&quot;: [
+      {
+        &quot;email_address&quot;: &quot;mail@example.org&quot;,
+        &quot;id&quot;: 1,
+        &quot;linked_person_id&quot;: 1,
+        &quot;linked_person_name&quot;: &quot;&quot;,
+        &quot;mail_message_party_id&quot;: 1,
+        &quot;name&quot;: &quot;Test&quot;
+      }
+    ],
+    &quot;update_time&quot;: &quot;2019-11-14T07:15:49.000Z&quot;,
+    &quot;user_id&quot;: 1
+  },
+  &quot;service&quot;: &quot;email-api&quot;,
+  &quot;statusCode&quot;: 2000,
+  &quot;statusText&quot;: &quot;Success&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-mailboxmailthreadsid" class="operation" data-method="get"><code>GET</code> /mailbox/mailThreads/{id}</h3>
+<p>Operation ID: <code>getMailThread</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the mail thread |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-get-mail-threads-1" class="status" data-status="2xx">200: Get mail threads</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;account_id&quot;: &quot;123412jhfsaa221&quot;,
+    &quot;add_time&quot;: &quot;2019-11-20T17:40:59.000Z&quot;,
+    &quot;all_messages_sent_flag&quot;: 0,
+    &quot;archived_flag&quot;: 0,
+    &quot;deal_id&quot;: null,
+    &quot;deal_status&quot;: null,
+    &quot;deleted_flag&quot;: 0,
+    &quot;drafts_parties&quot;: [],
+    &quot;external_deleted_flag&quot;: 0,
+    &quot;first_message_timestamp&quot;: &quot;2019-11-20T17:40:46.000Z&quot;,
+    &quot;first_message_to_me_flag&quot;: 1,
+    &quot;folders&quot;: [
+      &quot;inbox&quot;
+    ],
+    &quot;has_attachments_flag&quot;: 1,
+    &quot;has_draft_flag&quot;: 0,
+    &quot;has_inline_attachments_flag&quot;: 1,
+    &quot;has_real_attachments_flag&quot;: 0,
+    &quot;has_sent_flag&quot;: 0,
+    &quot;id&quot;: 1,
+    &quot;last_message_received_timestamp&quot;: &quot;2019-11-20T20:20:46.000Z&quot;,
+    &quot;last_message_sent_timestamp&quot;: null,
+    &quot;last_message_timestamp&quot;: &quot;2019-11-20T20:20:46.000Z&quot;,
+    &quot;mail_link_tracking_enabled_flag&quot;: 0,
+    &quot;parties&quot;: {
+      &quot;from&quot;: [
+        {
+          &quot;email_address&quot;: &quot;example@test.com&quot;,
+          &quot;id&quot;: 3,
+          &quot;latest_sent&quot;: false,
+          &quot;linked_organization_id&quot;: null,
+          &quot;linked_person_id&quot;: 2,
+          &quot;linked_person_name&quot;: &quot;Tester&quot;,
+          &quot;mail_message_party_id&quot;: 5318,
+          &quot;message_time&quot;: 1574677850000,
+          &quot;name&quot;: &quot;&quot;
+        }
+      ],
+      &quot;to&quot;: [
+        {
+          &quot;email_address&quot;: &quot;example@test.com&quot;,
+          &quot;id&quot;: 2,
+          &quot;latest_sent&quot;: false,
+          &quot;linked_organization_id&quot;: null,
+          &quot;linked_person_id&quot;: 3,
+          &quot;linked_person_name&quot;: &quot;Tester&quot;,
+          &quot;mail_message_party_id&quot;: 5318,
+          &quot;message_time&quot;: 1574677850000,
+          &quot;name&quot;: &quot;&quot;
+        }
+      ]
+    },
+    &quot;shared_flag&quot;: 1,
+    &quot;smart_bcc_flag&quot;: 0,
+    &quot;snippet&quot;: &quot;Example Snippet&quot;,
+    &quot;snippet_draft&quot;: null,
+    &quot;snippet_sent&quot;: &quot;&quot;,
+    &quot;subject&quot;: &quot;Example&quot;,
+    &quot;synced_flag&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-11-20T20:21:22.000Z&quot;,
+    &quot;user_id&quot;: 232,
+    &quot;version&quot;: 9
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-mailboxmailthreadsid" class="operation" data-method="delete"><code>DELETE</code> /mailbox/mailThreads/{id}</h3>
+<p>Operation ID: <code>deleteMailThread</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the mail thread |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-marks-mail-thread-as-deleted" class="status" data-status="2xx">200: Marks mail thread as deleted</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 1
+  },
+  &quot;service&quot;: &quot;email-api&quot;,
+  &quot;statusCode&quot;: 2000,
+  &quot;statusText&quot;: &quot;Success&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-mailboxmailthreadsid" class="operation" data-method="put"><code>PUT</code> /mailbox/mailThreads/{id}</h3>
+<p>Operation ID: <code>updateMailThreadDetails</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the mail thread |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived_flag</code></td>
+<td><code>enum: 0, 1</code></td>
+<td>No</td>
+<td>Whether this thread is archived or not. You can only archive threads that belong to Inbox folder. Archived threads will disappear from Inbox.</td>
+</tr>
+<tr>
+<td><code>deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal this thread is associated with</td>
+</tr>
+<tr>
+<td><code>lead_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The ID of the lead this thread is associated with</td>
+</tr>
+<tr>
+<td><code>read_flag</code></td>
+<td><code>enum: 0, 1</code></td>
+<td>No</td>
+<td>Whether this thread is read or unread</td>
+</tr>
+<tr>
+<td><code>shared_flag</code></td>
+<td><code>enum: 0, 1</code></td>
+<td>No</td>
+<td>Whether this thread is shared with other users in your company</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-updates-the-properties-of-a-mail-thread" class="status" data-status="2xx">200: Updates the properties of a mail thread</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;account_id&quot;: &quot;12123qwaesda1&quot;,
+    &quot;add_time&quot;: &quot;2019-11-25T08:41:10.000Z&quot;,
+    &quot;all_messages_sent_flag&quot;: 0,
+    &quot;archived_flag&quot;: 0,
+    &quot;deal_id&quot;: null,
+    &quot;deal_status&quot;: null,
+    &quot;deleted_flag&quot;: 0,
+    &quot;external_deleted_flag&quot;: 0,
+    &quot;first_message_timestamp&quot;: &quot;2019-11-25T08:40:50.000Z&quot;,
+    &quot;first_message_to_me_flag&quot;: 1,
+    &quot;folders&quot;: [
+      &quot;inbox&quot;
+    ],
+    &quot;has_attachments_flag&quot;: 1,
+    &quot;has_draft_flag&quot;: 0,
+    &quot;has_inline_attachments_flag&quot;: 1,
+    &quot;has_real_attachments_flag&quot;: 0,
+    &quot;has_sent_flag&quot;: 0,
+    &quot;id&quot;: 1,
+    &quot;last_message_received_timestamp&quot;: &quot;2019-11-25T10:30:50.000Z&quot;,
+    &quot;last_message_sent_timestamp&quot;: null,
+    &quot;last_message_timestamp&quot;: &quot;2019-11-25T10:30:50.000Z&quot;,
+    &quot;mail_link_tracking_enabled_flag&quot;: 0,
+    &quot;mail_tracking_status&quot;: null,
+    &quot;message_count&quot;: 7,
+    &quot;read_flag&quot;: 0,
+    &quot;shared_flag&quot;: 1,
+    &quot;smart_bcc_flag&quot;: 0,
+    &quot;snippet&quot;: &quot;[EXAMPLE] Snippet&quot;,
+    &quot;snippet_draft&quot;: null,
+    &quot;snippet_sent&quot;: &quot;&quot;,
+    &quot;subject&quot;: &quot;[EXAMPLE] Subject&quot;,
+    &quot;synced_flag&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-11-25T10:31:34.000Z&quot;,
+    &quot;user_id&quot;: 9,
+    &quot;version&quot;: 13
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

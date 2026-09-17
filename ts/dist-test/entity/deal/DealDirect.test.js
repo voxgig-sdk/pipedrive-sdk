@@ -41,7 +41,7 @@ const utility_1 = require("../../utility");
         const query = {};
         if (setup.live) {
             const listResult = await client.direct({
-                path: 'deals',
+                path: 'deals/archived',
                 method: 'GET',
                 params: {},
             });
@@ -57,10 +57,9 @@ const utility_1 = require("../../utility");
             params.id = candidateId;
         }
         else {
-            params.id = 'direct01';
         }
         const result = await client.direct({
-            path: 'deals/{id}',
+            path: 'deals/timeline',
             method: 'GET',
             params,
             query,
@@ -85,7 +84,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(result.data.id === 'direct01');
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
-            (0, node_assert_1.default)(calls[0].url.includes('direct01'));
         }
     });
     (0, node_test_1.test)('direct-list-deal', async (t) => {
@@ -100,7 +98,7 @@ const utility_1 = require("../../utility");
         const params = {};
         const query = {};
         const result = await client.direct({
-            path: 'deals',
+            path: 'deals/archived',
             method: 'GET',
             params,
             query,
@@ -137,6 +135,7 @@ function directSetup(mockres) {
         'PIPEDRIVE_TEST_DEAL_ENTID': {},
         'PIPEDRIVE_TEST_LIVE': 'FALSE',
         'PIPEDRIVE_APIKEY': '',
+        'PIPEDRIVE_SECRET': '',
     });
     const live = 'TRUE' === env.PIPEDRIVE_TEST_LIVE;
     if (live) {
@@ -145,6 +144,7 @@ function directSetup(mockres) {
         // test.client.options adds to the live client, it does not redirect it.
         const client = new __1.PipedriveSDK(Object.assign({}, (0, utility_1.liveClientOptions)(), { system: { fetch: transport.fetch },
             apikey: env.PIPEDRIVE_APIKEY,
+            secret: env.PIPEDRIVE_SECRET,
         }));
         let idmap = env['PIPEDRIVE_TEST_DEAL_ENTID'];
         if ('string' === typeof idmap && idmap.startsWith('{')) {

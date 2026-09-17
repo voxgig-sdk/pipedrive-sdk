@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Person | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a aria-current="page" href="../api/person.html">Person</a><div class="nav-sections"><a class="nav-section" href="#post-personsidfollowers">POST /persons/{id}/followers</a>
+<a class="nav-section" href="#post-personsidpicture">POST /persons/{id}/picture</a>
+<a class="nav-section" href="#get-personsidflow">GET /persons/{id}/flow</a>
+<a class="nav-section" href="#get-personsidfiles">GET /persons/{id}/files</a>
+<a class="nav-section" href="#get-personsidmailmessages">GET /persons/{id}/mailMessages</a>
+<a class="nav-section" href="#get-personsidchangelog">GET /persons/{id}/changelog</a>
+<a class="nav-section" href="#get-personsidproducts">GET /persons/{id}/products</a>
+<a class="nav-section" href="#get-personsidfollowers">GET /persons/{id}/followers</a>
+<a class="nav-section" href="#get-personsidpermittedusers">GET /persons/{id}/permittedUsers</a>
+<a class="nav-section" href="#delete-personsidfollowersfollower_id">DELETE /persons/{id}/followers/{follower_id}</a>
+<a class="nav-section" href="#delete-personsidpicture">DELETE /persons/{id}/picture</a>
+<a class="nav-section" href="#put-personsidmerge">PUT /persons/{id}/merge</a></div>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="person">Person</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-personsidfollowers"><code>/persons/{id}/followers</code></a></td>
+<td><code>create</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-personsidpicture"><code>/persons/{id}/picture</code></a></td>
+<td><code>create</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidflow"><code>/persons/{id}/flow</code></a></td>
+<td><code>list</code></td>
+<td>Get the person updates</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidfiles"><code>/persons/{id}/files</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidmailmessages"><code>/persons/{id}/mailMessages</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidchangelog"><code>/persons/{id}/changelog</code></a></td>
+<td><code>list</code></td>
+<td>Get changelog of a person</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidproducts"><code>/persons/{id}/products</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidfollowers"><code>/persons/{id}/followers</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-personsidpermittedusers"><code>/persons/{id}/permittedUsers</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-personsidfollowersfollower_id"><code>/persons/{id}/followers/{follower_id}</code></a></td>
+<td><code>remove</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-personsidpicture"><code>/persons/{id}/picture</code></a></td>
+<td><code>remove</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-personsidmerge"><code>/persons/{id}/merge</code></a></td>
+<td><code>update</code></td>
+<td>Success</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-personsidfollowers" class="operation" data-method="post"><code>POST</code> /persons/{id}/followers</h3>
+<p>Operation ID: <code>addPersonFollower</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_id</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The ID of the user</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2020-04-03 11:44:31&quot;,
+    &quot;id&quot;: 2,
+    &quot;person_id&quot;: 3,
+    &quot;user_id&quot;: 1
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-personsidpicture" class="operation" data-method="post"><code>POST</code> /persons/{id}/picture</h3>
+<p>Operation ID: <code>addPersonPicture</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>crop_height</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The height of the cropping area (in pixels)</td>
+</tr>
+<tr>
+<td><code>crop_width</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The width of the cropping area (in pixels)</td>
+</tr>
+<tr>
+<td><code>crop_x</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>X coordinate to where start cropping form (in pixels)</td>
+</tr>
+<tr>
+<td><code>crop_y</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Y coordinate to where start cropping form (in pixels)</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>string (binary)</code></td>
+<td>Yes</td>
+<td>One image supplied in the multipart/form-data encoding</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2020-09-08 08:17:52&quot;,
+    &quot;added_by_user_id&quot;: 967055,
+    &quot;id&quot;: 1,
+    &quot;item_id&quot;: 25,
+    &quot;item_type&quot;: &quot;person&quot;,
+    &quot;pictures&quot;: {
+      &quot;128&quot;: &quot;https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_128.jpg&quot;,
+      &quot;512&quot;: &quot;https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_512.jpg&quot;
+    },
+    &quot;update_time&quot;: &quot;0000-00-00 00:00:00&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-personsidflow" class="operation" data-method="get"><code>GET</code> /persons/{id}/flow</h3>
+<p>Operation ID: <code>getPersonUpdates</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>all_changes</code> | <code>query</code> | <code>string</code> | No | Whether to show custom field updates or not. 1 = Include custom field changes. If omitted returns changes without custom field updates. |
+| <code>items</code> | <code>query</code> | <code>string</code> | No | A comma-separated string for filtering out item specific updates. (Possible values - call, activity, plannedActivity, change, note, deal, file, dealChange, personChange, organizationChange, follower, dealFollower, personFollower, organizationFollower, participant, comment, mailMessage, mailMessageWithAttachment, invoice, document, marketing_campaign_stat, marketing_status_change). |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-get-the-person-updates" class="status" data-status="2xx">200: Get the person updates</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;data&quot;: {
+        &quot;additional_data&quot;: {
+          &quot;new_value_formatted&quot;: &quot;Umbrella Corp.&quot;
+        },
+        &quot;change_source&quot;: &quot;app&quot;,
+        &quot;change_source_user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML like Gecko) Chrome/84.0.4147.89 Safari/537.36&quot;,
+        &quot;field_key&quot;: &quot;org_id&quot;,
+        &quot;id&quot;: 11158,
+        &quot;is_bulk_update_flag&quot;: null,
+        &quot;item_id&quot;: 3512,
+        &quot;log_time&quot;: &quot;2020-08-03 11:25:21&quot;,
+        &quot;new_value&quot;: 1482,
+        &quot;old_value&quot;: null,
+        &quot;user_id&quot;: 8877
+      },
+      &quot;object&quot;: &quot;personChange&quot;,
+      &quot;timestamp&quot;: &quot;2020-08-03 11:25:21&quot;
+    },
+    {
+      &quot;data&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;add_time&quot;: &quot;2020-06-08 12:37:56&quot;,
+        &quot;assigned_to_user_id&quot;: 1235,
+        &quot;attendees&quot;: [
+          {
+            &quot;email_address&quot;: &quot;attendee@pipedrivemail.com&quot;,
+            &quot;is_organizer&quot;: 0,
+            &quot;name&quot;: &quot;Attendee&quot;,
+            &quot;person_id&quot;: 25312,
+            &quot;status&quot;: &quot;noreply&quot;,
+            &quot;user_id&quot;: null
+          }
+        ],
+        &quot;busy_flag&quot;: true,
+        &quot;calendar_sync_include_context&quot;: &quot;&quot;,
+        &quot;company_id&quot;: 22122,
+        &quot;conference_meeting_client&quot;: &quot;871b8bc88d3a1202&quot;,
+        &quot;conference_meeting_id&quot;: &quot;17058746701&quot;,
+        &quot;conference_meeting_url&quot;: &quot;https://pipedrive.zoom.us/link&quot;,
+        &quot;created_by_user_id&quot;: 1234,
+        &quot;deal_dropbox_bcc&quot;: &quot;company+deal300@pipedrivemail.com&quot;,
+        &quot;deal_id&quot;: 300,
+        &quot;deal_title&quot;: &quot;Deal&quot;,
+        &quot;done&quot;: false,
+        &quot;due_date&quot;: &quot;2020-06-09&quot;,
+        &quot;due_time&quot;: &quot;10:00&quot;,
+        &quot;duration&quot;: &quot;01:00&quot;,
+        &quot;file&quot;: {
+          &quot;clean_name&quot;: &quot;Audio 10:55:07.m4a&quot;,
+          &quot;id&quot;: &quot;376892,&quot;,
+          &quot;url&quot;: &quot;https://pipedrive-files.s3-eu-west-1.amazonaws.com/Audio-recording.m4a&quot;
+        },
+        &quot;gcal_event_id&quot;: &quot;&quot;,
+        &quot;google_calendar_etag&quot;: &quot;&quot;,
+        &quot;google_calendar_id&quot;: &quot;&quot;,
+        &quot;id&quot;: 8,
+        &quot;last_notification_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+        &quot;last_notification_user_id&quot;: 7655,
+        &quot;lead_id&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;,
+        &quot;location&quot;: &quot;Mustamäe tee 3, Tallinn, Estonia&quot;,
+        &quot;location_admin_area_level_1&quot;: &quot;Harju maakond&quot;,
+        &quot;location_admin_area_level_2&quot;: &quot;&quot;,
+        &quot;location_country&quot;: &quot;Estonia&quot;,
+        &quot;location_formatted_address&quot;: &quot;Mustamäe tee 3, 10616 Tallinn, Estonia&quot;,
+        &quot;location_locality&quot;: &quot;Tallinn&quot;,
+        &quot;location_postal_code&quot;: &quot;10616&quot;,
+        &quot;location_route&quot;: &quot;Mustamäe tee&quot;,
+        &quot;location_street_number&quot;: &quot;3&quot;,
+        &quot;location_sublocality&quot;: &quot;Kristiine&quot;,
+        &quot;location_subpremise&quot;: &quot;&quot;,
+        &quot;marked_as_done_time&quot;: &quot;2020-08-08 08:08:38&quot;,
+        &quot;note&quot;: &quot;A note for the activity&quot;,
+        &quot;notification_language_id&quot;: 1,
+        &quot;org_id&quot;: 5,
+        &quot;org_name&quot;: &quot;Organization&quot;,
+        &quot;outcome&quot;: 101,
+        &quot;owner_name&quot;: &quot;Creator&quot;,
+        &quot;participants&quot;: [
+          {
+            &quot;person_id&quot;: 17985,
+            &quot;primary_flag&quot;: false
+          },
+          {
+            &quot;person_id&quot;: 1101,
+            &quot;primary_flag&quot;: true
+          }
+        ],
+        &quot;person_dropbox_bcc&quot;: &quot;company@pipedrivemail.com&quot;,
+        &quot;person_id&quot;: 1101,
+        &quot;person_name&quot;: &quot;Person&quot;,
+        &quot;project_id&quot;: null,
+        &quot;public_description&quot;: &quot;This is a description&quot;,
+        &quot;rec_master_activity_id&quot;: 1,
+        &quot;rec_rule&quot;: &quot;RRULE:FREQ=WEEKLY;BYDAY=WE&quot;,
+        &quot;rec_rule_extension&quot;: &quot;&quot;,
+        &quot;reference_id&quot;: 7,
+        &quot;reference_type&quot;: &quot;scheduler-service&quot;,
+        &quot;series&quot;: [],
+        &quot;source_timezone&quot;: &quot;&quot;,
+        &quot;subject&quot;: &quot;Deadline&quot;,
+        &quot;type&quot;: &quot;deadline&quot;,
+        &quot;update_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+        &quot;update_user_id&quot;: 5596,
+        &quot;user_id&quot;: 1234
+      },
+      &quot;object&quot;: &quot;activity&quot;,
+      &quot;timestamp&quot;: &quot;2020-08-07 08:15:00&quot;
+    }
+  ],
+  &quot;related_objects&quot;: {
+    &quot;allOf&quot;: [
+      {
+        &quot;user&quot;: {
+          &quot;123&quot;: {
+            &quot;active_flag&quot;: true,
+            &quot;email&quot;: &quot;jane@pipedrive.com&quot;,
+            &quot;has_pic&quot;: 1,
+            &quot;id&quot;: 123,
+            &quot;name&quot;: &quot;Jane Doe&quot;,
+            &quot;pic_hash&quot;: &quot;2611ace8ac6a3afe2f69ed56f9e08c6b&quot;
+          }
+        }
+      },
+      {
+        &quot;person&quot;: {
+          &quot;1101&quot;: {
+            &quot;active_flag&quot;: true,
+            &quot;email&quot;: [
+              {
+                &quot;label&quot;: &quot;work&quot;,
+                &quot;primary&quot;: true,
+                &quot;value&quot;: &quot;person@pipedrive.com&quot;
+              }
+            ],
+            &quot;id&quot;: 1101,
+            &quot;name&quot;: &quot;Person&quot;,
+            &quot;owner_id&quot;: 8877,
+            &quot;phone&quot;: [
+              {
+                &quot;label&quot;: &quot;work&quot;,
+                &quot;primary&quot;: true,
+                &quot;value&quot;: &quot;3421787767&quot;
+              }
+            ]
+          }
+        }
+      },
+      {
+        &quot;organization&quot;: {
+          &quot;1&quot;: {
+            &quot;active_flag&quot;: true,
+            &quot;address&quot;: &quot;Mustamäe tee 3a, 10615 Tallinn&quot;,
+            &quot;cc_email&quot;: &quot;org@pipedrivemail.com&quot;,
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Org Name&quot;,
+            &quot;owner_id&quot;: 123,
+            &quot;people_count&quot;: 1
+          }
+        }
+      }
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-personsidfiles" class="operation" data-method="get"><code>GET</code> /persons/{id}/files</h3>
+<p>Operation ID: <code>getPersonFiles</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page. Please note that a maximum value of 100 is allowed. |
+| <code>sort</code> | <code>query</code> | <code>string</code> | No | Supported fields: <code>id</code>, <code>update_time</code> |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;activity_id&quot;: 1,
+      &quot;add_time&quot;: &quot;2020-09-16 11:19:36&quot;,
+      &quot;cid&quot;: &quot;&quot;,
+      &quot;deal_id&quot;: 1,
+      &quot;deal_name&quot;: &quot;nice deal&quot;,
+      &quot;description&quot;: &quot;&quot;,
+      &quot;file_name&quot;: &quot;95781006_794143070992462_4330873630616453120_n_60817458877506f9eb74d03e5ef9ba061915b797998.jpg&quot;,
+      &quot;file_size&quot;: 95116,
+      &quot;file_type&quot;: &quot;img&quot;,
+      &quot;id&quot;: 1,
+      &quot;inline_flag&quot;: false,
+      &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;lead_name&quot;: &quot;nice lead&quot;,
+      &quot;log_id&quot;: null,
+      &quot;mail_message_id&quot;: &quot;&quot;,
+      &quot;mail_template_id&quot;: &quot;&quot;,
+      &quot;name&quot;: &quot;95781006_794143070992462_4330873630616453120_n.jpg&quot;,
+      &quot;org_id&quot;: 1480,
+      &quot;org_name&quot;: &quot;Pipedrive Inc.&quot;,
+      &quot;people_name&quot;: &quot;&quot;,
+      &quot;person_id&quot;: 1,
+      &quot;person_name&quot;: &quot;&quot;,
+      &quot;product_id&quot;: 1,
+      &quot;product_name&quot;: &quot;&quot;,
+      &quot;project_id&quot;: 1,
+      &quot;project_name&quot;: &quot;My project&quot;,
+      &quot;remote_id&quot;: &quot;95781006_794143070992462_4330873630616453120_n.jpg&quot;,
+      &quot;remote_location&quot;: &quot;s3&quot;,
+      &quot;s3_bucket&quot;: &quot;&quot;,
+      &quot;update_time&quot;: &quot;2020-09-16 11:19:36&quot;,
+      &quot;url&quot;: &quot;https://app.pipedrive.com/api/v1/files/304/download&quot;,
+      &quot;user_id&quot;: 8877
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-personsidmailmessages" class="operation" data-method="get"><code>GET</code> /persons/{id}/mailMessages</h3>
+<p>Operation ID: <code>getPersonMailMessages</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>include_body</code> | <code>query</code> | <code>enum: 0, 1</code> | No | Whether to include the mail message body content in the response. <code>0</code> = Don't include, <code>1</code> = Include. |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success-3" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;data&quot;: {
+        &quot;account_id&quot;: &quot;ao5gpry0zykr1xxxxxxxxx&quot;,
+        &quot;add_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+        &quot;bcc&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;body_url&quot;: &quot;https://example.org&quot;,
+        &quot;cc&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;company_id&quot;: 6081745,
+        &quot;deleted_flag&quot;: 0,
+        &quot;draft&quot;: &quot;&quot;,
+        &quot;draft_flag&quot;: 0,
+        &quot;external_deleted_flag&quot;: false,
+        &quot;from&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;has_attachments_flag&quot;: 1,
+        &quot;has_body_flag&quot;: 1,
+        &quot;has_inline_attachments_flag&quot;: 0,
+        &quot;has_real_attachments_flag&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;item_type&quot;: &quot;mailMessage&quot;,
+        &quot;mail_link_tracking_enabled_flag&quot;: 0,
+        &quot;mail_thread_id&quot;: 1,
+        &quot;mail_tracking_status&quot;: &quot;opened&quot;,
+        &quot;message_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+        &quot;mua_message_id&quot;: &quot;8cfw8n7l4iy24lfhnexxxxxx-0@mailer.nylas.com&quot;,
+        &quot;nylas_id&quot;: &quot;8cfw8n7l4iy24xxxxxxxxx&quot;,
+        &quot;read_flag&quot;: 1,
+        &quot;s3_bucket&quot;: &quot;pipedrive-mail-live-fr&quot;,
+        &quot;s3_bucket_path&quot;: &quot;e9cf-6081745/77777/nylas/111/1111/body&quot;,
+        &quot;sent_flag&quot;: 0,
+        &quot;sent_from_pipedrive_flag&quot;: 0,
+        &quot;smart_bcc_flag&quot;: 0,
+        &quot;snippet&quot;: &quot;test subject&quot;,
+        &quot;subject&quot;: &quot;test subject&quot;,
+        &quot;synced_flag&quot;: 1,
+        &quot;template_id&quot;: 1,
+        &quot;timestamp&quot;: &quot;2020-09-16T13:37:50.000Z&quot;,
+        &quot;to&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;update_time&quot;: &quot;2019-11-14T07:15:49.000Z&quot;,
+        &quot;user_id&quot;: 1
+      },
+      &quot;object&quot;: &quot;mailMessage&quot;,
+      &quot;timestamp&quot;: &quot;2020-09-16 13:38:17&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-personsidchangelog" class="operation" data-method="get"><code>GET</code> /persons/{id}/changelog</h3>
+<p>Operation ID: <code>getPersonChangelog</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | For pagination, the marker (an opaque string value) representing the first item on the next page |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-get-changelog-of-a-person" class="status" data-status="2xx">200: Get changelog of a person</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;next_cursor&quot;: &quot;aWQ6NTQ0&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;actor_user_id&quot;: 26,
+      &quot;change_source&quot;: &quot;app&quot;,
+      &quot;change_source_user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36&quot;,
+      &quot;field_key&quot;: &quot;51c27e4a19c3bedd91162a9d446707c1f95174ea&quot;,
+      &quot;is_bulk_update_flag&quot;: false,
+      &quot;new_value&quot;: &quot;200&quot;,
+      &quot;old_value&quot;: null,
+      &quot;time&quot;: &quot;2024-02-12 09:14:35&quot;
+    },
+    {
+      &quot;actor_user_id&quot;: 26,
+      &quot;change_source&quot;: &quot;app&quot;,
+      &quot;change_source_user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36&quot;,
+      &quot;field_key&quot;: &quot;email&quot;,
+      &quot;is_bulk_update_flag&quot;: false,
+      &quot;new_value&quot;: &quot;jane.doe@pipedrive.com&quot;,
+      &quot;old_value&quot;: &quot;john.doe@pipedrive.com&quot;,
+      &quot;time&quot;: &quot;2024-02-12 09:10:12&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-personsidproducts" class="operation" data-method="get"><code>GET</code> /persons/{id}/products</h3>
+<p>Operation ID: <code>getPersonProducts</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;123&quot;: {
+        &quot;deal&quot;: {
+          &quot;active&quot;: true,
+          &quot;activities_count&quot;: 1,
+          &quot;add_time&quot;: &quot;2017-10-18 13:23:07&quot;,
+          &quot;close_time&quot;: null,
+          &quot;company_id&quot;: 1938610,
+          &quot;creator_user_id&quot;: 599218,
+          &quot;currency&quot;: &quot;EUR&quot;,
+          &quot;deleted&quot;: false,
+          &quot;done_activities_count&quot;: 0,
+          &quot;email_messages_count&quot;: 0,
+          &quot;expected_close_date&quot;: null,
+          &quot;files_count&quot;: 1,
+          &quot;first_add_time&quot;: &quot;2017-10-18 13:23:07&quot;,
+          &quot;first_won_time&quot;: null,
+          &quot;id&quot;: 123,
+          &quot;label&quot;: null,
+          &quot;last_activity_date&quot;: null,
+          &quot;last_activity_id&quot;: null,
+          &quot;last_incoming_mail_time&quot;: &quot;2020-09-18 12:12:54&quot;,
+          &quot;last_outgoing_mail_time&quot;: &quot;2020-09-18 12:12:54&quot;,
+          &quot;lost_reason&quot;: null,
+          &quot;lost_time&quot;: null,
+          &quot;next_activity_date&quot;: &quot;2020-01-17&quot;,
+          &quot;next_activity_id&quot;: 7,
+          &quot;next_activity_time&quot;: null,
+          &quot;notes_count&quot;: 0,
+          &quot;org_id&quot;: 1,
+          &quot;participants_count&quot;: 2,
+          &quot;person_id&quot;: 25,
+          &quot;pipeline_id&quot;: 1,
+          &quot;probability&quot;: null,
+          &quot;products_count&quot;: 6,
+          &quot;stage_change_time&quot;: &quot;2020-05-07 11:44:00&quot;,
+          &quot;stage_id&quot;: 2,
+          &quot;status&quot;: &quot;open&quot;,
+          &quot;title&quot;: &quot;tervist&quot;,
+          &quot;undone_activities_count&quot;: 1,
+          &quot;update_time&quot;: &quot;2020-09-18 12:12:54&quot;,
+          &quot;user_id&quot;: 599218,
+          &quot;value&quot;: 3342.79,
+          &quot;visible_to&quot;: &quot;3&quot;,
+          &quot;won_time&quot;: null
+        },
+        &quot;product&quot;: {
+          &quot;active_flag&quot;: true,
+          &quot;add_time&quot;: &quot;2020-01-28 11:54:41&quot;,
+          &quot;category&quot;: &quot;40&quot;,
+          &quot;code&quot;: &quot;444&quot;,
+          &quot;company_id&quot;: 1938610,
+          &quot;deal_id&quot;: 5,
+          &quot;description&quot;: &quot;123&quot;,
+          &quot;files_count&quot;: null,
+          &quot;first_char&quot;: &quot;1&quot;,
+          &quot;id&quot;: 4,
+          &quot;name&quot;: &quot;1234&quot;,
+          &quot;owner_id&quot;: 967055,
+          &quot;selectable&quot;: true,
+          &quot;tax&quot;: 0,
+          &quot;unit&quot;: &quot;&quot;,
+          &quot;update_time&quot;: &quot;2020-09-18 11:54:36&quot;,
+          &quot;visible_to&quot;: &quot;3&quot;
+        }
+      }
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-personsidfollowers" class="operation" data-method="get"><code>GET</code> /persons/{id}/followers</h3>
+<p>Operation ID: <code>getPersonFollowers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2020-09-09 11:36:23&quot;,
+      &quot;deal_id&quot;: 789,
+      &quot;id&quot;: 456,
+      &quot;user_id&quot;: 123
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-personsidpermittedusers" class="operation" data-method="get"><code>GET</code> /persons/{id}/permittedUsers</h3>
+<p>Operation ID: <code>getPersonUsers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-success-6" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    123,
+    777
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-personsidfollowersfollower_id" class="operation" data-method="delete"><code>DELETE</code> /persons/{id}/followers/{follower_id}</h3>
+<p>Operation ID: <code>deletePersonFollower</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |
+| <code>follower_id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the relationship between the follower and the person |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-success-7" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 12
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="delete-personsidpicture" class="operation" data-method="delete"><code>DELETE</code> /persons/{id}/picture</h3>
+<p>Operation ID: <code>deletePersonPicture</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-success-8" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 12
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-personsidmerge" class="operation" data-method="put"><code>PUT</code> /persons/{id}/merge</h3>
+<p>Operation ID: <code>mergePersons</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the person |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>merge_with_id</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The ID of the person that will not be overwritten. This person’s data will be prioritized in case of conflict with the other person.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-success-9" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;activities_count&quot;: 1,
+    &quot;add_time&quot;: &quot;2017-10-18 13:23:07&quot;,
+    &quot;cc_email&quot;: &quot;org@pipedrivemail.com&quot;,
+    &quot;closed_deals_count&quot;: 3,
+    &quot;company_id&quot;: 12,
+    &quot;done_activities_count&quot;: 1,
+    &quot;email&quot;: [
+      {
+        &quot;label&quot;: &quot;work&quot;,
+        &quot;primary&quot;: true,
+        &quot;value&quot;: &quot;some@email.com&quot;
+      }
+    ],
+    &quot;email_messages_count&quot;: 1,
+    &quot;files_count&quot;: 2,
+    &quot;first_char&quot;: &quot;w&quot;,
+    &quot;first_name&quot;: &quot;Will&quot;,
+    &quot;followers_count&quot;: 3,
+    &quot;id&quot;: 1,
+    &quot;label&quot;: 1,
+    &quot;label_ids&quot;: [
+      1,
+      2,
+      3
+    ],
+    &quot;last_activity_date&quot;: &quot;2019-11-28&quot;,
+    &quot;last_activity_id&quot;: 34,
+    &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+    &quot;last_name&quot;: &quot;Smith&quot;,
+    &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+    &quot;lost_deals_count&quot;: 1,
+    &quot;merge_what_id&quot;: 456,
+    &quot;name&quot;: &quot;Will Smith&quot;,
+    &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+    &quot;next_activity_id&quot;: 128,
+    &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+    &quot;notes_count&quot;: 2,
+    &quot;open_deals_count&quot;: 2,
+    &quot;org_id&quot;: 123,
+    &quot;org_name&quot;: &quot;Organization name&quot;,
+    &quot;owner_id&quot;: 123,
+    &quot;owner_name&quot;: &quot;Jane Doe&quot;,
+    &quot;participant_closed_deals_count&quot;: 1,
+    &quot;participant_open_deals_count&quot;: 1,
+    &quot;phone&quot;: [
+      {
+        &quot;label&quot;: &quot;work&quot;,
+        &quot;primary&quot;: true,
+        &quot;value&quot;: &quot;12345&quot;
+      }
+    ],
+    &quot;picture_id&quot;: {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2020-09-08 08:17:52&quot;,
+      &quot;added_by_user_id&quot;: 967055,
+      &quot;item_id&quot;: 25,
+      &quot;item_type&quot;: &quot;person&quot;,
+      &quot;pictures&quot;: {
+        &quot;128&quot;: &quot;https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_128.jpg&quot;,
+        &quot;512&quot;: &quot;https://pipedrive-profile-pics.s3.example.com/f8893852574273f2747bf6ef09d11cfb4ac8f269_512.jpg&quot;
+      },
+      &quot;update_time&quot;: &quot;0000-00-00 00:00:00&quot;,
+      &quot;value&quot;: 4
+    },
+    &quot;related_closed_deals_count&quot;: 3,
+    &quot;related_lost_deals_count&quot;: 1,
+    &quot;related_open_deals_count&quot;: 2,
+    &quot;related_won_deals_count&quot;: 3,
+    &quot;undone_activities_count&quot;: 2,
+    &quot;update_time&quot;: &quot;2020-05-08 05:30:20&quot;,
+    &quot;visible_to&quot;: &quot;3&quot;,
+    &quot;won_deals_count&quot;: 3
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

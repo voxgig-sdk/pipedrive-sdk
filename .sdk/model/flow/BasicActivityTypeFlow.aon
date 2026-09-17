@@ -1,0 +1,78 @@
+# BasicActivityTypeFlow
+
+main: kit: flow: BasicActivityTypeFlow:
+{
+  entity: "activity_type",
+  kind: "basic",
+  name: "BasicActivityTypeFlow",
+  step: [
+    {
+      input: {
+        ref: "activity_type_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "activity_type_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "activity_type_ref01",
+        srcdatavar: "activity_type_ref01_data",
+        suffix: "_up0",
+        textfield: "color"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-activity_type_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "activity_type_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "activity_type01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "activity_type_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicActivityTypeFlow"
+}

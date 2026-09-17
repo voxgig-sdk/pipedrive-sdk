@@ -1,0 +1,1910 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lead | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a aria-current="page" href="../api/lead.html">Lead</a><div class="nav-sections"><a class="nav-section" href="#post-leads">POST /leads</a>
+<a class="nav-section" href="#get-leads">GET /leads</a>
+<a class="nav-section" href="#get-leadsarchived">GET /leads/archived</a>
+<a class="nav-section" href="#get-leadsidpermittedusers">GET /leads/{id}/permittedUsers</a>
+<a class="nav-section" href="#get-leadssearch">GET /leads/search</a>
+<a class="nav-section" href="#get-leadsid">GET /leads/{id}</a>
+<a class="nav-section" href="#delete-leadsid">DELETE /leads/{id}</a>
+<a class="nav-section" href="#patch-leadsid">PATCH /leads/{id}</a></div>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="lead">Lead</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-leads"><code>/leads</code></a></td>
+<td><code>create</code></td>
+<td>Successful response containing payload in the <code>data</code> field</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-leads"><code>/leads</code></a></td>
+<td><code>list</code></td>
+<td>Successful response containing payload in the <code>data</code> field</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-leadsarchived"><code>/leads/archived</code></a></td>
+<td><code>list</code></td>
+<td>Successful response containing payload in the <code>data</code> field</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-leadsidpermittedusers"><code>/leads/{id}/permittedUsers</code></a></td>
+<td><code>list</code></td>
+<td>Lists users permitted to access a lead</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-leadssearch"><code>/leads/search</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-leadsid"><code>/leads/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Successful response containing payload in the <code>data</code> field</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-leadsid"><code>/leads/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Successful response with id value only. Used in DELETE calls</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-leadsid"><code>/leads/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Successful response containing payload in the <code>data</code> field</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time of when the lead was created.</td>
+</tr>
+<tr>
+<td><code>cc_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The BCC email of the lead</td>
+</tr>
+<tr>
+<td><code>channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of your Marketing channel this Lead was created from.</td>
+</tr>
+<tr>
+<td><code>channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>creator_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the lead</td>
+</tr>
+<tr>
+<td><code>expected_close_date</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique ID of the lead in the UUID format</td>
+</tr>
+<tr>
+<td><code>is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>label_ids</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which are associated with the lead</td>
+</tr>
+<tr>
+<td><code>next_activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the next activity associated with the lead</td>
+</tr>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>origin</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The way this Lead was created.</td>
+</tr>
+<tr>
+<td><code>origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who owns the lead</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>source_deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal if the lead was converted from a deal.</td>
+</tr>
+<tr>
+<td><code>source_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Defines where the lead comes from.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the lead</td>
+</tr>
+<tr>
+<td><code>update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time of when the lead was last updated.</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>.</td>
+</tr>
+<tr>
+<td><code>visible_to</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The visibility of the lead.</td>
+</tr>
+<tr>
+<td><code>was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-leads" class="operation" data-method="post"><code>POST</code> /leads</h3>
+<p>Operation ID: <code>addLead</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of Marketing channel this lead was created from. Provided value must be one of the channels configured for your company. You can fetch allowed values with &lt;a href=&quot;https://developers.pipedrive.com/docs/api/v1/DealFields#getDealField&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GET /v1/dealFields&lt;/a&gt;. If omitted, channel will be set to null.</td>
+</tr>
+<tr>
+<td><code>channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel. If omitted, <code>channel_id</code> will be set to null.</td>
+</tr>
+<tr>
+<td><code>expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which will be associated with the lead</td>
+</tr>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead will be linked to. If the organization does not exist yet, it needs to be created first. This property is required unless <code>person_id</code> is specified.</td>
+</tr>
+<tr>
+<td><code>origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example Which API integration created this lead. If omitted, <code>origin_id</code> will be set to null.</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user which will be the owner of the created lead. If not provided, the user making the request will be used.</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead will be linked to. If the person does not exist yet, it needs to be created first. This property is required unless <code>organization_id</code> is specified.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the lead</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user. Read more about visibility groups &lt;a href=&quot;https://support.pipedrive.com/en/article/visibility-groups&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;here&lt;/a&gt;.&lt;h4&gt;Light / Growth and Professional plans&lt;/h4&gt;&lt;table&gt;&lt;tr&gt;&lt;th style=&quot;width: 40px&quot;&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;h4&gt;Premium / Ultimate plan&lt;/h4&gt;&lt;table&gt;&lt;tr&gt;&lt;th style=&quot;width: 40px&quot;&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner only&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Owner's visibility group&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>5</code>&lt;/td&gt;&lt;td&gt;Owner's visibility group and sub-groups&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>7</code>&lt;/td&gt;&lt;td&gt;Entire company&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-successful-response-containing-payload-in-the-data-field" class="status" data-status="2xx">201: Successful response containing payload in the <code>data</code> field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Lead</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data.cc_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The BCC email of the lead</td>
+</tr>
+<tr>
+<td><code>data.channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your &lt;a href=&quot;https://app.pipedrive.com/settings/fields&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Company settings&lt;/a&gt;.</td>
+</tr>
+<tr>
+<td><code>data.channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>data.creator_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the lead</td>
+</tr>
+<tr>
+<td><code>data.expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique ID of the lead in the UUID format</td>
+</tr>
+<tr>
+<td><code>data.is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>data.label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which are associated with the lead</td>
+</tr>
+<tr>
+<td><code>data.next_activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the next activity associated with the lead</td>
+</tr>
+<tr>
+<td><code>data.organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data.origin</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The way this Lead was created. <code>origin</code> field is set by Pipedrive when Lead is created and cannot be changed.</td>
+</tr>
+<tr>
+<td><code>data.origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example Which API integration created this Lead.</td>
+</tr>
+<tr>
+<td><code>data.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who owns the lead</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data.source_deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal if the lead was converted from a deal.</td>
+</tr>
+<tr>
+<td><code>data.source_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Defines where the lead comes from. Will be <code>API</code> if the lead was created through the Public API and will be <code>Manually created</code> if the lead was created manually through the UI.</td>
+</tr>
+<tr>
+<td><code>data.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the lead</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>data.value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers (private)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company (shared)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>data.was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+    &quot;cc_email&quot;: &quot;company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com&quot;,
+    &quot;channel&quot;: 52,
+    &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+    &quot;creator_id&quot;: 1,
+    &quot;expected_close_date&quot;: null,
+    &quot;id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;is_archived&quot;: false,
+    &quot;label_ids&quot;: [
+      &quot;f08b42a0-4e75-11ea-9643-03698ef1cfd6&quot;,
+      &quot;f08b42a1-4e75-11ea-9643-03698ef1cfd6&quot;
+    ],
+    &quot;next_activity_id&quot;: 1,
+    &quot;organization_id&quot;: null,
+    &quot;origin&quot;: &quot;API&quot;,
+    &quot;origin_id&quot;: null,
+    &quot;owner_id&quot;: 1,
+    &quot;person_id&quot;: 1092,
+    &quot;source_name&quot;: &quot;API&quot;,
+    &quot;title&quot;: &quot;Jane Doe Lead&quot;,
+    &quot;update_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+    &quot;value&quot;: {
+      &quot;amount&quot;: 999,
+      &quot;currency&quot;: &quot;USD&quot;
+    },
+    &quot;visible_to&quot;: &quot;3&quot;,
+    &quot;was_seen&quot;: false
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-leads" class="operation" data-method="get"><code>GET</code> /leads</h3>
+<p>Operation ID: <code>getLeads</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | For pagination, the position that represents the first result for the page |
+| <code>owner_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only leads matching the given user will be returned. However, <code>filter_id</code> takes precedence over <code>owner_id</code> when supplied. |
+| <code>person_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only leads matching the given person will be returned. However, <code>filter_id</code> takes precedence over <code>person_id</code> when supplied. |
+| <code>organization_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only leads matching the given organization will be returned. However, <code>filter_id</code> takes precedence over <code>organization_id</code> when supplied. |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the filter to use |
+| <code>updated_since</code> | <code>query</code> | <code>string</code> | No | If set, only leads with an <code>update_time</code> later than or equal to this time are returned. In ISO 8601 format, for example 2025-01-01T10:20:00Z. |
+| <code>sort</code> | <code>query</code> | <code>enum: id, title, owner_id, creator_id, was_seen, expected_close_date, ...</code> | No | The field names and sorting mode separated by a comma (<code>field_name_1 ASC</code>, <code>field_name_2 DESC</code>). Only first-level field keys are supported (no nested keys). |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-data-field" class="status" data-status="2xx">200: Successful response containing payload in the <code>data</code> field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data[].cc_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The BCC email of the lead</td>
+</tr>
+<tr>
+<td><code>data[].channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your &lt;a href=&quot;https://app.pipedrive.com/settings/fields&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Company settings&lt;/a&gt;.</td>
+</tr>
+<tr>
+<td><code>data[].channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>data[].creator_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the lead</td>
+</tr>
+<tr>
+<td><code>data[].expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique ID of the lead in the UUID format</td>
+</tr>
+<tr>
+<td><code>data[].is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>data[].label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which are associated with the lead</td>
+</tr>
+<tr>
+<td><code>data[].next_activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the next activity associated with the lead</td>
+</tr>
+<tr>
+<td><code>data[].organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data[].origin</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The way this Lead was created. <code>origin</code> field is set by Pipedrive when Lead is created and cannot be changed.</td>
+</tr>
+<tr>
+<td><code>data[].origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example Which API integration created this Lead.</td>
+</tr>
+<tr>
+<td><code>data[].owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who owns the lead</td>
+</tr>
+<tr>
+<td><code>data[].person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data[].source_deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal if the lead was converted from a deal.</td>
+</tr>
+<tr>
+<td><code>data[].source_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Defines where the lead comes from. Will be <code>API</code> if the lead was created through the Public API and will be <code>Manually created</code> if the lead was created manually through the UI.</td>
+</tr>
+<tr>
+<td><code>data[].title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the lead</td>
+</tr>
+<tr>
+<td><code>data[].update_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data[].value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>data[].value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers (private)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company (shared)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>data[].was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+      &quot;cc_email&quot;: &quot;company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com&quot;,
+      &quot;channel&quot;: 52,
+      &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+      &quot;creator_id&quot;: 1,
+      &quot;expected_close_date&quot;: null,
+      &quot;id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;is_archived&quot;: false,
+      &quot;label_ids&quot;: [
+        &quot;f08b42a0-4e75-11ea-9643-03698ef1cfd6&quot;,
+        &quot;f08b42a1-4e75-11ea-9643-03698ef1cfd6&quot;
+      ],
+      &quot;next_activity_id&quot;: 1,
+      &quot;organization_id&quot;: null,
+      &quot;origin&quot;: &quot;API&quot;,
+      &quot;origin_id&quot;: null,
+      &quot;owner_id&quot;: 1,
+      &quot;person_id&quot;: 1092,
+      &quot;source_name&quot;: &quot;API&quot;,
+      &quot;title&quot;: &quot;Jane Doe Lead&quot;,
+      &quot;update_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+      &quot;value&quot;: {
+        &quot;amount&quot;: 999,
+        &quot;currency&quot;: &quot;USD&quot;
+      },
+      &quot;visible_to&quot;: &quot;3&quot;,
+      &quot;was_seen&quot;: false
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-leadsarchived" class="operation" data-method="get"><code>GET</code> /leads/archived</h3>
+<p>Operation ID: <code>getArchivedLeads</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | For pagination, the limit of entries to be returned. If not provided, 100 items will be returned. |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | For pagination, the position that represents the first result for the page |
+| <code>owner_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only leads matching the given user will be returned. However, <code>filter_id</code> takes precedence over <code>owner_id</code> when supplied. |
+| <code>person_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only leads matching the given person will be returned. However, <code>filter_id</code> takes precedence over <code>person_id</code> when supplied. |
+| <code>organization_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only leads matching the given organization will be returned. However, <code>filter_id</code> takes precedence over <code>organization_id</code> when supplied. |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the filter to use |
+| <code>sort</code> | <code>query</code> | <code>enum: id, title, owner_id, creator_id, was_seen, expected_close_date, ...</code> | No | The field names and sorting mode separated by a comma (<code>field_name_1 ASC</code>, <code>field_name_2 DESC</code>). Only first-level field keys are supported (no nested keys). |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-data-field-1" class="status" data-status="2xx">200: Successful response containing payload in the <code>data</code> field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data[].cc_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The BCC email of the lead</td>
+</tr>
+<tr>
+<td><code>data[].channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your &lt;a href=&quot;https://app.pipedrive.com/settings/fields&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Company settings&lt;/a&gt;.</td>
+</tr>
+<tr>
+<td><code>data[].channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>data[].creator_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the lead</td>
+</tr>
+<tr>
+<td><code>data[].expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique ID of the lead in the UUID format</td>
+</tr>
+<tr>
+<td><code>data[].is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>data[].label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which are associated with the lead</td>
+</tr>
+<tr>
+<td><code>data[].next_activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the next activity associated with the lead</td>
+</tr>
+<tr>
+<td><code>data[].organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data[].origin</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The way this Lead was created. <code>origin</code> field is set by Pipedrive when Lead is created and cannot be changed.</td>
+</tr>
+<tr>
+<td><code>data[].origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example Which API integration created this Lead.</td>
+</tr>
+<tr>
+<td><code>data[].owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who owns the lead</td>
+</tr>
+<tr>
+<td><code>data[].person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data[].source_deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal if the lead was converted from a deal.</td>
+</tr>
+<tr>
+<td><code>data[].source_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Defines where the lead comes from. Will be <code>API</code> if the lead was created through the Public API and will be <code>Manually created</code> if the lead was created manually through the UI.</td>
+</tr>
+<tr>
+<td><code>data[].title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the lead</td>
+</tr>
+<tr>
+<td><code>data[].update_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data[].value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>data[].value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers (private)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company (shared)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>data[].was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+      &quot;cc_email&quot;: &quot;company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com&quot;,
+      &quot;channel&quot;: 52,
+      &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+      &quot;creator_id&quot;: 1,
+      &quot;expected_close_date&quot;: null,
+      &quot;id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;is_archived&quot;: true,
+      &quot;label_ids&quot;: [
+        &quot;f08b42a0-4e75-11ea-9643-03698ef1cfd6&quot;,
+        &quot;f08b42a1-4e75-11ea-9643-03698ef1cfd6&quot;
+      ],
+      &quot;next_activity_id&quot;: 1,
+      &quot;organization_id&quot;: null,
+      &quot;origin&quot;: &quot;API&quot;,
+      &quot;origin_id&quot;: null,
+      &quot;owner_id&quot;: 1,
+      &quot;person_id&quot;: 1092,
+      &quot;source_name&quot;: &quot;API&quot;,
+      &quot;title&quot;: &quot;Jane Doe Lead&quot;,
+      &quot;update_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+      &quot;value&quot;: {
+        &quot;amount&quot;: 999,
+        &quot;currency&quot;: &quot;USD&quot;
+      },
+      &quot;visible_to&quot;: &quot;3&quot;,
+      &quot;was_seen&quot;: false
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-leadsidpermittedusers" class="operation" data-method="get"><code>GET</code> /leads/{id}/permittedUsers</h3>
+<p>Operation ID: <code>getLeadUsers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the lead |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-lists-users-permitted-to-access-a-lead" class="status" data-status="2xx">200: Lists users permitted to access a lead</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    10100010,
+    22302444,
+    33511023
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-leadssearch" class="operation" data-method="get"><code>GET</code> /leads/search</h3>
+<p>Operation ID: <code>searchLeads</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>term</code> | <code>query</code> | <code>string</code> | Yes | The search term to look for. Minimum 2 characters (or 1 if using <code>exact_match</code>). Please note that the search term has to be URL encoded. |
+| <code>fields</code> | <code>query</code> | <code>enum: custom_fields, notes, title</code> | No | A comma-separated string array. The fields to perform the search from. Defaults to all of them. |
+| <code>exact_match</code> | <code>query</code> | <code>boolean</code> | No | When enabled, only full exact matches against the given term are returned. It is &lt;b&gt;not&lt;/b&gt; case sensitive. |
+| <code>person_id</code> | <code>query</code> | <code>integer</code> | No | Will filter leads by the provided person ID. The upper limit of found leads associated with the person is 2000. |
+| <code>organization_id</code> | <code>query</code> | <code>integer</code> | No | Will filter leads by the provided organization ID. The upper limit of found leads associated with the organization is 2000. |
+| <code>include_fields</code> | <code>query</code> | <code>enum: lead.was_seen</code> | No | Supports including optional fields in the results which are not provided by default |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start. Note that the pagination is based on main results and does not include related items when using <code>search_for_related_items</code> parameter. |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;description&quot;: &quot;The additional data of the list&quot;,
+    &quot;properties&quot;: {
+      &quot;limit&quot;: {
+        &quot;description&quot;: &quot;Items shown per page&quot;,
+        &quot;type&quot;: &quot;integer&quot;
+      },
+      &quot;more_items_in_collection&quot;: {
+        &quot;description&quot;: &quot;If there are more list items in the collection than displayed or not&quot;,
+        &quot;type&quot;: &quot;boolean&quot;
+      },
+      &quot;start&quot;: {
+        &quot;description&quot;: &quot;Pagination start&quot;,
+        &quot;type&quot;: &quot;integer&quot;
+      }
+    },
+    &quot;type&quot;: &quot;object&quot;
+  },
+  &quot;data&quot;: {
+    &quot;items&quot;: [
+      {
+        &quot;item&quot;: {
+          &quot;currency&quot;: &quot;USD&quot;,
+          &quot;custom_fields&quot;: [],
+          &quot;emails&quot;: [
+            &quot;john@doe.com&quot;
+          ],
+          &quot;id&quot;: &quot;39c433f0-8a4c-11ec-8728-09968f0a1ca0&quot;,
+          &quot;is_archived&quot;: false,
+          &quot;notes&quot;: [],
+          &quot;organization&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;John company&quot;
+          },
+          &quot;owner&quot;: {
+            &quot;id&quot;: 1
+          },
+          &quot;person&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;John Doe&quot;
+          },
+          &quot;phones&quot;: [],
+          &quot;title&quot;: &quot;John Doe lead&quot;,
+          &quot;type&quot;: &quot;lead&quot;,
+          &quot;value&quot;: 100,
+          &quot;visible_to&quot;: 3
+        },
+        &quot;result_score&quot;: 0.29
+      }
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-leadsid" class="operation" data-method="get"><code>GET</code> /leads/{id}</h3>
+<p>Operation ID: <code>getLead</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string (uuid)</code> | Yes | The ID of the lead |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-data-field-2" class="status" data-status="2xx">200: Successful response containing payload in the <code>data</code> field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Lead</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data.cc_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The BCC email of the lead</td>
+</tr>
+<tr>
+<td><code>data.channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your &lt;a href=&quot;https://app.pipedrive.com/settings/fields&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Company settings&lt;/a&gt;.</td>
+</tr>
+<tr>
+<td><code>data.channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>data.creator_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the lead</td>
+</tr>
+<tr>
+<td><code>data.expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique ID of the lead in the UUID format</td>
+</tr>
+<tr>
+<td><code>data.is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>data.label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which are associated with the lead</td>
+</tr>
+<tr>
+<td><code>data.next_activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the next activity associated with the lead</td>
+</tr>
+<tr>
+<td><code>data.organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data.origin</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The way this Lead was created. <code>origin</code> field is set by Pipedrive when Lead is created and cannot be changed.</td>
+</tr>
+<tr>
+<td><code>data.origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example Which API integration created this Lead.</td>
+</tr>
+<tr>
+<td><code>data.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who owns the lead</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data.source_deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal if the lead was converted from a deal.</td>
+</tr>
+<tr>
+<td><code>data.source_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Defines where the lead comes from. Will be <code>API</code> if the lead was created through the Public API and will be <code>Manually created</code> if the lead was created manually through the UI.</td>
+</tr>
+<tr>
+<td><code>data.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the lead</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>data.value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers (private)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company (shared)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>data.was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+    &quot;cc_email&quot;: &quot;company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com&quot;,
+    &quot;channel&quot;: 52,
+    &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+    &quot;creator_id&quot;: 1,
+    &quot;expected_close_date&quot;: null,
+    &quot;id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;is_archived&quot;: false,
+    &quot;label_ids&quot;: [
+      &quot;f08b42a0-4e75-11ea-9643-03698ef1cfd6&quot;,
+      &quot;f08b42a1-4e75-11ea-9643-03698ef1cfd6&quot;
+    ],
+    &quot;next_activity_id&quot;: 1,
+    &quot;organization_id&quot;: null,
+    &quot;origin&quot;: &quot;API&quot;,
+    &quot;origin_id&quot;: null,
+    &quot;owner_id&quot;: 1,
+    &quot;person_id&quot;: 1092,
+    &quot;source_name&quot;: &quot;API&quot;,
+    &quot;title&quot;: &quot;Jane Doe Lead&quot;,
+    &quot;update_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+    &quot;value&quot;: {
+      &quot;amount&quot;: 999,
+      &quot;currency&quot;: &quot;USD&quot;
+    },
+    &quot;visible_to&quot;: &quot;3&quot;,
+    &quot;was_seen&quot;: false
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-a-resource-describing-an-error" class="status" data-status="4xx">404: A resource describing an error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;requested lead not found&quot;,
+  &quot;error_info&quot;: &quot;Object was not found.&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-leadsid" class="operation" data-method="delete"><code>DELETE</code> /leads/{id}</h3>
+<p>Operation ID: <code>deleteLead</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string (uuid)</code> | Yes | The ID of the lead |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-successful-response-with-id-value-only-used-in-delete-calls" class="status" data-status="2xx">200: Successful response with id value only. Used in DELETE calls</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-a-resource-describing-an-error-1" class="status" data-status="4xx">404: A resource describing an error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;requested lead not found&quot;,
+  &quot;error_info&quot;: &quot;Object was not found.&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="patch-leadsid" class="operation" data-method="patch"><code>PATCH</code> /leads/{id}</h3>
+<p>Operation ID: <code>updateLead</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string (uuid)</code> | Yes | The ID of the lead |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of Marketing channel this lead was created from. Provided value must be one of the channels configured for your company which you can fetch with &lt;a href=&quot;https://developers.pipedrive.com/docs/api/v1/DealFields#getDealField&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GET /v1/dealFields&lt;/a&gt;.</td>
+</tr>
+<tr>
+<td><code>channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which will be associated with the lead</td>
+</tr>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead will be linked to. If the organization does not exist yet, it needs to be created first. A lead always has to be linked to a person or organization or both.</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user which will be the owner of the created lead. If not provided, the user making the request will be used.</td>
+</tr>
+<tr>
+<td><code>person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead will be linked to. If the person does not exist yet, it needs to be created first. A lead always has to be linked to a person or organization or both.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the lead</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user. Read more about visibility groups &lt;a href=&quot;https://support.pipedrive.com/en/article/visibility-groups&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;here&lt;/a&gt;.&lt;h4&gt;Light / Growth and Professional plans&lt;/h4&gt;&lt;table&gt;&lt;tr&gt;&lt;th style=&quot;width: 40px&quot;&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;h4&gt;Premium / Ultimate plan&lt;/h4&gt;&lt;table&gt;&lt;tr&gt;&lt;th style=&quot;width: 40px&quot;&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner only&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Owner's visibility group&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>5</code>&lt;/td&gt;&lt;td&gt;Owner's visibility group and sub-groups&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>7</code>&lt;/td&gt;&lt;td&gt;Entire company&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-data-field-3" class="status" data-status="2xx">200: Successful response containing payload in the <code>data</code> field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Lead</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was created. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data.cc_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The BCC email of the lead</td>
+</tr>
+<tr>
+<td><code>data.channel</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of your Marketing channel this Lead was created from. Recognized Marketing channels can be configured in your &lt;a href=&quot;https://app.pipedrive.com/settings/fields&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Company settings&lt;/a&gt;.</td>
+</tr>
+<tr>
+<td><code>data.channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the Marketing channel.</td>
+</tr>
+<tr>
+<td><code>data.creator_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who created the lead</td>
+</tr>
+<tr>
+<td><code>data.expected_close_date</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date of when the deal which will be created from the lead is expected to be closed. In ISO 8601 format: YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique ID of the lead in the UUID format</td>
+</tr>
+<tr>
+<td><code>data.is_archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead is archived or not</td>
+</tr>
+<tr>
+<td><code>data.label_ids</code></td>
+<td><code>array of string (uuid)</code></td>
+<td>No</td>
+<td>The IDs of the lead labels which are associated with the lead</td>
+</tr>
+<tr>
+<td><code>data.next_activity_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the next activity associated with the lead</td>
+</tr>
+<tr>
+<td><code>data.organization_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of an organization which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data.origin</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The way this Lead was created. <code>origin</code> field is set by Pipedrive when Lead is created and cannot be changed.</td>
+</tr>
+<tr>
+<td><code>data.origin_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The optional ID to further distinguish the origin of the lead - for example Which API integration created this Lead.</td>
+</tr>
+<tr>
+<td><code>data.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who owns the lead</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of a person which this lead is linked to</td>
+</tr>
+<tr>
+<td><code>data.source_deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal if the lead was converted from a deal.</td>
+</tr>
+<tr>
+<td><code>data.source_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Defines where the lead comes from. Will be <code>API</code> if the lead was created through the Public API and will be <code>Manually created</code> if the lead was created manually through the UI.</td>
+</tr>
+<tr>
+<td><code>data.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the lead</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time of when the lead was last updated. In ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.</td>
+</tr>
+<tr>
+<td><code>data.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The potential value of the lead represented by a JSON object: <code>&amp;#123; &amp;quot;amount&amp;quot;: 200, &amp;quot;currency&amp;quot;: &amp;quot;EUR&amp;quot; &amp;#125;</code>. Both amount and currency are required.</td>
+</tr>
+<tr>
+<td><code>data.value.amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.value.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.visible_to</code></td>
+<td><code>enum: 1, 3, 5, 7</code></td>
+<td>No</td>
+<td>The visibility of the lead. If omitted, the visibility will be set to the default visibility setting of this item type for the authorized user.&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>1</code>&lt;/td&gt;&lt;td&gt;Owner &amp;amp; followers (private)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>3</code>&lt;/td&gt;&lt;td&gt;Entire company (shared)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>data.was_seen</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A flag indicating whether the lead was seen by someone in the Pipedrive UI</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+    &quot;cc_email&quot;: &quot;company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com&quot;,
+    &quot;channel&quot;: 52,
+    &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+    &quot;creator_id&quot;: 1,
+    &quot;expected_close_date&quot;: null,
+    &quot;id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+    &quot;is_archived&quot;: false,
+    &quot;label_ids&quot;: [
+      &quot;f08b42a0-4e75-11ea-9643-03698ef1cfd6&quot;,
+      &quot;f08b42a1-4e75-11ea-9643-03698ef1cfd6&quot;
+    ],
+    &quot;next_activity_id&quot;: 1,
+    &quot;organization_id&quot;: null,
+    &quot;origin&quot;: &quot;API&quot;,
+    &quot;origin_id&quot;: null,
+    &quot;owner_id&quot;: 1,
+    &quot;person_id&quot;: 1092,
+    &quot;source_name&quot;: &quot;API&quot;,
+    &quot;title&quot;: &quot;Jane Doe Lead&quot;,
+    &quot;update_time&quot;: &quot;2020-10-14T11:30:36.551Z&quot;,
+    &quot;value&quot;: {
+      &quot;amount&quot;: 999,
+      &quot;currency&quot;: &quot;USD&quot;
+    },
+    &quot;visible_to&quot;: &quot;3&quot;,
+    &quot;was_seen&quot;: false
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-a-resource-describing-an-error-2" class="status" data-status="4xx">404: A resource describing an error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The description of the error</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A message describing how to solve the problem</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;requested lead not found&quot;,
+  &quot;error_info&quot;: &quot;Object was not found.&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

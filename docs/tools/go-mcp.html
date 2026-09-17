@@ -1,12 +1,53 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Go MCP server | Pipedrive Deals API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Go MCP server | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body><a class="skip" href="#content">Skip to content</a>
-<header class="site-header"><a class="site-title" href="../index.html">Pipedrive Deals API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
 <div class="site-notice" role="note"></div>
-<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive Deals API</a></details>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
 <details><summary>API</summary><a href="../api/index.html">API overview</a>
-<a href="../api/deal.html">Deal</a></details>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
 <details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
 <a href="../guides/first-call.html">Make your first API call</a>
 <a href="../guides/errors.html">Handle errors</a>
@@ -43,8 +84,172 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../api/activity_field.html">ActivityField</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/activity_type.html">ActivityType</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/billing.html">Billing</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/call_log.html">CallLog</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code></td>
+</tr>
+<tr>
+<td><a href="../api/channel.html">Channel</a></td>
+<td><code>create</code>, <code>remove</code></td>
+</tr>
+<tr>
+<td><a href="../api/currency.html">Currency</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
 <td><a href="../api/deal.html">Deal</a></td>
 <td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/deal_field.html">DealField</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/file.html">File</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/filter.html">Filter</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/goal.html">Goal</a></td>
+<td><code>create</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/lead.html">Lead</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/lead_field.html">LeadField</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/lead_label.html">LeadLabel</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/lead_source.html">LeadSource</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/legacy_team.html">LegacyTeam</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/mailbox.html">Mailbox</a></td>
+<td><code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/meeting.html">Meeting</a></td>
+<td><code>create</code>, <code>remove</code></td>
+</tr>
+<tr>
+<td><a href="../api/note.html">Note</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/note_field.html">NoteField</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/oauth.html">Oauth</a></td>
+<td><code>create</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/organization.html">Organization</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/organization_field.html">OrganizationField</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/organization_relationship.html">OrganizationRelationship</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/permission_set.html">PermissionSet</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/person.html">Person</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/person_field.html">PersonField</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/pipeline.html">Pipeline</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/product.html">Product</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code></td>
+</tr>
+<tr>
+<td><a href="../api/product_field.html">ProductField</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/project.html">Project</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/project_board.html">ProjectBoard</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/project_phase.html">ProjectPhase</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/project_template.html">ProjectTemplate</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/recent.html">Recent</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/role.html">Role</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/stage.html">Stage</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/task.html">Task</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/user.html">User</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/user_connection.html">UserConnection</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/user_setting.html">UserSetting</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/webhook.html">Webhook</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code></td>
 </tr>
 </tbody>
 </table>
@@ -72,7 +277,7 @@
   &quot;properties&quot;: {
     &quot;entity&quot;: {
       &quot;type&quot;: &quot;string&quot;,
-      &quot;description&quot;: &quot;deal&quot;
+      &quot;description&quot;: &quot;activity_field | activity_type | billing | call_log | channel | currency | deal | deal_field | file | filter | goal | lead | lead_field | lead_label | lead_source | legacy_team | mailbox | meeting | note | note_field | oauth | organization | organization_field | organization_relationship | permission_set | person | person_field | pipeline | product | product_field | project | project_board | project_phase | project_template | recent | role | stage | task | user | user_connection | user_setting | webhook&quot;
     },
     &quot;query&quot;: {
       &quot;type&quot;: &quot;object&quot;,
@@ -81,7 +286,7 @@
   }
 }
 </code></pre>
-<p>Supported entities: <code>deal</code>.</p>
+<p>Supported entities: <code>activity_field</code>, <code>activity_type</code>, <code>billing</code>, <code>call_log</code>, <code>currency</code>, <code>deal</code>, <code>deal_field</code>, <code>file</code>, <code>filter</code>, <code>lead</code>, <code>lead_field</code>, <code>lead_label</code>, <code>lead_source</code>, <code>legacy_team</code>, <code>mailbox</code>, <code>note</code>, <code>note_field</code>, <code>organization</code>, <code>organization_field</code>, <code>organization_relationship</code>, <code>permission_set</code>, <code>person</code>, <code>person_field</code>, <code>pipeline</code>, <code>product</code>, <code>product_field</code>, <code>project</code>, <code>project_board</code>, <code>project_phase</code>, <code>project_template</code>, <code>recent</code>, <code>role</code>, <code>stage</code>, <code>task</code>, <code>user</code>, <code>webhook</code>.</p>
 <h3 id="pipedrive_load"><code>pipedrive_load</code></h3>
 <p>Load one record for an entity.</p>
 <pre><code class="language-json">{
@@ -92,7 +297,7 @@
   &quot;properties&quot;: {
     &quot;entity&quot;: {
       &quot;type&quot;: &quot;string&quot;,
-      &quot;description&quot;: &quot;deal&quot;
+      &quot;description&quot;: &quot;activity_field | activity_type | billing | call_log | channel | currency | deal | deal_field | file | filter | goal | lead | lead_field | lead_label | lead_source | legacy_team | mailbox | meeting | note | note_field | oauth | organization | organization_field | organization_relationship | permission_set | person | person_field | pipeline | product | product_field | project | project_board | project_phase | project_template | recent | role | stage | task | user | user_connection | user_setting | webhook&quot;
     },
     &quot;query&quot;: {
       &quot;type&quot;: &quot;object&quot;,
@@ -101,6 +306,6 @@
   }
 }
 </code></pre>
-<p>Supported entities: <code>deal</code>.</p>
+<p>Supported entities: <code>call_log</code>, <code>deal</code>, <code>deal_field</code>, <code>file</code>, <code>filter</code>, <code>goal</code>, <code>lead</code>, <code>legacy_team</code>, <code>mailbox</code>, <code>note</code>, <code>oauth</code>, <code>organization_field</code>, <code>organization_relationship</code>, <code>permission_set</code>, <code>person_field</code>, <code>pipeline</code>, <code>product_field</code>, <code>project</code>, <code>project_board</code>, <code>project_phase</code>, <code>project_template</code>, <code>role</code>, <code>task</code>, <code>user</code>, <code>user_connection</code>, <code>user_setting</code>.</p>
 </main></div>
 <script src="../assets/search.js" defer></script></body></html>

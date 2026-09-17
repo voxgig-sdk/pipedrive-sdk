@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ProjectPhase | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a aria-current="page" href="../api/project_phase.html">ProjectPhase</a><div class="nav-sections"><a class="nav-section" href="#get-projectsphases">GET /projects/phases</a>
+<a class="nav-section" href="#get-projectsphasesid">GET /projects/phases/{id}</a></div>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="projectphase">ProjectPhase</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsphases"><code>/projects/phases</code></a></td>
+<td><code>list</code></td>
+<td>A list of project phases</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-projectsphasesid"><code>/projects/phases/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Get a project phase</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the board in UTC.</td>
+</tr>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>board_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the project board this phase is linked to</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project phase</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of a project phase</td>
+</tr>
+<tr>
+<td><code>order_nr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The order of a phase</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The update date and time of the board in UTC.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-projectsphases" class="operation" data-method="get"><code>GET</code> /projects/phases</h3>
+<p>Operation ID: <code>getProjectsPhases</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>board_id</code> | <code>query</code> | <code>integer</code> | Yes | ID of the board for which phases are requested |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-a-list-of-project-phases" class="status" data-status="2xx">200: A list of project phases</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.</td>
+</tr>
+<tr>
+<td><code>data[].board_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the project board this phase is linked to</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project phase</td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of a project phase</td>
+</tr>
+<tr>
+<td><code>data[].order_nr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The order of a phase</td>
+</tr>
+<tr>
+<td><code>data[].update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The update date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2023-09-12 11:12:18&quot;,
+      &quot;board_id&quot;: 1,
+      &quot;id&quot;: 2,
+      &quot;name&quot;: &quot;Project Phase&quot;,
+      &quot;order_nr&quot;: 2,
+      &quot;update_time&quot;: &quot;2023-09-14 05:45:40&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-projectsphasesid" class="operation" data-method="get"><code>GET</code> /projects/phases/{id}</h3>
+<p>Operation ID: <code>getProjectsPhase</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the project phase |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-get-a-project-phase" class="status" data-status="2xx">200: Get a project phase</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The creation date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.</td>
+</tr>
+<tr>
+<td><code>data.board_id</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The ID of the project board this phase is linked to</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the project phase</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of a project phase</td>
+</tr>
+<tr>
+<td><code>data.order_nr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The order of a phase</td>
+</tr>
+<tr>
+<td><code>data.update_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The update date and time of the board in UTC. Format: YYYY-MM-DD HH:MM:SS.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2023-09-12 11:12:18&quot;,
+    &quot;board_id&quot;: 1,
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;Project Phase&quot;,
+    &quot;order_nr&quot;: 2,
+    &quot;update_time&quot;: &quot;2023-09-14 05:45:40&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

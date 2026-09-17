@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ProductField | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a aria-current="page" href="../api/product_field.html">ProductField</a><div class="nav-sections"><a class="nav-section" href="#post-productfields">POST /productFields</a>
+<a class="nav-section" href="#get-productfields">GET /productFields</a>
+<a class="nav-section" href="#get-productfieldsid">GET /productFields/{id}</a>
+<a class="nav-section" href="#delete-productfieldsid">DELETE /productFields/{id}</a>
+<a class="nav-section" href="#delete-productfields">DELETE /productFields</a>
+<a class="nav-section" href="#put-productfieldsid">PUT /productFields/{id}</a></div>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="productfield">ProductField</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-productfields"><code>/productFields</code></a></td>
+<td><code>create</code></td>
+<td>Get the data for a single product field</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-productfields"><code>/productFields</code></a></td>
+<td><code>list</code></td>
+<td>Get data about all product fields</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-productfieldsid"><code>/productFields/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Get the data for a single product field</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-productfieldsid"><code>/productFields/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Delete a product field</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-productfields"><code>/productFields</code></a></td>
+<td><code>remove</code></td>
+<td>Mark multiple product fields as deleted</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-productfieldsid"><code>/productFields/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Get the data for a single product field</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>field_type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the field&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>varchar</code>&lt;/td&gt;&lt;td&gt;Text (up to 255 characters)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>varchar_auto</code>&lt;/td&gt;&lt;td&gt;Autocomplete text (up to 255 characters)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>text</code>&lt;/td&gt;&lt;td&gt;Long text (…</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the field</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>When <code>field_type</code> is either <code>set</code> or <code>enum</code>, possible options must be supplied as a JSON-encoded sequential array, for example:&lt;/br&gt;<code>[&amp;#123;&amp;quot;label&amp;quot;:&amp;quot;red&amp;quot;&amp;#125;, &amp;#123;&amp;quot;label&amp;quot;:&amp;quot;blue&amp;quot;&amp;#125;, &amp;#123;&amp;quot;label&amp;quot;:&amp;quot;lilac&amp;quot;&amp;#125;]</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-productfields" class="operation" data-method="post"><code>POST</code> /productFields</h3>
+<p>Operation ID: <code>addProductField</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field_type</code></td>
+<td><code>enum: varchar, varchar_auto, text, double, monetary, date, ...</code></td>
+<td>Yes</td>
+<td>The type of the field&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>varchar</code>&lt;/td&gt;&lt;td&gt;Text (up to 255 characters)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>varchar_auto</code>&lt;/td&gt;&lt;td&gt;Autocomplete text (up to 255 characters)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>text</code>&lt;/td&gt;&lt;td&gt;Long text (up to 65k characters)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>double</code>&lt;/td&gt;&lt;td&gt;Numeric value&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>monetary</code>&lt;/td&gt;&lt;td&gt;Monetary field (has a numeric value and a currency value)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>date</code>&lt;/td&gt;&lt;td&gt;Date (format YYYY-MM-DD)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>set</code>&lt;/td&gt;&lt;td&gt;Options field with a possibility of having multiple chosen options&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>enum</code>&lt;/td&gt;&lt;td&gt;Options field with a single possible chosen option&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>user</code>&lt;/td&gt;&lt;td&gt;User field (contains a user ID of another Pipedrive user)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>org</code>&lt;/td&gt;&lt;td&gt;Organization field (contains an organization ID which is stored on the same account)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>people</code>&lt;/td&gt;&lt;td&gt;Person field (contains a product ID which is stored on the same account)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>phone</code>&lt;/td&gt;&lt;td&gt;Phone field (up to 255 numbers and/or characters)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>time</code>&lt;/td&gt;&lt;td&gt;Time field (format HH:MM:SS)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>timerange</code>&lt;/td&gt;&lt;td&gt;Time-range field (has a start time and end time value, both HH:MM:SS)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>daterange</code>&lt;/td&gt;&lt;td&gt;Date-range field (has a start date and end date value, both YYYY-MM-DD)&lt;/td&gt;&lt;tr&gt;&lt;td&gt;<code>address</code>&lt;/td&gt;&lt;td&gt;Address field&lt;/dd&gt;&lt;/table&gt;</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the field</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>When <code>field_type</code> is either <code>set</code> or <code>enum</code>, possible options must be supplied as a JSON-encoded sequential array, for example:&lt;/br&gt;<code>[&amp;#123;&amp;quot;label&amp;quot;:&amp;quot;red&amp;quot;&amp;#125;, &amp;#123;&amp;quot;label&amp;quot;:&amp;quot;blue&amp;quot;&amp;#125;, &amp;#123;&amp;quot;label&amp;quot;:&amp;quot;lilac&amp;quot;&amp;#125;]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-get-the-data-for-a-single-product-field" class="status" data-status="2xx">201: Get the data for a single product field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>All data for the product field</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-12-20 11:01:24&quot;,
+    &quot;add_visible_flag&quot;: true,
+    &quot;bulk_edit_allowed&quot;: true,
+    &quot;created_by_user_id&quot;: 10999910,
+    &quot;details_visible_flag&quot;: true,
+    &quot;edit_flag&quot;: true,
+    &quot;field_type&quot;: &quot;enum&quot;,
+    &quot;filtering_allowed&quot;: true,
+    &quot;id&quot;: 32,
+    &quot;important_flag&quot;: false,
+    &quot;index_visible_flag&quot;: true,
+    &quot;key&quot;: &quot;397b0f545d134b479a5485041b33b0f0f3da2333&quot;,
+    &quot;last_updated_by_user_id&quot;: 10999910,
+    &quot;mandatory_flag&quot;: false,
+    &quot;name&quot;: &quot;Color&quot;,
+    &quot;options&quot;: [
+      {
+        &quot;id&quot;: 9,
+        &quot;label&quot;: &quot;red&quot;
+      },
+      {
+        &quot;id&quot;: 10,
+        &quot;label&quot;: &quot;blue&quot;
+      },
+      {
+        &quot;id&quot;: 11,
+        &quot;label&quot;: &quot;lilac&quot;
+      }
+    ],
+    &quot;order_nr&quot;: 13,
+    &quot;searchable_flag&quot;: false,
+    &quot;sortable_flag&quot;: true,
+    &quot;update_time&quot;: &quot;2019-12-20 11:01:24&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-productfields" class="operation" data-method="get"><code>GET</code> /productFields</h3>
+<p>Operation ID: <code>getProductFields</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-get-data-about-all-product-fields" class="status" data-status="2xx">200: Get data about all product fields</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Additional data for the product field, such as pagination</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object and object and object</code></td>
+<td>No</td>
+<td>Array containing data for all product fields</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: false,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2019-11-25 13:34:03&quot;,
+      &quot;add_visible_flag&quot;: true,
+      &quot;bulk_edit_allowed&quot;: true,
+      &quot;created_by_user_id&quot;: 1,
+      &quot;details_visible_flag&quot;: false,
+      &quot;edit_flag&quot;: false,
+      &quot;field_type&quot;: &quot;varchar&quot;,
+      &quot;filtering_allowed&quot;: true,
+      &quot;id&quot;: 20,
+      &quot;important_flag&quot;: false,
+      &quot;index_visible_flag&quot;: true,
+      &quot;key&quot;: &quot;name&quot;,
+      &quot;last_updated_by_user_id&quot;: 1,
+      &quot;mandatory_flag&quot;: true,
+      &quot;name&quot;: &quot;Name&quot;,
+      &quot;order_nr&quot;: 1,
+      &quot;picklist_data&quot;: null,
+      &quot;searchable_flag&quot;: false,
+      &quot;sortable_flag&quot;: true,
+      &quot;update_time&quot;: &quot;2019-11-25 13:34:02&quot;
+    },
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2019-11-25 13:34:03&quot;,
+      &quot;add_visible_flag&quot;: false,
+      &quot;bulk_edit_allowed&quot;: true,
+      &quot;created_by_user_id&quot;: 1,
+      &quot;details_visible_flag&quot;: true,
+      &quot;edit_flag&quot;: false,
+      &quot;field_type&quot;: &quot;double&quot;,
+      &quot;filtering_allowed&quot;: true,
+      &quot;id&quot;: 24,
+      &quot;important_flag&quot;: false,
+      &quot;index_visible_flag&quot;: true,
+      &quot;key&quot;: &quot;visible_to&quot;,
+      &quot;last_updated_by_user_id&quot;: 1,
+      &quot;mandatory_flag&quot;: true,
+      &quot;name&quot;: &quot;Visible to&quot;,
+      &quot;options&quot;: [
+        {
+          &quot;id&quot;: 1,
+          &quot;label&quot;: &quot;Owner &amp; followers&quot;
+        },
+        {
+          &quot;id&quot;: 3,
+          &quot;label&quot;: &quot;Entire company&quot;
+        }
+      ],
+      &quot;order_nr&quot;: 5,
+      &quot;searchable_flag&quot;: false,
+      &quot;sortable_flag&quot;: true,
+      &quot;update_time&quot;: &quot;2019-11-25 13:34:02&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-productfieldsid" class="operation" data-method="get"><code>GET</code> /productFields/{id}</h3>
+<p>Operation ID: <code>getProductField</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the product field |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-get-the-data-for-a-single-product-field" class="status" data-status="2xx">200: Get the data for a single product field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>All data for the product field</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-12-20 11:01:24&quot;,
+    &quot;add_visible_flag&quot;: true,
+    &quot;bulk_edit_allowed&quot;: true,
+    &quot;created_by_user_id&quot;: 10999910,
+    &quot;details_visible_flag&quot;: true,
+    &quot;edit_flag&quot;: true,
+    &quot;field_type&quot;: &quot;enum&quot;,
+    &quot;filtering_allowed&quot;: true,
+    &quot;id&quot;: 32,
+    &quot;important_flag&quot;: false,
+    &quot;index_visible_flag&quot;: true,
+    &quot;key&quot;: &quot;397b0f545d134b479a5485041b33b0f0f3da2333&quot;,
+    &quot;last_updated_by_user_id&quot;: 10999910,
+    &quot;mandatory_flag&quot;: false,
+    &quot;name&quot;: &quot;Color&quot;,
+    &quot;options&quot;: [
+      {
+        &quot;id&quot;: 9,
+        &quot;label&quot;: &quot;red&quot;
+      },
+      {
+        &quot;id&quot;: 10,
+        &quot;label&quot;: &quot;blue&quot;
+      },
+      {
+        &quot;id&quot;: 11,
+        &quot;label&quot;: &quot;lilac&quot;
+      }
+    ],
+    &quot;order_nr&quot;: 13,
+    &quot;searchable_flag&quot;: false,
+    &quot;sortable_flag&quot;: true,
+    &quot;update_time&quot;: &quot;2019-12-20 11:01:24&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="410-the-product-field-with-the-specified-id-does-not-exist-or-is-inaccessible" class="status" data-status="4xx">410: The product field with the specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;The field is not found&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-productfieldsid" class="operation" data-method="delete"><code>DELETE</code> /productFields/{id}</h3>
+<p>Operation ID: <code>deleteProductField</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the product field |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-delete-a-product-field" class="status" data-status="2xx">200: Delete a product field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deleted product field</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 32
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="410-the-product-field-with-the-specified-id-does-not-exist-or-is-inaccessible-1" class="status" data-status="4xx">410: The product field with the specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;The field is not found&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h3 id="delete-productfields" class="operation" data-method="delete"><code>DELETE</code> /productFields</h3>
+<p>Operation ID: <code>deleteProductFields</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>ids</code> | <code>query</code> | <code>string</code> | Yes | The comma-separated field IDs to delete |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-mark-multiple-product-fields-as-deleted" class="status" data-status="2xx">200: Mark multiple product fields as deleted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>Array of all the IDs of the deleted product fields</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: [
+      32,
+      35
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-productfieldsid" class="operation" data-method="put"><code>PUT</code> /productFields/{id}</h3>
+<p>Operation ID: <code>updateProductField</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the product field |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>When <code>field_type</code> is either set or enum, possible options on update must be supplied as an array of objects each containing id and label, for example: [{&quot;id&quot;:1, &quot;label&quot;:&quot;red&quot;},{&quot;id&quot;:2, &quot;label&quot;:&quot;blue&quot;},{&quot;id&quot;:3, &quot;label&quot;:&quot;lilac&quot;}]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-get-the-data-for-a-single-product-field-1" class="status" data-status="2xx">200: Get the data for a single product field</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>All data for the product field</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-12-20 11:01:24&quot;,
+    &quot;add_visible_flag&quot;: true,
+    &quot;bulk_edit_allowed&quot;: true,
+    &quot;created_by_user_id&quot;: 10999910,
+    &quot;details_visible_flag&quot;: true,
+    &quot;edit_flag&quot;: true,
+    &quot;field_type&quot;: &quot;enum&quot;,
+    &quot;filtering_allowed&quot;: true,
+    &quot;id&quot;: 32,
+    &quot;important_flag&quot;: false,
+    &quot;index_visible_flag&quot;: true,
+    &quot;key&quot;: &quot;397b0f545d134b479a5485041b33b0f0f3da2333&quot;,
+    &quot;last_updated_by_user_id&quot;: 10999910,
+    &quot;mandatory_flag&quot;: false,
+    &quot;name&quot;: &quot;Color&quot;,
+    &quot;options&quot;: [
+      {
+        &quot;id&quot;: 9,
+        &quot;label&quot;: &quot;red&quot;
+      },
+      {
+        &quot;id&quot;: 10,
+        &quot;label&quot;: &quot;blue&quot;
+      },
+      {
+        &quot;id&quot;: 11,
+        &quot;label&quot;: &quot;lilac&quot;
+      }
+    ],
+    &quot;order_nr&quot;: 13,
+    &quot;searchable_flag&quot;: false,
+    &quot;sortable_flag&quot;: true,
+    &quot;update_time&quot;: &quot;2019-12-20 11:01:24&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,22 @@
+# BasicLeadFieldFlow
+
+main: kit: flow: BasicLeadFieldFlow:
+{
+  entity: "lead_field",
+  kind: "basic",
+  name: "BasicLeadFieldFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "lead_field_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLeadFieldFlow"
+}

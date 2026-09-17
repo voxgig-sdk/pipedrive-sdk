@@ -25,7 +25,7 @@ class TestDealDirect:
 
 
         result = client.direct({
-            "path": "deals",
+            "path": "deals/archived",
             "method": "GET",
             "params": {},
         })
@@ -57,23 +57,13 @@ class TestDealDirect:
             # pytest already imported at module scope
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
-        if setup["live"]:
-            # pytest already imported at module scope
-            pytest.skip("live direct-load needs real ID — set *_ENTID env var with real IDs to run")
-            return
-
         client = setup["client"]
 
-        params = {}
-        query = {}
-        if not setup["live"]:
-            params["id"] = "direct01"
 
         result = client.direct({
-            "path": "deals/{id}",
+            "path": "deals/timeline",
             "method": "GET",
-            "params": params,
-            "query": query,
+            "params": {},
         })
         if setup["live"]:
             # Live mode is lenient: synthetic IDs frequently 4xx. Skip

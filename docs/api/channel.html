@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Channel | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a aria-current="page" href="../api/channel.html">Channel</a><div class="nav-sections"><a class="nav-section" href="#post-channels">POST /channels</a>
+<a class="nav-section" href="#post-channelsmessagesreceive">POST /channels/messages/receive</a>
+<a class="nav-section" href="#delete-channelschannel-idconversationsconversation-id">DELETE /channels/{channel-id}/conversations/{conversation-id}</a>
+<a class="nav-section" href="#delete-channelsid">DELETE /channels/{id}</a></div>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="channel">Channel</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-channels"><code>/channels</code></a></td>
+<td><code>create</code></td>
+<td>The channel registered</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-channelsmessagesreceive"><code>/channels/messages/receive</code></a></td>
+<td><code>create</code></td>
+<td>The message was registered in the conversation</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-channelschannel-idconversationsconversation-id"><code>/channels/{channel-id}/conversations/{conversation-id}</code></a></td>
+<td><code>remove</code></td>
+<td>The conversation was deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-channelsid"><code>/channels/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>The channel was deleted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The list of attachments available in the message</td>
+</tr>
+<tr>
+<td><code>avatar_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL for an icon that represents your channel</td>
+</tr>
+<tr>
+<td><code>channel_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The channel ID as in the provider</td>
+</tr>
+<tr>
+<td><code>conversation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the conversation</td>
+</tr>
+<tr>
+<td><code>conversation_link</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL that can open the conversation in the provider's side</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when your channel was created in the API</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique channel ID used internally in omnichannel-api and the frontend of the extension</td>
+</tr>
+<tr>
+<td><code>marketplace_client_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The client_id of your app in Pipedrive marketplace</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The body of the message</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the channel</td>
+</tr>
+<tr>
+<td><code>pd_company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user's company in Pipedrive</td>
+</tr>
+<tr>
+<td><code>pd_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user in Pipedrive</td>
+</tr>
+<tr>
+<td><code>provider_channel_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The channel ID you specified while creating the channel</td>
+</tr>
+<tr>
+<td><code>provider_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Value of the provider_type sent to this endpoint</td>
+</tr>
+<tr>
+<td><code>reply_by</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the message can no longer receive a reply, in UTC.</td>
+</tr>
+<tr>
+<td><code>sender_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the provider's user that sent the message</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status of the message</td>
+</tr>
+<tr>
+<td><code>template_support</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Value of the template_support sent to this endpoint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-channels" class="operation" data-method="post"><code>POST</code> /channels</h3>
+<p>Operation ID: <code>addChannel</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avatar_url</code></td>
+<td><code>string (url)</code></td>
+<td>No</td>
+<td>The URL for an icon that represents your channel</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the channel</td>
+</tr>
+<tr>
+<td><code>provider_channel_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The channel ID</td>
+</tr>
+<tr>
+<td><code>provider_type</code></td>
+<td><code>enum: facebook, whatsapp, other</code></td>
+<td>No</td>
+<td>It controls the icons (like the icon next to the conversation)</td>
+</tr>
+<tr>
+<td><code>template_support</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, enables templates logic on UI. Requires getTemplates endpoint implemented. Find out more <a href="https://pipedrive.readme.io/docs/implementing-messaging-app-extension">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-channel-registered" class="status" data-status="2xx">200: The channel registered</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.avatar_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL for an icon that represents your channel</td>
+</tr>
+<tr>
+<td><code>data.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when your channel was created in the API</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique channel ID used internally in omnichannel-api and the frontend of the extension</td>
+</tr>
+<tr>
+<td><code>data.marketplace_client_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The client_id of your app in Pipedrive marketplace</td>
+</tr>
+<tr>
+<td><code>data.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the channel</td>
+</tr>
+<tr>
+<td><code>data.pd_company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user's company in Pipedrive</td>
+</tr>
+<tr>
+<td><code>data.pd_user_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user in Pipedrive</td>
+</tr>
+<tr>
+<td><code>data.provider_channel_id</code></td>
+<td><code>string (string)</code></td>
+<td>No</td>
+<td>The channel ID you specified while creating the channel</td>
+</tr>
+<tr>
+<td><code>data.provider_type</code></td>
+<td><code>enum: facebook, whatsapp, other</code></td>
+<td>No</td>
+<td>Value of the provider_type sent to this endpoint</td>
+</tr>
+<tr>
+<td><code>data.template_support</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Value of the template_support sent to this endpoint</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;avatar_url&quot;: &quot;http://my-domain.com/images/test.png&quot;,
+    &quot;created_at&quot;: &quot;2022-03-01 00:00:00&quot;,
+    &quot;id&quot;: &quot;e283f878-7ef9-4294-8e5c-04a7d003fd92&quot;,
+    &quot;marketplace_client_id&quot;: &quot;57da5c3c55a82bb4&quot;,
+    &quot;name&quot;: &quot;My Channel&quot;,
+    &quot;pd_company_id&quot;: 123,
+    &quot;pd_user_id&quot;: 321,
+    &quot;provider_channel_id&quot;: &quot;e283f878-7ef9-4294-8e5c-04a7d003fd92&quot;,
+    &quot;provider_type&quot;: &quot;other&quot;,
+    &quot;template_support&quot;: false
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="400-bad-request" class="status" data-status="4xx">400: Bad Request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An error code sent by the API</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error description</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An error code sent by the API</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error description</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-channelsmessagesreceive" class="operation" data-method="post"><code>POST</code> /channels/messages/receive</h3>
+<p>Operation ID: <code>receiveMessage</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The list of attachments available in the message</td>
+</tr>
+<tr>
+<td><code>attachments[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the attachment</td>
+</tr>
+<tr>
+<td><code>attachments[].link_expires</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, it will use the getMessageById endpoint for fetching updated attachment's urls. Find out more <a href="https://pipedrive.readme.io/docs/implementing-messaging-app-extension">here</a></td>
+</tr>
+<tr>
+<td><code>attachments[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the attachment</td>
+</tr>
+<tr>
+<td><code>attachments[].preview_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL to a preview picture of the file</td>
+</tr>
+<tr>
+<td><code>attachments[].size</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The size of the attachment</td>
+</tr>
+<tr>
+<td><code>attachments[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The mime-type of the attachment</td>
+</tr>
+<tr>
+<td><code>attachments[].url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A URL to the file</td>
+</tr>
+<tr>
+<td><code>channel_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The channel ID as in the provider</td>
+</tr>
+<tr>
+<td><code>conversation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the conversation</td>
+</tr>
+<tr>
+<td><code>conversation_link</code></td>
+<td><code>string (url)</code></td>
+<td>No</td>
+<td>A URL that can open the conversation in the provider's side</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created in the provider, in UTC. Format: YYYY-MM-DD HH:MM</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the message</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The body of the message</td>
+</tr>
+<tr>
+<td><code>reply_by</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the message can no longer receive a reply, in UTC. Format: YYYY-MM-DD HH:MM</td>
+</tr>
+<tr>
+<td><code>sender_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the provider's user that sent the message</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: sent, delivered, read, failed</code></td>
+<td>Yes</td>
+<td>The status of the message</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-the-message-was-registered-in-the-conversation" class="status" data-status="2xx">200: The message was registered in the conversation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.attachments</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The list of attachments available in the message</td>
+</tr>
+<tr>
+<td><code>data.attachments[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the attachment</td>
+</tr>
+<tr>
+<td><code>data.attachments[].link_expires</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, it will use the getMessageById endpoint for fetching updated attachment's urls. Find out more <a href="https://pipedrive.readme.io/docs/implementing-messaging-app-extension">here</a></td>
+</tr>
+<tr>
+<td><code>data.attachments[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the attachment</td>
+</tr>
+<tr>
+<td><code>data.attachments[].preview_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL to a preview picture of the file</td>
+</tr>
+<tr>
+<td><code>data.attachments[].size</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The size of the attachment</td>
+</tr>
+<tr>
+<td><code>data.attachments[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The mime-type of the attachment</td>
+</tr>
+<tr>
+<td><code>data.attachments[].url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A URL to the file</td>
+</tr>
+<tr>
+<td><code>data.channel_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The channel ID as in the provider</td>
+</tr>
+<tr>
+<td><code>data.conversation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the conversation</td>
+</tr>
+<tr>
+<td><code>data.conversation_link</code></td>
+<td><code>string (url)</code></td>
+<td>No</td>
+<td>A URL that can open the conversation in the provider's side</td>
+</tr>
+<tr>
+<td><code>data.created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created in the provider, in UTC. Format: YYYY-MM-DD HH:MM</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the message</td>
+</tr>
+<tr>
+<td><code>data.message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The body of the message</td>
+</tr>
+<tr>
+<td><code>data.reply_by</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the message can no longer receive a reply, in UTC. Format: YYYY-MM-DD HH:MM</td>
+</tr>
+<tr>
+<td><code>data.sender_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the provider's user that sent the message</td>
+</tr>
+<tr>
+<td><code>data.status</code></td>
+<td><code>enum: sent, delivered, read, failed</code></td>
+<td>Yes</td>
+<td>The status of the message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;attachments&quot;: [
+      {
+        &quot;id&quot;: &quot;b0369d1d-6b6a-4293-88b9-e2924782d47e&quot;,
+        &quot;name&quot;: &quot;Image Name&quot;,
+        &quot;preview_url&quot;: &quot;http://my-server.com/images/b0369d1d-6b6a-4293-88b9-e2924782d47e.preview.png&quot;,
+        &quot;size&quot;: 600,
+        &quot;type&quot;: &quot;image/png&quot;,
+        &quot;url&quot;: &quot;http://my-server.com/images/b0369d1d-6b6a-4293-88b9-e2924782d47e.png&quot;
+      }
+    ],
+    &quot;channel_id&quot;: &quot;a8aa4db0-91bb-4e90-b9c0-0c6291307e2f&quot;,
+    &quot;conversation_id&quot;: &quot;063ffa46-831c-4027-a04c-b65e17f077b7&quot;,
+    &quot;conversation_link&quot;: &quot;http://my-server.com/conversations/063ffa46-831c-4027-a04c-b65e17f077b7&quot;,
+    &quot;created_at&quot;: &quot;2022-03-01T07:58:35.449Z&quot;,
+    &quot;id&quot;: &quot;e283f878-7ef9-4294-8e5c-04a7d003fd92&quot;,
+    &quot;message&quot;: &quot;This is a message&quot;,
+    &quot;reply_by&quot;: &quot;2022-03-01T07:58:35.449Z&quot;,
+    &quot;sender_id&quot;: &quot;5d4bd467-d847-4088-ae43-0c7614233bab&quot;,
+    &quot;status&quot;: &quot;sent&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="400-bad-request-1" class="status" data-status="4xx">400: Bad Request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An error code sent by the API</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error description</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-channelschannel-idconversationsconversation-id" class="operation" data-method="delete"><code>DELETE</code> /channels/{channel-id}/conversations/{conversation-id}</h3>
+<p>Operation ID: <code>deleteConversation</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>channel-id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the channel provided by the integration |
+| <code>conversation-id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the conversation provided by the integration |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-the-conversation-was-deleted" class="status" data-status="2xx">200: The conversation was deleted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An error code sent by the API</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error description</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not Found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An error code sent by the API</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error description</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-channelsid" class="operation" data-method="delete"><code>DELETE</code> /channels/{id}</h3>
+<p>Operation ID: <code>deleteChannel</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the channel provided by the integration |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-the-channel-was-deleted" class="status" data-status="2xx">200: The channel was deleted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="400-bad-request-2" class="status" data-status="4xx">400: Bad Request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>additional_data.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An error code sent by the API</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error description</td>
+</tr>
+<tr>
+<td><code>error_info</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

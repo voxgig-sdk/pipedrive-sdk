@@ -137,7 +137,7 @@ func TestDealEntity(t *testing.T) {
 			"id": dealRef01Data["id"],
 		}
 
-		dealRef01MarkdefUp0Name := "add_time"
+		dealRef01MarkdefUp0Name := "period_end"
 		dealRef01MarkdefUp0Value := fmt.Sprintf("Mark01-deal_ref01_%d", setup.now)
 		dealRef01DataUp0Up[dealRef01MarkdefUp0Name] = dealRef01MarkdefUp0Value
 
@@ -226,7 +226,7 @@ func dealBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"deal01", "deal02", "deal03"},
+		[]any{"deal01", "deal02", "deal03", "follower01", "follower02", "follower03", "participant01", "participant02", "participant03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

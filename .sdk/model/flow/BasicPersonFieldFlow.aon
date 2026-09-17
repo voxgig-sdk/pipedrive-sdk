@@ -1,0 +1,96 @@
+# BasicPersonFieldFlow
+
+main: kit: flow: BasicPersonFieldFlow:
+{
+  entity: "person_field",
+  kind: "basic",
+  name: "BasicPersonFieldFlow",
+  step: [
+    {
+      input: {
+        ref: "person_field_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "person_field_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "person_field_ref01",
+        srcdatavar: "person_field_ref01_data",
+        suffix: "_up0",
+        textfield: "name"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-person_field_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "person_field_ref01",
+        srcdatavar: "person_field_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "person_field01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-person_field_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "person_field_ref01",
+        suffix: "_rm0"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "person_field_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersonFieldFlow"
+}

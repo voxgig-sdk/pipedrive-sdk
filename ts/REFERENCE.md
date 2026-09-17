@@ -19,6 +19,7 @@ Create a new SDK client instance.
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
 | `options.apikey` | `string` | API key for authentication. |
+| `options.secret` | `string` | API secret for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -49,6 +50,78 @@ const client = PipedriveSDK.test()
 
 ### Instance Methods
 
+#### `ActivityField(data?: object)`
+
+Create a new `ActivityField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ActivityFieldEntity` instance.
+
+#### `ActivityType(data?: object)`
+
+Create a new `ActivityType` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ActivityTypeEntity` instance.
+
+#### `Billing(data?: object)`
+
+Create a new `Billing` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingEntity` instance.
+
+#### `CallLog(data?: object)`
+
+Create a new `CallLog` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CallLogEntity` instance.
+
+#### `Channel(data?: object)`
+
+Create a new `Channel` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChannelEntity` instance.
+
+#### `Currency(data?: object)`
+
+Create a new `Currency` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CurrencyEntity` instance.
+
 #### `Deal(data?: object)`
 
 Create a new `Deal` entity instance.
@@ -60,6 +133,426 @@ Create a new `Deal` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `DealEntity` instance.
+
+#### `DealField(data?: object)`
+
+Create a new `DealField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DealFieldEntity` instance.
+
+#### `File(data?: object)`
+
+Create a new `File` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `FileEntity` instance.
+
+#### `Filter(data?: object)`
+
+Create a new `Filter` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `FilterEntity` instance.
+
+#### `Goal(data?: object)`
+
+Create a new `Goal` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GoalEntity` instance.
+
+#### `Lead(data?: object)`
+
+Create a new `Lead` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeadEntity` instance.
+
+#### `LeadField(data?: object)`
+
+Create a new `LeadField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeadFieldEntity` instance.
+
+#### `LeadLabel(data?: object)`
+
+Create a new `LeadLabel` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeadLabelEntity` instance.
+
+#### `LeadSource(data?: object)`
+
+Create a new `LeadSource` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeadSourceEntity` instance.
+
+#### `LegacyTeam(data?: object)`
+
+Create a new `LegacyTeam` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LegacyTeamEntity` instance.
+
+#### `Mailbox(data?: object)`
+
+Create a new `Mailbox` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MailboxEntity` instance.
+
+#### `Meeting(data?: object)`
+
+Create a new `Meeting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MeetingEntity` instance.
+
+#### `Note(data?: object)`
+
+Create a new `Note` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NoteEntity` instance.
+
+#### `NoteField(data?: object)`
+
+Create a new `NoteField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NoteFieldEntity` instance.
+
+#### `Oauth(data?: object)`
+
+Create a new `Oauth` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OauthEntity` instance.
+
+#### `Organization(data?: object)`
+
+Create a new `Organization` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationEntity` instance.
+
+#### `OrganizationField(data?: object)`
+
+Create a new `OrganizationField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationFieldEntity` instance.
+
+#### `OrganizationRelationship(data?: object)`
+
+Create a new `OrganizationRelationship` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationRelationshipEntity` instance.
+
+#### `PermissionSet(data?: object)`
+
+Create a new `PermissionSet` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PermissionSetEntity` instance.
+
+#### `Person(data?: object)`
+
+Create a new `Person` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PersonEntity` instance.
+
+#### `PersonField(data?: object)`
+
+Create a new `PersonField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PersonFieldEntity` instance.
+
+#### `Pipeline(data?: object)`
+
+Create a new `Pipeline` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PipelineEntity` instance.
+
+#### `Product(data?: object)`
+
+Create a new `Product` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProductEntity` instance.
+
+#### `ProductField(data?: object)`
+
+Create a new `ProductField` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProductFieldEntity` instance.
+
+#### `Project(data?: object)`
+
+Create a new `Project` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProjectEntity` instance.
+
+#### `ProjectBoard(data?: object)`
+
+Create a new `ProjectBoard` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProjectBoardEntity` instance.
+
+#### `ProjectPhase(data?: object)`
+
+Create a new `ProjectPhase` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProjectPhaseEntity` instance.
+
+#### `ProjectTemplate(data?: object)`
+
+Create a new `ProjectTemplate` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProjectTemplateEntity` instance.
+
+#### `Recent(data?: object)`
+
+Create a new `Recent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RecentEntity` instance.
+
+#### `Role(data?: object)`
+
+Create a new `Role` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RoleEntity` instance.
+
+#### `Stage(data?: object)`
+
+Create a new `Stage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `StageEntity` instance.
+
+#### `Task(data?: object)`
+
+Create a new `Task` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `TaskEntity` instance.
+
+#### `User(data?: object)`
+
+Create a new `User` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UserEntity` instance.
+
+#### `UserConnection(data?: object)`
+
+Create a new `UserConnection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UserConnectionEntity` instance.
+
+#### `UserSetting(data?: object)`
+
+Create a new `UserSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UserSettingEntity` instance.
+
+#### `Webhook(data?: object)`
+
+Create a new `Webhook` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WebhookEntity` instance.
 
 #### `options()`
 
@@ -107,6 +600,482 @@ Alias for `PipedriveSDK.test()`.
 
 ---
 
+## ActivityFieldEntity
+
+```ts
+const activity_field = client.ActivityField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `any[]` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ActivityField().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ActivityFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ActivityTypeEntity
+
+```ts
+const activity_type = client.ActivityType()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `color` | `string` | No | A designated color for the activity type in 6-character HEX format (e.g. |
+| `data` | `any[]` | No | The array of activity types |
+| `icon_key` | `string` | Yes | Icon graphic to use for representing this activity type |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes | The name of the activity type |
+| `order_nr` | `number` | No | An order number for this activity type. |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Field Usage by Operation
+
+| Field | list | create | update | remove |
+| --- | --- | --- | --- | --- |
+| `color` | - | - | - | - |
+| `data` | - | - | - | - |
+| `icon_key` | - | - | Yes | - |
+| `id` | - | - | - | - |
+| `name` | - | - | Yes | - |
+| `order_nr` | - | - | - | - |
+| `success` | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.ActivityType().create({
+  icon_key: 'example_icon_key',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ActivityType().list()
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.ActivityType().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.ActivityType().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ActivityTypeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingEntity
+
+```ts
+const billing = client.Billing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `any[]` | No | An array of add-ons that the company has. |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Billing().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CallLogEntity
+
+```ts
+const call_log = client.CallLog()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity_id` | `number` | No | If specified, this activity will be converted into a call log, with the information provided. |
+| `company_id` | `number` | No | The company ID of the owner of the call log |
+| `deal_id` | `number` | No | The ID of the deal this call is associated with. |
+| `duration` | `string` | No | The duration of the call in seconds |
+| `end_time` | `string` | Yes | The date and time of the end of the call in UTC. |
+| `from_phone_number` | `string` | No | The number that made the call |
+| `has_recording` | `boolean` | No | If the call log has an audio recording attached, the value should be true |
+| `id` | `string` | No | The call log ID, generated when the call log was created |
+| `lead_id` | `string` | No | The ID of the lead in the UUID format this call is associated with. |
+| `note` | `string` | No | The note for the call log in HTML format |
+| `org_id` | `number` | No | The ID of the organization this call is associated with |
+| `outcome` | `string` | Yes | Describes the outcome of the call |
+| `person_id` | `number` | No | The ID of the person this call is associated with |
+| `start_time` | `string` | Yes | The date and time of the start of the call in UTC. |
+| `subject` | `string` | No | The name of the activity this call is attached to |
+| `to_phone_number` | `string` | Yes | The number called |
+| `user_id` | `number` | No | The ID of the owner of the call log. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `recording` | `/callLogs/{id}/recordings` | `client.CallLog().create({ $action: 'recording', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CallLog record — check the API definition for its shape.
+
+```ts
+const result = await client.CallLog().create({
+  $action: 'recording',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.CallLog().create({
+  end_time: 'example_end_time',
+  outcome: 'example_outcome',
+  start_time: 'example_start_time',
+  to_phone_number: 'example_to_phone_number',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.CallLog().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.CallLog().load({ id: 'call_log_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.CallLog().remove({ id: 'call_log_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CallLogEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChannelEntity
+
+```ts
+const channel = client.Channel()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attachments` | `any[]` | No | The list of attachments available in the message |
+| `avatar_url` | `string` | No | The URL for an icon that represents your channel |
+| `channel_id` | `string` | Yes | The channel ID as in the provider |
+| `conversation_id` | `string` | Yes | The ID of the conversation |
+| `conversation_link` | `string` | No | A URL that can open the conversation in the provider's side |
+| `created_at` | `string` | No | The date and time when your channel was created in the API |
+| `id` | `string` | No | The unique channel ID used internally in omnichannel-api and the frontend of the extension |
+| `marketplace_client_id` | `string` | No | The client_id of your app in Pipedrive marketplace |
+| `message` | `string` | Yes | The body of the message |
+| `name` | `string` | No | The name of the channel |
+| `pd_company_id` | `number` | No | The ID of the user's company in Pipedrive |
+| `pd_user_id` | `number` | No | The ID of the user in Pipedrive |
+| `provider_channel_id` | `string` | No | The channel ID you specified while creating the channel |
+| `provider_type` | `string` | No | Value of the provider_type sent to this endpoint |
+| `reply_by` | `string` | No | The date and time when the message can no longer receive a reply, in UTC. |
+| `sender_id` | `string` | Yes | The ID of the provider's user that sent the message |
+| `status` | `string` | Yes | The status of the message |
+| `template_support` | `boolean` | No | Value of the template_support sent to this endpoint |
+
+### Field Usage by Operation
+
+| Field | create | remove |
+| --- | --- | --- |
+| `attachments` | - | - |
+| `avatar_url` | - | - |
+| `channel_id` | - | - |
+| `conversation_id` | - | - |
+| `conversation_link` | - | - |
+| `created_at` | Yes | - |
+| `id` | Yes | - |
+| `marketplace_client_id` | - | - |
+| `message` | - | - |
+| `name` | Yes | - |
+| `pd_company_id` | - | - |
+| `pd_user_id` | - | - |
+| `provider_channel_id` | Yes | - |
+| `provider_type` | - | - |
+| `reply_by` | - | - |
+| `sender_id` | - | - |
+| `status` | - | - |
+| `template_support` | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Channel().create({
+  channel_id: 'example_channel_id',
+  conversation_id: 'example_conversation_id',
+  message: 'example_message',
+  sender_id: 'example_sender_id',
+  status: 'example_status',
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Channel().remove({ id: 'id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChannelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CurrencyEntity
+
+```ts
+const currency = client.Currency()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_flag` | `boolean` | No | Whether the currency is active or not |
+| `code` | `string` | No | The code of the currency |
+| `decimal_points` | `number` | No | The amount of decimal points of the currency |
+| `id` | `number` | No | The ID of the currency |
+| `is_custom_flag` | `boolean` | No | Whether the currency is a custom one or not |
+| `name` | `string` | No | The name of the currency |
+| `symbol` | `string` | No | The symbol of the currency |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Currency().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CurrencyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## DealEntity
 
 ```ts
@@ -117,31 +1086,52 @@ const deal = client.Deal()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_time` | `string` | No |  |
-| `currency` | `string` | No |  |
-| `id` | `number` | No |  |
-| `org_id` | `number` | No |  |
-| `person_id` | `number` | No |  |
-| `stage_id` | `number` | No |  |
-| `status` | `string` | No |  |
-| `title` | `string` | No |  |
-| `update_time` | `string` | No |  |
-| `value` | `number` | No |  |
+| `deals` | `any[]` | No |  |
+| `id` | `string` | No |  |
+| `period_end` | `string` | No | The end date and time of the period |
+| `period_start` | `string` | No | The start date and time of the period |
+| `total_count` | `number` | No | The total number of deals |
+| `total_currency_converted_value` | `number` | No | The total value of deals converted into the company default currency |
+| `total_currency_converted_value_formatted` | `string` | No | The total converted value of deals formatted with the company default currency. |
+| `total_weighted_currency_converted_value` | `number` | No | The total weighted value of deals converted into the company default currency |
+| `total_weighted_currency_converted_value_formatted` | `string` | No | The total weighted value of deals formatted with the company default currency. |
+| `totals` | `Record<string, any>` | No | The total values of deals for the given period |
+| `values_total` | `Record<string, any>` | No | The total values of the deals grouped by deal currency |
+| `weighted_values_total` | `Record<string, any>` | No | The total weighted values of the deals grouped by deal currency. |
 
-### Field Usage by Operation
+### Actions
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `add_time` | - | - | - | - | - |
-| `currency` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `org_id` | - | - | - | - | - |
-| `person_id` | - | - | - | - | - |
-| `stage_id` | - | - | - | - | - |
-| `status` | - | - | - | - | - |
-| `title` | - | - | Yes | Yes | - |
-| `update_time` | - | - | - | - | - |
-| `value` | - | - | - | - | - |
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `duplicate` | `/deals/{id}/duplicate` | `client.Deal().create({ $action: 'duplicate', ... })` |
+| `follower` | `/deals/{id}/followers` | `client.Deal().create({ $action: 'follower', ... })` |
+| `participant` | `/deals/{id}/participants` | `client.Deal().create({ $action: 'participant', ... })` |
+| `archived` | `/deals/archived` | `client.Deal().list({ $action: 'archived', ... })` |
+| `changelog` | `/deals/{id}/changelog` | `client.Deal().list({ $action: 'changelog', ... })` |
+| `file` | `/deals/{id}/files` | `client.Deal().list({ $action: 'file', ... })` |
+| `flow` | `/deals/{id}/flow` | `client.Deal().list({ $action: 'flow', ... })` |
+| `follower` | `/deals/{id}/followers` | `client.Deal().list({ $action: 'follower', ... })` |
+| `mail_message` | `/deals/{id}/mailMessages` | `client.Deal().list({ $action: 'mail_message', ... })` |
+| `participant` | `/deals/{id}/participants` | `client.Deal().list({ $action: 'participant', ... })` |
+| `participants_changelog` | `/deals/{id}/participantsChangelog` | `client.Deal().list({ $action: 'participants_changelog', ... })` |
+| `permitted_user` | `/deals/{id}/permittedUsers` | `client.Deal().load({ $action: 'permitted_user', ... })` |
+| `summary` | `/deals/summary` | `client.Deal().load({ $action: 'summary', ... })` |
+| `timeline` | `/deals/timeline` | `client.Deal().load({ $action: 'timeline', ... })` |
+| `merge` | `/deals/{id}/merge` | `client.Deal().update({ $action: 'merge', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Deal record — check the API definition for its shape.
+
+```ts
+const result = await client.Deal().create({
+  $action: 'duplicate',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -151,6 +1141,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Deal().create({
+  id: 1,
 })
 ```
 
@@ -167,7 +1158,7 @@ const results = await client.Deal().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Deal().load({ id: 1 })
+const result = await client.Deal().load({ amount: 1, field_key: 'field_key', interval: 'interval', start_date: 'start_date' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -204,6 +1195,3255 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `DealEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DealFieldEntity
+
+```ts
+const deal_field = client.DealField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_visible_flag` | `boolean` | No | Whether the field is available in 'add new' modal or not (both in web and mobile app) |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No | The name of the field |
+| `options` | `any[]` | No | When `field_type` is either set or enum, possible options must be supplied as a JSON-encoded sequential array of objects. |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.DealField().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.DealField().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.DealField().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.DealField().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.DealField().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DealFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## FileEntity
+
+```ts
+const file = client.File()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_flag` | `boolean` | No | Whether the user is active or not. |
+| `activity_id` | `number` | No | The ID of the activity to associate the file with |
+| `add_time` | `string` | No | The date and time when the file was added/created. |
+| `cid` | `string` | No | The ID of the inline attachment |
+| `deal_id` | `number` | No | The ID of the deal to associate the file with |
+| `deal_name` | `string` | No | The name of the deal associated with the file |
+| `description` | `string` | No | The description of the file |
+| `file_name` | `string` | No | The original name of the file |
+| `file_size` | `number` | No | The size of the file |
+| `id` | `number` | No | The ID of the file |
+| `inline_flag` | `boolean` | No | Whether the file was uploaded as inline or not |
+| `lead_id` | `string` | No | The ID of the lead to associate the file with |
+| `lead_name` | `string` | No | The name of the lead associated with the file |
+| `mail_message_id` | `string` | No | The ID of the mail message to associate the file with |
+| `mail_template_id` | `string` | No | The ID of the mail template to associate the file with |
+| `name` | `string` | No | The visible name of the file |
+| `org_id` | `number` | No | The ID of the organization to associate the file with |
+| `org_name` | `string` | No | The name of the organization associated with the file |
+| `person_id` | `number` | No | The ID of the person to associate the file with |
+| `person_name` | `string` | No | The name of the person associated with the file |
+| `product_id` | `number` | No | The ID of the product to associate the file with |
+| `product_name` | `string` | No | The name of the product associated with the file |
+| `project_id` | `number` | No | The ID of the project to associate the file with |
+| `project_name` | `string` | No | The name of the project associated with the file |
+| `remote_id` | `string` | No | The ID of the remote item |
+| `remote_location` | `string` | No | The location type to send the file to. |
+| `s3_bucket` | `string` | No | The location of the cloud storage |
+| `update_time` | `string` | No | The last updated date and time of the file. |
+| `url` | `string` | No | The URL of the download file |
+| `user_id` | `number` | No | The ID of the user to associate the file with |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `remote` | `/files/remote` | `client.File().create({ $action: 'remote', ... })` |
+| `remote_link` | `/files/remoteLink` | `client.File().create({ $action: 'remote_link', ... })` |
+| `download` | `/files/{id}/download` | `client.File().load({ $action: 'download', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+File record — check the API definition for its shape.
+
+```ts
+const result = await client.File().create({
+  $action: 'remote',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.File().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.File().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.File().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.File().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.File().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `FileEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## FilterEntity
+
+```ts
+const filter = client.Filter()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conditions` | `Record<string, any>` | Yes | The conditions of the filter as a JSON object. |
+| `data` | `Record<string, any>` | No | The filter object including conditions |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes | The name of the filter |
+| `success` | `boolean` | No | If the response is successful or not |
+| `type` | `string` | Yes | The type of filter to create |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `conditions` | - | - | - | - | - |
+| `data` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `success` | - | - | - | - | - |
+| `type` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `helper` | `/filters/helpers` | `client.Filter().load({ $action: 'helper', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Filter record — check the API definition for its shape.
+
+```ts
+const result = await client.Filter().load({
+  $action: 'helper',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Filter().create({
+  conditions: {},
+  name: 'example_name',
+  type: 'example_type',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Filter().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Filter().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Filter().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Filter().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `FilterEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GoalEntity
+
+```ts
+const goal = client.Goal()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `assignee` | `Record<string, any>` | Yes | Who this goal is assigned to. |
+| `duration` | `Record<string, any>` | Yes | The date when the goal starts and ends. |
+| `expected_outcome` | `Record<string, any>` | Yes | The expected outcome of the goal. |
+| `goal` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `interval` | `string` | Yes | The interval of the goal |
+| `title` | `string` | No | The title of the goal |
+| `type` | `Record<string, any>` | Yes | The type of the goal. |
+
+### Field Usage by Operation
+
+| Field | load | create | update | remove |
+| --- | --- | --- | --- | --- |
+| `assignee` | - | - | Yes | - |
+| `duration` | - | - | Yes | - |
+| `expected_outcome` | - | - | Yes | - |
+| `goal` | - | - | - | - |
+| `id` | - | - | - | - |
+| `interval` | - | - | Yes | - |
+| `title` | - | - | - | - |
+| `type` | - | - | Yes | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `find` | `/goals/find` | `client.Goal().load({ $action: 'find', ... })` |
+| `result` | `/goals/{id}/results` | `client.Goal().load({ $action: 'result', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Goal record — check the API definition for its shape.
+
+```ts
+const result = await client.Goal().load({
+  $action: 'find',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Goal().create({
+  assignee: {},
+  duration: {},
+  expected_outcome: {},
+  interval: 'example_interval',
+  type: {},
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Goal().load()
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Goal().remove({ id: 'id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Goal().update({
+  id: 'id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GoalEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeadEntity
+
+```ts
+const lead = client.Lead()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_time` | `string` | No | The date and time of when the lead was created. |
+| `cc_email` | `string` | No | The BCC email of the lead |
+| `channel` | `number` | No | The ID of your Marketing channel this Lead was created from. |
+| `channel_id` | `string` | No | The optional ID to further distinguish the Marketing channel. |
+| `creator_id` | `number` | No | The ID of the user who created the lead |
+| `expected_close_date` | `string` | No | The date of when the deal which will be created from the lead is expected to be closed. |
+| `id` | `string` | No | The unique ID of the lead in the UUID format |
+| `is_archived` | `boolean` | No | A flag indicating whether the lead is archived or not |
+| `label_ids` | `any[]` | No | The IDs of the lead labels which are associated with the lead |
+| `next_activity_id` | `number` | No | The ID of the next activity associated with the lead |
+| `organization_id` | `number` | No | The ID of an organization which this lead is linked to |
+| `origin` | `string` | No | The way this Lead was created. |
+| `origin_id` | `string` | No | The optional ID to further distinguish the origin of the lead - e.g. |
+| `owner_id` | `number` | No | The ID of the user who owns the lead |
+| `person_id` | `number` | No | The ID of a person which this lead is linked to |
+| `source_deal_id` | `number` | No | The ID of the deal if the lead was converted from a deal. |
+| `source_name` | `string` | No | Defines where the lead comes from. |
+| `title` | `string` | No | The title of the lead |
+| `update_time` | `string` | No | The date and time of when the lead was last updated. |
+| `value` | `Record<string, any>` | Yes | The potential value of the lead represented by a JSON object: `{ "amount": 200, "currency": "EUR" }`. |
+| `visible_to` | `string` | No | The visibility of the lead. |
+| `was_seen` | `boolean` | No | A flag indicating whether the lead was seen by someone in the Pipedrive UI |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `add_time` | - | - | - | - | - |
+| `cc_email` | - | - | - | - | - |
+| `channel` | - | - | - | - | - |
+| `channel_id` | - | - | - | - | - |
+| `creator_id` | - | - | - | - | - |
+| `expected_close_date` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `is_archived` | - | - | - | - | - |
+| `label_ids` | - | - | - | - | - |
+| `next_activity_id` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `origin` | - | - | - | - | - |
+| `origin_id` | - | - | - | - | - |
+| `owner_id` | - | - | - | - | - |
+| `person_id` | - | - | - | - | - |
+| `source_deal_id` | - | - | - | - | - |
+| `source_name` | - | - | - | - | - |
+| `title` | - | - | Yes | - | - |
+| `update_time` | - | - | - | - | - |
+| `value` | - | - | - | - | - |
+| `visible_to` | - | - | - | - | - |
+| `was_seen` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `archived` | `/leads/archived` | `client.Lead().list({ $action: 'archived', ... })` |
+| `permitted_user` | `/leads/{id}/permittedUsers` | `client.Lead().list({ $action: 'permitted_user', ... })` |
+| `search` | `/leads/search` | `client.Lead().load({ $action: 'search', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Lead record — check the API definition for its shape.
+
+```ts
+const result = await client.Lead().list({
+  $action: 'archived',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Lead().create({
+  value: {},
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Lead().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Lead().load({ id: 'lead_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Lead().remove({ id: 'lead_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Lead().update({
+  id: 'lead_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeadEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeadFieldEntity
+
+```ts
+const lead_field = client.LeadField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `any[]` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.LeadField().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeadFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeadLabelEntity
+
+```ts
+const lead_label = client.LeadLabel()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_time` | `string` | No | The date and time of when the lead label was created. |
+| `color` | `string` | No | The color of the label. |
+| `id` | `string` | No | The unique ID of the lead label |
+| `name` | `string` | No | The name of the lead label |
+| `update_time` | `string` | No | The date and time of when the lead label was last updated. |
+
+### Field Usage by Operation
+
+| Field | list | create | update | remove |
+| --- | --- | --- | --- | --- |
+| `add_time` | - | - | - | - |
+| `color` | - | Yes | - | - |
+| `id` | - | - | - | - |
+| `name` | - | Yes | - | - |
+| `update_time` | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.LeadLabel().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.LeadLabel().list()
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.LeadLabel().remove({ id: 'id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.LeadLabel().update({
+  id: 'id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeadLabelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeadSourceEntity
+
+```ts
+const lead_source = client.LeadSource()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | No | The unique name of a lead source |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.LeadSource().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeadSourceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LegacyTeamEntity
+
+```ts
+const legacy_team = client.LegacyTeam()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `any[]` | No |  |
+| `description` | `string` | No | The team description |
+| `id` | `string` | No |  |
+| `manager_id` | `number` | Yes | The team manager ID |
+| `name` | `string` | Yes | The team name |
+| `success` | `boolean` | No | If the response is successful or not |
+| `users` | `any[]` | No | The list of user IDs |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `user` | `/legacyTeams/{id}/users` | `client.LegacyTeam().create({ $action: 'user', ... })` |
+| `user` | `/legacyTeams/{id}/users` | `client.LegacyTeam().list({ $action: 'user', ... })` |
+| `user` | `/legacyTeams/{id}/users` | `client.LegacyTeam().remove({ $action: 'user', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+LegacyTeam record — check the API definition for its shape.
+
+```ts
+const result = await client.LegacyTeam().create({
+  $action: 'user',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.LegacyTeam().create({
+  manager_id: 1,
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.LegacyTeam().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.LegacyTeam().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.LegacyTeam().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.LegacyTeam().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LegacyTeamEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## MailboxEntity
+
+```ts
+const mailbox = client.Mailbox()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `Record<string, any>` | No | The mail thread object |
+| `id` | `string` | No |  |
+| `service` | `string` | No | The service name of the response. |
+| `statusCode` | `number` | No | The email service specific status code and it is returned through the response body. |
+| `statusText` | `string` | No | The status text of the response. |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `mail_thread` | `/mailbox/mailThreads` | `client.Mailbox().list({ $action: 'mail_thread', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Mailbox record — check the API definition for its shape.
+
+```ts
+const result = await client.Mailbox().list({
+  $action: 'mail_thread',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Mailbox().list({ mail_thread_id: 1 })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Mailbox().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Mailbox().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Mailbox().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MailboxEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## MeetingEntity
+
+```ts
+const meeting = client.Meeting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `user_provider_link` | `/meetings/userProviderLinks` | `client.Meeting().create({ $action: 'user_provider_link', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Meeting record — check the API definition for its shape.
+
+```ts
+const result = await client.Meeting().create({
+  $action: 'user_provider_link',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Meeting().create({
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Meeting().remove({ id: 'id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MeetingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NoteEntity
+
+```ts
+const note = client.Note()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_flag` | `boolean` | No | Whether the note is active or deleted |
+| `add_time` | `string` | No | The creation date and time of the note |
+| `company_id` | `number` | No | The ID of the company |
+| `content` | `string` | No | The content of the note in HTML format. |
+| `deal` | `Record<string, any>` | No |  |
+| `deal_id` | `number` | No | The ID of the deal the note is attached to |
+| `id` | `number` | No | The ID of the note |
+| `last_update_user_id` | `number` | No | The ID of the user who last updated the note |
+| `lead_id` | `string` | No | The ID of the lead the note is attached to |
+| `object_id` | `string` | No | The ID of the object that the comment is attached to, will be the id of the note |
+| `object_type` | `string` | No | The type of object that the comment is attached to, will be "note" |
+| `org_id` | `number` | No | The ID of the organization the note is attached to |
+| `organization` | `Record<string, any>` | No | The organization the note is attached to |
+| `person` | `Record<string, any>` | No | The person the note is attached to |
+| `person_id` | `number` | No | The ID of the person the note is attached to |
+| `pinned_to_deal_flag` | `boolean` | No | If true, the results are filtered by note to deal pinning state |
+| `pinned_to_organization_flag` | `boolean` | No | If true, the results are filtered by note to organization pinning state |
+| `pinned_to_person_flag` | `boolean` | No | If true, the results are filtered by note to person pinning state |
+| `pinned_to_project_flag` | `boolean` | No | If true, the results are filtered by note to project pinning state |
+| `pinned_to_task_flag` | `boolean` | No | If true, the results are filtered by note to task pinning state |
+| `project` | `Record<string, any>` | No | The project the note is attached to |
+| `project_id` | `number` | No | The ID of the project the note is attached to |
+| `task` | `Record<string, any>` | No | The task the note is attached to |
+| `task_id` | `number` | No | The ID of the task the note is attached to |
+| `update_time` | `string` | No | The creation date and time of the note |
+| `updater_id` | `number` | No | The ID of the user who last updated the comment |
+| `user` | `Record<string, any>` | No | The user who created the note |
+| `user_id` | `number` | No | The ID of the user who created the comment |
+| `uuid` | `string` | No | The ID of the note |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_flag` | - | - | - | - | - |
+| `add_time` | - | - | - | - | - |
+| `company_id` | - | - | - | - | - |
+| `content` | - | - | - | Yes | - |
+| `deal` | - | - | - | - | - |
+| `deal_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_update_user_id` | - | - | - | - | - |
+| `lead_id` | - | - | - | - | - |
+| `object_id` | - | - | - | - | - |
+| `object_type` | - | - | - | - | - |
+| `org_id` | - | - | - | - | - |
+| `organization` | - | - | - | - | - |
+| `person` | - | - | - | - | - |
+| `person_id` | - | - | - | - | - |
+| `pinned_to_deal_flag` | - | - | - | - | - |
+| `pinned_to_organization_flag` | - | - | - | - | - |
+| `pinned_to_person_flag` | - | - | - | - | - |
+| `pinned_to_project_flag` | - | - | - | - | - |
+| `pinned_to_task_flag` | - | - | - | - | - |
+| `project` | - | - | - | - | - |
+| `project_id` | - | - | - | - | - |
+| `task` | - | - | - | - | - |
+| `task_id` | - | - | - | - | - |
+| `update_time` | - | - | - | - | - |
+| `updater_id` | - | - | - | - | - |
+| `user` | - | - | - | - | - |
+| `user_id` | - | - | - | - | - |
+| `uuid` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `comment` | `/notes/{id}/comments` | `client.Note().create({ $action: 'comment', ... })` |
+| `comment` | `/notes/{id}/comments` | `client.Note().list({ $action: 'comment', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Note record — check the API definition for its shape.
+
+```ts
+const result = await client.Note().create({
+  $action: 'comment',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Note().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Note().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Note().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Note().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Note().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NoteEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NoteFieldEntity
+
+```ts
+const note_field = client.NoteField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `any[]` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.NoteField().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NoteFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OauthEntity
+
+```ts
+const oauth = client.Oauth()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `token` | `/oauth/token` | `client.Oauth().create({ $action: 'token', ... })` |
+| `token` | `/oauth/token/` | `client.Oauth().create({ $action: 'token', ... })` |
+| `authorize` | `/oauth/authorize` | `client.Oauth().load({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Oauth record — check the API definition for its shape.
+
+```ts
+const result = await client.Oauth().create({
+  $action: 'token',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Oauth().create({
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Oauth().load({ client_id: 'client_id', redirect_uri: 'redirect_uri' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OauthEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationEntity
+
+```ts
+const organization = client.Organization()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `follower` | `/organizations/{id}/followers` | `client.Organization().create({ $action: 'follower', ... })` |
+| `changelog` | `/organizations/{id}/changelog` | `client.Organization().list({ $action: 'changelog', ... })` |
+| `file` | `/organizations/{id}/files` | `client.Organization().list({ $action: 'file', ... })` |
+| `flow` | `/organizations/{id}/flow` | `client.Organization().list({ $action: 'flow', ... })` |
+| `follower` | `/organizations/{id}/followers` | `client.Organization().list({ $action: 'follower', ... })` |
+| `mail_message` | `/organizations/{id}/mailMessages` | `client.Organization().list({ $action: 'mail_message', ... })` |
+| `permitted_user` | `/organizations/{id}/permittedUsers` | `client.Organization().list({ $action: 'permitted_user', ... })` |
+| `merge` | `/organizations/{id}/merge` | `client.Organization().update({ $action: 'merge', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Organization record — check the API definition for its shape.
+
+```ts
+const result = await client.Organization().create({
+  $action: 'follower',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Organization().create({
+  id: 1,
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Organization().list({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Organization().remove({ follower_id: 1, id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Organization().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationFieldEntity
+
+```ts
+const organization_field = client.OrganizationField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_visible_flag` | `boolean` | No | Whether the field is available in 'add new' modal or not (both in web and mobile app) |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No | The name of the field |
+| `options` | `any[]` | No | When `field_type` is either set or enum, possible options must be supplied as a JSON-encoded sequential array of objects. |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.OrganizationField().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.OrganizationField().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.OrganizationField().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.OrganizationField().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.OrganizationField().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationRelationshipEntity
+
+```ts
+const organization_relationship = client.OrganizationRelationship()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `any` | No | The array of organization relationships |
+| `id` | `string` | No |  |
+| `org_id` | `number` | No | The ID of the base organization for the returned calculated values |
+| `rel_linked_org_id` | `number` | Yes | The linked organization in the relationship. |
+| `rel_owner_org_id` | `number` | Yes | The owner of the relationship. |
+| `related_objects` | `Record<string, any>` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+| `type` | `string` | Yes | The type of organization relationship |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `additional_data` | - | - | - | - | - |
+| `data` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `org_id` | - | - | - | - | - |
+| `rel_linked_org_id` | - | - | - | Yes | - |
+| `rel_owner_org_id` | - | - | - | Yes | - |
+| `related_objects` | - | - | - | - | - |
+| `success` | - | - | - | - | - |
+| `type` | - | - | - | Yes | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.OrganizationRelationship().create({
+  rel_linked_org_id: 1,
+  rel_owner_org_id: 1,
+  type: 'example_type',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.OrganizationRelationship().list({ org_id: 1 })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.OrganizationRelationship().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.OrganizationRelationship().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.OrganizationRelationship().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationRelationshipEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PermissionSetEntity
+
+```ts
+const permission_set = client.PermissionSet()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app` | `string` | No | The app that permission set belongs to |
+| `assignment_count` | `number` | No | The number of users assigned to this permission set |
+| `contents` | `any[]` | No | A permission assigned to this permission set |
+| `data` | `any[]` | No | The array of permission set |
+| `description` | `string` | No | The description of the permission set |
+| `id` | `string` | No | The ID of user permission set |
+| `name` | `string` | No | The name of the permission set |
+| `success` | `boolean` | No | If the response is successful or not |
+| `type` | `string` | No | The type of permission set |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `assignment` | `/permissionSets/{id}/assignments` | `client.PermissionSet().list({ $action: 'assignment', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+PermissionSet record — check the API definition for its shape.
+
+```ts
+const result = await client.PermissionSet().list({
+  $action: 'assignment',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.PermissionSet().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.PermissionSet().load({ id: 'permission_set_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PermissionSetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PersonEntity
+
+```ts
+const person = client.Person()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `follower` | `/persons/{id}/followers` | `client.Person().create({ $action: 'follower', ... })` |
+| `picture` | `/persons/{id}/picture` | `client.Person().create({ $action: 'picture', ... })` |
+| `changelog` | `/persons/{id}/changelog` | `client.Person().list({ $action: 'changelog', ... })` |
+| `file` | `/persons/{id}/files` | `client.Person().list({ $action: 'file', ... })` |
+| `flow` | `/persons/{id}/flow` | `client.Person().list({ $action: 'flow', ... })` |
+| `follower` | `/persons/{id}/followers` | `client.Person().list({ $action: 'follower', ... })` |
+| `mail_message` | `/persons/{id}/mailMessages` | `client.Person().list({ $action: 'mail_message', ... })` |
+| `permitted_user` | `/persons/{id}/permittedUsers` | `client.Person().list({ $action: 'permitted_user', ... })` |
+| `product` | `/persons/{id}/products` | `client.Person().list({ $action: 'product', ... })` |
+| `picture` | `/persons/{id}/picture` | `client.Person().remove({ $action: 'picture', ... })` |
+| `merge` | `/persons/{id}/merge` | `client.Person().update({ $action: 'merge', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Person record — check the API definition for its shape.
+
+```ts
+const result = await client.Person().create({
+  $action: 'follower',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Person().create({
+  id: 1,
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Person().list({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Person().remove({ follower_id: 1, id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Person().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PersonEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PersonFieldEntity
+
+```ts
+const person_field = client.PersonField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_visible_flag` | `boolean` | No | Whether the field is available in 'add new' modal or not (both in web and mobile app) |
+| `additional_data` | `Record<string, any>` | No | The additional data of the list |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No | The name of the field |
+| `options` | `any[]` | No | When `field_type` is either set or enum, possible options must be supplied as a JSON-encoded sequential array of objects. |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.PersonField().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.PersonField().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.PersonField().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.PersonField().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.PersonField().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PersonFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PipelineEntity
+
+```ts
+const pipeline = client.Pipeline()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `deal` | `/pipelines/{id}/deals` | `client.Pipeline().list({ $action: 'deal', ... })` |
+| `conversion_statistic` | `/pipelines/{id}/conversion_statistics` | `client.Pipeline().load({ $action: 'conversion_statistic', ... })` |
+| `movement_statistic` | `/pipelines/{id}/movement_statistics` | `client.Pipeline().load({ $action: 'movement_statistic', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Pipeline record — check the API definition for its shape.
+
+```ts
+const result = await client.Pipeline().list({
+  $action: 'deal',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Pipeline().list({ id: 1 })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Pipeline().load({ id: 1, end_date: 'end_date', start_date: 'start_date' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PipelineEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProductEntity
+
+```ts
+const product = client.Product()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `follower` | `/products/{id}/followers` | `client.Product().create({ $action: 'follower', ... })` |
+| `deal` | `/products/{id}/deals` | `client.Product().list({ $action: 'deal', ... })` |
+| `file` | `/products/{id}/files` | `client.Product().list({ $action: 'file', ... })` |
+| `follower` | `/products/{id}/followers` | `client.Product().list({ $action: 'follower', ... })` |
+| `permitted_user` | `/products/{id}/permittedUsers` | `client.Product().list({ $action: 'permitted_user', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Product record — check the API definition for its shape.
+
+```ts
+const result = await client.Product().create({
+  $action: 'follower',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Product().create({
+  id: 1,
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Product().list({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Product().remove({ follower_id: 1, id: 1 })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProductEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProductFieldEntity
+
+```ts
+const product_field = client.ProductField()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `Record<string, any>` | No |  |
+| `field_type` | `string` | Yes | The type of the field<table><tr><th>Value</th><th>Description</th></tr><tr><td>`varchar`</td><td>Text (up to 255 characters)</td><tr><td>`varchar_auto`</td><td>Autocomplete text (up to 255 characters)</td><tr><td>`text`</td><td>Long text (… |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes | The name of the field |
+| `options` | `any[]` | No | When `field_type` is either `set` or `enum`, possible options must be supplied as a JSON-encoded sequential array, for example:</br>`[{"label":"red"}, {"label":"blue"}, {"label":"lilac"}]` |
+| `success` | `boolean` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `data` | - | - | - | - | - |
+| `field_type` | - | Yes | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `options` | - | - | - | - | - |
+| `success` | - | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.ProductField().create({
+  field_type: 'example_field_type',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ProductField().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.ProductField().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.ProductField().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.ProductField().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProductFieldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProjectEntity
+
+```ts
+const project = client.Project()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No |  |
+| `data` | `any` | No |  |
+| `group_id` | `number` | No | The ID of a group on a project board |
+| `id` | `number` | No | The ID of the project, generated when the task was created |
+| `phase_id` | `number` | No | The ID of a phase on a project board |
+| `success` | `boolean` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `archive` | `/projects/{id}/archive` | `client.Project().create({ $action: 'archive', ... })` |
+| `activity` | `/projects/{id}/activities` | `client.Project().list({ $action: 'activity', ... })` |
+| `group` | `/projects/{id}/groups` | `client.Project().list({ $action: 'group', ... })` |
+| `plan` | `/projects/{id}/plan` | `client.Project().list({ $action: 'plan', ... })` |
+| `task` | `/projects/{id}/tasks` | `client.Project().list({ $action: 'task', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Project record — check the API definition for its shape.
+
+```ts
+const result = await client.Project().create({
+  $action: 'archive',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Project().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Project().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Project().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Project().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Project().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProjectEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProjectBoardEntity
+
+```ts
+const project_board = client.ProjectBoard()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_time` | `string` | No | The creation date and time of the board in UTC. |
+| `additional_data` | `Record<string, any>` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `number` | No | The ID of the project board |
+| `name` | `string` | No | Name of a project board |
+| `order_nr` | `number` | No | The order of a board |
+| `success` | `boolean` | No |  |
+| `update_time` | `string` | No | The update date and time of the board in UTC. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ProjectBoard().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.ProjectBoard().load({ id: 1 })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProjectBoardEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProjectPhaseEntity
+
+```ts
+const project_phase = client.ProjectPhase()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_time` | `string` | No | The creation date and time of the board in UTC. |
+| `additional_data` | `Record<string, any>` | No |  |
+| `board_id` | `number` | No | The ID of the project board this phase is linked to |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `number` | No | The ID of the project phase |
+| `name` | `string` | No | Name of a project phase |
+| `order_nr` | `number` | No | The order of a phase |
+| `success` | `boolean` | No |  |
+| `update_time` | `string` | No | The update date and time of the board in UTC. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ProjectPhase().list({ board_id: 1 })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.ProjectPhase().load({ id: 1 })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProjectPhaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProjectTemplateEntity
+
+```ts
+const project_template = client.ProjectTemplate()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add_time` | `string` | No | The creation date and time of the template in UTC. |
+| `additional_data` | `Record<string, any>` | No |  |
+| `data` | `any` | No |  |
+| `description` | `string` | No | The description of a template |
+| `id` | `number` | No | The ID of a template |
+| `owner_id` | `number` | No | The ID of a template owner |
+| `projects_board_id` | `number` | No | The ID of the project board this template is associated with |
+| `success` | `boolean` | No |  |
+| `title` | `string` | No | The title of a template |
+| `update_time` | `string` | No | The update date and time of the template in UTC. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ProjectTemplate().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.ProjectTemplate().load({ id: 1 })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProjectTemplateEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RecentEntity
+
+```ts
+const recent = client.Recent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No |  |
+| `data` | `any[]` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Recent().list({ since_timestamp: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RecentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RoleEntity
+
+```ts
+const role = client.Role()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No | The additional data in the role |
+| `data` | `any` | No | The details of the sub-role |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes | The name of the role |
+| `parent_role_id` | `number` | No | The ID of the parent role |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `additional_data` | - | - | - | - | - |
+| `data` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `parent_role_id` | - | - | - | - | - |
+| `success` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `assignment` | `/roles/{id}/assignments` | `client.Role().create({ $action: 'assignment', ... })` |
+| `setting` | `/roles/{id}/settings` | `client.Role().create({ $action: 'setting', ... })` |
+| `assignment` | `/roles/{id}/assignments` | `client.Role().list({ $action: 'assignment', ... })` |
+| `pipeline` | `/roles/{id}/pipelines` | `client.Role().load({ $action: 'pipeline', ... })` |
+| `setting` | `/roles/{id}/settings` | `client.Role().load({ $action: 'setting', ... })` |
+| `assignment` | `/roles/{id}/assignments` | `client.Role().remove({ $action: 'assignment', ... })` |
+| `pipeline` | `/roles/{id}/pipelines` | `client.Role().update({ $action: 'pipeline', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Role record — check the API definition for its shape.
+
+```ts
+const result = await client.Role().create({
+  $action: 'assignment',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Role().create({
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Role().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Role().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Role().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Role().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RoleEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## StageEntity
+
+```ts
+const stage = client.Stage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `deal` | `/stages/{id}/deals` | `client.Stage().list({ $action: 'deal', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Stage record — check the API definition for its shape.
+
+```ts
+const result = await client.Stage().list({
+  $action: 'deal',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Stage().list({ id: 1 })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `StageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## TaskEntity
+
+```ts
+const task = client.Task()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `additional_data` | `Record<string, any>` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `number` | No | The ID of the task, generated when the task was created |
+| `success` | `boolean` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Task().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Task().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Task().load({ id: 1 })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Task().remove({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Task().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `TaskEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## UserEntity
+
+```ts
+const user = client.User()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access` | `any[]` | No | The access given to the user. |
+| `active_flag` | `boolean` | No | Whether the user is active or not. |
+| `data` | `Record<string, any>` | No |  |
+| `email` | `string` | Yes | The email of the user |
+| `id` | `string` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `access` | - | - | - | - |
+| `active_flag` | - | - | - | Yes |
+| `data` | - | - | - | - |
+| `email` | - | - | - | - |
+| `id` | - | - | - | - |
+| `success` | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `find` | `/users/find` | `client.User().list({ $action: 'find', ... })` |
+| `follower` | `/users/{id}/followers` | `client.User().list({ $action: 'follower', ... })` |
+| `role_assignment` | `/users/{id}/roleAssignments` | `client.User().list({ $action: 'role_assignment', ... })` |
+| `me` | `/users/me` | `client.User().load({ $action: 'me', ... })` |
+| `permission` | `/users/{id}/permissions` | `client.User().load({ $action: 'permission', ... })` |
+| `role_setting` | `/users/{id}/roleSettings` | `client.User().load({ $action: 'role_setting', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+User record — check the API definition for its shape.
+
+```ts
+const result = await client.User().list({
+  $action: 'find',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.User().create({
+  email: 'example_email',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.User().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.User().load({ id: 1 })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.User().update({
+  id: 1,
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UserEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## UserConnectionEntity
+
+```ts
+const user_connection = client.UserConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `Record<string, any>` | No | The object of UserConnections |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.UserConnection().load()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UserConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## UserSettingEntity
+
+```ts
+const user_setting = client.UserSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `Record<string, any>` | No |  |
+| `success` | `boolean` | No | If the response is successful or not |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.UserSetting().load()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UserSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `PipedriveSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## WebhookEntity
+
+```ts
+const webhook = client.Webhook()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `any[]` | No | The array of Webhooks |
+| `event_action` | `string` | Yes | The type of action to receive notifications about. |
+| `event_object` | `string` | Yes | The type of object to receive notifications about. |
+| `http_auth_password` | `string` | No | The HTTP basic auth password of the subscription URL endpoint (if required) |
+| `http_auth_user` | `string` | No | The HTTP basic auth username of the subscription URL endpoint (if required) |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes | The webhook's name |
+| `subscription_url` | `string` | Yes | A full, valid, publicly accessible URL which determines where to send the notifications. |
+| `user_id` | `number` | No | The ID of the user that this webhook will be authorized with. |
+| `version` | `string` | No | The webhook's version. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.Webhook().create({
+  event_action: 'example_event_action',
+  event_object: 'example_event_object',
+  name: 'example_name',
+  subscription_url: 'example_subscription_url',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Webhook().list()
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.Webhook().remove({ id: 1 })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WebhookEntity` instance with the same client and
 options.
 
 #### `client()`

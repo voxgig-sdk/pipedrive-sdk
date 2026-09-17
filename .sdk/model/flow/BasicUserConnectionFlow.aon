@@ -1,0 +1,28 @@
+# BasicUserConnectionFlow
+
+main: kit: flow: BasicUserConnectionFlow:
+{
+  entity: "user_connection",
+  kind: "basic",
+  name: "BasicUserConnectionFlow",
+  step: [
+    {
+      input: {
+        ref: "user_connection_ref01",
+        srcdatavar: "user_connection_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-user_connection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserConnectionFlow"
+}

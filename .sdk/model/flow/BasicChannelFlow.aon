@@ -1,0 +1,31 @@
+# BasicChannelFlow
+
+main: kit: flow: BasicChannelFlow:
+{
+  entity: "channel",
+  kind: "basic",
+  name: "BasicChannelFlow",
+  step: [
+    {
+      input: {
+        ref: "channel_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "channel_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "channel01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicChannelFlow"
+}

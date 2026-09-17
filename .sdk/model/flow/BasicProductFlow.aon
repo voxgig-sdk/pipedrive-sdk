@@ -1,0 +1,59 @@
+# BasicProductFlow
+
+main: kit: flow: BasicProductFlow:
+{
+  entity: "product",
+  kind: "basic",
+  name: "BasicProductFlow",
+  step: [
+    {
+      input: {
+        ref: "product_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "product_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "product_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "product01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "product_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductFlow"
+}

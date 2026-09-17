@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LegacyTeam | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a aria-current="page" href="../api/legacy_team.html">LegacyTeam</a><div class="nav-sections"><a class="nav-section" href="#post-legacyteamsidusers">POST /legacyTeams/{id}/users</a>
+<a class="nav-section" href="#post-legacyteams">POST /legacyTeams</a>
+<a class="nav-section" href="#get-legacyteams">GET /legacyTeams</a>
+<a class="nav-section" href="#get-legacyteamsidusers">GET /legacyTeams/{id}/users</a>
+<a class="nav-section" href="#get-legacyteamsuserid">GET /legacyTeams/user/{id}</a>
+<a class="nav-section" href="#get-legacyteamsid">GET /legacyTeams/{id}</a>
+<a class="nav-section" href="#delete-legacyteamsidusers">DELETE /legacyTeams/{id}/users</a>
+<a class="nav-section" href="#put-legacyteamsid">PUT /legacyTeams/{id}</a></div>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="legacyteam">LegacyTeam</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-legacyteamsidusers"><code>/legacyTeams/{id}/users</code></a></td>
+<td><code>create</code></td>
+<td>A list of user IDs within a team</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-legacyteams"><code>/legacyTeams</code></a></td>
+<td><code>create</code></td>
+<td>The team data</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-legacyteams"><code>/legacyTeams</code></a></td>
+<td><code>list</code></td>
+<td>The list of team objects</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-legacyteamsidusers"><code>/legacyTeams/{id}/users</code></a></td>
+<td><code>list</code></td>
+<td>A list of user IDs within a team</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-legacyteamsuserid"><code>/legacyTeams/user/{id}</code></a></td>
+<td><code>load</code></td>
+<td>The list of team objects</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-legacyteamsid"><code>/legacyTeams/{id}</code></a></td>
+<td><code>load</code></td>
+<td>The team data</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-legacyteamsidusers"><code>/legacyTeams/{id}/users</code></a></td>
+<td><code>remove</code></td>
+<td>A list of user IDs within a team</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-legacyteamsid"><code>/legacyTeams/{id}</code></a></td>
+<td><code>update</code></td>
+<td>The team data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The team description</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>manager_id</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The team manager ID</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The team name</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+<tr>
+<td><code>users</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The list of user IDs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-legacyteamsidusers" class="operation" data-method="post"><code>POST</code> /legacyTeams/{id}/users</h3>
+<p>Operation ID: <code>addTeamUser</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the team |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>users</code></td>
+<td><code>array of integer</code></td>
+<td>Yes</td>
+<td>The list of user IDs</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-a-list-of-user-ids-within-a-team" class="status" data-status="2xx">200: A list of user IDs within a team</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    2,
+    3,
+    4,
+    5
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="403-forbidden-response" class="status" data-status="4xx">403: Forbidden response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;You do not have permissions to do this.&quot;,
+  &quot;error_info&quot;: &quot;Please check developers.pipedrive.com&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h5 id="404-team-with-specified-id-does-not-exist-or-is-inaccessible" class="status" data-status="4xx">404: Team with specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Team 1 does not exist&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h3 id="post-legacyteams" class="operation" data-method="post"><code>POST</code> /legacyTeams</h3>
+<p>Operation ID: <code>addTeam</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The team description</td>
+</tr>
+<tr>
+<td><code>manager_id</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The team manager ID</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The team name</td>
+</tr>
+<tr>
+<td><code>users</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The list of user IDs</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-the-team-data" class="status" data-status="2xx">200: The team data</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: 1,
+    &quot;add_time&quot;: &quot;2019-10-07 09:06:09&quot;,
+    &quot;created_by_user_id&quot;: 2,
+    &quot;deleted_flag&quot;: 0,
+    &quot;description&quot;: &quot;Berlin office Sales Team&quot;,
+    &quot;id&quot;: 1,
+    &quot;manager_id&quot;: 4,
+    &quot;name&quot;: &quot;Closers&quot;,
+    &quot;users&quot;: [
+      2,
+      3,
+      5
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="403-forbidden-response-1" class="status" data-status="4xx">403: Forbidden response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;You do not have permissions to do this.&quot;,
+  &quot;error_info&quot;: &quot;Please check developers.pipedrive.com&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-legacyteams" class="operation" data-method="get"><code>GET</code> /legacyTeams</h3>
+<p>Operation ID: <code>getTeams</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>order_by</code> | <code>query</code> | <code>enum: id, name, manager_id, active_flag</code> | No | The field name to sort returned teams by |
+| <code>skip_users</code> | <code>query</code> | <code>enum: 0, 1</code> | No | When enabled, the teams will not include IDs of member users |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-the-list-of-team-objects" class="status" data-status="2xx">200: The list of team objects</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: 1,
+      &quot;add_time&quot;: &quot;2019-10-07 09:06:09&quot;,
+      &quot;created_by_user_id&quot;: 2,
+      &quot;deleted_flag&quot;: 0,
+      &quot;description&quot;: &quot;Berlin office Sales Team&quot;,
+      &quot;id&quot;: 1,
+      &quot;manager_id&quot;: 4,
+      &quot;name&quot;: &quot;Closers&quot;,
+      &quot;users&quot;: [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      &quot;active_flag&quot;: 0,
+      &quot;add_time&quot;: &quot;2018-04-11 12:54:43&quot;,
+      &quot;created_by_user_id&quot;: 7,
+      &quot;deleted_flag&quot;: 0,
+      &quot;description&quot;: &quot;London office Sales Team&quot;,
+      &quot;id&quot;: 2,
+      &quot;manager_id&quot;: 7,
+      &quot;name&quot;: &quot;Coffee&quot;,
+      &quot;users&quot;: [
+        5,
+        8
+      ]
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-legacyteamsidusers" class="operation" data-method="get"><code>GET</code> /legacyTeams/{id}/users</h3>
+<p>Operation ID: <code>getTeamUsers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the team |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-a-list-of-user-ids-within-a-team-1" class="status" data-status="2xx">200: A list of user IDs within a team</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    2,
+    3,
+    4,
+    5
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-team-with-specified-id-does-not-exist-or-is-inaccessible-1" class="status" data-status="4xx">404: Team with specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Team 1 does not exist&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-legacyteamsuserid" class="operation" data-method="get"><code>GET</code> /legacyTeams/user/{id}</h3>
+<p>Operation ID: <code>getUserTeams</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the user |
+| <code>order_by</code> | <code>query</code> | <code>enum: id, name, manager_id, active_flag</code> | No | The field name to sort returned teams by |
+| <code>skip_users</code> | <code>query</code> | <code>enum: 0, 1</code> | No | When enabled, the teams will not include IDs of member users |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-the-list-of-team-objects-1" class="status" data-status="2xx">200: The list of team objects</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: 1,
+      &quot;add_time&quot;: &quot;2019-10-07 09:06:09&quot;,
+      &quot;created_by_user_id&quot;: 2,
+      &quot;deleted_flag&quot;: 0,
+      &quot;description&quot;: &quot;Berlin office Sales Team&quot;,
+      &quot;id&quot;: 1,
+      &quot;manager_id&quot;: 4,
+      &quot;name&quot;: &quot;Closers&quot;,
+      &quot;users&quot;: [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      &quot;active_flag&quot;: 0,
+      &quot;add_time&quot;: &quot;2018-04-11 12:54:43&quot;,
+      &quot;created_by_user_id&quot;: 7,
+      &quot;deleted_flag&quot;: 0,
+      &quot;description&quot;: &quot;London office Sales Team&quot;,
+      &quot;id&quot;: 2,
+      &quot;manager_id&quot;: 7,
+      &quot;name&quot;: &quot;Coffee&quot;,
+      &quot;users&quot;: [
+        5,
+        8
+      ]
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-legacyteamsid" class="operation" data-method="get"><code>GET</code> /legacyTeams/{id}</h3>
+<p>Operation ID: <code>getTeam</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the team |
+| <code>skip_users</code> | <code>query</code> | <code>enum: 0, 1</code> | No | When enabled, the teams will not include IDs of member users |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-the-team-data-1" class="status" data-status="2xx">200: The team data</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: 1,
+    &quot;add_time&quot;: &quot;2019-10-07 09:06:09&quot;,
+    &quot;created_by_user_id&quot;: 2,
+    &quot;deleted_flag&quot;: 0,
+    &quot;description&quot;: &quot;Berlin office Sales Team&quot;,
+    &quot;id&quot;: 1,
+    &quot;manager_id&quot;: 4,
+    &quot;name&quot;: &quot;Closers&quot;,
+    &quot;users&quot;: [
+      2,
+      3,
+      5
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="404-team-with-specified-id-does-not-exist-or-is-inaccessible-2" class="status" data-status="4xx">404: Team with specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Team 1 does not exist&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-legacyteamsidusers" class="operation" data-method="delete"><code>DELETE</code> /legacyTeams/{id}/users</h3>
+<p>Operation ID: <code>deleteTeamUser</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the team |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>users</code></td>
+<td><code>array of integer</code></td>
+<td>Yes</td>
+<td>The list of user IDs</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-a-list-of-user-ids-within-a-team-2" class="status" data-status="2xx">200: A list of user IDs within a team</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    2,
+    3,
+    4,
+    5
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="403-forbidden-response-2" class="status" data-status="4xx">403: Forbidden response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;You do not have permissions to do this.&quot;,
+  &quot;error_info&quot;: &quot;Please check developers.pipedrive.com&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h5 id="404-team-with-specified-id-does-not-exist-or-is-inaccessible-3" class="status" data-status="4xx">404: Team with specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Team 1 does not exist&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-legacyteamsid" class="operation" data-method="put"><code>PUT</code> /legacyTeams/{id}</h3>
+<p>Operation ID: <code>updateTeam</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the team |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object and object</code>.</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-the-team-data-2" class="status" data-status="2xx">200: The team data</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: 1,
+    &quot;add_time&quot;: &quot;2019-10-07 09:06:09&quot;,
+    &quot;created_by_user_id&quot;: 2,
+    &quot;deleted_flag&quot;: 0,
+    &quot;description&quot;: &quot;Berlin office Sales Team&quot;,
+    &quot;id&quot;: 1,
+    &quot;manager_id&quot;: 4,
+    &quot;name&quot;: &quot;Closers&quot;,
+    &quot;users&quot;: [
+      2,
+      3,
+      5
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h5 id="403-forbidden-response-3" class="status" data-status="4xx">403: Forbidden response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: null,
+  &quot;data&quot;: null,
+  &quot;error&quot;: &quot;You do not have permissions to do this.&quot;,
+  &quot;error_info&quot;: &quot;Please check developers.pipedrive.com&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+<h5 id="404-team-with-specified-id-does-not-exist-or-is-inaccessible-4" class="status" data-status="4xx">404: Team with specified ID does not exist or is inaccessible</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error message</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Team 1 does not exist&quot;,
+  &quot;success&quot;: false
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

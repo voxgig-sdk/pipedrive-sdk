@@ -1,0 +1,78 @@
+# BasicLeadLabelFlow
+
+main: kit: flow: BasicLeadLabelFlow:
+{
+  entity: "lead_label",
+  kind: "basic",
+  name: "BasicLeadLabelFlow",
+  step: [
+    {
+      input: {
+        ref: "lead_label_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "lead_label_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "lead_label_ref01",
+        srcdatavar: "lead_label_ref01_data",
+        suffix: "_up0",
+        textfield: "add_time"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-lead_label_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "lead_label_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "lead_label01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "lead_label_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLeadLabelFlow"
+}

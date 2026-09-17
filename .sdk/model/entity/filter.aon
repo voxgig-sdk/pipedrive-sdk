@@ -1,0 +1,351 @@
+# Entity: filter
+
+main: kit: entity: filter: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "conditions"
+      req: true
+      short: "The conditions of the filter as a JSON object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "data"
+      req: false
+      short: "The filter object including conditions"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      req: true
+      short: "The name of the filter"
+      type: "`$STRING`"
+    }
+    {
+      name: "success"
+      req: false
+      short: "If the response is successful or not"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "type"
+      req: true
+      short: "The type of filter to create"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "filter"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "include_field_code"
+                orig: "include_field_code"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          contract: {
+            id: "POST /filters"
+            json: "{\"operationId\":\"addFilter\",\"parameters\":[{\"description\":\"If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name\",\"in\":\"query\",\"name\":\"include_field_code\",\"required\":false,\"schema\":{\"type\":\"boolean\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"conditions\":{\"description\":\"The conditions of the filter as a JSON object. Please note that a maximum of 16 conditions is allowed per filter and `date` values must be supplied in the `YYYY-MM-DD` format. It requires a minimum structure as follows: `{\\\"glue\\\":\\\"and\\\",\\\"conditions\\\":[{\\\"glue\\\":\\\"and\\\",\\\"conditions\\\": [CONDITION_OBJECTS]},{\\\"glue\\\":\\\"or\\\",\\\"conditions\\\":[CONDITION_OBJECTS]}]}`. Replace `CONDITION_OBJECTS` with JSON objects of the following structure: `{\\\"object\\\":\\\"\\\",\\\"field_id\\\":\\\"\\\", \\\"operator\\\":\\\"\\\",\\\"value\\\":\\\"\\\", \\\"extra_value\\\":\\\"\\\"}` or leave the array empty. Depending on the object type you should use another API endpoint to get `field_id`. There are five types of objects you can choose from: `\\\"person\\\"`, `\\\"deal\\\"`, `\\\"organization\\\"`, `\\\"product\\\"`, `\\\"activity\\\"` and you can use these types of operators depending on what type of a field you have: `\\\"IS NOT NULL\\\"`, `\\\"IS NULL\\\"`, `\\\"<=\\\"`, `\\\">=\\\"`, `\\\"<\\\"`, `\\\">\\\"`, `\\\"!=\\\"`, `\\\"=\\\"`, `\\\"LIKE '$%'\\\"`, `\\\"LIKE '%$%'\\\"`, `\\\"NOT LIKE '$%'\\\"`. To get a better understanding of how filters work try creating them directly from the Pipedrive application.\",\"type\":\"object\"},\"name\":{\"description\":\"The name of the filter\",\"type\":\"string\"},\"type\":{\"allOf\":[{\"enum\":[\"deals\",\"leads\",\"org\",\"people\",\"products\",\"activity\",\"projects\"],\"type\":\"string\"}],\"description\":\"The type of filter to create\",\"type\":\"string\"}},\"required\":[\"name\",\"conditions\",\"type\"],\"title\":\"addFilterRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2018-01-27 08:49:26\",\"conditions\":{\"conditions\":[{\"conditions\":[{\"extra_value\":null,\"field_code\":\"title\",\"field_id\":\"123141\",\"json_value_flag\":false,\"object\":\"deal\",\"operator\":\"=\",\"value\":\"my title\"}],\"glue\":\"and\"},{\"conditions\":[],\"glue\":\"or\"}],\"glue\":\"and\"},\"custom_view_id\":null,\"filter_code\":null,\"id\":1,\"is_editable\":true,\"last_used_time\":null,\"name\":\"Deal title is 'my title'\",\"temporary_flag\":false,\"type\":\"deals\",\"update_time\":\"2018-01-27 08:49:26\",\"user_id\":1,\"visible_to\":\"1\"},\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"The activity flag of the filter\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The date and time when the filter was added\",\"type\":\"string\"},\"conditions\":{\"description\":\"The conditions object of a filter\",\"properties\":{\"conditions\":{\"description\":\"The condition groups\",\"items\":{\"description\":\"A group of conditions joined by a logical operator\",\"properties\":{\"conditions\":{\"description\":\"The individual conditions in this group\",\"items\":{\"description\":\"A single filter condition\",\"properties\":{\"extra_value\":{\"description\":\"An extra value for conditions that require two values\",\"nullable\":true,\"type\":\"string\"},\"field_code\":{\"description\":\"The code name of the field. Present when `include_field_code=true` is passed as a query parameter; `null` if the field code cannot be resolved\",\"nullable\":true,\"type\":\"string\"},\"field_id\":{\"description\":\"The ID of the field\",\"type\":\"string\"},\"json_value_flag\":{\"description\":\"Whether the value is JSON-encoded\",\"type\":\"boolean\"},\"object\":{\"description\":\"The type of entity the condition applies to (e.g. \\\"deal\\\", \\\"person\\\")\",\"type\":\"string\"},\"operator\":{\"description\":\"The operator used in the condition (e.g. \\\"=\\\", \\\"IS NOT NULL\\\")\",\"type\":\"string\"},\"value\":{\"description\":\"The value of the condition\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"glue\":{\"description\":\"The logical operator joining conditions within this group\",\"enum\":[\"and\",\"or\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"glue\":{\"description\":\"The top-level glue is always \\\"and\\\"\",\"enum\":[\"and\"],\"type\":\"string\"}},\"type\":\"object\"},\"custom_view_id\":{\"description\":\"The custom view ID linked to the filter\",\"nullable\":true,\"type\":\"integer\"},\"filter_code\":{\"description\":\"The system code of the filter\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"The ID of the filter\",\"type\":\"integer\"},\"is_editable\":{\"description\":\"Whether the filter can be edited by the requesting user\",\"type\":\"boolean\"},\"last_used_time\":{\"description\":\"The date and time when the filter was last used\",\"nullable\":true,\"type\":\"string\"},\"name\":{\"description\":\"The name of the filter\",\"type\":\"string\"},\"temporary_flag\":{\"description\":\"Whether the filter is temporary\",\"nullable\":true,\"type\":\"boolean\"},\"type\":{\"enum\":[\"deals\",\"leads\",\"org\",\"people\",\"products\",\"activity\",\"projects\"],\"type\":\"string\"},\"update_time\":{\"description\":\"The date and time when the filter was last updated\",\"nullable\":true,\"type\":\"string\"},\"user_id\":{\"description\":\"The user ID of the filter owner\",\"type\":\"integer\"},\"visible_to\":{\"allOf\":[{\"enum\":[\"1\",\"3\",\"5\",\"7\"],\"type\":\"string\"}],\"description\":\"The visibility group ID of the filter\"}},\"title\":\"Filter\",\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"AddFiltersResponse\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/filters"
+          segments: [
+            {
+              lit: "filters"
+            }
+          ]
+          select: {
+            exist: [
+              "include_field_code"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "type"
+                orig: "type"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /filters"
+            json: "{\"operationId\":\"getFilters\",\"parameters\":[{\"description\":\"The types of filters to fetch\",\"in\":\"query\",\"name\":\"type\",\"schema\":{\"enum\":[\"deals\",\"leads\",\"org\",\"people\",\"products\",\"activity\",\"projects\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":[{\"active_flag\":true,\"add_time\":\"2019-10-15 11:01:53\",\"custom_view_id\":null,\"filter_code\":null,\"id\":1,\"is_editable\":true,\"last_used_time\":null,\"name\":\"All open deals\",\"temporary_flag\":null,\"type\":\"deals\",\"update_time\":\"2019-10-15 11:01:53\",\"user_id\":927097,\"visible_to\":\"7\"}],\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"data\":{\"description\":\"The array of filters\",\"items\":{\"description\":\"The filter object\",\"properties\":{\"active_flag\":{\"description\":\"The active flag of the filter\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The date and time when the filter was added\",\"type\":\"string\"},\"custom_view_id\":{\"description\":\"The custom view ID linked to the filter\",\"nullable\":true,\"type\":\"integer\"},\"filter_code\":{\"description\":\"The system code of the filter\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"The ID of the filter\",\"type\":\"integer\"},\"is_editable\":{\"description\":\"Whether the filter can be edited by the requesting user\",\"type\":\"boolean\"},\"last_used_time\":{\"description\":\"The date and time when the filter was last used\",\"nullable\":true,\"type\":\"string\"},\"name\":{\"description\":\"The name of the filter\",\"type\":\"string\"},\"temporary_flag\":{\"description\":\"Whether the filter is temporary\",\"nullable\":true,\"type\":\"boolean\"},\"type\":{\"enum\":[\"deals\",\"leads\",\"org\",\"people\",\"products\",\"activity\",\"projects\"],\"type\":\"string\"},\"update_time\":{\"description\":\"The date and time when the filter was updated\",\"nullable\":true,\"type\":\"string\"},\"user_id\":{\"description\":\"The owner of the filter\",\"type\":\"integer\"},\"visible_to\":{\"allOf\":[{\"enum\":[\"1\",\"3\",\"5\",\"7\"],\"type\":\"string\"}],\"description\":\"The visibility group ID of who can see the filter\"}},\"type\":\"object\"},\"type\":\"array\"}}}],\"title\":\"GetFiltersResponse\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"activities:read\",\"activities:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/filters"
+          segments: [
+            {
+              lit: "filters"
+            }
+          ]
+          select: {
+            exist: [
+              "type"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "include_field_code"
+                orig: "include_field_code"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /filters/{id}"
+            json: "{\"operationId\":\"getFilter\",\"parameters\":[{\"description\":\"The ID of the filter\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name\",\"in\":\"query\",\"name\":\"include_field_code\",\"required\":false,\"schema\":{\"type\":\"boolean\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2019-10-15 11:01:53\",\"conditions\":{\"conditions\":[{\"conditions\":[{\"extra_value\":null,\"field_code\":\"status\",\"field_id\":\"123\",\"json_value_flag\":false,\"object\":\"deal\",\"operator\":\"IS NOT NULL\",\"value\":null}],\"glue\":\"and\"},{\"conditions\":[],\"glue\":\"or\"}],\"glue\":\"and\"},\"custom_view_id\":null,\"filter_code\":null,\"id\":1,\"is_editable\":true,\"last_used_time\":null,\"name\":\"All open deals\",\"temporary_flag\":null,\"type\":\"deals\",\"update_time\":\"2019-10-15 11:01:53\",\"user_id\":927097,\"visible_to\":\"7\"},\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"data\":{\"description\":\"The filter object including conditions\",\"properties\":{\"active_flag\":{\"description\":\"The active flag of the filter\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The date and time when the filter was added\",\"type\":\"string\"},\"conditions\":{\"description\":\"The conditions object of a filter\",\"properties\":{\"conditions\":{\"description\":\"The condition groups\",\"items\":{\"description\":\"A group of conditions joined by a logical operator\",\"properties\":{\"conditions\":{\"description\":\"The individual conditions in this group\",\"items\":{\"description\":\"A single filter condition\",\"properties\":{\"extra_value\":{\"description\":\"An extra value for conditions that require two values\",\"nullable\":true,\"type\":\"string\"},\"field_code\":{\"description\":\"The code name of the field. Present when `include_field_code=true` is passed as a query parameter; `null` if the field code cannot be resolved\",\"nullable\":true,\"type\":\"string\"},\"field_id\":{\"description\":\"The ID of the field\",\"type\":\"string\"},\"json_value_flag\":{\"description\":\"Whether the value is JSON-encoded\",\"type\":\"boolean\"},\"object\":{\"description\":\"The type of entity the condition applies to (e.g. \\\"deal\\\", \\\"person\\\")\",\"type\":\"string\"},\"operator\":{\"description\":\"The operator used in the condition (e.g. \\\"=\\\", \\\"IS NOT NULL\\\")\",\"type\":\"string\"},\"value\":{\"description\":\"The value of the condition\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"glue\":{\"description\":\"The logical operator joining conditions within this group\",\"enum\":[\"and\",\"or\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"glue\":{\"description\":\"The top-level glue is always \\\"and\\\"\",\"enum\":[\"and\"],\"type\":\"string\"}},\"type\":\"object\"},\"custom_view_id\":{\"description\":\"The custom view ID linked to the filter\",\"nullable\":true,\"type\":\"integer\"},\"filter_code\":{\"description\":\"The system code of the filter\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"The ID of the filter\",\"type\":\"integer\"},\"is_editable\":{\"description\":\"Whether the filter can be edited by the requesting user\",\"type\":\"boolean\"},\"last_used_time\":{\"description\":\"The date and time when the filter was last used\",\"nullable\":true,\"type\":\"string\"},\"name\":{\"description\":\"The name of the filter\",\"type\":\"string\"},\"temporary_flag\":{\"description\":\"Whether the filter is temporary\",\"nullable\":true,\"type\":\"boolean\"},\"type\":{\"enum\":[\"deals\",\"leads\",\"org\",\"people\",\"products\",\"activity\",\"projects\"],\"type\":\"string\"},\"update_time\":{\"description\":\"The date and time when the filter was updated\",\"nullable\":true,\"type\":\"string\"},\"user_id\":{\"description\":\"The owner of the filter\",\"type\":\"integer\"},\"visible_to\":{\"allOf\":[{\"enum\":[\"1\",\"3\",\"5\",\"7\"],\"type\":\"string\"}],\"description\":\"The visibility group ID of who can see the filter\"}},\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"GetFiltersResponse\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"activities:read\",\"activities:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/filters/{id}"
+          segments: [
+            {
+              lit: "filters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+              "include_field_code"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          contract: {
+            id: "GET /filters/helpers"
+            json: "{\"operationId\":\"getFilterHelpers\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"address_field_components\":{\"admin_area_level_1\":\"State/county\",\"admin_area_level_2\":\"Region\",\"country\":\"Country\",\"formatted_address\":\"Full/combined address\",\"locality\":\"City/town/village/locality\",\"postal_code\":\"ZIP/Postal code\",\"route\":\"Street/road name\",\"street_number\":\"House number\",\"sublocality\":\"District/sublocality\",\"subpremise\":\"Apartment/suite no\"},\"deprecated_operators\":{\"LIKE '%$'\":\"ends with\",\"NOT LIKE '%$%'\":\"does not contain\",\"NOT LIKE '%$'\":\"does not end with\"},\"operators\":{\"currency\":{\"!=\":\"is not\",\"=\":\"is\"},\"date\":{\"!=\":\"is not\",\"<\":\"is earlier than\",\"<=\":\"is exactly or earlier than\",\"=\":\"is\",\">\":\"is later than\",\">=\":\"is exactly or later than\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"daterange\":{\"!=\":\"does not start at\",\"<\":\"starts before\",\"<=\":\"starts exactly on or before\",\"=\":\"starts at\",\">\":\"starts after\",\">=\":\"starts exactly or after\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\",\"does_not_end_at\":\"does not end at\",\"ends_after\":\"ends after\",\"ends_at\":\"ends at\",\"ends_before\":\"ends before\",\"ends_e_after\":\"ends exactly or after\",\"ends_e_before\":\"ends exactly on or before\",\"includes\":\"does include\"},\"deal\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"double\":{\"!=\":\"is not\",\"<\":\"is less than\",\"<=\":\"is less or equal to\",\"=\":\"is\",\">\":\"is more than\",\">=\":\"is more or equal to\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"entered_stage\":{\"!=\":\"is not\",\"<\":\"is earlier than\",\"<=\":\"is exactly or earlier than\",\"=\":\"is\",\">\":\"is later than\",\">=\":\"is exactly or later than\"},\"enum\":[{\"=\":\"is\"},{\"!=\":\"is not\"},{\"IS NULL\":\"is empty\"},{\"IS NOT NULL\":\"is not empty\"}],\"int\":{\"!=\":\"is not\",\"<\":\"is less than\",\"<=\":\"is less or equal to\",\"=\":\"is\",\">\":\"is more than\",\">=\":\"is more or equal to\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"monetary\":{\"!=\":\"is not\",\"<\":\"is less than\",\"<=\":\"is less or equal to\",\"=\":\"is\",\">\":\"is more than\",\">=\":\"is more or equal to\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"organization\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"person\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"pipeline\":{\"!=\":\"is not\",\"=\":\"is\"},\"product\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"set\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\",\"contains\":\"contains\",\"not_contains\":\"does not contain\"},\"stage\":{\"!=\":\"is not\",\"=\":\"is\",\"has_been\":\"has been\"},\"status\":{\"!=\":\"is not\",\"=\":\"is\"},\"time\":{\"!=\":\"is not\",\"<\":\"is before\",\"<=\":\"is exactly or before than\",\"=\":\"is\",\">\":\"is after\",\">=\":\"is exactly or after than\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\"},\"timerange\":{\"!=\":\"does not start at\",\"<\":\"starts before\",\"<=\":\"starts exactly on or before\",\"=\":\"starts at\",\">\":\"starts after\",\">=\":\"starts exactly or after\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\",\"does_not_end_at\":\"does not end at\",\"ends_after\":\"ends after\",\"ends_at\":\"ends at\",\"ends_before\":\"ends before\",\"ends_e_after\":\"ends exactly or after\",\"ends_e_before\":\"ends exactly on or before\",\"includes\":\"does include\"},\"title\":{\"=\":\"is\",\"LIKE '$%'\":\"starts with\",\"LIKE '%$%'\":\"contains\",\"NOT LIKE '$%'\":\"does not start with\"},\"user\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\",\"belongs_to_team\":\"belongs to team\"},\"varchar\":{\"!=\":\"is not\",\"=\":\"is\",\"IS NOT NULL\":\"is not empty\",\"IS NULL\":\"is empty\",\"LIKE '$%'\":\"starts with\",\"LIKE '%$%'\":\"contains\",\"NOT LIKE '$%'\":\"does not start with\"},\"visible_to\":{\"!=\":\"is not\",\"=\":\"is\"}},\"relative_dates\":{\"Deal specific\":{\"rotten_time\":\"Rotten time\"},\"Relative date intervals\":{\"last_month\":\"last month\",\"last_quarter\":\"last quarter\",\"last_week\":\"last week\",\"next_month\":\"next month\",\"next_week\":\"next week\",\"this_month\":\"this month\",\"this_quarter\":\"this quarter\",\"this_week\":\"this week\"},\"Relative dates\":{\"1_months_ago\":\"1 month ago\",\"1_week_ago\":\"1 week ago\",\"2_months_ago\":\"2 months ago\",\"2_weeks_ago\":\"2 weeks ago\",\"3_months_ago\":\"3 months ago\",\"3_weeks_ago\":\"3 weeks ago\",\"4_months_ago\":\"4 months ago\",\"5_months_ago\":\"5 months ago\",\"6_months_ago\":\"6 months ago\",\"before_today\":\"before today\",\"before_tomorrow\":\"before tomorrow\",\"in_1_month\":\"in 1 month\",\"in_1_week\":\"in 1 week\",\"in_2_months\":\"in 2 months\",\"in_2_weeks\":\"in 2 weeks\",\"in_3_months\":\"in 3 months\",\"in_3_weeks\":\"in 3 weeks\",\"in_4_months\":\"in 4 months\",\"in_5_months\":\"in 5 months\",\"in_6_months\":\"in 6 months\",\"later_or_today\":\"today or later\",\"later_or_tomorrow\":\"tomorrow or later\",\"now\":\"now\",\"today\":\"today\",\"tomorrow\":\"tomorrow\",\"yesterday\":\"yesterday\"}}},\"success\":true},\"schema\":{\"description\":\"The rules for filters\",\"title\":\"GetFilterHelpersResponse\",\"type\":\"object\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:read\",\"deals:full\",\"activities:read\",\"activities:full\",\"contacts:read\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/filters/helpers"
+          segments: [
+            {
+              lit: "filters"
+            }
+            {
+              lit: "helpers"
+            }
+          ]
+          select: {
+            "$action": "helper"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "DELETE /filters/{id}"
+            json: "{\"operationId\":\"deleteFilter\",\"parameters\":[{\"description\":\"The ID of the filter\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"id\":1},\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"data\":{\"properties\":{\"id\":{\"description\":\"The ID of the deleted filter\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"DeleteFilterResponse\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "DELETE"
+          orig: "/filters/{id}"
+          segments: [
+            {
+              lit: "filters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "ids"
+                orig: "ids"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          contract: {
+            id: "DELETE /filters"
+            json: "{\"operationId\":\"deleteFilters\",\"parameters\":[{\"description\":\"The comma-separated filter IDs to delete\",\"in\":\"query\",\"name\":\"ids\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"id\":[1,2,3]},\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"data\":{\"properties\":{\"id\":{\"description\":\"The array of the IDs of the deleted filter\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"DeleteFiltersResponse\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "DELETE"
+          orig: "/filters"
+          segments: [
+            {
+              lit: "filters"
+            }
+          ]
+          select: {
+            exist: [
+              "ids"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "include_field_code"
+                orig: "include_field_code"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          contract: {
+            id: "PUT /filters/{id}"
+            json: "{\"operationId\":\"updateFilter\",\"parameters\":[{\"description\":\"The ID of the filter\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"If set to `true`, each condition in the response includes a `field_code` field identifying the field by its code name\",\"in\":\"query\",\"name\":\"include_field_code\",\"required\":false,\"schema\":{\"type\":\"boolean\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"conditions\":{\"description\":\"The conditions of the filter as a JSON object. Please note that a maximum of 16 conditions is allowed per filter and `date` values must be supplied in the `YYYY-MM-DD` format. It requires a minimum structure as follows: `{\\\"glue\\\":\\\"and\\\",\\\"conditions\\\":[{\\\"glue\\\":\\\"and\\\",\\\"conditions\\\": [CONDITION_OBJECTS]},{\\\"glue\\\":\\\"or\\\",\\\"conditions\\\":[CONDITION_OBJECTS]}]}`. Replace `CONDITION_OBJECTS` with JSON objects of the following structure: `{\\\"object\\\":\\\"\\\",\\\"field_id\\\":\\\"\\\", \\\"operator\\\":\\\"\\\",\\\"value\\\":\\\"\\\", \\\"extra_value\\\":\\\"\\\"}` or leave the array empty. Depending on the object type you should use another API endpoint to get `field_id`. There are five types of objects you can choose from: `\\\"person\\\"`, `\\\"deal\\\"`, `\\\"organization\\\"`, `\\\"product\\\"`, `\\\"activity\\\"` and you can use these types of operators depending on what type of a field you have: `\\\"IS NOT NULL\\\"`, `\\\"IS NULL\\\"`, `\\\"<=\\\"`, `\\\">=\\\"`, `\\\"<\\\"`, `\\\">\\\"`, `\\\"!=\\\"`, `\\\"=\\\"`, `\\\"LIKE '$%'\\\"`, `\\\"LIKE '%$%'\\\"`, `\\\"NOT LIKE '$%'\\\"`. To get a better understanding of how filters work try creating them directly from the Pipedrive application.\",\"type\":\"object\"},\"name\":{\"description\":\"The name of the filter\",\"type\":\"string\"}},\"required\":[\"conditions\"],\"title\":\"updateFilterRequest\",\"type\":\"object\"}}}},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"active_flag\":true,\"add_time\":\"2018-01-27 08:49:26\",\"conditions\":{\"conditions\":[{\"conditions\":[{\"extra_value\":null,\"field_code\":\"title\",\"field_id\":\"123141\",\"json_value_flag\":false,\"object\":\"deal\",\"operator\":\"=\",\"value\":\"my title\"}],\"glue\":\"and\"},{\"conditions\":[],\"glue\":\"or\"}],\"glue\":\"and\"},\"custom_view_id\":null,\"filter_code\":null,\"id\":1,\"is_editable\":true,\"last_used_time\":null,\"name\":\"Deal title is 'my title'\",\"temporary_flag\":false,\"type\":\"deals\",\"update_time\":\"2018-01-27 08:49:26\",\"user_id\":1,\"visible_to\":\"1\"},\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"data\":{\"properties\":{\"active_flag\":{\"description\":\"The activity flag of the filter\",\"type\":\"boolean\"},\"add_time\":{\"description\":\"The date and time when the filter was added\",\"type\":\"string\"},\"conditions\":{\"description\":\"The conditions object of a filter\",\"properties\":{\"conditions\":{\"description\":\"The condition groups\",\"items\":{\"description\":\"A group of conditions joined by a logical operator\",\"properties\":{\"conditions\":{\"description\":\"The individual conditions in this group\",\"items\":{\"description\":\"A single filter condition\",\"properties\":{\"extra_value\":{\"description\":\"An extra value for conditions that require two values\",\"nullable\":true,\"type\":\"string\"},\"field_code\":{\"description\":\"The code name of the field. Present when `include_field_code=true` is passed as a query parameter; `null` if the field code cannot be resolved\",\"nullable\":true,\"type\":\"string\"},\"field_id\":{\"description\":\"The ID of the field\",\"type\":\"string\"},\"json_value_flag\":{\"description\":\"Whether the value is JSON-encoded\",\"type\":\"boolean\"},\"object\":{\"description\":\"The type of entity the condition applies to (e.g. \\\"deal\\\", \\\"person\\\")\",\"type\":\"string\"},\"operator\":{\"description\":\"The operator used in the condition (e.g. \\\"=\\\", \\\"IS NOT NULL\\\")\",\"type\":\"string\"},\"value\":{\"description\":\"The value of the condition\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"glue\":{\"description\":\"The logical operator joining conditions within this group\",\"enum\":[\"and\",\"or\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"glue\":{\"description\":\"The top-level glue is always \\\"and\\\"\",\"enum\":[\"and\"],\"type\":\"string\"}},\"type\":\"object\"},\"custom_view_id\":{\"description\":\"The custom view ID linked to the filter\",\"nullable\":true,\"type\":\"integer\"},\"filter_code\":{\"description\":\"The system code of the filter\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"The ID of the filter\",\"type\":\"integer\"},\"is_editable\":{\"description\":\"Whether the filter can be edited by the requesting user\",\"type\":\"boolean\"},\"last_used_time\":{\"description\":\"The date and time when the filter was last used\",\"nullable\":true,\"type\":\"string\"},\"name\":{\"description\":\"The name of the filter\",\"type\":\"string\"},\"temporary_flag\":{\"description\":\"Whether the filter is temporary\",\"nullable\":true,\"type\":\"boolean\"},\"type\":{\"enum\":[\"deals\",\"leads\",\"org\",\"people\",\"products\",\"activity\",\"projects\"],\"type\":\"string\"},\"update_time\":{\"description\":\"The date and time when the filter was last updated\",\"nullable\":true,\"type\":\"string\"},\"user_id\":{\"description\":\"The user ID of the filter owner\",\"type\":\"integer\"},\"visible_to\":{\"allOf\":[{\"enum\":[\"1\",\"3\",\"5\",\"7\"],\"type\":\"string\"}],\"description\":\"The visibility group ID of the filter\"}},\"title\":\"Filter\",\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"AddFiltersResponse\"}}},\"description\":\"Success\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"deals:full\",\"activities:full\",\"contacts:full\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PUT"
+          orig: "/filters/{id}"
+          segments: [
+            {
+              lit: "filters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+              "include_field_code"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

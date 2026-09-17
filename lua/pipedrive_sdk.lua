@@ -353,6 +353,90 @@ end
 
 
 
+-- Idiomatic facade: client:ActivityField():list() / client:ActivityField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:ActivityField(data)
+  local EntityMod = require("entity.activity_field_entity")
+  if data == nil then
+    if self._activity_field == nil then
+      self._activity_field = EntityMod.new(self, nil)
+    end
+    return self._activity_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ActivityType():list() / client:ActivityType():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:ActivityType(data)
+  local EntityMod = require("entity.activity_type_entity")
+  if data == nil then
+    if self._activity_type == nil then
+      self._activity_type = EntityMod.new(self, nil)
+    end
+    return self._activity_type
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Billing():list() / client:Billing():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Billing(data)
+  local EntityMod = require("entity.billing_entity")
+  if data == nil then
+    if self._billing == nil then
+      self._billing = EntityMod.new(self, nil)
+    end
+    return self._billing
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CallLog():list() / client:CallLog():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:CallLog(data)
+  local EntityMod = require("entity.call_log_entity")
+  if data == nil then
+    if self._call_log == nil then
+      self._call_log = EntityMod.new(self, nil)
+    end
+    return self._call_log
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Channel():list() / client:Channel():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Channel(data)
+  local EntityMod = require("entity.channel_entity")
+  if data == nil then
+    if self._channel == nil then
+      self._channel = EntityMod.new(self, nil)
+    end
+    return self._channel
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Currency():list() / client:Currency():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Currency(data)
+  local EntityMod = require("entity.currency_entity")
+  if data == nil then
+    if self._currency == nil then
+      self._currency = EntityMod.new(self, nil)
+    end
+    return self._currency
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:Deal():list() / client:Deal():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function PipedriveSDK:Deal(data)
@@ -362,6 +446,496 @@ function PipedriveSDK:Deal(data)
       self._deal = EntityMod.new(self, nil)
     end
     return self._deal
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DealField():list() / client:DealField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:DealField(data)
+  local EntityMod = require("entity.deal_field_entity")
+  if data == nil then
+    if self._deal_field == nil then
+      self._deal_field = EntityMod.new(self, nil)
+    end
+    return self._deal_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:File():list() / client:File():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:File(data)
+  local EntityMod = require("entity.file_entity")
+  if data == nil then
+    if self._file == nil then
+      self._file = EntityMod.new(self, nil)
+    end
+    return self._file
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Filter():list() / client:Filter():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Filter(data)
+  local EntityMod = require("entity.filter_entity")
+  if data == nil then
+    if self._filter == nil then
+      self._filter = EntityMod.new(self, nil)
+    end
+    return self._filter
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Goal():list() / client:Goal():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Goal(data)
+  local EntityMod = require("entity.goal_entity")
+  if data == nil then
+    if self._goal == nil then
+      self._goal = EntityMod.new(self, nil)
+    end
+    return self._goal
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Lead():list() / client:Lead():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Lead(data)
+  local EntityMod = require("entity.lead_entity")
+  if data == nil then
+    if self._lead == nil then
+      self._lead = EntityMod.new(self, nil)
+    end
+    return self._lead
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeadField():list() / client:LeadField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:LeadField(data)
+  local EntityMod = require("entity.lead_field_entity")
+  if data == nil then
+    if self._lead_field == nil then
+      self._lead_field = EntityMod.new(self, nil)
+    end
+    return self._lead_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeadLabel():list() / client:LeadLabel():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:LeadLabel(data)
+  local EntityMod = require("entity.lead_label_entity")
+  if data == nil then
+    if self._lead_label == nil then
+      self._lead_label = EntityMod.new(self, nil)
+    end
+    return self._lead_label
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeadSource():list() / client:LeadSource():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:LeadSource(data)
+  local EntityMod = require("entity.lead_source_entity")
+  if data == nil then
+    if self._lead_source == nil then
+      self._lead_source = EntityMod.new(self, nil)
+    end
+    return self._lead_source
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LegacyTeam():list() / client:LegacyTeam():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:LegacyTeam(data)
+  local EntityMod = require("entity.legacy_team_entity")
+  if data == nil then
+    if self._legacy_team == nil then
+      self._legacy_team = EntityMod.new(self, nil)
+    end
+    return self._legacy_team
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Mailbox():list() / client:Mailbox():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Mailbox(data)
+  local EntityMod = require("entity.mailbox_entity")
+  if data == nil then
+    if self._mailbox == nil then
+      self._mailbox = EntityMod.new(self, nil)
+    end
+    return self._mailbox
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Meeting():list() / client:Meeting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Meeting(data)
+  local EntityMod = require("entity.meeting_entity")
+  if data == nil then
+    if self._meeting == nil then
+      self._meeting = EntityMod.new(self, nil)
+    end
+    return self._meeting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Note():list() / client:Note():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Note(data)
+  local EntityMod = require("entity.note_entity")
+  if data == nil then
+    if self._note == nil then
+      self._note = EntityMod.new(self, nil)
+    end
+    return self._note
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:NoteField():list() / client:NoteField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:NoteField(data)
+  local EntityMod = require("entity.note_field_entity")
+  if data == nil then
+    if self._note_field == nil then
+      self._note_field = EntityMod.new(self, nil)
+    end
+    return self._note_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Oauth():list() / client:Oauth():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Oauth(data)
+  local EntityMod = require("entity.oauth_entity")
+  if data == nil then
+    if self._oauth == nil then
+      self._oauth = EntityMod.new(self, nil)
+    end
+    return self._oauth
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Organization():list() / client:Organization():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Organization(data)
+  local EntityMod = require("entity.organization_entity")
+  if data == nil then
+    if self._organization == nil then
+      self._organization = EntityMod.new(self, nil)
+    end
+    return self._organization
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationField():list() / client:OrganizationField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:OrganizationField(data)
+  local EntityMod = require("entity.organization_field_entity")
+  if data == nil then
+    if self._organization_field == nil then
+      self._organization_field = EntityMod.new(self, nil)
+    end
+    return self._organization_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationRelationship():list() / client:OrganizationRelationship():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:OrganizationRelationship(data)
+  local EntityMod = require("entity.organization_relationship_entity")
+  if data == nil then
+    if self._organization_relationship == nil then
+      self._organization_relationship = EntityMod.new(self, nil)
+    end
+    return self._organization_relationship
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PermissionSet():list() / client:PermissionSet():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:PermissionSet(data)
+  local EntityMod = require("entity.permission_set_entity")
+  if data == nil then
+    if self._permission_set == nil then
+      self._permission_set = EntityMod.new(self, nil)
+    end
+    return self._permission_set
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Person():list() / client:Person():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Person(data)
+  local EntityMod = require("entity.person_entity")
+  if data == nil then
+    if self._person == nil then
+      self._person = EntityMod.new(self, nil)
+    end
+    return self._person
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PersonField():list() / client:PersonField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:PersonField(data)
+  local EntityMod = require("entity.person_field_entity")
+  if data == nil then
+    if self._person_field == nil then
+      self._person_field = EntityMod.new(self, nil)
+    end
+    return self._person_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Pipeline():list() / client:Pipeline():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Pipeline(data)
+  local EntityMod = require("entity.pipeline_entity")
+  if data == nil then
+    if self._pipeline == nil then
+      self._pipeline = EntityMod.new(self, nil)
+    end
+    return self._pipeline
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Product(data)
+  local EntityMod = require("entity.product_entity")
+  if data == nil then
+    if self._product == nil then
+      self._product = EntityMod.new(self, nil)
+    end
+    return self._product
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ProductField():list() / client:ProductField():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:ProductField(data)
+  local EntityMod = require("entity.product_field_entity")
+  if data == nil then
+    if self._product_field == nil then
+      self._product_field = EntityMod.new(self, nil)
+    end
+    return self._product_field
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Project():list() / client:Project():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Project(data)
+  local EntityMod = require("entity.project_entity")
+  if data == nil then
+    if self._project == nil then
+      self._project = EntityMod.new(self, nil)
+    end
+    return self._project
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ProjectBoard():list() / client:ProjectBoard():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:ProjectBoard(data)
+  local EntityMod = require("entity.project_board_entity")
+  if data == nil then
+    if self._project_board == nil then
+      self._project_board = EntityMod.new(self, nil)
+    end
+    return self._project_board
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ProjectPhase():list() / client:ProjectPhase():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:ProjectPhase(data)
+  local EntityMod = require("entity.project_phase_entity")
+  if data == nil then
+    if self._project_phase == nil then
+      self._project_phase = EntityMod.new(self, nil)
+    end
+    return self._project_phase
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ProjectTemplate():list() / client:ProjectTemplate():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:ProjectTemplate(data)
+  local EntityMod = require("entity.project_template_entity")
+  if data == nil then
+    if self._project_template == nil then
+      self._project_template = EntityMod.new(self, nil)
+    end
+    return self._project_template
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Recent():list() / client:Recent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Recent(data)
+  local EntityMod = require("entity.recent_entity")
+  if data == nil then
+    if self._recent == nil then
+      self._recent = EntityMod.new(self, nil)
+    end
+    return self._recent
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Role():list() / client:Role():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Role(data)
+  local EntityMod = require("entity.role_entity")
+  if data == nil then
+    if self._role == nil then
+      self._role = EntityMod.new(self, nil)
+    end
+    return self._role
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Stage():list() / client:Stage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Stage(data)
+  local EntityMod = require("entity.stage_entity")
+  if data == nil then
+    if self._stage == nil then
+      self._stage = EntityMod.new(self, nil)
+    end
+    return self._stage
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Task():list() / client:Task():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Task(data)
+  local EntityMod = require("entity.task_entity")
+  if data == nil then
+    if self._task == nil then
+      self._task = EntityMod.new(self, nil)
+    end
+    return self._task
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:User():list() / client:User():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:User(data)
+  local EntityMod = require("entity.user_entity")
+  if data == nil then
+    if self._user == nil then
+      self._user = EntityMod.new(self, nil)
+    end
+    return self._user
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:UserConnection():list() / client:UserConnection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:UserConnection(data)
+  local EntityMod = require("entity.user_connection_entity")
+  if data == nil then
+    if self._user_connection == nil then
+      self._user_connection = EntityMod.new(self, nil)
+    end
+    return self._user_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:UserSetting():list() / client:UserSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:UserSetting(data)
+  local EntityMod = require("entity.user_setting_entity")
+  if data == nil then
+    if self._user_setting == nil then
+      self._user_setting = EntityMod.new(self, nil)
+    end
+    return self._user_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Webhook():list() / client:Webhook():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PipedriveSDK:Webhook(data)
+  local EntityMod = require("entity.webhook_entity")
+  if data == nil then
+    if self._webhook == nil then
+      self._webhook = EntityMod.new(self, nil)
+    end
+    return self._webhook
   end
   return EntityMod.new(self, data)
 end

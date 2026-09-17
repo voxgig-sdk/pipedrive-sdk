@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Oauth | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a aria-current="page" href="../api/oauth.html">Oauth</a><div class="nav-sections"><a class="nav-section" href="#post-oauthtoken">POST /oauth/token</a>
+<a class="nav-section" href="#post-oauthtoken">POST /oauth/token/</a>
+<a class="nav-section" href="#get-oauthauthorize">GET /oauth/authorize</a></div>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="oauth">Oauth</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-oauthtoken"><code>/oauth/token</code></a></td>
+<td><code>create</code></td>
+<td>Returns user Oauth2 tokens</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-oauthtoken"><code>/oauth/token/</code></a></td>
+<td><code>create</code></td>
+<td>Returns user Oauth2 tokens</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-oauthauthorize"><code>/oauth/authorize</code></a></td>
+<td><code>load</code></td>
+<td>Authorize user in the app</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-oauthtoken" class="operation" data-method="post"><code>POST</code> /oauth/token</h3>
+<p>Operation ID: <code>get-tokens</code>.</p>
+<p>Authentication: basic token (<code>basic_authentication</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>Authorization</code> | <code>header</code> | <code>string</code> | Yes | Base 64 encoded string containing the <code>client_id</code> and <code>client_secret</code> values. The header value should be <code>Basic &amp;lt;base64(client_id:client_secret)&amp;gt;</code>. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The authorization code that you received after the user confirmed app installation</td>
+</tr>
+<tr>
+<td><code>grant_type</code></td>
+<td><code>enum: authorization_code, refresh_token</code></td>
+<td>No</td>
+<td>Since you are trying to exchange an authorization code for a pair of tokens, you must use the value &quot;authorization_code&quot;</td>
+</tr>
+<tr>
+<td><code>redirect_uri</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The callback URL you provided when you registered your app</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-returns-user-oauth2-tokens" class="status" data-status="2xx">200: Returns user Oauth2 tokens</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>You need to use an <code>access_token</code> for accessing the user's data via API. You will need to <a href="https://pipedrive.readme.io/docs/marketplace-oauth-authorization#step-7-refreshing-the-tokens">refresh the access token</a> if the <code>access_token</code> becomes invalid.</td>
+</tr>
+<tr>
+<td><code>api_domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The base URL path, including the company_domain, where the requests can be sent to</td>
+</tr>
+<tr>
+<td><code>expires_in</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The maximum time in seconds until the <code>access_token</code> expires</td>
+</tr>
+<tr>
+<td><code>refresh_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A refresh token is needed when you refresh the access token. refresh_token will expire if it isn't used in 60 days. Each time refresh_token is used, its expiry date is reset back to 60 days.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>List of scopes to which users have agreed to grant access within this <code>access_token</code></td>
+</tr>
+<tr>
+<td><code>token_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The format of the token. Always &quot;Bearer&quot;.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;v1u:AQIBAHj+LzTNK1yuuuaLqifzhWb9crUNKTpk4FlQ9rjnXqp/6AErhI98syaV25RmpLJLIgOkAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMbGNxa4UccVoXAmLNAgEQgDsiQ7cNdoRBJeFr1i3KW84RYyM1Qtwq1oSBJOl/NFQdVjDI2iQH0LBhS28DbL2KDvoVIihea9Ryt/9rIQ==:RIDnTOIXo8QirT3DMYw0Y0s8xBbxz59f5IMq7T7WhSz313e2MXRHB6g+8OTNCSqVO7QsUhluoAmOfBP1FNkPycy9txn7t2Uoz9y/JDVf4Givv4MMiK/Xq3I7hO4N6FeD+2GqDJDBn24OW6b0SRIr4FEROhGo3BpcPRGehv46NLn1n5LrqXrQwO9qrGD4gIZe40oO2IQgGL9QAPDfqvZ+JhUtcpAipRLp7cCDRfYU8+sdOFJ+hLffqC8isFcV6iPsNrmj&quot;,
+  &quot;api_domain&quot;: &quot;https://user-company.pipedrive.com&quot;,
+  &quot;expires_in&quot;: 3599,
+  &quot;refresh_token&quot;: &quot;1:1:2a5496a8bdd0f829dcb09dc8ba82b188f0ea4481&quot;,
+  &quot;scope&quot;: &quot;base&quot;,
+  &quot;token_type&quot;: &quot;Bearer&quot;
+}
+</code></pre>
+<h3 id="post-oauthtoken-1" class="operation" data-method="post"><code>POST</code> /oauth/token/</h3>
+<p>Operation ID: <code>refresh-tokens</code>.</p>
+<p>Authentication: basic token (<code>basic_authentication</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>Authorization</code> | <code>header</code> | <code>string</code> | Yes | Base 64 encoded string containing the <code>client_id</code> and <code>client_secret</code> values. The header value should be <code>Basic &amp;lt;base64(client_id:client_secret)&amp;gt;</code>. |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/x-www-form-urlencoded</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grant_type</code></td>
+<td><code>enum: authorization_code, refresh_token</code></td>
+<td>No</td>
+<td>Since you are to refresh your access_token, you must use the value &quot;refresh_token&quot;</td>
+</tr>
+<tr>
+<td><code>refresh_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The refresh token that you received after you exchanged the authorization code</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-returns-user-oauth2-tokens-1" class="status" data-status="2xx">200: Returns user Oauth2 tokens</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>You need to use an <code>access_token</code> for accessing the user's data via API. You will need to <a href="https://pipedrive.readme.io/docs/marketplace-oauth-authorization#step-7-refreshing-the-tokens">refresh the access token</a> if the <code>access_token</code> becomes invalid.</td>
+</tr>
+<tr>
+<td><code>api_domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The base URL path, including the company_domain, where the requests can be sent to</td>
+</tr>
+<tr>
+<td><code>expires_in</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The maximum time in seconds until the <code>access_token</code> expires</td>
+</tr>
+<tr>
+<td><code>refresh_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A refresh token is needed when you refresh the access token. refresh_token will expire if it isn't used in 60 days. Each time refresh_token is used, its expiry date is reset back to 60 days.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>List of scopes to which users have agreed to grant access within this <code>access_token</code></td>
+</tr>
+<tr>
+<td><code>token_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The format of the token. Always &quot;Bearer&quot;.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;v1u:AQIBAHj+LzTNK1yuuuaLqifzhWb9crUNKTpk4FlQ9rjnXqp/6AErhI98syaV25RmpLJLIgOkAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMbGNxa4UccVoXAmLNAgEQgDsiQ7cNdoRBJeFr1i3KW84RYyM1Qtwq1oSBJOl/NFQdVjDI2iQH0LBhS28DbL2KDvoVIihea9Ryt/9rIQ==:RIDnTOIXo8QirT3DMYw0Y0s8xBbxz59f5IMq7T7WhSz313e2MXRHB6g+8OTNCSqVO7QsUhluoAmOfBP1FNkPycy9txn7t2Uoz9y/JDVf4Givv4MMiK/Xq3I7hO4N6FeD+2GqDJDBn24OW6b0SRIr4FEROhGo3BpcPRGehv46NLn1n5LrqXrQwO9qrGD4gIZe40oO2IQgGL9QAPDfqvZ+JhUtcpAipRLp7cCDRfYU8+sdOFJ+hLffqC8isFcV6iPsNrmj&quot;,
+  &quot;api_domain&quot;: &quot;https://user-company.pipedrive.com&quot;,
+  &quot;expires_in&quot;: 3599,
+  &quot;refresh_token&quot;: &quot;1:1:2a5496a8bdd0f829dcb09dc8ba82b188f0ea4481&quot;,
+  &quot;scope&quot;: &quot;base&quot;,
+  &quot;token_type&quot;: &quot;Bearer&quot;
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-oauthauthorize" class="operation" data-method="get"><code>GET</code> /oauth/authorize</h3>
+<p>Operation ID: <code>authorize</code>.</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>client_id</code> | <code>query</code> | <code>string</code> | Yes | The client ID provided to you by the Pipedrive Marketplace when you register your app |
+| <code>redirect_uri</code> | <code>query</code> | <code>string</code> | Yes | The callback URL you provided when you registered your app. Authorization code will be sent to that URL (if it matches with the value you entered in the registration form) if a user approves the app install. Or, if a customer declines, the corresponding error will also be sent to this URL. |
+| <code>state</code> | <code>query</code> | <code>string</code> | No | You may pass any random string as the state parameter and the same string will be returned to your app after a user authorizes access. It may be used to store the user's session ID from your app or distinguish different responses. Using state may increase security; see RFC-6749. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-authorize-user-in-the-app" class="status" data-status="2xx">200: Authorize user in the app</h5>
+<p><code>text/html</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;As a result of the request, the customer will see a page with the confirmation dialog, which will present your app details (title, company name, icon) and explain the permission scopes that you have set for the app. Customers should confirm their wish to install the app by clicking \&quot;Allow and install\&quot; or deny authorization by clicking \&quot;Cancel\&quot;.\n&quot;
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

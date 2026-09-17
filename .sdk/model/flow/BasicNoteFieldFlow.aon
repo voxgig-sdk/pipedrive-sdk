@@ -1,0 +1,22 @@
+# BasicNoteFieldFlow
+
+main: kit: flow: BasicNoteFieldFlow:
+{
+  entity: "note_field",
+  kind: "basic",
+  name: "BasicNoteFieldFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "note_field_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNoteFieldFlow"
+}

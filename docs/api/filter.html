@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Filter | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a aria-current="page" href="../api/filter.html">Filter</a><div class="nav-sections"><a class="nav-section" href="#post-filters">POST /filters</a>
+<a class="nav-section" href="#get-filters">GET /filters</a>
+<a class="nav-section" href="#get-filtersid">GET /filters/{id}</a>
+<a class="nav-section" href="#get-filtershelpers">GET /filters/helpers</a>
+<a class="nav-section" href="#delete-filtersid">DELETE /filters/{id}</a>
+<a class="nav-section" href="#delete-filters">DELETE /filters</a>
+<a class="nav-section" href="#put-filtersid">PUT /filters/{id}</a></div>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="filter">Filter</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-filters"><code>/filters</code></a></td>
+<td><code>create</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-filters"><code>/filters</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-filtersid"><code>/filters/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-filtershelpers"><code>/filters/helpers</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-filtersid"><code>/filters/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-filters"><code>/filters</code></a></td>
+<td><code>remove</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-filtersid"><code>/filters/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Success</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conditions</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The conditions of the filter as a JSON object.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The filter object including conditions</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the filter</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of filter to create</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-filters" class="operation" data-method="post"><code>POST</code> /filters</h3>
+<p>Operation ID: <code>addFilter</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>include_field_code</code> | <code>query</code> | <code>boolean</code> | No | If set to <code>true</code>, each condition in the response includes a <code>field_code</code> field identifying the field by its code name |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conditions</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The conditions of the filter as a JSON object. Please note that a maximum of 16 conditions is allowed per filter and <code>date</code> values must be supplied in the <code>YYYY-MM-DD</code> format. It requires a minimum structure as follows: <code>&amp;#123;&amp;quot;glue&amp;quot;:&amp;quot;and&amp;quot;,&amp;quot;conditions&amp;quot;:[&amp;#123;&amp;quot;glue&amp;quot;:&amp;quot;and&amp;quot;,&amp;quot;conditions&amp;quot;: [CONDITION_OBJECTS]&amp;#125;,&amp;#123;&amp;quot;glue&amp;quot;:&amp;quot;or&amp;quot;,&amp;quot;conditions&amp;quot;:[CONDITION_OBJECTS]&amp;#125;]&amp;#125;</code>. Replace <code>CONDITION_OBJECTS</code> with JSON objects of the following structure: <code>&amp;#123;&amp;quot;object&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;field_id&amp;quot;:&amp;quot;&amp;quot;, &amp;quot;operator&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;, &amp;quot;extra_value&amp;quot;:&amp;quot;&amp;quot;&amp;#125;</code> or leave the array empty. Depending on the object type you should use another API endpoint to get <code>field_id</code>. There are five types of objects you can choose from: <code>&amp;quot;person&amp;quot;</code>, <code>&amp;quot;deal&amp;quot;</code>, <code>&amp;quot;organization&amp;quot;</code>, <code>&amp;quot;product&amp;quot;</code>, <code>&amp;quot;activity&amp;quot;</code> and you can use these types of operators depending on what type of a field you have: <code>&amp;quot;IS NOT NULL&amp;quot;</code>, <code>&amp;quot;IS NULL&amp;quot;</code>, <code>&amp;quot;&amp;lt;=&amp;quot;</code>, <code>&amp;quot;&amp;gt;=&amp;quot;</code>, <code>&amp;quot;&amp;lt;&amp;quot;</code>, <code>&amp;quot;&amp;gt;&amp;quot;</code>, <code>&amp;quot;!=&amp;quot;</code>, <code>&amp;quot;=&amp;quot;</code>, <code>&amp;quot;LIKE &amp;#39;$%&amp;#39;&amp;quot;</code>, <code>&amp;quot;LIKE &amp;#39;%$%&amp;#39;&amp;quot;</code>, <code>&amp;quot;NOT LIKE &amp;#39;$%&amp;#39;&amp;quot;</code>. To get a better understanding of how filters work try creating them directly from the Pipedrive application.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the filter</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: deals, leads, org, people, products, activity, ...</code></td>
+<td>Yes</td>
+<td>The type of filter to create</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2018-01-27 08:49:26&quot;,
+    &quot;conditions&quot;: {
+      &quot;conditions&quot;: [
+        {
+          &quot;conditions&quot;: [
+            {
+              &quot;extra_value&quot;: null,
+              &quot;field_code&quot;: &quot;title&quot;,
+              &quot;field_id&quot;: &quot;123141&quot;,
+              &quot;json_value_flag&quot;: false,
+              &quot;object&quot;: &quot;deal&quot;,
+              &quot;operator&quot;: &quot;=&quot;,
+              &quot;value&quot;: &quot;my title&quot;
+            }
+          ],
+          &quot;glue&quot;: &quot;and&quot;
+        },
+        {
+          &quot;conditions&quot;: [],
+          &quot;glue&quot;: &quot;or&quot;
+        }
+      ],
+      &quot;glue&quot;: &quot;and&quot;
+    },
+    &quot;custom_view_id&quot;: null,
+    &quot;filter_code&quot;: null,
+    &quot;id&quot;: 1,
+    &quot;is_editable&quot;: true,
+    &quot;last_used_time&quot;: null,
+    &quot;name&quot;: &quot;Deal title is 'my title'&quot;,
+    &quot;temporary_flag&quot;: false,
+    &quot;type&quot;: &quot;deals&quot;,
+    &quot;update_time&quot;: &quot;2018-01-27 08:49:26&quot;,
+    &quot;user_id&quot;: 1,
+    &quot;visible_to&quot;: &quot;1&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-filters" class="operation" data-method="get"><code>GET</code> /filters</h3>
+<p>Operation ID: <code>getFilters</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>type</code> | <code>query</code> | <code>enum: deals, leads, org, people, products, activity, ...</code> | No | The types of filters to fetch |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2019-10-15 11:01:53&quot;,
+      &quot;custom_view_id&quot;: null,
+      &quot;filter_code&quot;: null,
+      &quot;id&quot;: 1,
+      &quot;is_editable&quot;: true,
+      &quot;last_used_time&quot;: null,
+      &quot;name&quot;: &quot;All open deals&quot;,
+      &quot;temporary_flag&quot;: null,
+      &quot;type&quot;: &quot;deals&quot;,
+      &quot;update_time&quot;: &quot;2019-10-15 11:01:53&quot;,
+      &quot;user_id&quot;: 927097,
+      &quot;visible_to&quot;: &quot;7&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-filtersid" class="operation" data-method="get"><code>GET</code> /filters/{id}</h3>
+<p>Operation ID: <code>getFilter</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the filter |
+| <code>include_field_code</code> | <code>query</code> | <code>boolean</code> | No | If set to <code>true</code>, each condition in the response includes a <code>field_code</code> field identifying the field by its code name |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2019-10-15 11:01:53&quot;,
+    &quot;conditions&quot;: {
+      &quot;conditions&quot;: [
+        {
+          &quot;conditions&quot;: [
+            {
+              &quot;extra_value&quot;: null,
+              &quot;field_code&quot;: &quot;status&quot;,
+              &quot;field_id&quot;: &quot;123&quot;,
+              &quot;json_value_flag&quot;: false,
+              &quot;object&quot;: &quot;deal&quot;,
+              &quot;operator&quot;: &quot;IS NOT NULL&quot;,
+              &quot;value&quot;: null
+            }
+          ],
+          &quot;glue&quot;: &quot;and&quot;
+        },
+        {
+          &quot;conditions&quot;: [],
+          &quot;glue&quot;: &quot;or&quot;
+        }
+      ],
+      &quot;glue&quot;: &quot;and&quot;
+    },
+    &quot;custom_view_id&quot;: null,
+    &quot;filter_code&quot;: null,
+    &quot;id&quot;: 1,
+    &quot;is_editable&quot;: true,
+    &quot;last_used_time&quot;: null,
+    &quot;name&quot;: &quot;All open deals&quot;,
+    &quot;temporary_flag&quot;: null,
+    &quot;type&quot;: &quot;deals&quot;,
+    &quot;update_time&quot;: &quot;2019-10-15 11:01:53&quot;,
+    &quot;user_id&quot;: 927097,
+    &quot;visible_to&quot;: &quot;7&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-filtershelpers" class="operation" data-method="get"><code>GET</code> /filters/helpers</h3>
+<p>Operation ID: <code>getFilterHelpers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-success-3" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;address_field_components&quot;: {
+      &quot;admin_area_level_1&quot;: &quot;State/county&quot;,
+      &quot;admin_area_level_2&quot;: &quot;Region&quot;,
+      &quot;country&quot;: &quot;Country&quot;,
+      &quot;formatted_address&quot;: &quot;Full/combined address&quot;,
+      &quot;locality&quot;: &quot;City/town/village/locality&quot;,
+      &quot;postal_code&quot;: &quot;ZIP/Postal code&quot;,
+      &quot;route&quot;: &quot;Street/road name&quot;,
+      &quot;street_number&quot;: &quot;House number&quot;,
+      &quot;sublocality&quot;: &quot;District/sublocality&quot;,
+      &quot;subpremise&quot;: &quot;Apartment/suite no&quot;
+    },
+    &quot;deprecated_operators&quot;: {
+      &quot;LIKE '%$'&quot;: &quot;ends with&quot;,
+      &quot;NOT LIKE '%$%'&quot;: &quot;does not contain&quot;,
+      &quot;NOT LIKE '%$'&quot;: &quot;does not end with&quot;
+    },
+    &quot;operators&quot;: {
+      &quot;currency&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;
+      },
+      &quot;date&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;&lt;&quot;: &quot;is earlier than&quot;,
+        &quot;&lt;=&quot;: &quot;is exactly or earlier than&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;&gt;&quot;: &quot;is later than&quot;,
+        &quot;&gt;=&quot;: &quot;is exactly or later than&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;daterange&quot;: {
+        &quot;!=&quot;: &quot;does not start at&quot;,
+        &quot;&lt;&quot;: &quot;starts before&quot;,
+        &quot;&lt;=&quot;: &quot;starts exactly on or before&quot;,
+        &quot;=&quot;: &quot;starts at&quot;,
+        &quot;&gt;&quot;: &quot;starts after&quot;,
+        &quot;&gt;=&quot;: &quot;starts exactly or after&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;,
+        &quot;does_not_end_at&quot;: &quot;does not end at&quot;,
+        &quot;ends_after&quot;: &quot;ends after&quot;,
+        &quot;ends_at&quot;: &quot;ends at&quot;,
+        &quot;ends_before&quot;: &quot;ends before&quot;,
+        &quot;ends_e_after&quot;: &quot;ends exactly or after&quot;,
+        &quot;ends_e_before&quot;: &quot;ends exactly on or before&quot;,
+        &quot;includes&quot;: &quot;does include&quot;
+      },
+      &quot;deal&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;double&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;&lt;&quot;: &quot;is less than&quot;,
+        &quot;&lt;=&quot;: &quot;is less or equal to&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;&gt;&quot;: &quot;is more than&quot;,
+        &quot;&gt;=&quot;: &quot;is more or equal to&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;entered_stage&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;&lt;&quot;: &quot;is earlier than&quot;,
+        &quot;&lt;=&quot;: &quot;is exactly or earlier than&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;&gt;&quot;: &quot;is later than&quot;,
+        &quot;&gt;=&quot;: &quot;is exactly or later than&quot;
+      },
+      &quot;enum&quot;: [
+        {
+          &quot;=&quot;: &quot;is&quot;
+        },
+        {
+          &quot;!=&quot;: &quot;is not&quot;
+        },
+        {
+          &quot;IS NULL&quot;: &quot;is empty&quot;
+        },
+        {
+          &quot;IS NOT NULL&quot;: &quot;is not empty&quot;
+        }
+      ],
+      &quot;int&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;&lt;&quot;: &quot;is less than&quot;,
+        &quot;&lt;=&quot;: &quot;is less or equal to&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;&gt;&quot;: &quot;is more than&quot;,
+        &quot;&gt;=&quot;: &quot;is more or equal to&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;monetary&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;&lt;&quot;: &quot;is less than&quot;,
+        &quot;&lt;=&quot;: &quot;is less or equal to&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;&gt;&quot;: &quot;is more than&quot;,
+        &quot;&gt;=&quot;: &quot;is more or equal to&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;organization&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;person&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;pipeline&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;
+      },
+      &quot;product&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;set&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;,
+        &quot;contains&quot;: &quot;contains&quot;,
+        &quot;not_contains&quot;: &quot;does not contain&quot;
+      },
+      &quot;stage&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;has_been&quot;: &quot;has been&quot;
+      },
+      &quot;status&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;
+      },
+      &quot;time&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;&lt;&quot;: &quot;is before&quot;,
+        &quot;&lt;=&quot;: &quot;is exactly or before than&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;&gt;&quot;: &quot;is after&quot;,
+        &quot;&gt;=&quot;: &quot;is exactly or after than&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;
+      },
+      &quot;timerange&quot;: {
+        &quot;!=&quot;: &quot;does not start at&quot;,
+        &quot;&lt;&quot;: &quot;starts before&quot;,
+        &quot;&lt;=&quot;: &quot;starts exactly on or before&quot;,
+        &quot;=&quot;: &quot;starts at&quot;,
+        &quot;&gt;&quot;: &quot;starts after&quot;,
+        &quot;&gt;=&quot;: &quot;starts exactly or after&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;,
+        &quot;does_not_end_at&quot;: &quot;does not end at&quot;,
+        &quot;ends_after&quot;: &quot;ends after&quot;,
+        &quot;ends_at&quot;: &quot;ends at&quot;,
+        &quot;ends_before&quot;: &quot;ends before&quot;,
+        &quot;ends_e_after&quot;: &quot;ends exactly or after&quot;,
+        &quot;ends_e_before&quot;: &quot;ends exactly on or before&quot;,
+        &quot;includes&quot;: &quot;does include&quot;
+      },
+      &quot;title&quot;: {
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;LIKE '$%'&quot;: &quot;starts with&quot;,
+        &quot;LIKE '%$%'&quot;: &quot;contains&quot;,
+        &quot;NOT LIKE '$%'&quot;: &quot;does not start with&quot;
+      },
+      &quot;user&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;,
+        &quot;belongs_to_team&quot;: &quot;belongs to team&quot;
+      },
+      &quot;varchar&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;,
+        &quot;IS NOT NULL&quot;: &quot;is not empty&quot;,
+        &quot;IS NULL&quot;: &quot;is empty&quot;,
+        &quot;LIKE '$%'&quot;: &quot;starts with&quot;,
+        &quot;LIKE '%$%'&quot;: &quot;contains&quot;,
+        &quot;NOT LIKE '$%'&quot;: &quot;does not start with&quot;
+      },
+      &quot;visible_to&quot;: {
+        &quot;!=&quot;: &quot;is not&quot;,
+        &quot;=&quot;: &quot;is&quot;
+      }
+    },
+    &quot;relative_dates&quot;: {
+      &quot;Deal specific&quot;: {
+        &quot;rotten_time&quot;: &quot;Rotten time&quot;
+      },
+      &quot;Relative date intervals&quot;: {
+        &quot;last_month&quot;: &quot;last month&quot;,
+        &quot;last_quarter&quot;: &quot;last quarter&quot;,
+        &quot;last_week&quot;: &quot;last week&quot;,
+        &quot;next_month&quot;: &quot;next month&quot;,
+        &quot;next_week&quot;: &quot;next week&quot;,
+        &quot;this_month&quot;: &quot;this month&quot;,
+        &quot;this_quarter&quot;: &quot;this quarter&quot;,
+        &quot;this_week&quot;: &quot;this week&quot;
+      },
+      &quot;Relative dates&quot;: {
+        &quot;1_months_ago&quot;: &quot;1 month ago&quot;,
+        &quot;1_week_ago&quot;: &quot;1 week ago&quot;,
+        &quot;2_months_ago&quot;: &quot;2 months ago&quot;,
+        &quot;2_weeks_ago&quot;: &quot;2 weeks ago&quot;,
+        &quot;3_months_ago&quot;: &quot;3 months ago&quot;,
+        &quot;3_weeks_ago&quot;: &quot;3 weeks ago&quot;,
+        &quot;4_months_ago&quot;: &quot;4 months ago&quot;,
+        &quot;5_months_ago&quot;: &quot;5 months ago&quot;,
+        &quot;6_months_ago&quot;: &quot;6 months ago&quot;,
+        &quot;before_today&quot;: &quot;before today&quot;,
+        &quot;before_tomorrow&quot;: &quot;before tomorrow&quot;,
+        &quot;in_1_month&quot;: &quot;in 1 month&quot;,
+        &quot;in_1_week&quot;: &quot;in 1 week&quot;,
+        &quot;in_2_months&quot;: &quot;in 2 months&quot;,
+        &quot;in_2_weeks&quot;: &quot;in 2 weeks&quot;,
+        &quot;in_3_months&quot;: &quot;in 3 months&quot;,
+        &quot;in_3_weeks&quot;: &quot;in 3 weeks&quot;,
+        &quot;in_4_months&quot;: &quot;in 4 months&quot;,
+        &quot;in_5_months&quot;: &quot;in 5 months&quot;,
+        &quot;in_6_months&quot;: &quot;in 6 months&quot;,
+        &quot;later_or_today&quot;: &quot;today or later&quot;,
+        &quot;later_or_tomorrow&quot;: &quot;tomorrow or later&quot;,
+        &quot;now&quot;: &quot;now&quot;,
+        &quot;today&quot;: &quot;today&quot;,
+        &quot;tomorrow&quot;: &quot;tomorrow&quot;,
+        &quot;yesterday&quot;: &quot;yesterday&quot;
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-filtersid" class="operation" data-method="delete"><code>DELETE</code> /filters/{id}</h3>
+<p>Operation ID: <code>deleteFilter</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the filter |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 1
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="delete-filters" class="operation" data-method="delete"><code>DELETE</code> /filters</h3>
+<p>Operation ID: <code>deleteFilters</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>ids</code> | <code>query</code> | <code>string</code> | Yes | The comma-separated filter IDs to delete |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: [
+      1,
+      2,
+      3
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-filtersid" class="operation" data-method="put"><code>PUT</code> /filters/{id}</h3>
+<p>Operation ID: <code>updateFilter</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the filter |
+| <code>include_field_code</code> | <code>query</code> | <code>boolean</code> | No | If set to <code>true</code>, each condition in the response includes a <code>field_code</code> field identifying the field by its code name |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conditions</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The conditions of the filter as a JSON object. Please note that a maximum of 16 conditions is allowed per filter and <code>date</code> values must be supplied in the <code>YYYY-MM-DD</code> format. It requires a minimum structure as follows: <code>&amp;#123;&amp;quot;glue&amp;quot;:&amp;quot;and&amp;quot;,&amp;quot;conditions&amp;quot;:[&amp;#123;&amp;quot;glue&amp;quot;:&amp;quot;and&amp;quot;,&amp;quot;conditions&amp;quot;: [CONDITION_OBJECTS]&amp;#125;,&amp;#123;&amp;quot;glue&amp;quot;:&amp;quot;or&amp;quot;,&amp;quot;conditions&amp;quot;:[CONDITION_OBJECTS]&amp;#125;]&amp;#125;</code>. Replace <code>CONDITION_OBJECTS</code> with JSON objects of the following structure: <code>&amp;#123;&amp;quot;object&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;field_id&amp;quot;:&amp;quot;&amp;quot;, &amp;quot;operator&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;, &amp;quot;extra_value&amp;quot;:&amp;quot;&amp;quot;&amp;#125;</code> or leave the array empty. Depending on the object type you should use another API endpoint to get <code>field_id</code>. There are five types of objects you can choose from: <code>&amp;quot;person&amp;quot;</code>, <code>&amp;quot;deal&amp;quot;</code>, <code>&amp;quot;organization&amp;quot;</code>, <code>&amp;quot;product&amp;quot;</code>, <code>&amp;quot;activity&amp;quot;</code> and you can use these types of operators depending on what type of a field you have: <code>&amp;quot;IS NOT NULL&amp;quot;</code>, <code>&amp;quot;IS NULL&amp;quot;</code>, <code>&amp;quot;&amp;lt;=&amp;quot;</code>, <code>&amp;quot;&amp;gt;=&amp;quot;</code>, <code>&amp;quot;&amp;lt;&amp;quot;</code>, <code>&amp;quot;&amp;gt;&amp;quot;</code>, <code>&amp;quot;!=&amp;quot;</code>, <code>&amp;quot;=&amp;quot;</code>, <code>&amp;quot;LIKE &amp;#39;$%&amp;#39;&amp;quot;</code>, <code>&amp;quot;LIKE &amp;#39;%$%&amp;#39;&amp;quot;</code>, <code>&amp;quot;NOT LIKE &amp;#39;$%&amp;#39;&amp;quot;</code>. To get a better understanding of how filters work try creating them directly from the Pipedrive application.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the filter</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-success-6" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2018-01-27 08:49:26&quot;,
+    &quot;conditions&quot;: {
+      &quot;conditions&quot;: [
+        {
+          &quot;conditions&quot;: [
+            {
+              &quot;extra_value&quot;: null,
+              &quot;field_code&quot;: &quot;title&quot;,
+              &quot;field_id&quot;: &quot;123141&quot;,
+              &quot;json_value_flag&quot;: false,
+              &quot;object&quot;: &quot;deal&quot;,
+              &quot;operator&quot;: &quot;=&quot;,
+              &quot;value&quot;: &quot;my title&quot;
+            }
+          ],
+          &quot;glue&quot;: &quot;and&quot;
+        },
+        {
+          &quot;conditions&quot;: [],
+          &quot;glue&quot;: &quot;or&quot;
+        }
+      ],
+      &quot;glue&quot;: &quot;and&quot;
+    },
+    &quot;custom_view_id&quot;: null,
+    &quot;filter_code&quot;: null,
+    &quot;id&quot;: 1,
+    &quot;is_editable&quot;: true,
+    &quot;last_used_time&quot;: null,
+    &quot;name&quot;: &quot;Deal title is 'my title'&quot;,
+    &quot;temporary_flag&quot;: false,
+    &quot;type&quot;: &quot;deals&quot;,
+    &quot;update_time&quot;: &quot;2018-01-27 08:49:26&quot;,
+    &quot;user_id&quot;: 1,
+    &quot;visible_to&quot;: &quot;1&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

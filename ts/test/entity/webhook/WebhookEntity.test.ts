@@ -1,0 +1,184 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { PipedriveSDK, BaseFeature, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('WebhookEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when PIPEDRIVE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('PIPEDRIVE_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = PipedriveSDK.test()
+    const ent = testsdk.Webhook()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.PIPEDRIVE_TEST_LIVE
+    for (const op of ['create', 'list', 'remove']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'webhook.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"data","req":false,"short":"The array of Webhooks","type":"`$ARRAY`","index$":0},{"active":true,"name":"event_action","req":true,"short":"The type of action to receive notifications about.","type":"`$STRING`","index$":1},{"active":true,"name":"event_object","req":true,"short":"The type of object to receive notifications about.","type":"`$STRING`","index$":2},{"active":true,"name":"http_auth_password","req":false,"short":"The HTTP basic auth password of the subscription URL endpoint (if required)","type":"`$STRING`","index$":3},{"active":true,"name":"http_auth_user","req":false,"short":"The HTTP basic auth username of the subscription URL endpoint (if required)","type":"`$STRING`","index$":4},{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":5},{"active":true,"name":"name","req":true,"short":"The webhook's name","type":"`$STRING`","index$":6},{"active":true,"name":"subscription_url","req":true,"short":"A full, valid, publicly accessible URL which determines where to send the notifications.","type":"`$STRING`","index$":7},{"active":true,"name":"user_id","req":false,"short":"The ID of the user that this webhook will be authorized with.","type":"`$INTEGER`","index$":8},{"active":true,"name":"version","req":false,"short":"The webhook's version.","type":"`$STRING`","index$":9}],"id":{"field":"id","name":"id"},"name":"webhook","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{},"contract":{"id":"POST /webhooks","json":"{\"operationId\":\"addWebhook\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"event_action\":{\"description\":\"The type of action to receive notifications about. Wildcard will match all supported actions.\",\"enum\":[\"create\",\"change\",\"delete\",\"*\"],\"type\":\"string\"},\"event_object\":{\"description\":\"The type of object to receive notifications about. Wildcard will match all supported objects.\",\"enum\":[\"activity\",\"deal\",\"lead\",\"note\",\"organization\",\"person\",\"pipeline\",\"product\",\"stage\",\"user\",\"*\"],\"type\":\"string\"},\"http_auth_password\":{\"description\":\"The HTTP basic auth password of the subscription URL endpoint (if required)\",\"nullable\":true,\"type\":\"string\"},\"http_auth_user\":{\"description\":\"The HTTP basic auth username of the subscription URL endpoint (if required)\",\"nullable\":true,\"type\":\"string\"},\"name\":{\"description\":\"The webhook's name\",\"maxLength\":255,\"type\":\"string\"},\"subscription_url\":{\"description\":\"A full, valid, publicly accessible URL which determines where to send the notifications. Please note that you cannot use Pipedrive API endpoints as the `subscription_url` and the chosen URL must not redirect to another link.\",\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user that this webhook will be authorized with. You have the option to use a different user's `user_id`. If it is not set, the current user's `user_id` will be used. As each webhook event is checked against a user's permissions, the webhook will only be sent if the user has access to the specified object(s). If you want to receive notifications for all events, please use a top-level admin user’s `user_id`.\",\"type\":\"integer\"},\"version\":{\"default\":\"2.0\",\"description\":\"The webhook's version. NB! Webhooks v2 is the default from March 17th, 2025. See <a href=\\\"https://developers.pipedrive.com/changelog/post/breaking-change-webhooks-v2-will-become-the-new-default-version\\\" target=\\\"_blank\\\" rel=\\\"noopener noreferrer\\\">this Changelog post</a> for more details.\",\"enum\":[\"1.0\",\"2.0\"],\"type\":\"string\"}},\"required\":[\"subscription_url\",\"event_action\",\"event_object\",\"name\"],\"title\":\"addWebhookRequest\",\"type\":\"object\"}}}},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"example\":{\"data\":{\"add_time\":\"2019-10-25T08:25:27.000Z\",\"admin_id\":1,\"company_id\":1,\"event_action\":\"added\",\"event_object\":\"activityType\",\"http_auth_password\":null,\"http_auth_user\":null,\"id\":1,\"is_active\":1,\"last_delivery_time\":null,\"last_http_status\":null,\"name\":\"Example webhook\",\"owner_id\":1,\"remove_reason\":null,\"remove_time\":null,\"subscription_url\":\"http://example.org\",\"type\":\"general\",\"user_id\":1,\"version\":\"2.0\"},\"status\":\"ok\",\"success\":true},\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"status\":{\"description\":\"The status of the response\",\"type\":\"string\"}},\"type\":\"object\"}],\"title\":\"BaseResponse\"},{\"properties\":{\"data\":{\"properties\":{\"add_time\":{\"description\":\"The date when the Webhook was added\",\"format\":\"date-time\",\"type\":\"string\"},\"admin_id\":{\"description\":\"The ID of the admin of the Webhook\",\"type\":\"integer\"},\"company_id\":{\"description\":\"The ID of the company related to the Webhook\",\"type\":\"integer\"},\"event_action\":{\"description\":\"The Webhook action\",\"type\":\"string\"},\"event_object\":{\"description\":\"The Webhook object\",\"type\":\"string\"},\"http_auth_password\":{\"description\":\"The password of the `subscription_url` of the Webhook\",\"nullable\":true,\"type\":\"string\"},\"http_auth_user\":{\"description\":\"The username of the `subscription_url` of the Webhook\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"The ID of the Webhook\",\"type\":\"integer\"},\"is_active\":{\"allOf\":[{\"default\":1,\"enum\":[0,1],\"title\":\"numberBooleanDefault1\",\"type\":\"number\"}],\"description\":\"The Webhook's status\"},\"last_delivery_time\":{\"description\":\"The last delivery time of the Webhook\",\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"last_http_status\":{\"description\":\"The last delivery HTTP status of the Webhook\",\"nullable\":true,\"type\":\"integer\"},\"name\":{\"description\":\"The Webhook name\",\"maxLength\":255,\"type\":\"string\"},\"owner_id\":{\"description\":\"The ID of the user who owns the Webhook\",\"type\":\"integer\"},\"remove_reason\":{\"description\":\"The removal reason of the Webhook (if removed)\",\"nullable\":true,\"type\":\"string\"},\"remove_time\":{\"description\":\"The date when the Webhook was removed (if removed)\",\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"subscription_url\":{\"description\":\"The subscription URL of the Webhook\",\"type\":\"string\"},\"type\":{\"description\":\"The type of the Webhook\",\"enum\":[\"general\",\"application\",\"automation\"],\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user related to the Webhook\",\"type\":\"integer\"},\"version\":{\"description\":\"The Webhook version\",\"type\":\"string\"}},\"title\":\"BaseWebhook\",\"type\":\"object\"}},\"title\":\"GetWebhookResponseData\",\"type\":\"object\"}],\"title\":\"GetWebhookResponse\"}}},\"description\":\"The created webhook object\"},\"400\":{\"content\":{\"application/json\":{\"example\":{\"errors\":{\"subscription_url\":[\"invalid or non-reachable URL\"]},\"status\":\"error\",\"success\":false},\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"status\":{\"description\":\"The status of the response\",\"type\":\"string\"}},\"type\":\"object\"}],\"title\":\"BaseResponse\"},{\"properties\":{\"errors\":{\"description\":\"List of errors\",\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"WebhooksBadRequestResponse\"}}},\"description\":\"The bad response on webhook creation\"},\"401\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"unauthorized access\",\"errorCode\":401,\"success\":false},\"schema\":{\"properties\":{\"error\":{\"description\":\"The error message\",\"type\":\"string\"},\"errorCode\":{\"description\":\"The response error code\",\"type\":\"integer\"},\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"unathorizedResponse\",\"type\":\"object\"}}},\"description\":\"Unauthorized response\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"admin\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/webhooks","segments":[{"lit":"webhooks"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /webhooks","json":"{\"operationId\":\"getWebhooks\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":[{\"add_time\":\"2019-10-25T08:25:27.000Z\",\"admin_id\":1,\"company_id\":1,\"event_action\":\"added\",\"event_object\":\"activityType\",\"http_auth_password\":null,\"http_auth_user\":null,\"id\":1,\"is_active\":1,\"last_delivery_time\":null,\"last_http_status\":null,\"name\":\"Example webhook\",\"owner_id\":1,\"remove_reason\":null,\"remove_time\":null,\"subscription_url\":\"http://example.org\",\"type\":\"general\",\"user_id\":1,\"version\":\"2.0\"}],\"status\":\"ok\",\"success\":true},\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"status\":{\"description\":\"The status of the response\",\"type\":\"string\"}},\"type\":\"object\"}],\"title\":\"BaseResponse\"},{\"properties\":{\"data\":{\"description\":\"The array of Webhooks\",\"items\":{\"properties\":{\"add_time\":{\"description\":\"The date when the Webhook was added\",\"format\":\"date-time\",\"type\":\"string\"},\"admin_id\":{\"description\":\"The ID of the admin of the Webhook\",\"type\":\"integer\"},\"company_id\":{\"description\":\"The ID of the company related to the Webhook\",\"type\":\"integer\"},\"event_action\":{\"description\":\"The Webhook action\",\"type\":\"string\"},\"event_object\":{\"description\":\"The Webhook object\",\"type\":\"string\"},\"http_auth_password\":{\"description\":\"The password of the `subscription_url` of the Webhook\",\"nullable\":true,\"type\":\"string\"},\"http_auth_user\":{\"description\":\"The username of the `subscription_url` of the Webhook\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"description\":\"The ID of the Webhook\",\"type\":\"integer\"},\"is_active\":{\"allOf\":[{\"default\":1,\"enum\":[0,1],\"title\":\"numberBooleanDefault1\",\"type\":\"number\"}],\"description\":\"The Webhook's status\"},\"last_delivery_time\":{\"description\":\"The last delivery time of the Webhook\",\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"last_http_status\":{\"description\":\"The last delivery HTTP status of the Webhook\",\"nullable\":true,\"type\":\"integer\"},\"name\":{\"description\":\"The Webhook name\",\"maxLength\":255,\"type\":\"string\"},\"owner_id\":{\"description\":\"The ID of the user who owns the Webhook\",\"type\":\"integer\"},\"remove_reason\":{\"description\":\"The removal reason of the Webhook (if removed)\",\"nullable\":true,\"type\":\"string\"},\"remove_time\":{\"description\":\"The date when the Webhook was removed (if removed)\",\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"subscription_url\":{\"description\":\"The subscription URL of the Webhook\",\"type\":\"string\"},\"type\":{\"description\":\"The type of the Webhook\",\"enum\":[\"general\",\"application\",\"automation\"],\"type\":\"string\"},\"user_id\":{\"description\":\"The ID of the user related to the Webhook\",\"type\":\"integer\"},\"version\":{\"description\":\"The Webhook version\",\"type\":\"string\"}},\"title\":\"BaseWebhook\",\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}],\"title\":\"GetWebhooksResponse\"}}},\"description\":\"The list of webhooks objects from the logged in company and user\"},\"401\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"unauthorized access\",\"errorCode\":401,\"success\":false},\"schema\":{\"properties\":{\"error\":{\"description\":\"The error message\",\"type\":\"string\"},\"errorCode\":{\"description\":\"The response error code\",\"type\":\"integer\"},\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"unathorizedResponse\",\"type\":\"object\"}}},\"description\":\"Unauthorized response\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"admin\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/webhooks","segments":[{"lit":"webhooks"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"remove":{"input":"data","name":"remove","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"DELETE /webhooks/{id}","json":"{\"operationId\":\"deleteWebhook\",\"parameters\":[{\"description\":\"The ID of the Webhook to delete\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"status\":\"ok\",\"success\":true},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"status\":{\"description\":\"The status of the response\",\"type\":\"string\"}},\"type\":\"object\"}],\"title\":\"BaseResponse\"}}},\"description\":\"The webhook deletion success response\"},\"401\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"unauthorized access\",\"errorCode\":401,\"success\":false},\"schema\":{\"properties\":{\"error\":{\"description\":\"The error message\",\"type\":\"string\"},\"errorCode\":{\"description\":\"The response error code\",\"type\":\"integer\"},\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"unathorizedResponse\",\"type\":\"object\"}}},\"description\":\"Unauthorized response\"},\"403\":{\"content\":{\"application/json\":{\"example\":{\"message\":\"Forbidden\",\"success\":false},\"schema\":{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"message\":{\"description\":\"The error message\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"The webhook deletion forbidden response\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"errors\":{\"id\":[\"not found\"]},\"status\":\"error\",\"success\":false},\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"success\":{\"description\":\"If the response is successful or not\",\"type\":\"boolean\"}},\"title\":\"baseResponse\",\"type\":\"object\"},{\"properties\":{\"status\":{\"description\":\"The status of the response\",\"type\":\"string\"}},\"type\":\"object\"}],\"title\":\"BaseResponse\"},{\"properties\":{\"errors\":{\"description\":\"List of errors\",\"type\":\"object\"}},\"type\":\"object\"}],\"title\":\"WebhooksBadRequestResponse\"}}},\"description\":\"The webhook deletion not found response\"}},\"security\":[{\"api_key\":[]},{\"oauth2\":[\"admin\"]}],\"securitySchemes\":{\"api_key\":{\"in\":\"header\",\"name\":\"x-api-token\",\"type\":\"apiKey\"},\"basic_authentication\":{\"description\":\"Base 64 encoded string containing the `client_id` and `client_secret` values. The header value should be `Basic <base64(client_id:client_secret)>`.\",\"scheme\":\"basic\",\"type\":\"http\"},\"oauth2\":{\"description\":\"For more information, see https://pipedrive.readme.io/docs/marketplace-oauth-authorization\",\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://oauth.pipedrive.com/oauth/authorize\",\"refreshUrl\":\"https://oauth.pipedrive.com/oauth/token\",\"scopes\":{\"activities:full\":\"Create, read, update and delete activities and all files and filters. Also includes read access to activity fields and types\",\"activities:read\":\"Read activities, its fields and types; all files and filters\",\"admin\":\"Allows to do many things that an administrator can do in a Pipedrive company account - create, read, update and delete pipelines and its stages; deal, person and organization fields; activity types; users and permissions, etc. It also allows the app to create webhooks and fetch and delete webhooks that are created by the app\",\"base\":\"Read settings of the authorized user and currencies in an account\",\"contact-fields:full\":\"Create, read, update and delete person and organization fields\",\"contacts:full\":\"Create, read, update and delete persons and organizations and their followers; all notes, files, filters. Also grants read access to contacts-related fields\",\"contacts:read\":\"Read the data about persons and organizations, their related fields and followers; also all notes, files, filters\",\"deal-fields:full\":\"Create, read, update and delete deal fields\",\"deals:full\":\"Create, read, update and delete deals, its participants and followers; all files, notes, and filters. It also includes read access to deal fields, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"deals:read\":\"Read most of the data about deals and related entities - deal fields, products, followers, participants; all notes, files, filters, pipelines, stages, and statistics. Does not include access to activities (except the last and next activity related to a deal)\",\"goals:full\":\"Create, read, update and delete goals\",\"goals:read\":\"Read data on all goals\",\"leads:full\":\"Create, read, update and delete leads and lead labels\",\"leads:read\":\"Read data about leads and lead labels\",\"mail:full\":\"Read, update and delete mail threads. Also grants read access to mail messages\",\"mail:read\":\"Read mail threads and messages\",\"messengers-integration\":\"Allows application to register as a messengers integration provider and allows them to deliver incoming messages and their statuses\",\"phone-integration\":\"Enables advanced call integration features like logging call duration and other metadata, and play call recordings inside Pipedrive\",\"product-fields:full\":\"Create, read, update and delete product fields\",\"products:full\":\"Create, read, update and delete products and its fields; add products to deals\",\"products:read\":\"Read products, its fields, files, followers and products connected to a deal\",\"projects:full\":\"Create, read, update and delete projects and its fields; add projects templates and project related tasks\",\"projects:read\":\"Read projects and its fields, tasks and project templates\",\"recents:read\":\"Read all recent changes occurred in an account. Includes data about activities, activity types, deals, files, filters, notes, persons, organizations, pipelines, stages, products and users\",\"search:read\":\"Search across the account for deals, persons, organizations, files and products, and see details about the returned results\",\"users:read\":\"Read data about users (people with access to a Pipedrive account), their permissions, roles and followers\",\"video-calls\":\"Allows application to register as a video call integration provider and create conference links\"},\"tokenUrl\":\"https://oauth.pipedrive.com/oauth/token\"}},\"type\":\"oauth2\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"DELETE","orig":"/webhooks/{id}","segments":[{"lit":"webhooks"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"webhook","name__orig":"webhook","Name":"Webhook","name_":"webhook","name-":"webhook","NAME":"WEBHOOK","index$":41}, {"active":true,"entity":"webhook","key$":"BasicWebhookFlow","kind":"basic","name":"BasicWebhookFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"webhook_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0},{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"webhook_ref01"}}],"index$":1},{"active":true,"data":{},"input":{"ref":"webhook_ref01","suffix":"_rm0"},"match":{"id":"webhook01"},"op":"remove","spec":[],"valid":[],"index$":2},{"active":true,"data":{},"input":{"suffix":"_rt0"},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemNotExists","def":{"ref":"webhook_ref01"}}],"index$":3}]}, 'Webhook')
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const webhook_ref01_ent = client.Webhook()
+    let webhook_ref01_data = setup.data.new.webhook['webhook_ref01']
+
+    webhook_ref01_data = (await webhook_ref01_ent.create(webhook_ref01_data)).data()
+    assert(null != webhook_ref01_data.id)
+
+
+    // LIST
+    const webhook_ref01_match: any = {}
+
+    const webhook_ref01_list = (await webhook_ref01_ent.list(webhook_ref01_match)).map((e: any) => e.data())
+
+    assert(!isempty(select(webhook_ref01_list, { id: webhook_ref01_data.id })))
+
+
+    // REMOVE
+    const webhook_ref01_match_rm0: any = { id: webhook_ref01_data.id }
+    await webhook_ref01_ent.remove(webhook_ref01_match_rm0)
+  
+
+    // LIST
+    const webhook_ref01_match_rt0: any = {}
+
+    const webhook_ref01_list_rt0 = (await webhook_ref01_ent.list(webhook_ref01_match_rt0)).map((e: any) => e.data())
+
+    assert(isempty(select(webhook_ref01_list_rt0, { id: webhook_ref01_data.id })))
+
+
+  })
+})
+
+
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/webhook/WebhookTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = PipedriveSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['webhook01','webhook02','webhook03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'PIPEDRIVE_TEST_WEBHOOK_ENTID': idmap,
+    'PIPEDRIVE_TEST_LIVE': 'FALSE',
+    'PIPEDRIVE_TEST_EXPLAIN': 'FALSE',
+    'PIPEDRIVE_APIKEY': '',
+    'PIPEDRIVE_SECRET': '',
+  })
+
+  idmap = env['PIPEDRIVE_TEST_WEBHOOK_ENTID']
+
+  const live = 'TRUE' === env.PIPEDRIVE_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['PIPEDRIVE_TEST_WEBHOOK_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new PipedriveSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.PIPEDRIVE_APIKEY,
+        secret: env.PIPEDRIVE_SECRET,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.PIPEDRIVE_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

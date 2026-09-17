@@ -1,0 +1,100 @@
+# BasicOrganizationRelationshipFlow
+
+main: kit: flow: BasicOrganizationRelationshipFlow:
+{
+  entity: "organization_relationship",
+  kind: "basic",
+  name: "BasicOrganizationRelationshipFlow",
+  step: [
+    {
+      input: {
+        ref: "organization_relationship_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_relationship_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "organization_relationship_ref01",
+        srcdatavar: "organization_relationship_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_relationship_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "organization_relationship_ref01",
+        srcdatavar: "organization_relationship_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "organization_relationship01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_relationship_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "organization_relationship_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "organization_relationship01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "organization_relationship_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationRelationshipFlow"
+}

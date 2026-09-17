@@ -1,0 +1,96 @@
+# BasicProductFieldFlow
+
+main: kit: flow: BasicProductFieldFlow:
+{
+  entity: "product_field",
+  kind: "basic",
+  name: "BasicProductFieldFlow",
+  step: [
+    {
+      input: {
+        ref: "product_field_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "product_field_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "product_field_ref01",
+        srcdatavar: "product_field_ref01_data",
+        suffix: "_up0",
+        textfield: "field_type"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-product_field_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "product_field_ref01",
+        srcdatavar: "product_field_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "product_field01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-product_field_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "product_field_ref01",
+        suffix: "_rm0"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "product_field_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductFieldFlow"
+}

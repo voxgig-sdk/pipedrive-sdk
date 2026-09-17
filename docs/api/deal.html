@@ -1,16 +1,71 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Deal | Pipedrive Deals API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Deal | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body><a class="skip" href="#content">Skip to content</a>
-<header class="site-header"><a class="site-title" href="../index.html">Pipedrive Deals API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
 <div class="site-notice" role="note"></div>
-<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive Deals API</a></details>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
-<a aria-current="page" href="../api/deal.html">Deal</a><div class="nav-sections"><a class="nav-section" href="#post-deals">POST /deals</a>
-<a class="nav-section" href="#get-deals">GET /deals</a>
-<a class="nav-section" href="#get-dealsid">GET /deals/{id}</a>
-<a class="nav-section" href="#delete-dealsid">DELETE /deals/{id}</a>
-<a class="nav-section" href="#put-dealsid">PUT /deals/{id}</a></div></details>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a aria-current="page" href="../api/deal.html">Deal</a><div class="nav-sections"><a class="nav-section" href="#post-dealsidduplicate">POST /deals/{id}/duplicate</a>
+<a class="nav-section" href="#post-dealsidfollowers">POST /deals/{id}/followers</a>
+<a class="nav-section" href="#post-dealsidparticipants">POST /deals/{id}/participants</a>
+<a class="nav-section" href="#get-dealsarchived">GET /deals/archived</a>
+<a class="nav-section" href="#get-dealsidflow">GET /deals/{id}/flow</a>
+<a class="nav-section" href="#get-dealsidfiles">GET /deals/{id}/files</a>
+<a class="nav-section" href="#get-dealsidmailmessages">GET /deals/{id}/mailMessages</a>
+<a class="nav-section" href="#get-dealsidchangelog">GET /deals/{id}/changelog</a>
+<a class="nav-section" href="#get-dealsidparticipants">GET /deals/{id}/participants</a>
+<a class="nav-section" href="#get-dealsidparticipantschangelog">GET /deals/{id}/participantsChangelog</a>
+<a class="nav-section" href="#get-dealsidfollowers">GET /deals/{id}/followers</a>
+<a class="nav-section" href="#get-dealstimeline">GET /deals/timeline</a>
+<a class="nav-section" href="#get-dealstimelinearchived">GET /deals/timeline/archived</a>
+<a class="nav-section" href="#get-dealssummary">GET /deals/summary</a>
+<a class="nav-section" href="#get-dealssummaryarchived">GET /deals/summary/archived</a>
+<a class="nav-section" href="#get-dealsidpermittedusers">GET /deals/{id}/permittedUsers</a>
+<a class="nav-section" href="#delete-dealsidparticipantsdeal_participant_id">DELETE /deals/{id}/participants/{deal_participant_id}</a>
+<a class="nav-section" href="#delete-dealsidfollowersfollower_id">DELETE /deals/{id}/followers/{follower_id}</a>
+<a class="nav-section" href="#put-dealsidmerge">PUT /deals/{id}/merge</a></div>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a href="../api/goal.html">Goal</a>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
 <details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
 <a href="../guides/first-call.html">Make your first API call</a>
 <a href="../guides/errors.html">Handle errors</a>
@@ -45,33 +100,117 @@
 <tbody>
 <tr>
 <td><code>POST</code></td>
-<td><a href="#post-deals"><code>/deals</code></a></td>
+<td><a href="#post-dealsidduplicate"><code>/deals/{id}/duplicate</code></a></td>
 <td><code>create</code></td>
-<td>The created deal</td>
+<td>Duplicate a deal</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-dealsidfollowers"><code>/deals/{id}/followers</code></a></td>
+<td><code>create</code></td>
+<td>Add a follower to a deal</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-dealsidparticipants"><code>/deals/{id}/participants</code></a></td>
+<td><code>create</code></td>
+<td>Add new participant to the deal</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-deals"><code>/deals</code></a></td>
+<td><a href="#get-dealsarchived"><code>/deals/archived</code></a></td>
 <td><code>list</code></td>
-<td>A page of deals</td>
+<td>Get all archived deals</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-dealsid"><code>/deals/{id}</code></a></td>
+<td><a href="#get-dealsidflow"><code>/deals/{id}/flow</code></a></td>
+<td><code>list</code></td>
+<td>Get the deal updates</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidfiles"><code>/deals/{id}/files</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidmailmessages"><code>/deals/{id}/mailMessages</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidchangelog"><code>/deals/{id}/changelog</code></a></td>
+<td><code>list</code></td>
+<td>Get changelog of a deal</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidparticipants"><code>/deals/{id}/participants</code></a></td>
+<td><code>list</code></td>
+<td>Get all deal participants by the DealID</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidparticipantschangelog"><code>/deals/{id}/participantsChangelog</code></a></td>
+<td><code>list</code></td>
+<td>Get participant changelogs for a given deal</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidfollowers"><code>/deals/{id}/followers</code></a></td>
+<td><code>list</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealstimeline"><code>/deals/timeline</code></a></td>
 <td><code>load</code></td>
-<td>The requested deal</td>
+<td>Get open and won deals, grouped by the defined interval of time</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealstimelinearchived"><code>/deals/timeline/archived</code></a></td>
+<td><code>load</code></td>
+<td>Get open and won deals, grouped by the defined interval of time</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealssummary"><code>/deals/summary</code></a></td>
+<td><code>load</code></td>
+<td>Get the summary of not archived deals</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealssummaryarchived"><code>/deals/summary/archived</code></a></td>
+<td><code>load</code></td>
+<td>Get the summary of archived deals</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-dealsidpermittedusers"><code>/deals/{id}/permittedUsers</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
 </tr>
 <tr>
 <td><code>DELETE</code></td>
-<td><a href="#delete-dealsid"><code>/deals/{id}</code></a></td>
+<td><a href="#delete-dealsidparticipantsdeal_participant_id"><code>/deals/{id}/participants/{deal_participant_id}</code></a></td>
 <td><code>remove</code></td>
-<td>Deleted</td>
+<td>Delete a participant from a deal</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-dealsidfollowersfollower_id"><code>/deals/{id}/followers/{follower_id}</code></a></td>
+<td><code>remove</code></td>
+<td>Delete a follower from a deal</td>
 </tr>
 <tr>
 <td><code>PUT</code></td>
-<td><a href="#put-dealsid"><code>/deals/{id}</code></a></td>
+<td><a href="#put-dealsidmerge"><code>/deals/{id}/merge</code></a></td>
 <td><code>update</code></td>
-<td>The updated deal</td>
+<td>Merges a deal with another deal</td>
 </tr>
 </tbody>
 </table>
@@ -87,71 +226,195 @@
 </thead>
 <tbody>
 <tr>
-<td><code>add_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>currency</code></td>
-<td><code>string</code></td>
+<td><code>deals</code></td>
+<td><code>array</code></td>
 <td>No</td>
 <td></td>
 </tr>
 <tr>
 <td><code>id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>org_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
 <td></td>
 </tr>
 <tr>
-<td><code>title</code></td>
+<td><code>period_end</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>The end date and time of the period</td>
 </tr>
 <tr>
-<td><code>update_time</code></td>
+<td><code>period_start</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>The start date and time of the period</td>
 </tr>
 <tr>
-<td><code>value</code></td>
+<td><code>total_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The total number of deals</td>
+</tr>
+<tr>
+<td><code>total_currency_converted_value</code></td>
 <td><code>number</code></td>
 <td>No</td>
-<td></td>
+<td>The total value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>total_currency_converted_value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total converted value of deals formatted with the company default currency.</td>
+</tr>
+<tr>
+<td><code>total_weighted_currency_converted_value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total weighted value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>total_weighted_currency_converted_value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total weighted value of deals formatted with the company default currency.</td>
+</tr>
+<tr>
+<td><code>totals</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of deals for the given period</td>
+</tr>
+<tr>
+<td><code>values_total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of the deals grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>weighted_values_total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of the deals grouped by deal currency.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="create">create</h2>
-<h3 id="post-deals" class="operation" data-method="post"><code>POST</code> /deals</h3>
-<p>Operation ID: <code>createDeal</code>.</p>
-<p>Authentication: API key in the query (<code>apiKeyAuth</code>).</p>
+<h3 id="post-dealsidduplicate" class="operation" data-method="post"><code>POST</code> /deals/{id}/duplicate</h3>
+<p>Operation ID: <code>duplicateDeal</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-duplicate-a-deal" class="status" data-status="2xx">200: Duplicate a deal</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>DealStrict</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active&quot;: true,
+    &quot;activities_count&quot;: 1,
+    &quot;acv&quot;: null,
+    &quot;acv_currency&quot;: null,
+    &quot;add_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+    &quot;arr&quot;: null,
+    &quot;arr_currency&quot;: null,
+    &quot;cc_email&quot;: &quot;company+deal1@pipedrivemail.com&quot;,
+    &quot;channel&quot;: 52,
+    &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+    &quot;close_time&quot;: null,
+    &quot;creator_user_id&quot;: 123,
+    &quot;currency&quot;: &quot;EUR&quot;,
+    &quot;deleted&quot;: false,
+    &quot;done_activities_count&quot;: 0,
+    &quot;email_messages_count&quot;: 4,
+    &quot;expected_close_date&quot;: &quot;2019-06-29&quot;,
+    &quot;files_count&quot;: 0,
+    &quot;first_won_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+    &quot;followers_count&quot;: 0,
+    &quot;formatted_value&quot;: &quot;€5,000&quot;,
+    &quot;formatted_weighted_value&quot;: &quot;€5,000&quot;,
+    &quot;id&quot;: 1,
+    &quot;label&quot;: &quot;11&quot;,
+    &quot;last_activity_date&quot;: null,
+    &quot;last_activity_id&quot;: null,
+    &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+    &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+    &quot;lost_reason&quot;: null,
+    &quot;lost_time&quot;: &quot;&quot;,
+    &quot;mrr&quot;: null,
+    &quot;mrr_currency&quot;: null,
+    &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+    &quot;next_activity_duration&quot;: &quot;00:30:00&quot;,
+    &quot;next_activity_id&quot;: 128,
+    &quot;next_activity_note&quot;: &quot;Note content&quot;,
+    &quot;next_activity_subject&quot;: &quot;Call&quot;,
+    &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+    &quot;next_activity_type&quot;: &quot;call&quot;,
+    &quot;notes_count&quot;: 2,
+    &quot;org_hidden&quot;: false,
+    &quot;org_id&quot;: 2,
+    &quot;org_name&quot;: &quot;Organization&quot;,
+    &quot;origin&quot;: &quot;ManuallyCreated&quot;,
+    &quot;origin_id&quot;: null,
+    &quot;owner_name&quot;: &quot;Creator&quot;,
+    &quot;participants_count&quot;: 1,
+    &quot;person_hidden&quot;: false,
+    &quot;person_id&quot;: 1,
+    &quot;person_name&quot;: &quot;Person&quot;,
+    &quot;pipeline_id&quot;: 1,
+    &quot;probability&quot;: null,
+    &quot;products_count&quot;: 0,
+    &quot;rotten_time&quot;: null,
+    &quot;stage_change_time&quot;: &quot;2019-11-28 15:41:22&quot;,
+    &quot;stage_id&quot;: 2,
+    &quot;stage_order_nr&quot;: 2,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;title&quot;: &quot;Deal One&quot;,
+    &quot;undone_activities_count&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+    &quot;user_id&quot;: 456,
+    &quot;value&quot;: 5000,
+    &quot;visible_to&quot;: &quot;1&quot;,
+    &quot;weighted_value&quot;: 5000,
+    &quot;weighted_value_currency&quot;: &quot;EUR&quot;,
+    &quot;won_time&quot;: &quot;2019-11-27 11:40:36&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-dealsidfollowers" class="operation" data-method="post"><code>POST</code> /deals/{id}/followers</h3>
+<p>Operation ID: <code>addDealFollower</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |</p>
 <h4 id="request-body">Request body</h4>
 <p><code>application/json</code></p>
 <table>
@@ -165,243 +428,15 @@
 </thead>
 <tbody>
 <tr>
-<td><code>currency</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>org_id</code></td>
+<td><code>user_id</code></td>
 <td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>person_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td><code>string</code></td>
 <td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td><code>number</code></td>
-<td>No</td>
-<td></td>
+<td>The ID of the user</td>
 </tr>
 </tbody>
 </table>
-<h4 id="responses">Responses</h4>
-<h5 id="201-the-created-deal" class="status" data-status="2xx">201: The created deal</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>data</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.add_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.currency</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.org_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.person_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.title</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.update_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.value</code></td>
-<td><code>number</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>success</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="list">list</h2>
-<h3 id="get-deals" class="operation" data-method="get"><code>GET</code> /deals</h3>
-<p>Operation ID: <code>listDeals</code>.</p>
-<p>Authentication: API key in the query (<code>apiKeyAuth</code>).</p>
-<h4 id="parameters">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>status</code> | <code>query</code> | <code>string</code> | No |  |
-| <code>start</code> | <code>query</code> | <code>integer</code> | No |  |
-| <code>limit</code> | <code>query</code> | <code>integer</code> | No |  |</p>
 <h4 id="responses-1">Responses</h4>
-<h5 id="200-a-page-of-deals" class="status" data-status="2xx">200: A page of deals</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>data</code></td>
-<td><code>array of object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].add_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].currency</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].org_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].person_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].title</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].update_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data[].value</code></td>
-<td><code>number</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>success</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="load">load</h2>
-<h3 id="get-dealsid" class="operation" data-method="get"><code>GET</code> /deals/{id}</h3>
-<p>Operation ID: <code>getDeal</code>.</p>
-<p>Authentication: API key in the query (<code>apiKeyAuth</code>).</p>
-<h4 id="parameters-1">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>integer</code> | Yes |  |</p>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-the-requested-deal" class="status" data-status="2xx">200: The requested deal</h5>
+<h5 id="200-add-a-follower-to-a-deal" class="status" data-status="2xx">200: Add a follower to a deal</h5>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -423,107 +458,52 @@
 <td><code>data.add_time</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>The date and time when the deal follower was added</td>
 </tr>
 <tr>
-<td><code>data.currency</code></td>
-<td><code>string</code></td>
+<td><code>data.deal_id</code></td>
+<td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>The ID of the deal which the follower was added to</td>
 </tr>
 <tr>
 <td><code>data.id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>The follower ID</td>
 </tr>
 <tr>
-<td><code>data.org_id</code></td>
+<td><code>data.user_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.person_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.title</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.update_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.value</code></td>
-<td><code>number</code></td>
-<td>No</td>
-<td></td>
+<td>The user ID who added the follower</td>
 </tr>
 <tr>
 <td><code>success</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>If the response is successful or not</td>
 </tr>
 </tbody>
 </table>
-<h2 id="remove">remove</h2>
-<h3 id="delete-dealsid" class="operation" data-method="delete"><code>DELETE</code> /deals/{id}</h3>
-<p>Operation ID: <code>deleteDeal</code>.</p>
-<p>Authentication: API key in the query (<code>apiKeyAuth</code>).</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;add_time&quot;: &quot;2018-04-11 12:54:43&quot;,
+    &quot;deal_id&quot;: 3,
+    &quot;id&quot;: 2,
+    &quot;user_id&quot;: 1
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="post-dealsidparticipants" class="operation" data-method="post"><code>POST</code> /deals/{id}/participants</h3>
+<p>Operation ID: <code>addDealParticipant</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>integer</code> | Yes |  |</p>
-<h4 id="responses-3">Responses</h4>
-<h5 id="200-deleted" class="status" data-status="2xx">200: Deleted</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>success</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="update">update</h2>
-<h3 id="put-dealsid" class="operation" data-method="put"><code>PUT</code> /deals/{id}</h3>
-<p>Operation ID: <code>updateDeal</code>.</p>
-<p>Authentication: API key in the query (<code>apiKeyAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>integer</code> | Yes |  |</p>
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |</p>
 <h4 id="request-body-1">Request body</h4>
 <p><code>application/json</code></p>
 <table>
@@ -537,51 +517,2533 @@
 </thead>
 <tbody>
 <tr>
-<td><code>currency</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>org_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
 <td><code>person_id</code></td>
 <td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td><code>string</code></td>
 <td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td><code>number</code></td>
-<td>No</td>
-<td></td>
+<td>The ID of the person</td>
 </tr>
 </tbody>
 </table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-add-new-participant-to-the-deal" class="status" data-status="2xx">200: Add new participant to the deal</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>dealParticipantItem</td>
+</tr>
+<tr>
+<td><code>data.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the participant is active or not</td>
+</tr>
+<tr>
+<td><code>data.add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the participant was added. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data.added_by_user_id</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>GetUserResponse</td>
+</tr>
+<tr>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the participant</td>
+</tr>
+<tr>
+<td><code>data.person</code></td>
+<td><code>object and object and object and object and object and object and object</code></td>
+<td>No</td>
+<td>Person</td>
+</tr>
+<tr>
+<td><code>data.person_id</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person data associated with the participant</td>
+</tr>
+<tr>
+<td><code>data.person_id.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the person is active or not</td>
+</tr>
+<tr>
+<td><code>data.person_id.company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company related to the person</td>
+</tr>
+<tr>
+<td><code>data.person_id.email</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An email address as a string or an array of email objects related to the person. The structure of the array is as follows: <code>[&amp;#123; &amp;quot;value&amp;quot;: &amp;quot;mail@example.com&amp;quot;, &amp;quot;primary&amp;quot;: &amp;quot;true&amp;quot;, &amp;quot;label&amp;quot;: &amp;quot;main&amp;quot; &amp;#125;]</code>. Please note that only <code>value</code> is required.</td>
+</tr>
+<tr>
+<td><code>data.person_id.email[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The label that indicates the type of the email. (Possible values - work, home or other)</td>
+</tr>
+<tr>
+<td><code>data.person_id.email[].primary</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Boolean that indicates if email is primary for the person or not</td>
+</tr>
+<tr>
+<td><code>data.person_id.email[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email address</td>
+</tr>
+<tr>
+<td><code>data.person_id.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person</td>
+</tr>
+<tr>
+<td><code>data.person_id.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the owner of the person</td>
+</tr>
+<tr>
+<td><code>data.person_id.phone</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A phone number supplied as a string or an array of phone objects related to the person. The structure of the array is as follows: <code>[&amp;#123; &amp;quot;value&amp;quot;: &amp;quot;12345&amp;quot;, &amp;quot;primary&amp;quot;: &amp;quot;true&amp;quot;, &amp;quot;label&amp;quot;: &amp;quot;mobile&amp;quot; &amp;#125;]</code>. Please note that only <code>value</code> is required.</td>
+</tr>
+<tr>
+<td><code>data.person_id.phone[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The label that indicates the type of the phone number. (Possible values - work, home, mobile or other)</td>
+</tr>
+<tr>
+<td><code>data.person_id.phone[].primary</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Boolean that indicates if phone number is primary for the person or not</td>
+</tr>
+<tr>
+<td><code>data.person_id.phone[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The phone number</td>
+</tr>
+<tr>
+<td><code>data.person_id.value</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person</td>
+</tr>
+<tr>
+<td><code>data.related_item_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Information about the related deal</td>
+</tr>
+<tr>
+<td><code>data.related_item_data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal</td>
+</tr>
+<tr>
+<td><code>data.related_item_data.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the deal</td>
+</tr>
+<tr>
+<td><code>data.related_item_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the related item</td>
+</tr>
+<tr>
+<td><code>data.related_item_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the related item</td>
+</tr>
+<tr>
+<td><code>related_objects</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.person.PERSON_ID</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>The ID of the person associated with the item</td>
+</tr>
+<tr>
+<td><code>related_objects.user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.user.USER_ID</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>userDataWithId</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active_flag&quot;: true,
+    &quot;add_time&quot;: &quot;2020-09-14 05:34:59&quot;,
+    &quot;added_by_user_id&quot;: {
+      &quot;active_flag&quot;: true,
+      &quot;email&quot;: &quot;heheh.nono@pipedrive.com&quot;,
+      &quot;has_pic&quot;: 0,
+      &quot;id&quot;: 927097,
+      &quot;name&quot;: &quot;Heheh Nono&quot;,
+      &quot;pic_hash&quot;: null,
+      &quot;value&quot;: 927097
+    },
+    &quot;id&quot;: 2146,
+    &quot;person&quot;: {
+      &quot;active_flag&quot;: true,
+      &quot;activities_count&quot;: 0,
+      &quot;add_time&quot;: &quot;2020-02-03 10:14:03&quot;,
+      &quot;cc_email&quot;: null,
+      &quot;closed_deals_count&quot;: 0,
+      &quot;company_id&quot;: 4657212,
+      &quot;done_activities_count&quot;: 0,
+      &quot;email&quot;: [
+        {
+          &quot;label&quot;: &quot;work&quot;,
+          &quot;primary&quot;: true,
+          &quot;value&quot;: &quot;namna.nanaaa@pipedrive.com&quot;
+        }
+      ],
+      &quot;email_messages_count&quot;: 0,
+      &quot;files_count&quot;: 0,
+      &quot;first_char&quot;: &quot;b&quot;,
+      &quot;first_name&quot;: &quot;Bortoloni&quot;,
+      &quot;followers_count&quot;: 1,
+      &quot;id&quot;: 1131,
+      &quot;label&quot;: 5,
+      &quot;last_activity_date&quot;: null,
+      &quot;last_activity_id&quot;: null,
+      &quot;last_incoming_mail_time&quot;: null,
+      &quot;last_name&quot;: null,
+      &quot;last_outgoing_mail_time&quot;: null,
+      &quot;lost_deals_count&quot;: 0,
+      &quot;name&quot;: &quot;Bortoloni&quot;,
+      &quot;next_activity_date&quot;: null,
+      &quot;next_activity_id&quot;: null,
+      &quot;next_activity_time&quot;: null,
+      &quot;notes_count&quot;: 0,
+      &quot;open_deals_count&quot;: 0,
+      &quot;org_id&quot;: null,
+      &quot;org_name&quot;: null,
+      &quot;owner_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;moo.moo@pipedrive.com&quot;,
+        &quot;has_pic&quot;: 0,
+        &quot;id&quot;: 9126687,
+        &quot;name&quot;: &quot;Moo moo&quot;,
+        &quot;pic_hash&quot;: null,
+        &quot;value&quot;: 9126687
+      },
+      &quot;owner_name&quot;: &quot;Gabriel&quot;,
+      &quot;participant_closed_deals_count&quot;: 0,
+      &quot;participant_open_deals_count&quot;: 0,
+      &quot;phone&quot;: [
+        {
+          &quot;primary&quot;: true,
+          &quot;value&quot;: &quot;&quot;
+        }
+      ],
+      &quot;picture_id&quot;: null,
+      &quot;related_closed_deals_count&quot;: 0,
+      &quot;related_lost_deals_count&quot;: 0,
+      &quot;related_open_deals_count&quot;: 0,
+      &quot;related_won_deals_count&quot;: 0,
+      &quot;sync_needed&quot;: false,
+      &quot;undone_activities_count&quot;: 0,
+      &quot;update_time&quot;: &quot;2020-07-09 07:44:51&quot;,
+      &quot;visible_to&quot;: &quot;3&quot;,
+      &quot;won_deals_count&quot;: 0
+    },
+    &quot;person_id&quot;: {
+      &quot;active_flag&quot;: true,
+      &quot;email&quot;: [
+        {
+          &quot;label&quot;: &quot;work&quot;,
+          &quot;primary&quot;: true,
+          &quot;value&quot;: &quot;namna.nanaaa@pipedrive.com&quot;
+        }
+      ],
+      &quot;name&quot;: &quot;Bortoloni&quot;,
+      &quot;phone&quot;: [
+        {
+          &quot;primary&quot;: true,
+          &quot;value&quot;: &quot;&quot;
+        }
+      ],
+      &quot;value&quot;: 1131
+    },
+    &quot;related_item_data&quot;: {
+      &quot;deal_id&quot;: 1078,
+      &quot;title&quot;: &quot;Neverland deal&quot;
+    },
+    &quot;related_item_id&quot;: 1078,
+    &quot;related_item_type&quot;: &quot;deal&quot;
+  },
+  &quot;related_objects&quot;: {
+    &quot;person&quot;: {
+      &quot;1131&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;namna.nanaaa@pipedrive.com&quot;
+          }
+        ],
+        &quot;id&quot;: 1131,
+        &quot;name&quot;: &quot;Bortoloni&quot;,
+        &quot;owner_id&quot;: 8877,
+        &quot;phone&quot;: [
+          {
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;&quot;
+          }
+        ]
+      }
+    },
+    &quot;user&quot;: {
+      &quot;927097&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;heheh.nono@pipedrive.com&quot;,
+        &quot;has_pic&quot;: 0,
+        &quot;id&quot;: 927097,
+        &quot;name&quot;: &quot;Heheh Nono&quot;,
+        &quot;pic_hash&quot;: null
+      },
+      &quot;9126687&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;gogoog.yayay@pipedrive.com&quot;,
+        &quot;has_pic&quot;: 1,
+        &quot;id&quot;: 9126687,
+        &quot;name&quot;: &quot;Gabriel&quot;,
+        &quot;pic_hash&quot;: &quot;4db4fc64638d7d3d9e16e64599ccaff6&quot;
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="list">list</h2>
+<h3 id="get-dealsarchived" class="operation" data-method="get"><code>GET</code> /deals/archived</h3>
+<p>Operation ID: <code>getArchivedDeals</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>user_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given user will be returned. However, <code>filter_id</code> and <code>owned_by_you</code> takes precedence over <code>user_id</code> when supplied. |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the filter to use |
+| <code>person_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals linked to the specified person are returned. If filter_id is provided, this is ignored. |
+| <code>org_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals linked to the specified organization are returned. If filter_id is provided, this is ignored. |
+| <code>product_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals linked to the specified product are returned. If filter_id is provided, this is ignored. |
+| <code>pipeline_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals in the specified pipeline are returned. If filter_id is provided, this is ignored. |
+| <code>stage_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals in the specified stage are returned. If filter_id is provided, this is ignored. |
+| <code>status</code> | <code>query</code> | <code>enum: open, won, lost, deleted, all_not_deleted</code> | No | Only fetch deals with a specific status. If omitted, all not deleted deals are returned. If set to deleted, deals that have been deleted up to 30 days ago will be included. |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>sort</code> | <code>query</code> | <code>string</code> | No | The field names and sorting mode separated by a comma (<code>field_name_1 ASC</code>, <code>field_name_2 DESC</code>). Only first-level field keys are supported (no nested keys). |
+| <code>owned_by_you</code> | <code>query</code> | <code>enum: 0, 1</code> | No | When supplied, only deals owned by you are returned. However, <code>filter_id</code> takes precedence over <code>owned_by_you</code> when both are supplied. |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-get-all-archived-deals" class="status" data-status="2xx">200: Get all archived deals</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object and object</code></td>
+<td>No</td>
+<td>The array of deals</td>
+</tr>
+<tr>
+<td><code>related_objects</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>RelatedOrganizationDataWithActiveFlag</td>
+</tr>
+<tr>
+<td><code>related_objects.organization.ORGANIZATION_ID</code></td>
+<td><code>object and object and object</code></td>
+<td>No</td>
+<td>The ID of the organization associated with the item</td>
+</tr>
+<tr>
+<td><code>related_objects.person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.person.PERSON_ID</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>The ID of the person associated with the item</td>
+</tr>
+<tr>
+<td><code>related_objects.user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.user.USER_ID</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>userDataWithId</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: false,
+      &quot;next_start&quot;: 1,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active&quot;: true,
+      &quot;activities_count&quot;: 1,
+      &quot;acv&quot;: 120,
+      &quot;acv_currency&quot;: &quot;EUR&quot;,
+      &quot;add_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+      &quot;archive_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+      &quot;arr&quot;: 120,
+      &quot;arr_currency&quot;: &quot;EUR&quot;,
+      &quot;cc_email&quot;: &quot;company+deal1@pipedrivemail.com&quot;,
+      &quot;channel&quot;: 52,
+      &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+      &quot;close_time&quot;: null,
+      &quot;creator_user_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;john.doe@pipedrive.com&quot;,
+        &quot;has_pic&quot;: 0,
+        &quot;id&quot;: 8877,
+        &quot;name&quot;: &quot;Creator&quot;,
+        &quot;pic_hash&quot;: null,
+        &quot;value&quot;: 8877
+      },
+      &quot;currency&quot;: &quot;EUR&quot;,
+      &quot;deleted&quot;: false,
+      &quot;done_activities_count&quot;: 0,
+      &quot;email_messages_count&quot;: 4,
+      &quot;expected_close_date&quot;: &quot;2019-06-29&quot;,
+      &quot;files_count&quot;: 0,
+      &quot;first_won_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+      &quot;followers_count&quot;: 0,
+      &quot;formatted_value&quot;: &quot;€5,000&quot;,
+      &quot;formatted_weighted_value&quot;: &quot;€5,000&quot;,
+      &quot;id&quot;: 1,
+      &quot;is_archived&quot;: true,
+      &quot;label&quot;: &quot;11&quot;,
+      &quot;last_activity_date&quot;: null,
+      &quot;last_activity_id&quot;: null,
+      &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+      &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+      &quot;lost_reason&quot;: null,
+      &quot;lost_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+      &quot;mrr&quot;: 10,
+      &quot;mrr_currency&quot;: &quot;EUR&quot;,
+      &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+      &quot;next_activity_duration&quot;: &quot;00:30:00&quot;,
+      &quot;next_activity_id&quot;: 128,
+      &quot;next_activity_note&quot;: &quot;Note content&quot;,
+      &quot;next_activity_subject&quot;: &quot;Call&quot;,
+      &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+      &quot;next_activity_type&quot;: &quot;call&quot;,
+      &quot;notes_count&quot;: 2,
+      &quot;org_hidden&quot;: false,
+      &quot;org_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;address&quot;: &quot;Mustamäe tee 3a, 10615 Tallinn&quot;,
+        &quot;cc_email&quot;: &quot;org@pipedrivemail.com&quot;,
+        &quot;name&quot;: &quot;Organization&quot;,
+        &quot;owner_id&quot;: 8877,
+        &quot;people_count&quot;: 2,
+        &quot;value&quot;: 5
+      },
+      &quot;org_name&quot;: &quot;Organization&quot;,
+      &quot;origin&quot;: &quot;ManuallyCreated&quot;,
+      &quot;origin_id&quot;: null,
+      &quot;owner_name&quot;: &quot;Creator&quot;,
+      &quot;participants_count&quot;: 1,
+      &quot;person_hidden&quot;: false,
+      &quot;person_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;person@pipedrive.com&quot;
+          }
+        ],
+        &quot;name&quot;: &quot;Person&quot;,
+        &quot;phone&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;37244499911&quot;
+          }
+        ],
+        &quot;value&quot;: 1101
+      },
+      &quot;person_name&quot;: &quot;Person&quot;,
+      &quot;pipeline_id&quot;: 1,
+      &quot;probability&quot;: null,
+      &quot;products_count&quot;: 2,
+      &quot;rotten_time&quot;: null,
+      &quot;stage_change_time&quot;: &quot;2019-11-28 15:41:22&quot;,
+      &quot;stage_id&quot;: 2,
+      &quot;stage_order_nr&quot;: 2,
+      &quot;status&quot;: &quot;open&quot;,
+      &quot;title&quot;: &quot;Deal One&quot;,
+      &quot;undone_activities_count&quot;: 1,
+      &quot;update_time&quot;: &quot;2019-11-28 16:19:50&quot;,
+      &quot;user_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;john.doe@pipedrive.com&quot;,
+        &quot;has_pic&quot;: false,
+        &quot;id&quot;: 8877,
+        &quot;name&quot;: &quot;Creator&quot;,
+        &quot;pic_hash&quot;: null,
+        &quot;value&quot;: 8877
+      },
+      &quot;value&quot;: 130,
+      &quot;visible_to&quot;: &quot;1&quot;,
+      &quot;weighted_value&quot;: 5000,
+      &quot;weighted_value_currency&quot;: &quot;EUR&quot;,
+      &quot;won_time&quot;: &quot;2019-11-27 11:40:36&quot;
+    }
+  ],
+  &quot;related_objects&quot;: {
+    &quot;organization&quot;: {
+      &quot;5&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;address&quot;: &quot;Mustamäe tee 3a, 10615 Tallinn&quot;,
+        &quot;cc_email&quot;: &quot;org@pipedrivemail.com&quot;,
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;Organization&quot;,
+        &quot;owner_id&quot;: 8877,
+        &quot;people_count&quot;: 2
+      }
+    },
+    &quot;person&quot;: {
+      &quot;1101&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;person@pipedrive.com&quot;
+          }
+        ],
+        &quot;id&quot;: 1101,
+        &quot;name&quot;: &quot;Person&quot;,
+        &quot;owner_id&quot;: 8877,
+        &quot;phone&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;3421787767&quot;
+          }
+        ]
+      }
+    },
+    &quot;pipeline&quot;: {
+      &quot;1&quot;: {
+        &quot;active&quot;: true,
+        &quot;add_time&quot;: &quot;2015-12-08 10:00:24&quot;,
+        &quot;deal_probability&quot;: true,
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Pipeline&quot;,
+        &quot;order_nr&quot;: 0,
+        &quot;update_time&quot;: &quot;2015-12-08 10:00:24&quot;,
+        &quot;url_title&quot;: &quot;Pipeline&quot;
+      }
+    },
+    &quot;stage&quot;: {
+      &quot;2&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;add_time&quot;: &quot;2015-12-08 13:54:06&quot;,
+        &quot;company_id&quot;: 123,
+        &quot;deal_probability&quot;: 100,
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Stage Name&quot;,
+        &quot;order_nr&quot;: 1,
+        &quot;pipeline_deal_probability&quot;: true,
+        &quot;pipeline_id&quot;: 1,
+        &quot;pipeline_name&quot;: &quot;Pipeline&quot;,
+        &quot;rotten_days&quot;: null,
+        &quot;rotten_flag&quot;: false,
+        &quot;update_time&quot;: &quot;2015-12-08 13:54:06&quot;
+      }
+    },
+    &quot;user&quot;: {
+      &quot;8877&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;john.doe@pipedrive.com&quot;,
+        &quot;has_pic&quot;: false,
+        &quot;id&quot;: 8877,
+        &quot;name&quot;: &quot;Creator&quot;,
+        &quot;pic_hash&quot;: null
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidflow" class="operation" data-method="get"><code>GET</code> /deals/{id}/flow</h3>
+<p>Operation ID: <code>getDealUpdates</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>all_changes</code> | <code>query</code> | <code>string</code> | No | Whether to show custom field updates or not. 1 = Include custom field changes. If omitted returns changes without custom field updates. |
+| <code>items</code> | <code>query</code> | <code>string</code> | No | A comma-separated string for filtering out item specific updates. (Possible values - call, activity, plannedActivity, change, note, deal, file, dealChange, personChange, organizationChange, follower, dealFollower, personFollower, organizationFollower, participant, comment, mailMessage, mailMessageWithAttachment, invoice, document, marketing_campaign_stat, marketing_status_change). |</p>
 <h4 id="responses-4">Responses</h4>
-<h5 id="200-the-updated-deal" class="status" data-status="2xx">200: The updated deal</h5>
+<h5 id="200-get-the-deal-updates" class="status" data-status="2xx">200: Get the deal updates</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;data&quot;: {
+        &quot;additional_data&quot;: [],
+        &quot;change_source&quot;: &quot;app&quot;,
+        &quot;change_source_user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML like Gecko) Chrome/84.0.4147.135 Safari/537.36&quot;,
+        &quot;field_key&quot;: &quot;value&quot;,
+        &quot;id&quot;: 1300,
+        &quot;is_bulk_update_flag&quot;: null,
+        &quot;item_id&quot;: 120,
+        &quot;log_time&quot;: &quot;2020-09-25 09:21:55&quot;,
+        &quot;new_value&quot;: 100,
+        &quot;old_value&quot;: 50,
+        &quot;user_id&quot;: 8877
+      },
+      &quot;object&quot;: &quot;dealChange&quot;,
+      &quot;timestamp&quot;: &quot;2020-09-25 09:21:55&quot;
+    },
+    {
+      &quot;data&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;add_time&quot;: &quot;2020-06-08 12:37:56&quot;,
+        &quot;assigned_to_user_id&quot;: 1235,
+        &quot;attendees&quot;: [
+          {
+            &quot;email_address&quot;: &quot;attendee@pipedrivemail.com&quot;,
+            &quot;is_organizer&quot;: 0,
+            &quot;name&quot;: &quot;Attendee&quot;,
+            &quot;person_id&quot;: 25312,
+            &quot;status&quot;: &quot;noreply&quot;,
+            &quot;user_id&quot;: null
+          }
+        ],
+        &quot;busy_flag&quot;: true,
+        &quot;calendar_sync_include_context&quot;: &quot;&quot;,
+        &quot;company_id&quot;: 22122,
+        &quot;conference_meeting_client&quot;: &quot;871b8bc88d3a1202&quot;,
+        &quot;conference_meeting_id&quot;: &quot;17058746701&quot;,
+        &quot;conference_meeting_url&quot;: &quot;https://pipedrive.zoom.us/link&quot;,
+        &quot;created_by_user_id&quot;: 1234,
+        &quot;deal_dropbox_bcc&quot;: &quot;company+deal300@pipedrivemail.com&quot;,
+        &quot;deal_id&quot;: 300,
+        &quot;deal_title&quot;: &quot;Deal&quot;,
+        &quot;done&quot;: false,
+        &quot;due_date&quot;: &quot;2020-06-09&quot;,
+        &quot;due_time&quot;: &quot;10:00&quot;,
+        &quot;duration&quot;: &quot;01:00&quot;,
+        &quot;file&quot;: {
+          &quot;clean_name&quot;: &quot;Audio 10:55:07.m4a&quot;,
+          &quot;id&quot;: &quot;376892,&quot;,
+          &quot;url&quot;: &quot;https://pipedrive-files.s3-eu-west-1.amazonaws.com/Audio-recording.m4a&quot;
+        },
+        &quot;gcal_event_id&quot;: &quot;&quot;,
+        &quot;google_calendar_etag&quot;: &quot;&quot;,
+        &quot;google_calendar_id&quot;: &quot;&quot;,
+        &quot;id&quot;: 8,
+        &quot;last_notification_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+        &quot;last_notification_user_id&quot;: 7655,
+        &quot;lead_id&quot;: &quot;46c3b0e1-db35-59ca-1828-4817378dff71&quot;,
+        &quot;location&quot;: &quot;Mustamäe tee 3, Tallinn, Estonia&quot;,
+        &quot;location_admin_area_level_1&quot;: &quot;Harju maakond&quot;,
+        &quot;location_admin_area_level_2&quot;: &quot;&quot;,
+        &quot;location_country&quot;: &quot;Estonia&quot;,
+        &quot;location_formatted_address&quot;: &quot;Mustamäe tee 3, 10616 Tallinn, Estonia&quot;,
+        &quot;location_locality&quot;: &quot;Tallinn&quot;,
+        &quot;location_postal_code&quot;: &quot;10616&quot;,
+        &quot;location_route&quot;: &quot;Mustamäe tee&quot;,
+        &quot;location_street_number&quot;: &quot;3&quot;,
+        &quot;location_sublocality&quot;: &quot;Kristiine&quot;,
+        &quot;location_subpremise&quot;: &quot;&quot;,
+        &quot;marked_as_done_time&quot;: &quot;2020-08-08 08:08:38&quot;,
+        &quot;note&quot;: &quot;A note for the activity&quot;,
+        &quot;notification_language_id&quot;: 1,
+        &quot;org_id&quot;: 5,
+        &quot;org_name&quot;: &quot;Organization&quot;,
+        &quot;outcome&quot;: 101,
+        &quot;owner_name&quot;: &quot;Creator&quot;,
+        &quot;participants&quot;: [
+          {
+            &quot;person_id&quot;: 17985,
+            &quot;primary_flag&quot;: false
+          },
+          {
+            &quot;person_id&quot;: 1101,
+            &quot;primary_flag&quot;: true
+          }
+        ],
+        &quot;person_dropbox_bcc&quot;: &quot;company@pipedrivemail.com&quot;,
+        &quot;person_id&quot;: 1101,
+        &quot;person_name&quot;: &quot;Person&quot;,
+        &quot;project_id&quot;: null,
+        &quot;public_description&quot;: &quot;This is a description&quot;,
+        &quot;rec_master_activity_id&quot;: 1,
+        &quot;rec_rule&quot;: &quot;RRULE:FREQ=WEEKLY;BYDAY=WE&quot;,
+        &quot;rec_rule_extension&quot;: &quot;&quot;,
+        &quot;reference_id&quot;: 7,
+        &quot;reference_type&quot;: &quot;scheduler-service&quot;,
+        &quot;series&quot;: [],
+        &quot;source_timezone&quot;: &quot;&quot;,
+        &quot;subject&quot;: &quot;Deadline&quot;,
+        &quot;type&quot;: &quot;deadline&quot;,
+        &quot;update_time&quot;: &quot;2020-08-08 12:37:56&quot;,
+        &quot;update_user_id&quot;: 5596,
+        &quot;user_id&quot;: 1234
+      },
+      &quot;object&quot;: &quot;activity&quot;,
+      &quot;timestamp&quot;: &quot;2020-08-07 08:15:00&quot;
+    },
+    {
+      &quot;data&quot;: {
+        &quot;account_id&quot;: &quot;ao5gpry0zykr1xxxxxxxxx&quot;,
+        &quot;add_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+        &quot;attachments&quot;: [
+          {
+            &quot;active_flag&quot;: true,
+            &quot;activity_id&quot;: 1,
+            &quot;add_time&quot;: &quot;2020-09-16 11:19:36&quot;,
+            &quot;cid&quot;: &quot;&quot;,
+            &quot;deal_id&quot;: 1,
+            &quot;deal_name&quot;: &quot;nice deal&quot;,
+            &quot;description&quot;: &quot;&quot;,
+            &quot;file_name&quot;: &quot;95781006_794143070992462_4330873630616453120_n_60817458877506f9eb74d03e5ef9ba061915b797998.jpg&quot;,
+            &quot;file_size&quot;: 95116,
+            &quot;file_type&quot;: &quot;img&quot;,
+            &quot;id&quot;: 1,
+            &quot;inline_flag&quot;: false,
+            &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+            &quot;lead_name&quot;: &quot;nice lead&quot;,
+            &quot;log_id&quot;: null,
+            &quot;mail_message_id&quot;: &quot;&quot;,
+            &quot;mail_template_id&quot;: &quot;&quot;,
+            &quot;name&quot;: &quot;95781006_794143070992462_4330873630616453120_n.jpg&quot;,
+            &quot;org_id&quot;: 1480,
+            &quot;org_name&quot;: &quot;Pipedrive Inc.&quot;,
+            &quot;people_name&quot;: &quot;&quot;,
+            &quot;person_id&quot;: 1,
+            &quot;person_name&quot;: &quot;&quot;,
+            &quot;product_id&quot;: 1,
+            &quot;product_name&quot;: &quot;&quot;,
+            &quot;project_id&quot;: 1,
+            &quot;project_name&quot;: &quot;My project&quot;,
+            &quot;remote_id&quot;: &quot;95781006_794143070992462_4330873630616453120_n.jpg&quot;,
+            &quot;remote_location&quot;: &quot;s3&quot;,
+            &quot;s3_bucket&quot;: &quot;&quot;,
+            &quot;update_time&quot;: &quot;2020-09-16 11:19:36&quot;,
+            &quot;url&quot;: &quot;https://app.pipedrive.com/api/v1/files/304/download&quot;,
+            &quot;user_id&quot;: 8877
+          }
+        ],
+        &quot;bcc&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;body_url&quot;: &quot;https://example.org&quot;,
+        &quot;cc&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;company_id&quot;: 6081745,
+        &quot;deleted_flag&quot;: 0,
+        &quot;draft&quot;: &quot;&quot;,
+        &quot;draft_flag&quot;: 0,
+        &quot;external_deleted_flag&quot;: false,
+        &quot;from&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;has_attachments_flag&quot;: 1,
+        &quot;has_body_flag&quot;: 1,
+        &quot;has_inline_attachments_flag&quot;: 0,
+        &quot;has_real_attachments_flag&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;item_type&quot;: &quot;mailMessage&quot;,
+        &quot;mail_link_tracking_enabled_flag&quot;: 0,
+        &quot;mail_thread_id&quot;: 1,
+        &quot;mail_tracking_status&quot;: &quot;opened&quot;,
+        &quot;message_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+        &quot;mua_message_id&quot;: &quot;8cfw8n7l4iy24lfhnexxxxxx-0@mailer.nylas.com&quot;,
+        &quot;nylas_id&quot;: &quot;8cfw8n7l4iy24xxxxxxxxx&quot;,
+        &quot;read_flag&quot;: 1,
+        &quot;s3_bucket&quot;: &quot;pipedrive-mail-live-fr&quot;,
+        &quot;s3_bucket_path&quot;: &quot;e9cf-6081745/77777/nylas/111/1111/body&quot;,
+        &quot;sent_flag&quot;: 0,
+        &quot;sent_from_pipedrive_flag&quot;: 0,
+        &quot;smart_bcc_flag&quot;: 0,
+        &quot;snippet&quot;: &quot;test subject&quot;,
+        &quot;subject&quot;: &quot;test subject&quot;,
+        &quot;synced_flag&quot;: 1,
+        &quot;template_id&quot;: 1,
+        &quot;timestamp&quot;: &quot;2020-09-16T13:37:50.000Z&quot;,
+        &quot;to&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;update_time&quot;: &quot;2019-11-14T07:15:49.000Z&quot;,
+        &quot;user_id&quot;: 1
+      },
+      &quot;object&quot;: &quot;mailMessage&quot;,
+      &quot;timestamp&quot;: &quot;2020-08-10 11:52:26&quot;
+    }
+  ],
+  &quot;related_objects&quot;: {
+    &quot;allOf&quot;: [
+      {
+        &quot;user&quot;: {
+          &quot;123&quot;: {
+            &quot;active_flag&quot;: true,
+            &quot;email&quot;: &quot;jane@pipedrive.com&quot;,
+            &quot;has_pic&quot;: 1,
+            &quot;id&quot;: 123,
+            &quot;name&quot;: &quot;Jane Doe&quot;,
+            &quot;pic_hash&quot;: &quot;2611ace8ac6a3afe2f69ed56f9e08c6b&quot;
+          }
+        }
+      },
+      {
+        &quot;person&quot;: {
+          &quot;1101&quot;: {
+            &quot;active_flag&quot;: true,
+            &quot;email&quot;: [
+              {
+                &quot;label&quot;: &quot;work&quot;,
+                &quot;primary&quot;: true,
+                &quot;value&quot;: &quot;person@pipedrive.com&quot;
+              }
+            ],
+            &quot;id&quot;: 1101,
+            &quot;name&quot;: &quot;Person&quot;,
+            &quot;owner_id&quot;: 8877,
+            &quot;phone&quot;: [
+              {
+                &quot;label&quot;: &quot;work&quot;,
+                &quot;primary&quot;: true,
+                &quot;value&quot;: &quot;3421787767&quot;
+              }
+            ]
+          }
+        }
+      },
+      {
+        &quot;organization&quot;: {
+          &quot;1&quot;: {
+            &quot;active_flag&quot;: true,
+            &quot;address&quot;: &quot;Mustamäe tee 3a, 10615 Tallinn&quot;,
+            &quot;cc_email&quot;: &quot;org@pipedrivemail.com&quot;,
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Org Name&quot;,
+            &quot;owner_id&quot;: 123,
+            &quot;people_count&quot;: 1
+          }
+        }
+      },
+      {
+        &quot;deal&quot;: {
+          &quot;123&quot;: {
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;id&quot;: 123,
+            &quot;pipeline_id&quot;: 1,
+            &quot;stage_id&quot;: 2,
+            &quot;status&quot;: &quot;open&quot;,
+            &quot;title&quot;: &quot;Deal title&quot;,
+            &quot;value&quot;: 600
+          }
+        }
+      }
+    ]
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidfiles" class="operation" data-method="get"><code>GET</code> /deals/{id}/files</h3>
+<p>Operation ID: <code>getDealFiles</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page. Please note that a maximum value of 100 is allowed. |
+| <code>sort</code> | <code>query</code> | <code>string</code> | No | Supported fields: <code>id</code>, <code>update_time</code> |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;activity_id&quot;: 1,
+      &quot;add_time&quot;: &quot;2020-09-16 11:19:36&quot;,
+      &quot;cid&quot;: &quot;&quot;,
+      &quot;deal_id&quot;: 1,
+      &quot;deal_name&quot;: &quot;nice deal&quot;,
+      &quot;description&quot;: &quot;&quot;,
+      &quot;file_name&quot;: &quot;95781006_794143070992462_4330873630616453120_n_60817458877506f9eb74d03e5ef9ba061915b797998.jpg&quot;,
+      &quot;file_size&quot;: 95116,
+      &quot;file_type&quot;: &quot;img&quot;,
+      &quot;id&quot;: 1,
+      &quot;inline_flag&quot;: false,
+      &quot;lead_id&quot;: &quot;adf21080-0e10-11eb-879b-05d71fb426ec&quot;,
+      &quot;lead_name&quot;: &quot;nice lead&quot;,
+      &quot;log_id&quot;: null,
+      &quot;mail_message_id&quot;: &quot;&quot;,
+      &quot;mail_template_id&quot;: &quot;&quot;,
+      &quot;name&quot;: &quot;95781006_794143070992462_4330873630616453120_n.jpg&quot;,
+      &quot;org_id&quot;: 1480,
+      &quot;org_name&quot;: &quot;Pipedrive Inc.&quot;,
+      &quot;people_name&quot;: &quot;&quot;,
+      &quot;person_id&quot;: 1,
+      &quot;person_name&quot;: &quot;&quot;,
+      &quot;product_id&quot;: 1,
+      &quot;product_name&quot;: &quot;&quot;,
+      &quot;project_id&quot;: 1,
+      &quot;project_name&quot;: &quot;My project&quot;,
+      &quot;remote_id&quot;: &quot;95781006_794143070992462_4330873630616453120_n.jpg&quot;,
+      &quot;remote_location&quot;: &quot;s3&quot;,
+      &quot;s3_bucket&quot;: &quot;&quot;,
+      &quot;update_time&quot;: &quot;2020-09-16 11:19:36&quot;,
+      &quot;url&quot;: &quot;https://app.pipedrive.com/api/v1/files/304/download&quot;,
+      &quot;user_id&quot;: 8877
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidmailmessages" class="operation" data-method="get"><code>GET</code> /deals/{id}/mailMessages</h3>
+<p>Operation ID: <code>getDealMailMessages</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>include_body</code> | <code>query</code> | <code>enum: 0, 1</code> | No | Whether to include the mail message body content in the response. <code>0</code> = Don't include, <code>1</code> = Include. |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;data&quot;: {
+        &quot;account_id&quot;: &quot;ao5gpry0zykr1xxxxxxxxx&quot;,
+        &quot;add_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+        &quot;bcc&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;body_url&quot;: &quot;https://example.org&quot;,
+        &quot;cc&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;company_id&quot;: 6081745,
+        &quot;deleted_flag&quot;: 0,
+        &quot;draft&quot;: &quot;&quot;,
+        &quot;draft_flag&quot;: 0,
+        &quot;external_deleted_flag&quot;: false,
+        &quot;from&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;has_attachments_flag&quot;: 1,
+        &quot;has_body_flag&quot;: 1,
+        &quot;has_inline_attachments_flag&quot;: 0,
+        &quot;has_real_attachments_flag&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;item_type&quot;: &quot;mailMessage&quot;,
+        &quot;mail_link_tracking_enabled_flag&quot;: 0,
+        &quot;mail_thread_id&quot;: 1,
+        &quot;mail_tracking_status&quot;: &quot;opened&quot;,
+        &quot;message_time&quot;: &quot;2019-11-14T06:02:06.000Z&quot;,
+        &quot;mua_message_id&quot;: &quot;8cfw8n7l4iy24lfhnexxxxxx-0@mailer.nylas.com&quot;,
+        &quot;nylas_id&quot;: &quot;8cfw8n7l4iy24xxxxxxxxx&quot;,
+        &quot;read_flag&quot;: 1,
+        &quot;s3_bucket&quot;: &quot;pipedrive-mail-live-fr&quot;,
+        &quot;s3_bucket_path&quot;: &quot;e9cf-6081745/77777/nylas/111/1111/body&quot;,
+        &quot;sent_flag&quot;: 0,
+        &quot;sent_from_pipedrive_flag&quot;: 0,
+        &quot;smart_bcc_flag&quot;: 0,
+        &quot;snippet&quot;: &quot;test subject&quot;,
+        &quot;subject&quot;: &quot;test subject&quot;,
+        &quot;synced_flag&quot;: 1,
+        &quot;template_id&quot;: 1,
+        &quot;timestamp&quot;: &quot;2020-09-16T13:37:50.000Z&quot;,
+        &quot;to&quot;: [
+          {
+            &quot;email_address&quot;: &quot;mail@example.org&quot;,
+            &quot;id&quot;: 1,
+            &quot;linked_person_id&quot;: 1,
+            &quot;linked_person_name&quot;: &quot;&quot;,
+            &quot;mail_message_party_id&quot;: 1,
+            &quot;name&quot;: &quot;Test&quot;
+          }
+        ],
+        &quot;update_time&quot;: &quot;2019-11-14T07:15:49.000Z&quot;,
+        &quot;user_id&quot;: 1
+      },
+      &quot;object&quot;: &quot;mailMessage&quot;,
+      &quot;timestamp&quot;: &quot;2020-09-16 13:38:17&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidchangelog" class="operation" data-method="get"><code>GET</code> /deals/{id}/changelog</h3>
+<p>Operation ID: <code>getDealChangelog</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | For pagination, the marker (an opaque string value) representing the first item on the next page |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-get-changelog-of-a-deal" class="status" data-status="2xx">200: Get changelog of a deal</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;next_cursor&quot;: &quot;aWQ6NTQ0&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;actor_user_id&quot;: 26,
+      &quot;change_source&quot;: &quot;app&quot;,
+      &quot;change_source_user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36&quot;,
+      &quot;field_key&quot;: &quot;title&quot;,
+      &quot;is_bulk_update_flag&quot;: false,
+      &quot;new_value&quot;: &quot;My Deal&quot;,
+      &quot;old_value&quot;: &quot;My Deel&quot;,
+      &quot;time&quot;: &quot;2024-02-12 09:14:35&quot;
+    },
+    {
+      &quot;actor_user_id&quot;: 26,
+      &quot;change_source&quot;: &quot;app&quot;,
+      &quot;change_source_user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36&quot;,
+      &quot;field_key&quot;: &quot;value&quot;,
+      &quot;is_bulk_update_flag&quot;: false,
+      &quot;new_value&quot;: &quot;100&quot;,
+      &quot;old_value&quot;: &quot;0&quot;,
+      &quot;time&quot;: &quot;2024-02-12 09:10:12&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidparticipants" class="operation" data-method="get"><code>GET</code> /deals/{id}/participants</h3>
+<p>Operation ID: <code>getDealParticipants</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>start</code> | <code>query</code> | <code>integer</code> | No | Pagination start |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-get-all-deal-participants-by-the-dealid" class="status" data-status="2xx">200: Get all deal participants by the DealID</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The array of participants</td>
+</tr>
+<tr>
+<td><code>data[].active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the participant is active or not</td>
+</tr>
+<tr>
+<td><code>data[].add_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the participant was added. Format: YYYY-MM-DD HH:MM:SS</td>
+</tr>
+<tr>
+<td><code>data[].added_by_user_id</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>GetUserResponse</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the participant</td>
+</tr>
+<tr>
+<td><code>data[].person</code></td>
+<td><code>object and object and object and object and object and object and object</code></td>
+<td>No</td>
+<td>Person</td>
+</tr>
+<tr>
+<td><code>data[].person_id</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The person data associated with the participant</td>
+</tr>
+<tr>
+<td><code>data[].person_id.active_flag</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the person is active or not</td>
+</tr>
+<tr>
+<td><code>data[].person_id.company_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the company related to the person</td>
+</tr>
+<tr>
+<td><code>data[].person_id.email</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An email address as a string or an array of email objects related to the person. The structure of the array is as follows: <code>[&amp;#123; &amp;quot;value&amp;quot;: &amp;quot;mail@example.com&amp;quot;, &amp;quot;primary&amp;quot;: &amp;quot;true&amp;quot;, &amp;quot;label&amp;quot;: &amp;quot;main&amp;quot; &amp;#125;]</code>. Please note that only <code>value</code> is required.</td>
+</tr>
+<tr>
+<td><code>data[].person_id.email[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The label that indicates the type of the email. (Possible values - work, home or other)</td>
+</tr>
+<tr>
+<td><code>data[].person_id.email[].primary</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Boolean that indicates if email is primary for the person or not</td>
+</tr>
+<tr>
+<td><code>data[].person_id.email[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email address</td>
+</tr>
+<tr>
+<td><code>data[].person_id.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the person</td>
+</tr>
+<tr>
+<td><code>data[].person_id.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the owner of the person</td>
+</tr>
+<tr>
+<td><code>data[].person_id.phone</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A phone number supplied as a string or an array of phone objects related to the person. The structure of the array is as follows: <code>[&amp;#123; &amp;quot;value&amp;quot;: &amp;quot;12345&amp;quot;, &amp;quot;primary&amp;quot;: &amp;quot;true&amp;quot;, &amp;quot;label&amp;quot;: &amp;quot;mobile&amp;quot; &amp;#125;]</code>. Please note that only <code>value</code> is required.</td>
+</tr>
+<tr>
+<td><code>data[].person_id.phone[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The label that indicates the type of the phone number. (Possible values - work, home, mobile or other)</td>
+</tr>
+<tr>
+<td><code>data[].person_id.phone[].primary</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Boolean that indicates if phone number is primary for the person or not</td>
+</tr>
+<tr>
+<td><code>data[].person_id.phone[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The phone number</td>
+</tr>
+<tr>
+<td><code>data[].person_id.value</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the person</td>
+</tr>
+<tr>
+<td><code>data[].related_item_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Information about the related deal</td>
+</tr>
+<tr>
+<td><code>data[].related_item_data.deal_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the deal</td>
+</tr>
+<tr>
+<td><code>data[].related_item_data.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the deal</td>
+</tr>
+<tr>
+<td><code>data[].related_item_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the related item</td>
+</tr>
+<tr>
+<td><code>data[].related_item_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the related item</td>
+</tr>
+<tr>
+<td><code>related_objects</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.organization</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>RelatedOrganizationDataWithActiveFlag</td>
+</tr>
+<tr>
+<td><code>related_objects.organization.ORGANIZATION_ID</code></td>
+<td><code>object and object and object</code></td>
+<td>No</td>
+<td>The ID of the organization associated with the item</td>
+</tr>
+<tr>
+<td><code>related_objects.person</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.person.PERSON_ID</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>The ID of the person associated with the item</td>
+</tr>
+<tr>
+<td><code>related_objects.user</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>related_objects.user.USER_ID</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>userDataWithId</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: false,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;active_flag&quot;: true,
+      &quot;add_time&quot;: &quot;2020-07-07 10:29:47&quot;,
+      &quot;added_by_user_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;foo.bar@pipedrive.com&quot;,
+        &quot;has_pic&quot;: 0,
+        &quot;id&quot;: 6900896,
+        &quot;name&quot;: &quot;Foo Bar&quot;,
+        &quot;pic_hash&quot;: null,
+        &quot;value&quot;: 6900896
+      },
+      &quot;id&quot;: 1092,
+      &quot;person&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;activities_count&quot;: 4,
+        &quot;add_time&quot;: &quot;2020-07-07 10:29:47&quot;,
+        &quot;cc_email&quot;: &quot;org@pipedrivemail.com&quot;,
+        &quot;closed_deals_count&quot;: 0,
+        &quot;company_id&quot;: 4657212,
+        &quot;done_activities_count&quot;: 1,
+        &quot;email&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;john.smith@pipedrive.com&quot;
+          }
+        ],
+        &quot;email_messages_count&quot;: 0,
+        &quot;files_count&quot;: 1,
+        &quot;first_char&quot;: &quot;p&quot;,
+        &quot;first_name&quot;: &quot;Peter&quot;,
+        &quot;followers_count&quot;: 1,
+        &quot;id&quot;: 1598,
+        &quot;label&quot;: 5,
+        &quot;label_ids&quot;: [
+          5,
+          6
+        ],
+        &quot;last_activity_date&quot;: &quot;2020-07-02&quot;,
+        &quot;last_activity_id&quot;: 2450,
+        &quot;last_incoming_mail_time&quot;: null,
+        &quot;last_name&quot;: &quot;Pan&quot;,
+        &quot;last_outgoing_mail_time&quot;: null,
+        &quot;lost_deals_count&quot;: 0,
+        &quot;name&quot;: &quot;Peter Pan&quot;,
+        &quot;next_activity_date&quot;: &quot;2020-07-01&quot;,
+        &quot;next_activity_id&quot;: 2448,
+        &quot;next_activity_time&quot;: null,
+        &quot;notes_count&quot;: 12,
+        &quot;open_deals_count&quot;: 0,
+        &quot;org_id&quot;: {
+          &quot;active_flag&quot;: true,
+          &quot;address&quot;: null,
+          &quot;cc_email&quot;: null,
+          &quot;name&quot;: &quot;Neverland&quot;,
+          &quot;owner_id&quot;: 6900896,
+          &quot;people_count&quot;: 1,
+          &quot;value&quot;: 314
+        },
+        &quot;org_name&quot;: &quot;Neverland&quot;,
+        &quot;owner_id&quot;: {
+          &quot;active_flag&quot;: true,
+          &quot;email&quot;: &quot;foo.bar@pipedrive.com&quot;,
+          &quot;has_pic&quot;: 0,
+          &quot;id&quot;: 6900896,
+          &quot;name&quot;: &quot;Foo Bar&quot;,
+          &quot;pic_hash&quot;: null,
+          &quot;value&quot;: 6900896
+        },
+        &quot;owner_name&quot;: &quot;Foo Bar&quot;,
+        &quot;participant_closed_deals_count&quot;: 0,
+        &quot;participant_open_deals_count&quot;: 0,
+        &quot;phone&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;736174198&quot;
+          }
+        ],
+        &quot;picture_id&quot;: null,
+        &quot;related_closed_deals_count&quot;: 0,
+        &quot;related_lost_deals_count&quot;: 0,
+        &quot;related_open_deals_count&quot;: 0,
+        &quot;related_won_deals_count&quot;: 0,
+        &quot;sync_needed&quot;: false,
+        &quot;undone_activities_count&quot;: 3,
+        &quot;update_time&quot;: &quot;2020-08-31 14:25:11&quot;,
+        &quot;visible_to&quot;: &quot;3&quot;,
+        &quot;won_deals_count&quot;: 0
+      },
+      &quot;person_id&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;john.smith@pipedrive.com&quot;
+          }
+        ],
+        &quot;name&quot;: &quot;Peter Pan&quot;,
+        &quot;phone&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;736174198&quot;
+          }
+        ],
+        &quot;value&quot;: 1598
+      },
+      &quot;related_item_data&quot;: {
+        &quot;deal_id&quot;: 1078,
+        &quot;title&quot;: &quot;Neverland deal&quot;
+      },
+      &quot;related_item_id&quot;: 1078,
+      &quot;related_item_type&quot;: &quot;deal&quot;
+    }
+  ],
+  &quot;related_objects&quot;: {
+    &quot;organization&quot;: {
+      &quot;314&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;address&quot;: null,
+        &quot;cc_email&quot;: null,
+        &quot;id&quot;: 314,
+        &quot;name&quot;: &quot;Neverland&quot;,
+        &quot;owner_id&quot;: 6900896,
+        &quot;people_count&quot;: 1
+      }
+    },
+    &quot;person&quot;: {
+      &quot;1598&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;john.smith@pipedrive.com&quot;
+          }
+        ],
+        &quot;id&quot;: 1598,
+        &quot;name&quot;: &quot;Peter Pan&quot;,
+        &quot;owner_id&quot;: 8877,
+        &quot;phone&quot;: [
+          {
+            &quot;label&quot;: &quot;work&quot;,
+            &quot;primary&quot;: true,
+            &quot;value&quot;: &quot;736174198&quot;
+          }
+        ]
+      }
+    },
+    &quot;user&quot;: {
+      &quot;6900896&quot;: {
+        &quot;active_flag&quot;: true,
+        &quot;email&quot;: &quot;foo.bar@pipedrive.com&quot;,
+        &quot;has_pic&quot;: 0,
+        &quot;id&quot;: 6900896,
+        &quot;name&quot;: &quot;Foo Bar&quot;,
+        &quot;pic_hash&quot;: null
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidparticipantschangelog" class="operation" data-method="get"><code>GET</code> /deals/{id}/participantsChangelog</h3>
+<p>Operation ID: <code>getDealParticipantsChangelog</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>limit</code> | <code>query</code> | <code>integer</code> | No | Items shown per page |
+| <code>cursor</code> | <code>query</code> | <code>string</code> | No | For pagination, the marker (an opaque string value) representing the first item on the next page |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-get-participant-changelogs-for-a-given-deal" class="status" data-status="2xx">200: Get participant changelogs for a given deal</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additional_data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The additional data of the list</td>
+</tr>
+<tr>
+<td><code>additional_data.limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Items shown per page</td>
+</tr>
+<tr>
+<td><code>additional_data.more_items_in_collection</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If there are more list items in the collection than displayed or not</td>
+</tr>
+<tr>
+<td><code>additional_data.start</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Pagination start</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The array of participant changelog</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;next_cursor&quot;: &quot;eyJkZWFsIjo0fQ&quot;
+  },
+  &quot;data&quot;: [
+    {
+      &quot;action&quot;: &quot;added&quot;,
+      &quot;actor_user_id&quot;: 18,
+      &quot;person_id&quot;: 10,
+      &quot;time&quot;: &quot;2024-01-10 11:47:23&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidfollowers" class="operation" data-method="get"><code>GET</code> /deals/{id}/followers</h3>
+<p>Operation ID: <code>getDealFollowers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object and object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;additional_data&quot;: {
+    &quot;pagination&quot;: {
+      &quot;limit&quot;: 100,
+      &quot;more_items_in_collection&quot;: true,
+      &quot;start&quot;: 0
+    }
+  },
+  &quot;data&quot;: [
+    {
+      &quot;add_time&quot;: &quot;2020-09-09 11:36:23&quot;,
+      &quot;deal_id&quot;: 789,
+      &quot;id&quot;: 456,
+      &quot;user_id&quot;: 123
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-dealstimeline" class="operation" data-method="get"><code>GET</code> /deals/timeline</h3>
+<p>Operation ID: <code>getDealsTimeline</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>start_date</code> | <code>query</code> | <code>string (date)</code> | Yes | The date when the first interval starts. Format: YYYY-MM-DD. |
+| <code>interval</code> | <code>query</code> | <code>enum: day, week, month, quarter</code> | Yes | The type of the interval&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>day</code>&lt;/td&gt;&lt;td&gt;Day&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>week</code>&lt;/td&gt;&lt;td&gt;A full week (7 days) starting from <code>start_date</code>&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>month</code>&lt;/td&gt;&lt;td&gt;A full month (depending on the number of days in given month) starting from <code>start_date</code>&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>quarter</code>&lt;/td&gt;&lt;td&gt;A full quarter (3 months) starting from <code>start_date</code>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; |
+| <code>amount</code> | <code>query</code> | <code>integer</code> | Yes | The number of given intervals, starting from <code>start_date</code>, to fetch. for example 3 (months). |
+| <code>field_key</code> | <code>query</code> | <code>string</code> | Yes | The date field key which deals will be retrieved from |
+| <code>user_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given user will be returned |
+| <code>pipeline_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given pipeline will be returned |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given filter will be returned |
+| <code>exclude_deals</code> | <code>query</code> | <code>enum: 0, 1</code> | No | Whether to exclude deals list (1) or not (0). Note that when deals are excluded, the timeline summary (counts and values) is still returned. |
+| <code>totals_convert_currency</code> | <code>query</code> | <code>string</code> | No | The 3-letter currency code of any of the supported currencies. When supplied, <code>totals_converted</code> is returned per each interval which contains the currency-converted total amounts in the given currency. You may also set this parameter to <code>default_currency</code> in which case the user's default currency is used. |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-get-open-and-won-deals-grouped-by-the-defined-interval-of-time" class="status" data-status="2xx">200: Get open and won deals, grouped by the defined interval of time</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Open and won deals grouped into periods by defined interval, amount and date-type dealField (<code>field_key</code>)</td>
+</tr>
+<tr>
+<td><code>data.deals</code></td>
+<td><code>array of object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.period_end</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date and time of the period</td>
+</tr>
+<tr>
+<td><code>data.period_start</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date and time of the period</td>
+</tr>
+<tr>
+<td><code>data.totals</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.open_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of open deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.open_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of open deals for the given period grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>data.totals.values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of deals grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>data.totals.weighted_open_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of open deals for the given period grouped by deal currency. The weighted value of a deal is calculated as probability times deal value.</td>
+</tr>
+<tr>
+<td><code>data.totals.weighted_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of deals for the given period grouped by deal currency. The weighted value of a deal is calculated as probability times deal value.</td>
+</tr>
+<tr>
+<td><code>data.totals.won_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of won deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.won_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of won deals for the given period grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;deals&quot;: [
+      {
+        &quot;active&quot;: true,
+        &quot;activities_count&quot;: 1,
+        &quot;acv&quot;: null,
+        &quot;acv_currency&quot;: null,
+        &quot;add_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+        &quot;archive_time&quot;: null,
+        &quot;arr&quot;: null,
+        &quot;arr_currency&quot;: null,
+        &quot;cc_email&quot;: &quot;company+deal1@pipedrivemail.com&quot;,
+        &quot;close_time&quot;: null,
+        &quot;creator_user_id&quot;: 8877,
+        &quot;currency&quot;: &quot;EUR&quot;,
+        &quot;deleted&quot;: false,
+        &quot;done_activities_count&quot;: 0,
+        &quot;email_messages_count&quot;: 4,
+        &quot;expected_close_date&quot;: &quot;2019-06-29&quot;,
+        &quot;files_count&quot;: 0,
+        &quot;first_won_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+        &quot;followers_count&quot;: 0,
+        &quot;formatted_value&quot;: &quot;€5,000&quot;,
+        &quot;formatted_weighted_value&quot;: &quot;€5,000&quot;,
+        &quot;id&quot;: 1,
+        &quot;is_archived&quot;: false,
+        &quot;label&quot;: &quot;11&quot;,
+        &quot;last_activity_date&quot;: null,
+        &quot;last_activity_id&quot;: null,
+        &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+        &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+        &quot;lost_reason&quot;: null,
+        &quot;lost_time&quot;: &quot;&quot;,
+        &quot;mrr&quot;: null,
+        &quot;mrr_currency&quot;: null,
+        &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+        &quot;next_activity_duration&quot;: &quot;00:30:00&quot;,
+        &quot;next_activity_id&quot;: 128,
+        &quot;next_activity_note&quot;: &quot;Note content&quot;,
+        &quot;next_activity_subject&quot;: &quot;Call&quot;,
+        &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+        &quot;next_activity_type&quot;: &quot;call&quot;,
+        &quot;notes_count&quot;: 2,
+        &quot;org_hidden&quot;: false,
+        &quot;org_id&quot;: 5,
+        &quot;org_name&quot;: &quot;Organization&quot;,
+        &quot;owner_name&quot;: &quot;Creator&quot;,
+        &quot;participants_count&quot;: 1,
+        &quot;person_hidden&quot;: false,
+        &quot;person_id&quot;: 1101,
+        &quot;person_name&quot;: &quot;Person&quot;,
+        &quot;pipeline_id&quot;: 1,
+        &quot;probability&quot;: null,
+        &quot;products_count&quot;: 0,
+        &quot;rotten_time&quot;: null,
+        &quot;stage_change_time&quot;: &quot;2019-11-28 15:41:22&quot;,
+        &quot;stage_id&quot;: 2,
+        &quot;stage_order_nr&quot;: 2,
+        &quot;status&quot;: &quot;open&quot;,
+        &quot;title&quot;: &quot;Deal One&quot;,
+        &quot;undone_activities_count&quot;: 1,
+        &quot;update_time&quot;: &quot;2019-11-28 16:19:50&quot;,
+        &quot;user_id&quot;: 8877,
+        &quot;value&quot;: 5000,
+        &quot;visible_to&quot;: &quot;1&quot;,
+        &quot;weighted_value&quot;: 5000,
+        &quot;weighted_value_currency&quot;: &quot;EUR&quot;,
+        &quot;won_time&quot;: &quot;2019-11-27 11:40:36&quot;
+      }
+    ],
+    &quot;period_end&quot;: &quot;2019-12-31 23:59:59&quot;,
+    &quot;period_start&quot;: &quot;2019-12-01 00:00:00&quot;,
+    &quot;totals&quot;: {
+      &quot;count&quot;: 2,
+      &quot;open_count&quot;: 1,
+      &quot;open_values&quot;: {
+        &quot;EUR&quot;: 100
+      },
+      &quot;values&quot;: {
+        &quot;EUR&quot;: 100,
+        &quot;USD&quot;: 220
+      },
+      &quot;weighted_open_values&quot;: {
+        &quot;EUR&quot;: 100
+      },
+      &quot;weighted_values&quot;: {
+        &quot;EUR&quot;: 100,
+        &quot;USD&quot;: 2200
+      },
+      &quot;won_count&quot;: 1,
+      &quot;won_values&quot;: {
+        &quot;USD&quot;: 2200
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealstimelinearchived" class="operation" data-method="get"><code>GET</code> /deals/timeline/archived</h3>
+<p>Operation ID: <code>getArchivedDealsTimeline</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>start_date</code> | <code>query</code> | <code>string (date)</code> | Yes | The date when the first interval starts. Format: YYYY-MM-DD. |
+| <code>interval</code> | <code>query</code> | <code>enum: day, week, month, quarter</code> | Yes | The type of the interval&lt;table&gt;&lt;tr&gt;&lt;th&gt;Value&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>day</code>&lt;/td&gt;&lt;td&gt;Day&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>week</code>&lt;/td&gt;&lt;td&gt;A full week (7 days) starting from <code>start_date</code>&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>month</code>&lt;/td&gt;&lt;td&gt;A full month (depending on the number of days in given month) starting from <code>start_date</code>&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;<code>quarter</code>&lt;/td&gt;&lt;td&gt;A full quarter (3 months) starting from <code>start_date</code>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; |
+| <code>amount</code> | <code>query</code> | <code>integer</code> | Yes | The number of given intervals, starting from <code>start_date</code>, to fetch. for example 3 (months). |
+| <code>field_key</code> | <code>query</code> | <code>string</code> | Yes | The date field key which deals will be retrieved from |
+| <code>user_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given user will be returned |
+| <code>pipeline_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given pipeline will be returned |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | If supplied, only deals matching the given filter will be returned |
+| <code>exclude_deals</code> | <code>query</code> | <code>enum: 0, 1</code> | No | Whether to exclude deals list (1) or not (0). Note that when deals are excluded, the timeline summary (counts and values) is still returned. |
+| <code>totals_convert_currency</code> | <code>query</code> | <code>string</code> | No | The 3-letter currency code of any of the supported currencies. When supplied, <code>totals_converted</code> is returned per each interval which contains the currency-converted total amounts in the given currency. You may also set this parameter to <code>default_currency</code> in which case the user's default currency is used. |</p>
+<h4 id="responses-12">Responses</h4>
+<h5 id="200-get-open-and-won-deals-grouped-by-the-defined-interval-of-time-1" class="status" data-status="2xx">200: Get open and won deals, grouped by the defined interval of time</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Open and won deals grouped into periods by defined interval, amount and date-type dealField (<code>field_key</code>)</td>
+</tr>
+<tr>
+<td><code>data.deals</code></td>
+<td><code>array of object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.period_end</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date and time of the period</td>
+</tr>
+<tr>
+<td><code>data.period_start</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date and time of the period</td>
+</tr>
+<tr>
+<td><code>data.totals</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.open_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of open deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.open_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of open deals for the given period grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>data.totals.values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of deals grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>data.totals.weighted_open_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of open deals for the given period grouped by deal currency. The weighted value of a deal is calculated as probability times deal value.</td>
+</tr>
+<tr>
+<td><code>data.totals.weighted_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of deals for the given period grouped by deal currency. The weighted value of a deal is calculated as probability times deal value.</td>
+</tr>
+<tr>
+<td><code>data.totals.won_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of won deals for the given period</td>
+</tr>
+<tr>
+<td><code>data.totals.won_values</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of won deals for the given period grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;deals&quot;: [
+      {
+        &quot;active&quot;: true,
+        &quot;activities_count&quot;: 1,
+        &quot;acv&quot;: null,
+        &quot;acv_currency&quot;: null,
+        &quot;add_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+        &quot;archive_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+        &quot;arr&quot;: null,
+        &quot;arr_currency&quot;: null,
+        &quot;cc_email&quot;: &quot;company+deal1@pipedrivemail.com&quot;,
+        &quot;close_time&quot;: null,
+        &quot;creator_user_id&quot;: 8877,
+        &quot;currency&quot;: &quot;EUR&quot;,
+        &quot;deleted&quot;: false,
+        &quot;done_activities_count&quot;: 0,
+        &quot;email_messages_count&quot;: 4,
+        &quot;expected_close_date&quot;: &quot;2019-06-29&quot;,
+        &quot;files_count&quot;: 0,
+        &quot;first_won_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+        &quot;followers_count&quot;: 0,
+        &quot;formatted_value&quot;: &quot;€5,000&quot;,
+        &quot;formatted_weighted_value&quot;: &quot;€5,000&quot;,
+        &quot;id&quot;: 1,
+        &quot;is_archived&quot;: true,
+        &quot;label&quot;: &quot;11&quot;,
+        &quot;last_activity_date&quot;: null,
+        &quot;last_activity_id&quot;: null,
+        &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+        &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+        &quot;lost_reason&quot;: null,
+        &quot;lost_time&quot;: &quot;&quot;,
+        &quot;mrr&quot;: null,
+        &quot;mrr_currency&quot;: null,
+        &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+        &quot;next_activity_duration&quot;: &quot;00:30:00&quot;,
+        &quot;next_activity_id&quot;: 128,
+        &quot;next_activity_note&quot;: &quot;Note content&quot;,
+        &quot;next_activity_subject&quot;: &quot;Call&quot;,
+        &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+        &quot;next_activity_type&quot;: &quot;call&quot;,
+        &quot;notes_count&quot;: 2,
+        &quot;org_hidden&quot;: false,
+        &quot;org_id&quot;: 5,
+        &quot;org_name&quot;: &quot;Organization&quot;,
+        &quot;owner_name&quot;: &quot;Creator&quot;,
+        &quot;participants_count&quot;: 1,
+        &quot;person_hidden&quot;: false,
+        &quot;person_id&quot;: 1101,
+        &quot;person_name&quot;: &quot;Person&quot;,
+        &quot;pipeline_id&quot;: 1,
+        &quot;probability&quot;: null,
+        &quot;products_count&quot;: 0,
+        &quot;rotten_time&quot;: null,
+        &quot;stage_change_time&quot;: &quot;2019-11-28 15:41:22&quot;,
+        &quot;stage_id&quot;: 2,
+        &quot;stage_order_nr&quot;: 2,
+        &quot;status&quot;: &quot;open&quot;,
+        &quot;title&quot;: &quot;Deal One&quot;,
+        &quot;undone_activities_count&quot;: 1,
+        &quot;update_time&quot;: &quot;2019-11-28 16:19:50&quot;,
+        &quot;user_id&quot;: 8877,
+        &quot;value&quot;: 5000,
+        &quot;visible_to&quot;: &quot;1&quot;,
+        &quot;weighted_value&quot;: 5000,
+        &quot;weighted_value_currency&quot;: &quot;EUR&quot;,
+        &quot;won_time&quot;: &quot;2019-11-27 11:40:36&quot;
+      }
+    ],
+    &quot;period_end&quot;: &quot;2019-12-31 23:59:59&quot;,
+    &quot;period_start&quot;: &quot;2019-12-01 00:00:00&quot;,
+    &quot;totals&quot;: {
+      &quot;count&quot;: 2,
+      &quot;open_count&quot;: 1,
+      &quot;open_values&quot;: {
+        &quot;EUR&quot;: 100
+      },
+      &quot;values&quot;: {
+        &quot;EUR&quot;: 100,
+        &quot;USD&quot;: 220
+      },
+      &quot;weighted_open_values&quot;: {
+        &quot;EUR&quot;: 100
+      },
+      &quot;weighted_values&quot;: {
+        &quot;EUR&quot;: 100,
+        &quot;USD&quot;: 2200
+      },
+      &quot;won_count&quot;: 1,
+      &quot;won_values&quot;: {
+        &quot;USD&quot;: 2200
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealssummary" class="operation" data-method="get"><code>GET</code> /deals/summary</h3>
+<p>Operation ID: <code>getDealsSummary</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>status</code> | <code>query</code> | <code>enum: open, won, lost</code> | No | Only fetch deals with a specific status. open = Open, won = Won, lost = Lost. |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | &lt;code&gt;user_id&lt;/code&gt; will not be considered. Only deals matching the given filter will be returned. |
+| <code>user_id</code> | <code>query</code> | <code>integer</code> | No | Only deals matching the given user will be returned. <code>user_id</code> will not be considered if you use <code>filter_id</code>. |
+| <code>pipeline_id</code> | <code>query</code> | <code>integer</code> | No | Only deals within the given pipeline will be returned |
+| <code>stage_id</code> | <code>query</code> | <code>integer</code> | No | Only deals within the given stage will be returned |</p>
+<h4 id="responses-13">Responses</h4>
+<h5 id="200-get-the-summary-of-not-archived-deals" class="status" data-status="2xx">200: Get the summary of not archived deals</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The summary of deals</td>
+</tr>
+<tr>
+<td><code>data.total_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The total number of deals</td>
+</tr>
+<tr>
+<td><code>data.total_currency_converted_value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>data.total_currency_converted_value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total converted value of deals formatted with the company default currency. for example US$5,100.96</td>
+</tr>
+<tr>
+<td><code>data.total_weighted_currency_converted_value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total weighted value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>data.total_weighted_currency_converted_value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total weighted value of deals formatted with the company default currency. for example US$5,100.96</td>
+</tr>
+<tr>
+<td><code>data.values_total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of the deals grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>data.values_total.count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.values_total.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.values_total.value_converted</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>data.values_total.value_converted_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The value_converted formatted with deal currency. for example US$50.10</td>
+</tr>
+<tr>
+<td><code>data.values_total.value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total value of deals formatted with deal currency. for example €50</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of the deals grouped by deal currency. The weighted value is calculated as probability times deal value.</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total.count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total weighted value of the deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total.value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total weighted value of the deals formatted with deal currency. for example €50</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;total_count&quot;: 5,
+    &quot;total_currency_converted_value&quot;: 41.1,
+    &quot;total_currency_converted_value_formatted&quot;: &quot;US$41.1&quot;,
+    &quot;total_weighted_currency_converted_value&quot;: 41.1,
+    &quot;total_weighted_currency_converted_value_formatted&quot;: &quot;US$41.1&quot;,
+    &quot;values_total&quot;: {
+      &quot;EUR&quot;: {
+        &quot;count&quot;: 2,
+        &quot;value&quot;: 10,
+        &quot;value_converted&quot;: 11.1,
+        &quot;value_converted_formatted&quot;: &quot;US$11.10&quot;,
+        &quot;value_formatted&quot;: &quot;€10&quot;
+      },
+      &quot;USD&quot;: {
+        &quot;count&quot;: 3,
+        &quot;value&quot;: 30,
+        &quot;value_converted&quot;: 30,
+        &quot;value_converted_formatted&quot;: &quot;US$3&quot;,
+        &quot;value_formatted&quot;: &quot;US$30&quot;
+      }
+    },
+    &quot;weighted_values_total&quot;: {
+      &quot;EUR&quot;: {
+        &quot;count&quot;: 2,
+        &quot;value&quot;: 10,
+        &quot;value_formatted&quot;: &quot;€10&quot;
+      },
+      &quot;USD&quot;: {
+        &quot;count&quot;: 3,
+        &quot;value&quot;: 30,
+        &quot;value_formatted&quot;: &quot;US$30&quot;
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealssummaryarchived" class="operation" data-method="get"><code>GET</code> /deals/summary/archived</h3>
+<p>Operation ID: <code>getArchivedDealsSummary</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>status</code> | <code>query</code> | <code>enum: open, won, lost</code> | No | Only fetch deals with a specific status. open = Open, won = Won, lost = Lost. |
+| <code>filter_id</code> | <code>query</code> | <code>integer</code> | No | &lt;code&gt;user_id&lt;/code&gt; will not be considered. Only deals matching the given filter will be returned. |
+| <code>user_id</code> | <code>query</code> | <code>integer</code> | No | Only deals matching the given user will be returned. <code>user_id</code> will not be considered if you use <code>filter_id</code>. |
+| <code>pipeline_id</code> | <code>query</code> | <code>integer</code> | No | Only deals within the given pipeline will be returned |
+| <code>stage_id</code> | <code>query</code> | <code>integer</code> | No | Only deals within the given stage will be returned |</p>
+<h4 id="responses-14">Responses</h4>
+<h5 id="200-get-the-summary-of-archived-deals" class="status" data-status="2xx">200: Get the summary of archived deals</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The summary of deals</td>
+</tr>
+<tr>
+<td><code>data.total_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The total number of deals</td>
+</tr>
+<tr>
+<td><code>data.total_currency_converted_value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>data.total_currency_converted_value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total converted value of deals formatted with the company default currency. for example US$5,100.96</td>
+</tr>
+<tr>
+<td><code>data.total_weighted_currency_converted_value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total weighted value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>data.total_weighted_currency_converted_value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total weighted value of deals formatted with the company default currency. for example US$5,100.96</td>
+</tr>
+<tr>
+<td><code>data.values_total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total values of the deals grouped by deal currency</td>
+</tr>
+<tr>
+<td><code>data.values_total.count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.values_total.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.values_total.value_converted</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of deals converted into the company default currency</td>
+</tr>
+<tr>
+<td><code>data.values_total.value_converted_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The value_converted formatted with deal currency. for example US$50.10</td>
+</tr>
+<tr>
+<td><code>data.values_total.value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total value of deals formatted with deal currency. for example €50</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total weighted values of the deals grouped by deal currency. The weighted value is calculated as probability times deal value.</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total.count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total weighted value of the deals in the deal currency group</td>
+</tr>
+<tr>
+<td><code>data.weighted_values_total.value_formatted</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The total weighted value of the deals formatted with deal currency. for example €50</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the response is successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;total_count&quot;: 5,
+    &quot;total_currency_converted_value&quot;: 41.1,
+    &quot;total_currency_converted_value_formatted&quot;: &quot;US$41.1&quot;,
+    &quot;total_weighted_currency_converted_value&quot;: 41.1,
+    &quot;total_weighted_currency_converted_value_formatted&quot;: &quot;US$41.1&quot;,
+    &quot;values_total&quot;: {
+      &quot;EUR&quot;: {
+        &quot;count&quot;: 2,
+        &quot;value&quot;: 10,
+        &quot;value_converted&quot;: 11.1,
+        &quot;value_converted_formatted&quot;: &quot;US$11.10&quot;,
+        &quot;value_formatted&quot;: &quot;€10&quot;
+      },
+      &quot;USD&quot;: {
+        &quot;count&quot;: 3,
+        &quot;value&quot;: 30,
+        &quot;value_converted&quot;: 30,
+        &quot;value_converted_formatted&quot;: &quot;US$3&quot;,
+        &quot;value_formatted&quot;: &quot;US$30&quot;
+      }
+    },
+    &quot;weighted_values_total&quot;: {
+      &quot;EUR&quot;: {
+        &quot;count&quot;: 2,
+        &quot;value&quot;: 10,
+        &quot;value_formatted&quot;: &quot;€10&quot;
+      },
+      &quot;USD&quot;: {
+        &quot;count&quot;: 3,
+        &quot;value&quot;: 30,
+        &quot;value_formatted&quot;: &quot;US$30&quot;
+      }
+    }
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-dealsidpermittedusers" class="operation" data-method="get"><code>GET</code> /deals/{id}/permittedUsers</h3>
+<p>Operation ID: <code>getDealUsers</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |</p>
+<h4 id="responses-15">Responses</h4>
+<h5 id="200-success-3" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    123,
+    456
+  ],
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-dealsidparticipantsdeal_participant_id" class="operation" data-method="delete"><code>DELETE</code> /deals/{id}/participants/{deal_participant_id}</h3>
+<p>Operation ID: <code>deleteDealParticipant</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-16">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>deal_participant_id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the participant of the deal |</p>
+<h4 id="responses-16">Responses</h4>
+<h5 id="200-delete-a-participant-from-a-deal" class="status" data-status="2xx">200: Delete a participant from a deal</h5>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -600,14 +3062,51 @@
 <td></td>
 </tr>
 <tr>
-<td><code>data.add_time</code></td>
-<td><code>string</code></td>
+<td><code>data.id</code></td>
+<td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>The ID of the deal participant that was deleted</td>
 </tr>
 <tr>
-<td><code>data.currency</code></td>
-<td><code>string</code></td>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 123
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="delete-dealsidfollowersfollower_id" class="operation" data-method="delete"><code>DELETE</code> /deals/{id}/followers/{follower_id}</h3>
+<p>Operation ID: <code>deleteDealFollower</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-17">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |
+| <code>follower_id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the relationship between the follower and the deal |</p>
+<h4 id="responses-17">Responses</h4>
+<h5 id="200-delete-a-follower-from-a-deal" class="status" data-status="2xx">200: Delete a follower from a deal</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
 <td>No</td>
 <td></td>
 </tr>
@@ -615,47 +3114,68 @@
 <td><code>data.id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>The ID of the deal follower that was deleted</td>
 </tr>
 <tr>
-<td><code>data.org_id</code></td>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;id&quot;: 123
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-dealsidmerge" class="operation" data-method="put"><code>PUT</code> /deals/{id}/merge</h3>
+<p>Operation ID: <code>mergeDeals</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-18">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>integer</code> | Yes | The ID of the deal |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>merge_with_id</code></td>
 <td><code>integer</code></td>
-<td>No</td>
-<td></td>
+<td>Yes</td>
+<td>The ID of the deal that the deal will be merged with</td>
 </tr>
+</tbody>
+</table>
+<h4 id="responses-18">Responses</h4>
+<h5 id="200-merges-a-deal-with-another-deal" class="status" data-status="2xx">200: Merges a deal with another deal</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
 <tr>
-<td><code>data.person_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td><code>data.stage_id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.title</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.update_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>data.value</code></td>
-<td><code>number</code></td>
+<td><code>data</code></td>
+<td><code>object and object and object</code></td>
 <td>No</td>
 <td></td>
 </tr>
@@ -663,9 +3183,84 @@
 <td><code>success</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>If the response is successful or not</td>
 </tr>
 </tbody>
 </table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;active&quot;: true,
+    &quot;activities_count&quot;: 1,
+    &quot;acv&quot;: null,
+    &quot;acv_currency&quot;: null,
+    &quot;add_time&quot;: &quot;2019-05-29 04:21:51&quot;,
+    &quot;arr&quot;: null,
+    &quot;arr_currency&quot;: null,
+    &quot;cc_email&quot;: &quot;company+deal1@pipedrivemail.com&quot;,
+    &quot;channel&quot;: 52,
+    &quot;channel_id&quot;: &quot;Jun23 Billboards&quot;,
+    &quot;close_time&quot;: null,
+    &quot;creator_user_id&quot;: 123,
+    &quot;currency&quot;: &quot;EUR&quot;,
+    &quot;deleted&quot;: false,
+    &quot;done_activities_count&quot;: 0,
+    &quot;email_messages_count&quot;: 4,
+    &quot;expected_close_date&quot;: &quot;2019-06-29&quot;,
+    &quot;files_count&quot;: 0,
+    &quot;first_won_time&quot;: &quot;2019-11-27 11:40:36&quot;,
+    &quot;followers_count&quot;: 0,
+    &quot;formatted_value&quot;: &quot;€5,000&quot;,
+    &quot;formatted_weighted_value&quot;: &quot;€5,000&quot;,
+    &quot;id&quot;: 1,
+    &quot;label&quot;: &quot;11&quot;,
+    &quot;last_activity_date&quot;: null,
+    &quot;last_activity_id&quot;: null,
+    &quot;last_incoming_mail_time&quot;: &quot;2019-05-29 18:21:42&quot;,
+    &quot;last_outgoing_mail_time&quot;: &quot;2019-05-30 03:45:35&quot;,
+    &quot;lost_reason&quot;: null,
+    &quot;lost_time&quot;: &quot;&quot;,
+    &quot;merge_what_id&quot;: 2,
+    &quot;mrr&quot;: null,
+    &quot;mrr_currency&quot;: null,
+    &quot;next_activity_date&quot;: &quot;2019-11-29&quot;,
+    &quot;next_activity_duration&quot;: &quot;00:30:00&quot;,
+    &quot;next_activity_id&quot;: 128,
+    &quot;next_activity_note&quot;: &quot;Note content&quot;,
+    &quot;next_activity_subject&quot;: &quot;Call&quot;,
+    &quot;next_activity_time&quot;: &quot;11:30:00&quot;,
+    &quot;next_activity_type&quot;: &quot;call&quot;,
+    &quot;notes_count&quot;: 2,
+    &quot;org_hidden&quot;: false,
+    &quot;org_id&quot;: 2,
+    &quot;org_name&quot;: &quot;Organization&quot;,
+    &quot;origin&quot;: &quot;ManuallyCreated&quot;,
+    &quot;origin_id&quot;: null,
+    &quot;owner_name&quot;: &quot;Creator&quot;,
+    &quot;participants_count&quot;: 1,
+    &quot;person_hidden&quot;: false,
+    &quot;person_id&quot;: 1,
+    &quot;person_name&quot;: &quot;Person&quot;,
+    &quot;pipeline_id&quot;: 1,
+    &quot;probability&quot;: null,
+    &quot;products_count&quot;: 0,
+    &quot;rotten_time&quot;: null,
+    &quot;stage_change_time&quot;: &quot;2019-11-28 15:41:22&quot;,
+    &quot;stage_id&quot;: 2,
+    &quot;stage_order_nr&quot;: 2,
+    &quot;status&quot;: &quot;open&quot;,
+    &quot;title&quot;: &quot;Deal One&quot;,
+    &quot;undone_activities_count&quot;: 1,
+    &quot;update_time&quot;: &quot;2019-06-29 05:20:31&quot;,
+    &quot;user_id&quot;: 456,
+    &quot;value&quot;: 5000,
+    &quot;visible_to&quot;: &quot;1&quot;,
+    &quot;weighted_value&quot;: 5000,
+    &quot;weighted_value_currency&quot;: &quot;EUR&quot;,
+    &quot;won_time&quot;: &quot;2019-11-27 11:40:36&quot;
+  },
+  &quot;success&quot;: true
+}
+</code></pre>
 </main></div>
 <script src="../assets/search.js" defer></script></body></html>

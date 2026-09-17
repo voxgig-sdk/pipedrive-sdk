@@ -2,7 +2,7 @@
 import { Context, Spec } from '../types'
 
 
-const CRED_name = 'api_token'
+const CRED_name = 'authorization'
 
 const OPTION_apikey = 'apikey'
 const OPTION_secret = 'secret'
@@ -25,13 +25,13 @@ function prepareAuth(ctx: Context): Spec | Error {
     return ctx.error('auth_no_spec', 'Expected context spec property to be defined.')
   }
 
-  const query = spec.query
+  const headers = spec.headers
 
   const options = client.options()
 
   // Public APIs that need no auth omit the options.auth block entirely.
   if (null == options.auth) {
-    delprop(query, CRED_name)
+    delprop(headers, CRED_name)
     return spec
   }
 
@@ -39,11 +39,32 @@ function prepareAuth(ctx: Context): Spec | Error {
 
   const apikey = getprop(options, OPTION_apikey, NOTFOUND)
 
+  // True HTTP Basic Auth needs TWO credentials, base64-joined - a single
+  // token in the header (the branch below) can never authenticate against
+  // an API that actually checks `Authorization: Basic base64(user:pass)`.
+  if (true === options.auth.basic) {
+    const secret = getprop(options, OPTION_secret, NOTFOUND)
+    const noApikey = NOTFOUND === apikey || null == apikey || '' === apikey
+    const noSecret = NOTFOUND === secret || null == secret || '' === secret
+
+    if (noApikey || noSecret) {
+      delprop(headers, CRED_name)
+    }
+    else {
+      const b64 = Buffer.from(apikey + ':' + secret).toString('base64')
+      setprop(headers, CRED_name, prefix ? prefix + ' ' + b64 : b64)
+    }
+
+    return spec
+  }
+
   if (NOTFOUND === apikey || null == apikey || '' === apikey) {
-    delprop(query, CRED_name)
+    delprop(headers, CRED_name)
   }
   else {
-    setprop(query, CRED_name, apikey)
+    // A raw credential (empty prefix, e.g. an apiKey scheme) must go in
+    // as-is; only a non-empty prefix (Bearer/Basic/OAuth) is space-joined.
+    setprop(headers, CRED_name, prefix ? prefix + ' ' + apikey : apikey)
   }
 
   return spec

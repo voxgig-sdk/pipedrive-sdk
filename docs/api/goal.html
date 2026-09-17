@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Goal | Pipedrive API v1</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Pipedrive API v1<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/pipedrive-sdk">voxgig-sdk/pipedrive-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Pipedrive API v1</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/activity_field.html">ActivityField</a>
+<a href="../api/activity_type.html">ActivityType</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/call_log.html">CallLog</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/deal.html">Deal</a>
+<a href="../api/deal_field.html">DealField</a>
+<a href="../api/file.html">File</a>
+<a href="../api/filter.html">Filter</a>
+<a aria-current="page" href="../api/goal.html">Goal</a><div class="nav-sections"><a class="nav-section" href="#post-goals">POST /goals</a>
+<a class="nav-section" href="#get-goalsfind">GET /goals/find</a>
+<a class="nav-section" href="#get-goalsidresults">GET /goals/{id}/results</a>
+<a class="nav-section" href="#delete-goalsid">DELETE /goals/{id}</a>
+<a class="nav-section" href="#put-goalsid">PUT /goals/{id}</a></div>
+<a href="../api/lead.html">Lead</a>
+<a href="../api/lead_field.html">LeadField</a>
+<a href="../api/lead_label.html">LeadLabel</a>
+<a href="../api/lead_source.html">LeadSource</a>
+<a href="../api/legacy_team.html">LegacyTeam</a>
+<a href="../api/mailbox.html">Mailbox</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/note.html">Note</a>
+<a href="../api/note_field.html">NoteField</a>
+<a href="../api/oauth.html">Oauth</a>
+<a href="../api/organization.html">Organization</a>
+<a href="../api/organization_field.html">OrganizationField</a>
+<a href="../api/organization_relationship.html">OrganizationRelationship</a>
+<a href="../api/permission_set.html">PermissionSet</a>
+<a href="../api/person.html">Person</a>
+<a href="../api/person_field.html">PersonField</a>
+<a href="../api/pipeline.html">Pipeline</a>
+<a href="../api/product.html">Product</a>
+<a href="../api/product_field.html">ProductField</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_board.html">ProjectBoard</a>
+<a href="../api/project_phase.html">ProjectPhase</a>
+<a href="../api/project_template.html">ProjectTemplate</a>
+<a href="../api/recent.html">Recent</a>
+<a href="../api/role.html">Role</a>
+<a href="../api/stage.html">Stage</a>
+<a href="../api/task.html">Task</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_connection.html">UserConnection</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="goal">Goal</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-goals"><code>/goals</code></a></td>
+<td><code>create</code></td>
+<td>Successful response containing payload in the <code>data.goal</code> object</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-goalsfind"><code>/goals/find</code></a></td>
+<td><code>load</code></td>
+<td>Successful response containing payload in the <code>data.goal</code> object</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-goalsidresults"><code>/goals/{id}/results</code></a></td>
+<td><code>load</code></td>
+<td>Successful response containing payload in the <code>data.goal</code> object</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-goalsid"><code>/goals/{id}</code></a></td>
+<td><code>remove</code></td>
+<td>Successful response with id 'success' field only</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-goalsid"><code>/goals/{id}</code></a></td>
+<td><code>update</code></td>
+<td>Successful response containing payload in the <code>data.goal</code> object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Who this goal is assigned to.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The date when the goal starts and ends.</td>
+</tr>
+<tr>
+<td><code>expected_outcome</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The expected outcome of the goal.</td>
+</tr>
+<tr>
+<td><code>goal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The type of the goal.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-goals" class="operation" data-method="post"><code>POST</code> /goals</h3>
+<p>Operation ID: <code>addGoal</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assignee</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Who this goal is assigned to. It requires the following JSON structure: <code>&amp;#123; &amp;quot;id&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;person&amp;quot; &amp;#125;</code>. <code>type</code> can be either <code>person</code>, <code>company</code> or <code>team</code>. ID of the assignee person, company or team.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The date when the goal starts and ends. It requires the following JSON structure: <code>&amp;#123; &amp;quot;start&amp;quot;: &amp;quot;2019-01-01&amp;quot;, &amp;quot;end&amp;quot;: &amp;quot;2022-12-31&amp;quot; &amp;#125;</code>. Date in format of YYYY-MM-DD. &quot;end&quot; can be set to <code>null</code> for an infinite, open-ended goal.</td>
+</tr>
+<tr>
+<td><code>expected_outcome</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The expected outcome of the goal. Expected outcome can be tracked either by <code>quantity</code> or by <code>sum</code>. It requires the following JSON structure: <code>&amp;#123; &amp;quot;target&amp;quot;: &amp;quot;50&amp;quot;, &amp;quot;tracking_metric&amp;quot;: &amp;quot;quantity&amp;quot; &amp;#125;</code> or <code>&amp;#123; &amp;quot;target&amp;quot;: &amp;quot;50&amp;quot;, &amp;quot;tracking_metric&amp;quot;: &amp;quot;sum&amp;quot;, &amp;quot;currency_id&amp;quot;: 1 &amp;#125;</code>. <code>currency_id</code> should only be added to <code>sum</code> type of goals.</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td><code>enum: weekly, monthly, quarterly, yearly</code></td>
+<td>Yes</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The type of the goal. It requires the following JSON structure: <code>&amp;#123; &amp;quot;name&amp;quot;: &amp;quot;deals_started&amp;quot;, &amp;quot;params&amp;quot;: &amp;#123; &amp;quot;pipeline_id&amp;quot;: [1, 2], &amp;quot;activity_type_id&amp;quot;: [9] &amp;#125; &amp;#125;</code>. Type can be one of: <code>deals_won</code>, <code>deals_progressed</code>, <code>activities_completed</code>, <code>activities_added</code>, <code>deals_started</code> or <code>revenue_forecast</code>. <code>params</code> can include <code>pipeline_id</code>, <code>stage_id</code> or <code>activity_type_id</code>. <code>stage_id</code> is related to only <code>deals_progressed</code> type of goals and <code>activity_type_id</code> to <code>activities_completed</code> or <code>activities_added</code> types of goals. The <code>pipeline_id</code> and <code>activity_type_id</code> need to be given as an array of integers. To track the goal in all pipelines, set <code>pipeline_id</code> as <code>null</code> and similarly, to track the goal for all activities, set <code>activity_type_id</code> as <code>null</code>.”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-datagoal-object" class="status" data-status="2xx">200: Successful response containing payload in the <code>data.goal</code> object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.goal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Goal</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Who the goal is assigned to</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the goal assignee</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the assignee</td>
+</tr>
+<tr>
+<td><code>data.goal.duration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The duration of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.duration.end</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.duration.start</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The expected outcome of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome.target</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The numeric target of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome.tracking_metric</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tracking metric of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.interval</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.is_active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the goal is currently active or not</td>
+</tr>
+<tr>
+<td><code>data.goal.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the creator of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.report_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The IDs of the reports that belong to the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The type of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the goal type</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The parameters that accompany the goal type</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params.activity_type_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of activity types of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params.pipeline_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of pipelines of the goal</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;goal&quot;: {
+      &quot;assignee&quot;: {
+        &quot;id&quot;: 123456,
+        &quot;type&quot;: &quot;company&quot;
+      },
+      &quot;duration&quot;: {
+        &quot;end&quot;: &quot;2020-10-30&quot;,
+        &quot;start&quot;: &quot;2019-11-01&quot;
+      },
+      &quot;expected_outcome&quot;: {
+        &quot;target&quot;: 100,
+        &quot;tracking_metric&quot;: &quot;quantity&quot;
+      },
+      &quot;id&quot;: &quot;5665cef556ddff22606fc8f6c0004807&quot;,
+      &quot;interval&quot;: &quot;weekly&quot;,
+      &quot;is_active&quot;: false,
+      &quot;owner_id&quot;: 987654,
+      &quot;report_ids&quot;: [
+        &quot;f37bd66a2ab64d28ff6a9b6d2289813a&quot;
+      ],
+      &quot;title&quot;: &quot;Some example goal&quot;,
+      &quot;type&quot;: {
+        &quot;name&quot;: &quot;Deals started&quot;,
+        &quot;params&quot;: {
+          &quot;activity_type_id&quot;: [
+            9
+          ],
+          &quot;pipeline_id&quot;: [
+            5,
+            2
+          ]
+        }
+      }
+    }
+  },
+  &quot;service&quot;: &quot;statistics-goals-api&quot;,
+  &quot;statusCode&quot;: 20000,
+  &quot;statusText&quot;: &quot;OK&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-goalsfind" class="operation" data-method="get"><code>GET</code> /goals/find</h3>
+<p>Operation ID: <code>getGoals</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>type.name</code> | <code>query</code> | <code>enum: deals_won, deals_progressed, activities_completed, activities_added, deals_started</code> | No | The type of the goal. If provided, everyone's goals will be returned. |
+| <code>title</code> | <code>query</code> | <code>string</code> | No | The title of the goal |
+| <code>is_active</code> | <code>query</code> | <code>boolean</code> | No | Whether the goal is active or not |
+| <code>assignee.id</code> | <code>query</code> | <code>integer</code> | No | The ID of the user who's goal to fetch. When omitted, only your goals will be returned. |
+| <code>assignee.type</code> | <code>query</code> | <code>enum: person, company, team</code> | No | The type of the goal's assignee. If provided, everyone's goals will be returned. |
+| <code>expected_outcome.target</code> | <code>query</code> | <code>number</code> | No | The numeric value of the outcome. If provided, everyone's goals will be returned. |
+| <code>expected_outcome.tracking_metric</code> | <code>query</code> | <code>enum: quantity, sum</code> | No | The tracking metric of the expected outcome of the goal. If provided, everyone's goals will be returned. |
+| <code>expected_outcome.currency_id</code> | <code>query</code> | <code>integer</code> | No | The numeric ID of the goal's currency. Only applicable to goals with <code>expected_outcome.tracking_metric</code> with value <code>sum</code>. If provided, everyone's goals will be returned. |
+| <code>type.params.pipeline_id</code> | <code>query</code> | <code>array of integer</code> | No | An array of pipeline IDs or <code>null</code> for all pipelines. If provided, everyone's goals will be returned. |
+| <code>type.params.stage_id</code> | <code>query</code> | <code>integer</code> | No | The ID of the stage. Applicable to only <code>deals_progressed</code> type of goals. If provided, everyone's goals will be returned. |
+| <code>type.params.activity_type_id</code> | <code>query</code> | <code>array of integer</code> | No | An array of IDs or <code>null</code> for all activity types. Only applicable for <code>activities_completed</code> and/or <code>activities_added</code> types of goals. If provided, everyone's goals will be returned. |
+| <code>period.start</code> | <code>query</code> | <code>string (date)</code> | No | The start date of the period for which to find goals. Date in format of YYYY-MM-DD. When <code>period.start</code> is provided, <code>period.end</code> must be provided too. |
+| <code>period.end</code> | <code>query</code> | <code>string (date)</code> | No | The end date of the period for which to find goals. Date in format of YYYY-MM-DD. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-datagoal-object-1" class="status" data-status="2xx">200: Successful response containing payload in the <code>data.goal</code> object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.goals</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.goals[].assignee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Who the goal is assigned to</td>
+</tr>
+<tr>
+<td><code>data.goals[].assignee.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the goal assignee</td>
+</tr>
+<tr>
+<td><code>data.goals[].assignee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the assignee</td>
+</tr>
+<tr>
+<td><code>data.goals[].duration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The duration of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].duration.end</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].duration.start</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].expected_outcome</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The expected outcome of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].expected_outcome.target</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The numeric target of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].expected_outcome.tracking_metric</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tracking metric of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].interval</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].is_active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the goal is currently active or not</td>
+</tr>
+<tr>
+<td><code>data.goals[].owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the creator of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].report_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The IDs of the reports that belong to the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The type of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].type.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the goal type</td>
+</tr>
+<tr>
+<td><code>data.goals[].type.params</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The parameters that accompany the goal type</td>
+</tr>
+<tr>
+<td><code>data.goals[].type.params.activity_type_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of activity types of the goal</td>
+</tr>
+<tr>
+<td><code>data.goals[].type.params.pipeline_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of pipelines of the goal</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;goals&quot;: [
+      {
+        &quot;assignee&quot;: {
+          &quot;id&quot;: 123456,
+          &quot;type&quot;: &quot;company&quot;
+        },
+        &quot;duration&quot;: {
+          &quot;end&quot;: &quot;2020-10-30&quot;,
+          &quot;start&quot;: &quot;2019-11-01&quot;
+        },
+        &quot;expected_outcome&quot;: {
+          &quot;target&quot;: 100,
+          &quot;tracking_metric&quot;: &quot;quantity&quot;
+        },
+        &quot;id&quot;: &quot;5665cef556ddff22606fc8f6c0004807&quot;,
+        &quot;interval&quot;: &quot;weekly&quot;,
+        &quot;is_active&quot;: false,
+        &quot;owner_id&quot;: 987654,
+        &quot;report_ids&quot;: [
+          &quot;f37bd66a2ab64d28ff6a9b6d2289813a&quot;
+        ],
+        &quot;title&quot;: &quot;Some example goal&quot;,
+        &quot;type&quot;: {
+          &quot;name&quot;: &quot;Deals started&quot;,
+          &quot;params&quot;: {
+            &quot;activity_type_id&quot;: [
+              9
+            ],
+            &quot;pipeline_id&quot;: [
+              5,
+              2
+            ]
+          }
+        }
+      }
+    ]
+  },
+  &quot;service&quot;: &quot;statistics-goals-api&quot;,
+  &quot;statusCode&quot;: 20000,
+  &quot;statusText&quot;: &quot;OK&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h3 id="get-goalsidresults" class="operation" data-method="get"><code>GET</code> /goals/{id}/results</h3>
+<p>Operation ID: <code>getGoalResult</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the goal that the results are looked for |
+| <code>period.start</code> | <code>query</code> | <code>string (date)</code> | Yes | The start date of the period for which to find the goal's progress. Format: YYYY-MM-DD. This date must be the same or after the goal duration start date. |
+| <code>period.end</code> | <code>query</code> | <code>string (date)</code> | Yes | The end date of the period for which to find the goal's progress. Format: YYYY-MM-DD. This date must be the same or before the goal duration end date. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-datagoal-object-2" class="status" data-status="2xx">200: Successful response containing payload in the <code>data.goal</code> object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.goal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Goal</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Who the goal is assigned to</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the goal assignee</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the assignee</td>
+</tr>
+<tr>
+<td><code>data.goal.duration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The duration of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.duration.end</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.duration.start</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The expected outcome of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome.target</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The numeric target of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome.tracking_metric</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tracking metric of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.interval</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.is_active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the goal is currently active or not</td>
+</tr>
+<tr>
+<td><code>data.goal.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the creator of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.report_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The IDs of the reports that belong to the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The type of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the goal type</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The parameters that accompany the goal type</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params.activity_type_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of activity types of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params.pipeline_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of pipelines of the goal</td>
+</tr>
+<tr>
+<td><code>data.progress</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The numeric progress of the goal</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;goal&quot;: {
+      &quot;assignee&quot;: {
+        &quot;id&quot;: 123456,
+        &quot;type&quot;: &quot;company&quot;
+      },
+      &quot;duration&quot;: {
+        &quot;end&quot;: &quot;2020-10-30&quot;,
+        &quot;start&quot;: &quot;2019-11-01&quot;
+      },
+      &quot;expected_outcome&quot;: {
+        &quot;target&quot;: 100,
+        &quot;tracking_metric&quot;: &quot;quantity&quot;
+      },
+      &quot;id&quot;: &quot;5665cef556ddff22606fc8f6c0004807&quot;,
+      &quot;interval&quot;: &quot;weekly&quot;,
+      &quot;is_active&quot;: false,
+      &quot;owner_id&quot;: 987654,
+      &quot;report_ids&quot;: [
+        &quot;f37bd66a2ab64d28ff6a9b6d2289813a&quot;
+      ],
+      &quot;title&quot;: &quot;Some example goal&quot;,
+      &quot;type&quot;: {
+        &quot;name&quot;: &quot;Deals started&quot;,
+        &quot;params&quot;: {
+          &quot;activity_type_id&quot;: [
+            9
+          ],
+          &quot;pipeline_id&quot;: [
+            5,
+            2
+          ]
+        }
+      }
+    },
+    &quot;progress&quot;: 3
+  },
+  &quot;service&quot;: &quot;statistics-goals-api&quot;,
+  &quot;statusCode&quot;: 20000,
+  &quot;statusText&quot;: &quot;OK&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="remove">remove</h2>
+<h3 id="delete-goalsid" class="operation" data-method="delete"><code>DELETE</code> /goals/{id}</h3>
+<p>Operation ID: <code>deleteGoal</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the goal |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-successful-response-with-id-39success39-field-only" class="status" data-status="2xx">200: Successful response with id 'success' field only</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;service&quot;: &quot;statistics-goals-api&quot;,
+  &quot;statusCode&quot;: 20000,
+  &quot;statusText&quot;: &quot;OK&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+<h2 id="update">update</h2>
+<h3 id="put-goalsid" class="operation" data-method="put"><code>PUT</code> /goals/{id}</h3>
+<p>Operation ID: <code>updateGoal</code>.</p>
+<p>Authentication: API key in the header (<code>api_key</code>) or oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the goal |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assignee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Who this goal is assigned to. It requires the following JSON structure: <code>&amp;#123; &amp;quot;id&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;person&amp;quot; &amp;#125;</code>. <code>type</code> can be either <code>person</code>, <code>company</code> or <code>team</code>. ID of the assignee person, company or team.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The date when the goal starts and ends. It requires the following JSON structure: <code>&amp;#123; &amp;quot;start&amp;quot;: &amp;quot;2019-01-01&amp;quot;, &amp;quot;end&amp;quot;: &amp;quot;2022-12-31&amp;quot; &amp;#125;</code>. Date in format of YYYY-MM-DD. &quot;end&quot; can be set to <code>null</code> for an infinite, open-ended goal.</td>
+</tr>
+<tr>
+<td><code>expected_outcome</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The expected outcome of the goal. Expected outcome can be tracked either by <code>quantity</code> or by <code>sum</code>. It requires the following JSON structure: <code>&amp;#123; &amp;quot;target&amp;quot;: &amp;quot;50&amp;quot;, &amp;quot;tracking_metric&amp;quot;: &amp;quot;quantity&amp;quot; &amp;#125;</code> or <code>&amp;#123; &amp;quot;target&amp;quot;: &amp;quot;50&amp;quot;, &amp;quot;tracking_metric&amp;quot;: &amp;quot;sum&amp;quot;, &amp;quot;currency_id&amp;quot;: 1 &amp;#125;</code>. <code>currency_id</code> should only be added to <code>sum</code> type of goals.</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td><code>enum: weekly, monthly, quarterly, yearly</code></td>
+<td>No</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The type of the goal. It requires the following JSON structure: <code>&amp;#123; &amp;quot;name&amp;quot;: &amp;quot;deals_started&amp;quot;, &amp;quot;params&amp;quot;: &amp;#123; &amp;quot;pipeline_id&amp;quot;: [1, 2], &amp;quot;activity_type_id&amp;quot;: [9] &amp;#125; &amp;#125;</code>. Type can be one of: <code>deals_won</code>, <code>deals_progressed</code>, <code>activities_completed</code>, <code>activities_added</code>, <code>deals_started</code> or <code>revenue_forecast</code>. <code>params</code> can include <code>pipeline_id</code>, <code>stage_id</code> or <code>activity_type_id</code>. <code>stage_id</code> is related to only <code>deals_progressed</code> type of goals and <code>activity_type_id</code> to <code>activities_completed</code> or <code>activities_added</code> types of goals. The <code>pipeline_id</code> and <code>activity_type_id</code> need to be given as an array of integers. To track the goal in all pipelines, set <code>pipeline_id</code> as <code>null</code> and similarly, to track the goal for all activities, set <code>activity_type_id</code> as <code>null</code>.”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-successful-response-containing-payload-in-the-datagoal-object-3" class="status" data-status="2xx">200: Successful response containing payload in the <code>data.goal</code> object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.goal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Goal</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Who the goal is assigned to</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee.id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the goal assignee</td>
+</tr>
+<tr>
+<td><code>data.goal.assignee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the assignee</td>
+</tr>
+<tr>
+<td><code>data.goal.duration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The duration of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.duration.end</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.duration.start</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The expected outcome of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome.target</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The numeric target of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.expected_outcome.tracking_metric</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tracking metric of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.interval</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The interval of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.is_active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the goal is currently active or not</td>
+</tr>
+<tr>
+<td><code>data.goal.owner_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the creator of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.report_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The IDs of the reports that belong to the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The type of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the goal type</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The parameters that accompany the goal type</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params.activity_type_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of activity types of the goal</td>
+</tr>
+<tr>
+<td><code>data.goal.type.params.pipeline_id</code></td>
+<td><code>array of integer</code></td>
+<td>No</td>
+<td>The IDs of pipelines of the goal</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If the request was successful or not</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;goal&quot;: {
+      &quot;assignee&quot;: {
+        &quot;id&quot;: 123456,
+        &quot;type&quot;: &quot;company&quot;
+      },
+      &quot;duration&quot;: {
+        &quot;end&quot;: &quot;2020-10-30&quot;,
+        &quot;start&quot;: &quot;2019-11-01&quot;
+      },
+      &quot;expected_outcome&quot;: {
+        &quot;target&quot;: 100,
+        &quot;tracking_metric&quot;: &quot;quantity&quot;
+      },
+      &quot;id&quot;: &quot;5665cef556ddff22606fc8f6c0004807&quot;,
+      &quot;interval&quot;: &quot;weekly&quot;,
+      &quot;is_active&quot;: false,
+      &quot;owner_id&quot;: 987654,
+      &quot;report_ids&quot;: [
+        &quot;f37bd66a2ab64d28ff6a9b6d2289813a&quot;
+      ],
+      &quot;title&quot;: &quot;Some example goal&quot;,
+      &quot;type&quot;: {
+        &quot;name&quot;: &quot;Deals started&quot;,
+        &quot;params&quot;: {
+          &quot;activity_type_id&quot;: [
+            9
+          ],
+          &quot;pipeline_id&quot;: [
+            5,
+            2
+          ]
+        }
+      }
+    }
+  },
+  &quot;service&quot;: &quot;statistics-goals-api&quot;,
+  &quot;statusCode&quot;: 20000,
+  &quot;statusText&quot;: &quot;OK&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

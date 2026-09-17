@@ -53,7 +53,7 @@ describe('DealDirect', async () => {
     const query: any = {}
     if (setup.live) {
       const listResult: any = await client.direct({
-        path: 'deals',
+        path: 'deals/archived',
         method: 'GET',
         params: {
 
@@ -72,11 +72,11 @@ describe('DealDirect', async () => {
       params.id = candidateId
 
     } else {
-      params.id = 'direct01'
+
     }
 
     const result: any = await client.direct({
-      path: 'deals/{id}',
+      path: 'deals/timeline',
       method: 'GET',
       params,
       query,
@@ -102,7 +102,6 @@ describe('DealDirect', async () => {
       assert(result.data.id === 'direct01')
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
     }
   })
 
@@ -116,7 +115,7 @@ describe('DealDirect', async () => {
     const query: any = {}
 
     const result: any = await client.direct({
-      path: 'deals',
+      path: 'deals/archived',
       method: 'GET',
       params,
       query,
@@ -159,6 +158,7 @@ function directSetup(mockres?: any) {
     'PIPEDRIVE_TEST_DEAL_ENTID': {},
     'PIPEDRIVE_TEST_LIVE': 'FALSE',
     'PIPEDRIVE_APIKEY': '',
+    'PIPEDRIVE_SECRET': '',
   })
 
   const live = 'TRUE' === env.PIPEDRIVE_TEST_LIVE
@@ -170,6 +170,7 @@ function directSetup(mockres?: any) {
     const client = new PipedriveSDK(
       Object.assign({}, liveClientOptions(), { system: { fetch: transport.fetch },
       apikey: env.PIPEDRIVE_APIKEY,
+      secret: env.PIPEDRIVE_SECRET,
       }))
 
     let idmap: any = env['PIPEDRIVE_TEST_DEAL_ENTID']

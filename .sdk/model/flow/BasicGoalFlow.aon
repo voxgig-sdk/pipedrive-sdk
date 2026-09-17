@@ -1,0 +1,72 @@
+# BasicGoalFlow
+
+main: kit: flow: BasicGoalFlow:
+{
+  entity: "goal",
+  kind: "basic",
+  name: "BasicGoalFlow",
+  step: [
+    {
+      input: {
+        ref: "goal_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "goal_ref01",
+        srcdatavar: "goal_ref01_data",
+        suffix: "_up0",
+        textfield: "interval"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-goal_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "goal_ref01",
+        srcdatavar: "goal_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "goal01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-goal_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "goal_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "goal01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicGoalFlow"
+}

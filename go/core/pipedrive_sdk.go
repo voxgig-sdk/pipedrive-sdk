@@ -338,11 +338,339 @@ func (sdk *PipedriveSDK) Graphql(
 }
 
 
+// ActivityField returns a ActivityField entity bound to this client.
+// Idiomatic usage: client.ActivityField(nil).List(nil, nil) or
+// client.ActivityField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) ActivityField(data map[string]any) PipedriveEntity {
+	return NewActivityFieldEntityFunc(sdk, data)
+}
+
+
+// ActivityType returns a ActivityType entity bound to this client.
+// Idiomatic usage: client.ActivityType(nil).List(nil, nil) or
+// client.ActivityType(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) ActivityType(data map[string]any) PipedriveEntity {
+	return NewActivityTypeEntityFunc(sdk, data)
+}
+
+
+// Billing returns a Billing entity bound to this client.
+// Idiomatic usage: client.Billing(nil).List(nil, nil) or
+// client.Billing(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Billing(data map[string]any) PipedriveEntity {
+	return NewBillingEntityFunc(sdk, data)
+}
+
+
+// CallLog returns a CallLog entity bound to this client.
+// Idiomatic usage: client.CallLog(nil).List(nil, nil) or
+// client.CallLog(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) CallLog(data map[string]any) PipedriveEntity {
+	return NewCallLogEntityFunc(sdk, data)
+}
+
+
+// Channel returns a Channel entity bound to this client.
+// Idiomatic usage: client.Channel(nil).List(nil, nil) or
+// client.Channel(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Channel(data map[string]any) PipedriveEntity {
+	return NewChannelEntityFunc(sdk, data)
+}
+
+
+// Currency returns a Currency entity bound to this client.
+// Idiomatic usage: client.Currency(nil).List(nil, nil) or
+// client.Currency(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Currency(data map[string]any) PipedriveEntity {
+	return NewCurrencyEntityFunc(sdk, data)
+}
+
+
 // Deal returns a Deal entity bound to this client.
 // Idiomatic usage: client.Deal(nil).List(nil, nil) or
 // client.Deal(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PipedriveSDK) Deal(data map[string]any) PipedriveEntity {
 	return NewDealEntityFunc(sdk, data)
+}
+
+
+// DealField returns a DealField entity bound to this client.
+// Idiomatic usage: client.DealField(nil).List(nil, nil) or
+// client.DealField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) DealField(data map[string]any) PipedriveEntity {
+	return NewDealFieldEntityFunc(sdk, data)
+}
+
+
+// File returns a File entity bound to this client.
+// Idiomatic usage: client.File(nil).List(nil, nil) or
+// client.File(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) File(data map[string]any) PipedriveEntity {
+	return NewFileEntityFunc(sdk, data)
+}
+
+
+// Filter returns a Filter entity bound to this client.
+// Idiomatic usage: client.Filter(nil).List(nil, nil) or
+// client.Filter(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Filter(data map[string]any) PipedriveEntity {
+	return NewFilterEntityFunc(sdk, data)
+}
+
+
+// Goal returns a Goal entity bound to this client.
+// Idiomatic usage: client.Goal(nil).List(nil, nil) or
+// client.Goal(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Goal(data map[string]any) PipedriveEntity {
+	return NewGoalEntityFunc(sdk, data)
+}
+
+
+// Lead returns a Lead entity bound to this client.
+// Idiomatic usage: client.Lead(nil).List(nil, nil) or
+// client.Lead(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Lead(data map[string]any) PipedriveEntity {
+	return NewLeadEntityFunc(sdk, data)
+}
+
+
+// LeadField returns a LeadField entity bound to this client.
+// Idiomatic usage: client.LeadField(nil).List(nil, nil) or
+// client.LeadField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) LeadField(data map[string]any) PipedriveEntity {
+	return NewLeadFieldEntityFunc(sdk, data)
+}
+
+
+// LeadLabel returns a LeadLabel entity bound to this client.
+// Idiomatic usage: client.LeadLabel(nil).List(nil, nil) or
+// client.LeadLabel(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) LeadLabel(data map[string]any) PipedriveEntity {
+	return NewLeadLabelEntityFunc(sdk, data)
+}
+
+
+// LeadSource returns a LeadSource entity bound to this client.
+// Idiomatic usage: client.LeadSource(nil).List(nil, nil) or
+// client.LeadSource(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) LeadSource(data map[string]any) PipedriveEntity {
+	return NewLeadSourceEntityFunc(sdk, data)
+}
+
+
+// LegacyTeam returns a LegacyTeam entity bound to this client.
+// Idiomatic usage: client.LegacyTeam(nil).List(nil, nil) or
+// client.LegacyTeam(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) LegacyTeam(data map[string]any) PipedriveEntity {
+	return NewLegacyTeamEntityFunc(sdk, data)
+}
+
+
+// Mailbox returns a Mailbox entity bound to this client.
+// Idiomatic usage: client.Mailbox(nil).List(nil, nil) or
+// client.Mailbox(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Mailbox(data map[string]any) PipedriveEntity {
+	return NewMailboxEntityFunc(sdk, data)
+}
+
+
+// Meeting returns a Meeting entity bound to this client.
+// Idiomatic usage: client.Meeting(nil).List(nil, nil) or
+// client.Meeting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Meeting(data map[string]any) PipedriveEntity {
+	return NewMeetingEntityFunc(sdk, data)
+}
+
+
+// Note returns a Note entity bound to this client.
+// Idiomatic usage: client.Note(nil).List(nil, nil) or
+// client.Note(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Note(data map[string]any) PipedriveEntity {
+	return NewNoteEntityFunc(sdk, data)
+}
+
+
+// NoteField returns a NoteField entity bound to this client.
+// Idiomatic usage: client.NoteField(nil).List(nil, nil) or
+// client.NoteField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) NoteField(data map[string]any) PipedriveEntity {
+	return NewNoteFieldEntityFunc(sdk, data)
+}
+
+
+// Oauth returns a Oauth entity bound to this client.
+// Idiomatic usage: client.Oauth(nil).List(nil, nil) or
+// client.Oauth(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Oauth(data map[string]any) PipedriveEntity {
+	return NewOauthEntityFunc(sdk, data)
+}
+
+
+// Organization returns a Organization entity bound to this client.
+// Idiomatic usage: client.Organization(nil).List(nil, nil) or
+// client.Organization(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Organization(data map[string]any) PipedriveEntity {
+	return NewOrganizationEntityFunc(sdk, data)
+}
+
+
+// OrganizationField returns a OrganizationField entity bound to this client.
+// Idiomatic usage: client.OrganizationField(nil).List(nil, nil) or
+// client.OrganizationField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) OrganizationField(data map[string]any) PipedriveEntity {
+	return NewOrganizationFieldEntityFunc(sdk, data)
+}
+
+
+// OrganizationRelationship returns a OrganizationRelationship entity bound to this client.
+// Idiomatic usage: client.OrganizationRelationship(nil).List(nil, nil) or
+// client.OrganizationRelationship(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) OrganizationRelationship(data map[string]any) PipedriveEntity {
+	return NewOrganizationRelationshipEntityFunc(sdk, data)
+}
+
+
+// PermissionSet returns a PermissionSet entity bound to this client.
+// Idiomatic usage: client.PermissionSet(nil).List(nil, nil) or
+// client.PermissionSet(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) PermissionSet(data map[string]any) PipedriveEntity {
+	return NewPermissionSetEntityFunc(sdk, data)
+}
+
+
+// Person returns a Person entity bound to this client.
+// Idiomatic usage: client.Person(nil).List(nil, nil) or
+// client.Person(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Person(data map[string]any) PipedriveEntity {
+	return NewPersonEntityFunc(sdk, data)
+}
+
+
+// PersonField returns a PersonField entity bound to this client.
+// Idiomatic usage: client.PersonField(nil).List(nil, nil) or
+// client.PersonField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) PersonField(data map[string]any) PipedriveEntity {
+	return NewPersonFieldEntityFunc(sdk, data)
+}
+
+
+// Pipeline returns a Pipeline entity bound to this client.
+// Idiomatic usage: client.Pipeline(nil).List(nil, nil) or
+// client.Pipeline(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Pipeline(data map[string]any) PipedriveEntity {
+	return NewPipelineEntityFunc(sdk, data)
+}
+
+
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Product(data map[string]any) PipedriveEntity {
+	return NewProductEntityFunc(sdk, data)
+}
+
+
+// ProductField returns a ProductField entity bound to this client.
+// Idiomatic usage: client.ProductField(nil).List(nil, nil) or
+// client.ProductField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) ProductField(data map[string]any) PipedriveEntity {
+	return NewProductFieldEntityFunc(sdk, data)
+}
+
+
+// Project returns a Project entity bound to this client.
+// Idiomatic usage: client.Project(nil).List(nil, nil) or
+// client.Project(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Project(data map[string]any) PipedriveEntity {
+	return NewProjectEntityFunc(sdk, data)
+}
+
+
+// ProjectBoard returns a ProjectBoard entity bound to this client.
+// Idiomatic usage: client.ProjectBoard(nil).List(nil, nil) or
+// client.ProjectBoard(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) ProjectBoard(data map[string]any) PipedriveEntity {
+	return NewProjectBoardEntityFunc(sdk, data)
+}
+
+
+// ProjectPhase returns a ProjectPhase entity bound to this client.
+// Idiomatic usage: client.ProjectPhase(nil).List(nil, nil) or
+// client.ProjectPhase(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) ProjectPhase(data map[string]any) PipedriveEntity {
+	return NewProjectPhaseEntityFunc(sdk, data)
+}
+
+
+// ProjectTemplate returns a ProjectTemplate entity bound to this client.
+// Idiomatic usage: client.ProjectTemplate(nil).List(nil, nil) or
+// client.ProjectTemplate(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) ProjectTemplate(data map[string]any) PipedriveEntity {
+	return NewProjectTemplateEntityFunc(sdk, data)
+}
+
+
+// Recent returns a Recent entity bound to this client.
+// Idiomatic usage: client.Recent(nil).List(nil, nil) or
+// client.Recent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Recent(data map[string]any) PipedriveEntity {
+	return NewRecentEntityFunc(sdk, data)
+}
+
+
+// Role returns a Role entity bound to this client.
+// Idiomatic usage: client.Role(nil).List(nil, nil) or
+// client.Role(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Role(data map[string]any) PipedriveEntity {
+	return NewRoleEntityFunc(sdk, data)
+}
+
+
+// Stage returns a Stage entity bound to this client.
+// Idiomatic usage: client.Stage(nil).List(nil, nil) or
+// client.Stage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Stage(data map[string]any) PipedriveEntity {
+	return NewStageEntityFunc(sdk, data)
+}
+
+
+// Task returns a Task entity bound to this client.
+// Idiomatic usage: client.Task(nil).List(nil, nil) or
+// client.Task(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Task(data map[string]any) PipedriveEntity {
+	return NewTaskEntityFunc(sdk, data)
+}
+
+
+// User returns a User entity bound to this client.
+// Idiomatic usage: client.User(nil).List(nil, nil) or
+// client.User(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) User(data map[string]any) PipedriveEntity {
+	return NewUserEntityFunc(sdk, data)
+}
+
+
+// UserConnection returns a UserConnection entity bound to this client.
+// Idiomatic usage: client.UserConnection(nil).List(nil, nil) or
+// client.UserConnection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) UserConnection(data map[string]any) PipedriveEntity {
+	return NewUserConnectionEntityFunc(sdk, data)
+}
+
+
+// UserSetting returns a UserSetting entity bound to this client.
+// Idiomatic usage: client.UserSetting(nil).List(nil, nil) or
+// client.UserSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) UserSetting(data map[string]any) PipedriveEntity {
+	return NewUserSettingEntityFunc(sdk, data)
+}
+
+
+// Webhook returns a Webhook entity bound to this client.
+// Idiomatic usage: client.Webhook(nil).List(nil, nil) or
+// client.Webhook(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *PipedriveSDK) Webhook(data map[string]any) PipedriveEntity {
+	return NewWebhookEntityFunc(sdk, data)
 }
 
 
