@@ -7,7 +7,7 @@
 # SDK Details.
 name: 'pipedrive'
 origin: 'voxgig-sdk'
-def: 'pipedrive-deals-only.json'
+def: 'pipedrive-v1-openapi.yaml'
 
 
 # API Information
